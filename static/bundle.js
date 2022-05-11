@@ -3123,16 +3123,24 @@
     	let a;
     	let img;
     	let img_src_value;
+    	let t0;
+    	let div;
     	let a_href_value;
 
     	const block = {
     		c: function create() {
     			a = element("a");
     			img = element("img");
+    			t0 = space();
+    			div = element("div");
+    			div.textContent = "★ ★ ★ ★ ★";
     			attr_dev(img, "class", "h-64 w-44 mr-6 mb-6 float-left border border-purple-200 rounded-md shadow-md md:shadow-xl transform transition ease-out duration-300 hover:scale-105");
     			if (!src_url_equal(img.src, img_src_value = /*item*/ ctx[0].image)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			add_location(img, file$5, 5, 4, 76);
+    			add_location(img, file$5, 5, 4, 103);
+    			attr_dev(div, "class", "flex-1 text-base font-semibold text-yellow-400");
+    			add_location(div, file$5, 7, 4, 301);
+    			attr_dev(a, "class", "flex flex-col mb-8");
     			attr_dev(a, "href", a_href_value = "#/item/" + /*item*/ ctx[0].rowid);
     			add_location(a, file$5, 4, 0, 41);
     		},
@@ -3142,6 +3150,8 @@
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
     			append_dev(a, img);
+    			append_dev(a, t0);
+    			append_dev(a, div);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*item*/ 1 && !src_url_equal(img.src, img_src_value = /*item*/ ctx[0].image)) {
@@ -4097,7 +4107,7 @@
 
     const file$1 = "src/ItemDetail.svelte";
 
-    // (21:0) {:else}
+    // (63:0) {:else}
     function create_else_block$1(ctx) {
     	let p;
 
@@ -4106,7 +4116,7 @@
     			p = element("p");
     			p.textContent = "loading...";
     			attr_dev(p, "class", "loading");
-    			add_location(p, file$1, 21, 1, 492);
+    			add_location(p, file$1, 63, 1, 2110);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -4121,7 +4131,7 @@
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(21:0) {:else}",
+    		source: "(63:0) {:else}",
     		ctx
     	});
 
@@ -4130,52 +4140,204 @@
 
     // (14:0) {#if item}
     function create_if_block$2(ctx) {
-    	let h1;
-    	let t0_value = /*item*/ ctx[0].name + "";
-    	let t0;
+    	let main;
+    	let article;
+    	let div0;
+    	let span0;
     	let t1;
     	let a;
+    	let t2_value = /*item*/ ctx[0].topics + "";
+    	let t2;
+    	let a_href_value;
+    	let t3;
+    	let h1;
+    	let t4_value = /*item*/ ctx[0].name + "";
+    	let t4;
+    	let t5;
     	let img;
     	let img_src_value;
-    	let a_href_value;
+    	let t6;
+    	let p0;
+    	let t7_value = /*item*/ ctx[0].description + "";
+    	let t7;
+    	let t8;
+    	let div4;
+    	let div1;
+    	let p1;
+    	let t10;
+    	let p2;
+    	let t12;
+    	let div2;
+    	let p3;
+    	let t14;
+    	let p4;
+    	let t16;
+    	let div3;
+    	let p5;
+    	let t18;
+    	let p6;
+    	let t20;
+    	let p7;
+    	let span1;
+    	let t22;
+    	let span2;
+    	let t24;
+    	let span3;
 
     	const block = {
     		c: function create() {
-    			h1 = element("h1");
-    			t0 = text(t0_value);
+    			main = element("main");
+    			article = element("article");
+    			div0 = element("div");
+    			span0 = element("span");
+    			span0.textContent = "★ ★ ★ ★ ★";
     			t1 = space();
     			a = element("a");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			h1 = element("h1");
+    			t4 = text(t4_value);
+    			t5 = space();
     			img = element("img");
-    			add_location(h1, file$1, 14, 0, 227);
+    			t6 = space();
+    			p0 = element("p");
+    			t7 = text(t7_value);
+    			t8 = space();
+    			div4 = element("div");
+    			div1 = element("div");
+    			p1 = element("p");
+    			p1.textContent = "difficulty";
+    			t10 = space();
+    			p2 = element("p");
+    			p2.textContent = "childlike";
+    			t12 = space();
+    			div2 = element("div");
+    			p3 = element("p");
+    			p3.textContent = "year";
+    			t14 = space();
+    			p4 = element("p");
+    			p4.textContent = "2013";
+    			t16 = space();
+    			div3 = element("div");
+    			p5 = element("p");
+    			p5.textContent = "cost";
+    			t18 = space();
+    			p6 = element("p");
+    			p6.textContent = "Free";
+    			t20 = space();
+    			p7 = element("p");
+    			span1 = element("span");
+    			span1.textContent = "Book";
+    			t22 = space();
+    			span2 = element("span");
+    			span2.textContent = "Video";
+    			t24 = space();
+    			span3 = element("span");
+    			span3.textContent = "Course";
+    			attr_dev(span0, "class", "text-base font-semibold text-yellow-400");
+    			add_location(span0, file$1, 20, 10, 379);
+    			attr_dev(a, "href", a_href_value = "#/topic/" + /*item*/ ctx[0].topics);
+    			attr_dev(a, "class", "flex-shrink-0 px-1 py-0.5 text-gray-500 bg-gray-100 border border-gray-200 rounded hover:bg-gray-200 hover:text-black font-semibold");
+    			add_location(a, file$1, 21, 10, 460);
+    			attr_dev(div0, "class", "mb-4 text-sm text-gray-900");
+    			add_location(div0, file$1, 19, 6, 324);
+    			attr_dev(h1, "class", "inline text-xl md:text-2xl font-bold ");
+    			add_location(h1, file$1, 26, 6, 680);
     			attr_dev(img, "class", "h-64 w-44 mr-6 mb-6 float-left border border-purple-200 rounded-md shadow-md md:shadow-xl transform transition ease-out duration-300 hover:scale-105");
     			if (!src_url_equal(img.src, img_src_value = /*item*/ ctx[0].image)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			add_location(img, file$1, 17, 4, 284);
-    			attr_dev(a, "href", a_href_value = "#/item/" + /*item*/ ctx[0].rowid);
-    			add_location(a, file$1, 16, 0, 249);
+    			add_location(img, file$1, 28, 6, 754);
+    			add_location(p0, file$1, 31, 6, 955);
+    			attr_dev(p1, "class", "uppercase text-gray-400 text-xs");
+    			add_location(p1, file$1, 35, 10, 1138);
+    			attr_dev(p2, "class", "md:text-2xl");
+    			add_location(p2, file$1, 36, 10, 1206);
+    			attr_dev(div1, "class", "text-center px-2 md:px-6");
+    			add_location(div1, file$1, 34, 8, 1089);
+    			attr_dev(p3, "class", "uppercase text-gray-400 text-xs");
+    			add_location(p3, file$1, 40, 12, 1318);
+    			attr_dev(p4, "class", "md:text-2xl");
+    			add_location(p4, file$1, 41, 12, 1382);
+    			attr_dev(div2, "class", "text-center px-2 md:px-6");
+    			add_location(div2, file$1, 39, 8, 1267);
+    			attr_dev(p5, "class", "uppercase text-gray-400 text-xs");
+    			add_location(p5, file$1, 45, 12, 1493);
+    			attr_dev(p6, "class", "md:text-2xl");
+    			add_location(p6, file$1, 46, 12, 1557);
+    			attr_dev(div3, "class", "text-center px-2 md:px-6");
+    			add_location(div3, file$1, 44, 10, 1442);
+    			attr_dev(div4, "class", "flex mt-8 border-t border-b border-gray-100 p-2 justify-between rounded-lg");
+    			add_location(div4, file$1, 33, 6, 992);
+    			attr_dev(span1, "class", "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-gray-800");
+    			add_location(span1, file$1, 51, 8, 1651);
+    			attr_dev(span2, "class", "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800");
+    			add_location(span2, file$1, 52, 8, 1785);
+    			attr_dev(span3, "class", "inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-red-800");
+    			add_location(span3, file$1, 53, 8, 1916);
+    			attr_dev(p7, "class", "mt-4");
+    			add_location(p7, file$1, 50, 6, 1626);
+    			attr_dev(article, "class", "px-4 py-4");
+    			add_location(article, file$1, 17, 4, 285);
+    			attr_dev(main, "class", "bg-white max-w-2xl shadow rounded-md");
+    			add_location(main, file$1, 15, 0, 228);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h1, anchor);
-    			append_dev(h1, t0);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, a, anchor);
-    			append_dev(a, img);
+    			insert_dev(target, main, anchor);
+    			append_dev(main, article);
+    			append_dev(article, div0);
+    			append_dev(div0, span0);
+    			append_dev(div0, t1);
+    			append_dev(div0, a);
+    			append_dev(a, t2);
+    			append_dev(article, t3);
+    			append_dev(article, h1);
+    			append_dev(h1, t4);
+    			append_dev(article, t5);
+    			append_dev(article, img);
+    			append_dev(article, t6);
+    			append_dev(article, p0);
+    			append_dev(p0, t7);
+    			append_dev(article, t8);
+    			append_dev(article, div4);
+    			append_dev(div4, div1);
+    			append_dev(div1, p1);
+    			append_dev(div1, t10);
+    			append_dev(div1, p2);
+    			append_dev(div4, t12);
+    			append_dev(div4, div2);
+    			append_dev(div2, p3);
+    			append_dev(div2, t14);
+    			append_dev(div2, p4);
+    			append_dev(div4, t16);
+    			append_dev(div4, div3);
+    			append_dev(div3, p5);
+    			append_dev(div3, t18);
+    			append_dev(div3, p6);
+    			append_dev(article, t20);
+    			append_dev(article, p7);
+    			append_dev(p7, span1);
+    			append_dev(p7, t22);
+    			append_dev(p7, span2);
+    			append_dev(p7, t24);
+    			append_dev(p7, span3);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*item*/ 1 && t0_value !== (t0_value = /*item*/ ctx[0].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*item*/ 1 && t2_value !== (t2_value = /*item*/ ctx[0].topics + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*item*/ 1 && a_href_value !== (a_href_value = "#/topic/" + /*item*/ ctx[0].topics)) {
+    				attr_dev(a, "href", a_href_value);
+    			}
+
+    			if (dirty & /*item*/ 1 && t4_value !== (t4_value = /*item*/ ctx[0].name + "")) set_data_dev(t4, t4_value);
 
     			if (dirty & /*item*/ 1 && !src_url_equal(img.src, img_src_value = /*item*/ ctx[0].image)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*item*/ 1 && a_href_value !== (a_href_value = "#/item/" + /*item*/ ctx[0].rowid)) {
-    				attr_dev(a, "href", a_href_value);
-    			}
+    			if (dirty & /*item*/ 1 && t7_value !== (t7_value = /*item*/ ctx[0].description + "")) set_data_dev(t7, t7_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h1);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(a);
+    			if (detaching) detach_dev(main);
     		}
     	};
 
@@ -4317,17 +4479,17 @@
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i];
+    	child_ctx[4] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[7] = list[i];
     	return child_ctx;
     }
 
-    // (67:8) {:else}
+    // (74:8) {:else}
     function create_else_block(ctx) {
     	let div;
     	let svg;
@@ -4351,7 +4513,7 @@
     			attr_dev(path, "stroke-linecap", "round");
     			attr_dev(path, "stroke-linejoin", "round");
     			attr_dev(path, "d", "M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z");
-    			add_location(path, file, 72, 12, 4109);
+    			add_location(path, file, 79, 12, 4377);
     			attr_dev(svg, "class", "mx-auto h-6 w-6 text-gray-400");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "fill", "none");
@@ -4359,13 +4521,13 @@
     			attr_dev(svg, "stroke-width", "2");
     			attr_dev(svg, "stroke", "currentColor");
     			attr_dev(svg, "aria-hidden", "true");
-    			add_location(svg, file, 71, 10, 3928);
+    			add_location(svg, file, 78, 10, 4196);
     			attr_dev(p0, "class", "mt-4 font-semibold text-gray-900");
-    			add_location(p0, file, 74, 10, 4279);
+    			add_location(p0, file, 81, 10, 4547);
     			attr_dev(p1, "class", "mt-2 text-gray-500");
-    			add_location(p1, file, 75, 10, 4354);
+    			add_location(p1, file, 82, 10, 4622);
     			attr_dev(div, "class", "border-t border-gray-100 py-14 px-6 text-center text-sm sm:px-14");
-    			add_location(div, file, 69, 8, 3787);
+    			add_location(div, file, 76, 8, 4055);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4386,14 +4548,14 @@
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(67:8) {:else}",
+    		source: "(74:8) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:37) 
+    // (52:65) 
     function create_if_block_1$1(ctx) {
     	let ul2;
     	let li0;
@@ -4405,7 +4567,7 @@
     	let h21;
     	let t4;
     	let ul1;
-    	let each_value_1 = /*results*/ ctx[1];
+    	let each_value_1 = /*result_items*/ ctx[1];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -4413,7 +4575,7 @@
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let each_value = /*results*/ ctx[1];
+    	let each_value = /*result_topics*/ ctx[2];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -4446,19 +4608,19 @@
     			}
 
     			attr_dev(h20, "class", "bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900");
-    			add_location(h20, file, 49, 12, 2751);
+    			add_location(h20, file, 56, 12, 3002);
     			attr_dev(ul0, "class", "mt-2 text-sm text-gray-800");
-    			add_location(ul0, file, 50, 12, 2846);
-    			add_location(li0, file, 48, 10, 2734);
+    			add_location(ul0, file, 57, 12, 3097);
+    			add_location(li0, file, 55, 10, 2985);
     			attr_dev(h21, "class", "bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900");
-    			add_location(h21, file, 57, 12, 3221);
+    			add_location(h21, file, 64, 12, 3477);
     			attr_dev(ul1, "class", "mt-2 text-sm text-gray-800");
-    			add_location(ul1, file, 58, 12, 3317);
-    			add_location(li1, file, 56, 10, 3204);
+    			add_location(ul1, file, 65, 12, 3573);
+    			add_location(li1, file, 63, 10, 3460);
     			attr_dev(ul2, "class", "max-h-80 scroll-pt-11 scroll-pb-2 space-y-2 overflow-y-auto pb-2");
     			attr_dev(ul2, "id", "options");
     			attr_dev(ul2, "role", "listbox");
-    			add_location(ul2, file, 47, 8, 2618);
+    			add_location(ul2, file, 54, 8, 2869);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul2, anchor);
@@ -4482,8 +4644,8 @@
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*results*/ 2) {
-    				each_value_1 = /*results*/ ctx[1];
+    			if (dirty & /*result_items*/ 2) {
+    				each_value_1 = /*result_items*/ ctx[1];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -4506,8 +4668,8 @@
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty & /*results*/ 2) {
-    				each_value = /*results*/ ctx[1];
+    			if (dirty & /*result_topics*/ 4) {
+    				each_value = /*result_topics*/ ctx[2];
     				validate_each_argument(each_value);
     				let i;
 
@@ -4541,14 +4703,14 @@
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(45:37) ",
+    		source: "(52:65) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:8) {#if !query }
+    // (41:8) {#if !query }
     function create_if_block$1(ctx) {
     	let div;
     	let svg;
@@ -4572,7 +4734,7 @@
     			attr_dev(path, "stroke-linecap", "round");
     			attr_dev(path, "stroke-linejoin", "round");
     			attr_dev(path, "d", "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z");
-    			add_location(path, file, 38, 12, 2009);
+    			add_location(path, file, 45, 12, 2232);
     			attr_dev(svg, "class", "mx-auto h-6 w-6 text-gray-400");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "fill", "none");
@@ -4580,13 +4742,13 @@
     			attr_dev(svg, "stroke-width", "2");
     			attr_dev(svg, "stroke", "currentColor");
     			attr_dev(svg, "aria-hidden", "true");
-    			add_location(svg, file, 37, 10, 1828);
+    			add_location(svg, file, 44, 10, 2051);
     			attr_dev(p0, "class", "mt-4 font-semibold text-gray-900");
-    			add_location(p0, file, 40, 10, 2293);
+    			add_location(p0, file, 47, 10, 2516);
     			attr_dev(p1, "class", "mt-2 text-gray-500");
-    			add_location(p1, file, 41, 10, 2389);
+    			add_location(p1, file, 48, 10, 2612);
     			attr_dev(div, "class", "border-t border-gray-100 py-14 px-6 text-center text-sm sm:px-14");
-    			add_location(div, file, 35, 8, 1691);
+    			add_location(div, file, 42, 8, 1914);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4607,18 +4769,18 @@
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(34:8) {#if !query }",
+    		source: "(41:8) {#if !query }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:14) {#each results as item}
+    // (59:14) {#each result_items as item}
     function create_each_block_1(ctx) {
     	let li;
     	let a;
-    	let t_value = /*item*/ ctx[6].name + "";
+    	let t_value = /*item*/ ctx[7].name + "";
     	let t;
     	let a_href_value;
 
@@ -4627,13 +4789,13 @@
     			li = element("li");
     			a = element("a");
     			t = text(t_value);
-    			attr_dev(a, "href", a_href_value = "#/item/" + /*item*/ ctx[6].rowid);
+    			attr_dev(a, "href", a_href_value = "#/item/" + /*item*/ ctx[7].rowid);
     			attr_dev(a, "class", "block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer");
     			attr_dev(a, "id", "option-1");
     			attr_dev(a, "role", "option");
     			attr_dev(a, "tabindex", "-1");
-    			add_location(a, file, 52, 18, 2942);
-    			add_location(li, file, 52, 14, 2938);
+    			add_location(a, file, 59, 18, 3198);
+    			add_location(li, file, 59, 14, 3194);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -4641,9 +4803,9 @@
     			append_dev(a, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*results*/ 2 && t_value !== (t_value = /*item*/ ctx[6].name + "")) set_data_dev(t, t_value);
+    			if (dirty & /*result_items*/ 2 && t_value !== (t_value = /*item*/ ctx[7].name + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*results*/ 2 && a_href_value !== (a_href_value = "#/item/" + /*item*/ ctx[6].rowid)) {
+    			if (dirty & /*result_items*/ 2 && a_href_value !== (a_href_value = "#/item/" + /*item*/ ctx[7].rowid)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -4656,18 +4818,18 @@
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(52:14) {#each results as item}",
+    		source: "(59:14) {#each result_items as item}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (60:16) {#each results as topic}
+    // (67:16) {#each result_topics as topic}
     function create_each_block(ctx) {
     	let li;
     	let a;
-    	let t_value = /*topic*/ ctx[3].name + "";
+    	let t_value = /*topic*/ ctx[4].display_name + "";
     	let t;
     	let a_href_value;
 
@@ -4676,13 +4838,13 @@
     			li = element("li");
     			a = element("a");
     			t = text(t_value);
-    			attr_dev(a, "href", a_href_value = "#/topic/" + /*topic*/ ctx[3].name);
+    			attr_dev(a, "href", a_href_value = "#/topic/" + /*topic*/ ctx[4].id);
     			attr_dev(a, "class", "block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer");
     			attr_dev(a, "id", "option-1");
     			attr_dev(a, "role", "option");
     			attr_dev(a, "tabindex", "-1");
-    			add_location(a, file, 60, 20, 3418);
-    			add_location(li, file, 60, 16, 3414);
+    			add_location(a, file, 67, 20, 3680);
+    			add_location(li, file, 67, 16, 3676);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -4690,9 +4852,9 @@
     			append_dev(a, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*results*/ 2 && t_value !== (t_value = /*topic*/ ctx[3].name + "")) set_data_dev(t, t_value);
+    			if (dirty & /*result_topics*/ 4 && t_value !== (t_value = /*topic*/ ctx[4].display_name + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*results*/ 2 && a_href_value !== (a_href_value = "#/topic/" + /*topic*/ ctx[3].name)) {
+    			if (dirty & /*result_topics*/ 4 && a_href_value !== (a_href_value = "#/topic/" + /*topic*/ ctx[4].id)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -4705,7 +4867,7 @@
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(60:16) {#each results as topic}",
+    		source: "(67:16) {#each result_topics as topic}",
     		ctx
     	});
 
@@ -4727,7 +4889,7 @@
 
     	function select_block_type(ctx, dirty) {
     		if (!/*query*/ ctx[0]) return create_if_block$1;
-    		if (/*results*/ ctx[1].length > 0) return create_if_block_1$1;
+    		if (/*result_items*/ ctx[1].length + /*result_topics*/ ctx[2].length > 0) return create_if_block_1$1;
     		return create_else_block;
     	}
 
@@ -4749,28 +4911,28 @@
     			attr_dev(path, "fill-rule", "evenodd");
     			attr_dev(path, "d", "M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z");
     			attr_dev(path, "clip-rule", "evenodd");
-    			add_location(path, file, 28, 12, 1138);
+    			add_location(path, file, 35, 12, 1361);
     			attr_dev(svg, "class", "pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 20 20");
     			attr_dev(svg, "fill", "currentColor");
     			attr_dev(svg, "aria-hidden", "true");
-    			add_location(svg, file, 27, 10, 952);
+    			add_location(svg, file, 34, 10, 1175);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "class", "h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm");
     			attr_dev(input, "placeholder", "Search...");
     			attr_dev(input, "role", "combobox");
     			attr_dev(input, "aria-expanded", "false");
     			attr_dev(input, "aria-controls", "options");
-    			add_location(input, file, 30, 10, 1331);
+    			add_location(input, file, 37, 10, 1554);
     			attr_dev(div0, "class", "relative");
-    			add_location(div0, file, 25, 8, 872);
+    			add_location(div0, file, 32, 8, 1095);
     			attr_dev(div1, "class", "mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all");
-    			add_location(div1, file, 24, 6, 728);
+    			add_location(div1, file, 31, 6, 951);
     			attr_dev(div2, "class", "overflow-y-auto p-4 sm:p-6 md:p-20");
-    			add_location(div2, file, 13, 4, 258);
+    			add_location(div2, file, 20, 4, 481);
     			attr_dev(div3, "class", "relative");
-    			add_location(div3, file, 11, 0, 230);
+    			add_location(div3, file, 18, 0, 453);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4789,7 +4951,7 @@
     			if_block.m(div1, null);
 
     			if (!mounted) {
-    				dispose = listen_dev(input, "input", /*input_input_handler*/ ctx[2]);
+    				dispose = listen_dev(input, "input", /*input_input_handler*/ ctx[3]);
     				mounted = true;
     			}
     		},
@@ -4835,7 +4997,8 @@
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('AdvancedSearch', slots, []);
     	let query = '';
-    	let results = [];
+    	let result_items = [];
+    	let result_topics = [];
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -4847,11 +5010,12 @@
     		$$invalidate(0, query);
     	}
 
-    	$$self.$capture_state = () => ({ query, results });
+    	$$self.$capture_state = () => ({ query, result_items, result_topics });
 
     	$$self.$inject_state = $$props => {
     		if ('query' in $$props) $$invalidate(0, query = $$props.query);
-    		if ('results' in $$props) $$invalidate(1, results = $$props.results);
+    		if ('result_items' in $$props) $$invalidate(1, result_items = $$props.result_items);
+    		if ('result_topics' in $$props) $$invalidate(2, result_topics = $$props.result_topics);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -4861,12 +5025,18 @@
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*query*/ 1) {
     			query && fetch(`/learn/items.json?_shape=array&name__contains=${query}`).then(r => r.json()).then(data => {
-    				$$invalidate(1, results = data);
+    				$$invalidate(1, result_items = data);
+    			});
+    		}
+
+    		if ($$self.$$.dirty & /*query*/ 1) {
+    			query && fetch(`/learn/topics.json?_shape=array&display_name__contains=${query}`).then(r => r.json()).then(data => {
+    				$$invalidate(2, result_topics = data);
     			});
     		}
     	};
 
-    	return [query, results, input_input_handler];
+    	return [query, result_items, result_topics, input_input_handler];
     }
 
     class AdvancedSearch extends SvelteComponentDev {
