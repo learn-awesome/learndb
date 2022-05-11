@@ -1,5 +1,6 @@
 <script>
     import TopicCard from "./TopicCard.svelte"
+    import Masonry from './Masonry.svelte'
 
     let dataPromise = getData();
     async function getData() {
@@ -24,26 +25,24 @@
     }
 </script>
 
+
 {#await dataPromise}
 <p>Fetching data...</p>
 {:then topics}
 
-<div class="mt-6" style="columns: 6 240px; column-gap: 1rem;">
+<Masonry gridGap={'0.75rem'}>
     {#each [...hierarchy(topics).keys()] as parent}
-    <div tabindex="0" class="inline-block w-full mt-4 bg-white rounded-lg mt-4 px-4 py-4 shadow-lg focus:outline-none">
+    <div class="bg-white rounded-lg px-4 py-4 shadow-lg focus:outline-none">
         <h4 class="mt-1 p-1 text-gray-900 font-semibold text-lg">{ parent.display_name }</h4>
     
         <div class="mt-2 flex flex-wrap text-sm text-gray-900">
         {#each hierarchy(topics).get(parent) as child}
             <a href={"#/topic/" + child.id} class="text-purple-600 no-underline hover:underline hover:text-purple-900 px-2">{child.display_name}</a>
         {/each}
-        </div>
-    
-        <p class="mt-2 text-sm text-right"><span>and 37 more.</span></p>
-    
+        </div>    
     </div>
     {/each}
-</div>
+</Masonry>
 
 {:catch error}
 <p>{error.message}</p>

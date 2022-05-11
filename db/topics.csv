@@ -4,3 +4,7 @@ mathematics,Maths,,physics,
 language.english,English
 programming.java,Java,,,,
 history,History,,language.english,
+programming.java,Ruby,,,,
+programming.java,Rust,,,,
+programming.java,JS,,,,
+programming.java,Golang,,,,

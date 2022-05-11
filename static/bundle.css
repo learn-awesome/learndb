@@ -1,1 +1,3 @@
-h1.svelte-b0hmqh{background-color:yellow}
+.__grid--masonry{display:grid;grid-template-columns:repeat(auto-fit, var(--col-width));grid-template-rows:masonry;justify-content:center;grid-gap:var(--grid-gap);padding:var(--grid-gap)}.__grid--masonry > *{align-self:start 
+}.__grid--masonry.__stretch-first > *:first-child{grid-column:1/ -1}._padding.svelte-1wlh87t{padding:12px}._card.svelte-1wlh87t{border:1px solid #ccc
+      }._sticky.svelte-1wlh87t{position:sticky;top:12px}
