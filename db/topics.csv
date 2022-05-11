@@ -1,10 +1,10 @@
 id,display_name,image,first_parent_topic_id,second_parent_topic_id
-physics,Physics
+physics,Physics,,,,
 mathematics,Maths,,physics,
-language.english,English
+language.english,English,,,,
 programming.java,Java,,,,
 history,History,,language.english,
-programming.java,Ruby,,,,
-programming.java,Rust,,,,
-programming.java,JS,,,,
-programming.java,Golang,,,,
+programming.ruby,Ruby,,,,
+programming.rust,Rust,,,,
+programming.javascript,JS,,history,,
+programming.golang,Golang,,,,
