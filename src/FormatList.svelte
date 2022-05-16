@@ -1,34 +1,29 @@
 <script>
-    let dataPromise = getData();
-    async function getData() {
-        const res = await fetch(`/learn.json?_shape=array&sql=select+distinct(substr(links%2C1%2Cinstr(links%2C'|')-1))+as+name+from+items`)
-        if(res.ok){
-            return await res.json();
-        } else {
-            throw new Error()
-        }
-    }
+
 
 </script>
 
-{#await dataPromise}
-<p>Fetching data...</p>
-{:then formats}
+<div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-<div class="mt-6" style="columns: 6 240px; column-gap: 1rem;">
-    {#each formats as format}
-    <div tabindex="0" class="inline-block w-full mt-4 bg-white rounded-lg mt-4 px-4 py-4 shadow-lg focus:outline-none">
-        <a href="#/format/{format.name}"><h4 class="mt-1 p-1 text-gray-900 font-semibold text-lg">{ format.name }</h4></a>
-    
-        <div class="mt-2 flex flex-wrap text-sm text-gray-900">
-        </div>
-    
-        <p class="mt-2 text-sm text-right"><span>and 37 more.</span></p>
-    
+<a href="#/format/podcast" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
+    <div class="flex-shrink-0">
+    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
     </div>
-    {/each}
-</div>
+    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">Podcasts</h1>
+</a>
 
-{:catch error}
-<p>{error.message}</p>
-{/await}
+<a href="#/format/book" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
+    <div class="flex-shrink-0">
+    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+    </div>
+    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">Books</h1>
+</a>
+
+<a href="#/format/video" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
+    <div class="flex-shrink-0">
+    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+    </div>
+    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">Videos</h1>
+</a>
+
+</div>

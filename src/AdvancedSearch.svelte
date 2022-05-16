@@ -1,11 +1,18 @@
 <script>
   let query = '';
-  let results = [];
+  let result_items = [];
+  let result_topics = [];
 
   $: query && fetch(`/learn/items.json?_shape=array&name__contains=${query}`)
         .then(r => r.json())
         .then(data => {
-            results = data;
+            result_items = data;
+        });
+
+  $: query && fetch(`/learn/topics.json?_shape=array&display_name__contains=${query}`)
+        .then(r => r.json())
+        .then(data => {
+            result_topics = data;
         });
 </script>
 
@@ -42,14 +49,14 @@
           <p class="mt-2 text-gray-500">Quickly look for resources by running a global search.</p>
         </div>
         
-        {:else if results.length > 0}
+        {:else if result_items.length + result_topics.length > 0}
   
         <!-- Results, show/hide based on command palette state -->
         <ul class="max-h-80 scroll-pt-11 scroll-pb-2 space-y-2 overflow-y-auto pb-2" id="options" role="listbox">
           <li>
             <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900">Items</h2>
             <ul class="mt-2 text-sm text-gray-800">
-              {#each results as item}
+              {#each result_items as item}
               <li><a href="#/item/{item.rowid}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{item.name}</a></li>
               {/each}
             </ul>
@@ -57,8 +64,8 @@
           <li>
             <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900">Topics</h2>
             <ul class="mt-2 text-sm text-gray-800">
-                {#each results as topic}
-                <li><a href="#/topic/{topic.name}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{topic.name}</a></li>
+                {#each result_topics as topic}
+                <li><a href="#/topic/{topic.id}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{topic.display_name}</a></li>
                 {/each}
             </ul>
           </li>
