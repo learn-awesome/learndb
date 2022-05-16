@@ -1,2 +1,0 @@
-.__grid--masonry{display:grid;grid-template-columns:repeat(auto-fit, var(--col-width));grid-template-rows:masonry;justify-content:center;grid-gap:var(--grid-gap);padding:var(--grid-gap)}.__grid--masonry > *{align-self:start 
-}.__grid--masonry.__stretch-first > *:first-child{grid-column:1/ -1}
