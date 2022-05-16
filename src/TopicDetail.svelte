@@ -1,5 +1,5 @@
 <script>
-    import ItemCard from "./ItemCard.svelte"
+    import ItemCard from "./ItemCard.svelte";
 
     export let topic;
     let items = [];
@@ -8,7 +8,7 @@
         .then(r => r.json())
         .then(data => {
             items = data;
-        });
+        });  
 </script>
 
 <div class="md:flex md:items-center md:justify-between mb-8">
@@ -17,7 +17,9 @@
     </div>
 </div>
 
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    {#each items as item}
+        <ItemCard {item}/>
+    {/each}
+</div>
 
-{#each items as item}
-    <ItemCard {item}/>
-{/each}
