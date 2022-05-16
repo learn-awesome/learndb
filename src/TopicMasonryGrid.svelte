@@ -27,7 +27,7 @@
             alltopics = data;
         });
 
-    $: tree = hierarchy(alltopics, topic ? topic.id : "")
+    $: tree = hierarchy(alltopics, topic?.id || "")
 
 </script>
 
