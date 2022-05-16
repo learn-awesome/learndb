@@ -9,13 +9,15 @@
         .then(r => r.json())
         .then(data => {
             items = data;
-        });
+        });  
 </script>
 
 
 <TopicMasonryGrid {topicid}/>
 
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    {#each items as item}
+        <ItemCard {item}/>
+    {/each}
+</div>
 
-{#each items as item}
-    <ItemCard {item}/>
-{/each}
