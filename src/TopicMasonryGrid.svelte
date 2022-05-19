@@ -38,7 +38,7 @@
 {#if [...tree.keys()].length > 0}
 <Masonry gridGap={'0.75rem'}>
   {#each [...tree.keys()] as parent}
-  <div class="bg-white rounded-lg px-4 py-4 shadow-lg focus:outline-none">
+  <div class=" rounded-lg px-4 py-4 shadow focus:outline-none">
     <a href={"#/topic/" + parent.id}><span class="mt-1 p-1 text-gray-900 font-semibold text-lg">{ parent.display_name }</span></a>
   
       <div class="mt-2 flex flex-wrap text-sm text-gray-900">
