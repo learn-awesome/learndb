@@ -4,11 +4,11 @@
         <h1>
           <span class="block text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base">Coming soon</span>
           <span class="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
-            <span class="block text-gray-900">Data to enrich your</span>
-            <span class="block text-indigo-600">online business</span>
+            <span class="block text-gray-900">LearnAwesome</span>
+            <span class="block text-indigo-600">Humanity's learning map</span>
           </span>
         </h1>
-        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt sunt.</p>
+        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Today's learning platforms are not actually learner-centric. They want the students to be locked within their apps & websites, learn ONLY from their own content and their own preferred formats. But the way we learn in 21st century is far too rich. We learn from blogs, podcasts, videos, tweetstorms, livestreams, games, newsletters, infographics, Q&A sites, forums and much more. Discovering the right kind of learning material for YOU at the right time is still too hard.</p>
       </div>
       <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
         <svg class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 scale-75 origin-top sm:scale-100 lg:hidden" width="640" height="784" fill="none" viewBox="0 0 640 784" aria-hidden="true">
