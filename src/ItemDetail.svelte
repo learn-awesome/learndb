@@ -1,6 +1,7 @@
 <script>
-    import WantToLearnButton from './WantToLearnButton.svelte';
-    import Button from "./Button.svelte";
+    import ButtonGroup from "./ButtonGroup.svelte";
+    import { bookmarks } from "./stores.js"
+
     export let itemid;
     let item;
 
@@ -9,6 +10,15 @@
         .then(data => {
             item = data[itemid];
         });
+
+    function saveStatusToLocalStorage(event){
+      // console.log($bookmarks)
+      let newobj = {};
+      newobj = Object.assign(newobj, $bookmarks)
+      newobj[itemid] = event.detail.value
+      // console.log({newobj})
+      bookmarks.set(newobj)
+    }
 
 </script>
 
@@ -36,7 +46,8 @@
               <span class="text-xs text-gray-500">333 Ratings</span>
             </div>
             
-            <Button />
+            <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>
+
           </div>
           
 

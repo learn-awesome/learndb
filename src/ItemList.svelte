@@ -1,22 +1,32 @@
 <script>
     import { onMount } from 'svelte';
     import ItemCard from "./ItemCard.svelte"
+    import { bookmarks } from "./stores.js"
 
     export let kind;
-    let ls = null;
-    let items = []; //TODO: Only store item IDs in localStorage
-
-    const read = () => !!ls && JSON.parse(ls.getItem(kind) || "[]");
+    let items = []
 
     onMount(() => {
-        typeof localStorage !== `undefined` && (ls = localStorage);
-        items = read();
+        // items = read();
     });
+
+    function encodeArray(kind){
+        console.log($bookmarks)
+        return Object.entries($bookmarks).filter(pair => pair[1] == kind).map(pair => pair[0]).join("%2C")
+    }
+
+    $: fetch(`/learn/items.json?_shape=array&rowid__in=${encodeArray(kind)}`)
+        .then(r => r.json())
+        .then(data => {
+            items = data;
+        });  
 
 </script>
 
-<h1>{kind}</h1>
+<h1>{kind == 0 ? 'Want to learn' : 'Finished learning'}</h1>
 
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
 {#each items as item}
 <ItemCard {item}/>
 {/each}
+</div>

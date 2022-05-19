@@ -20,7 +20,6 @@
         {text: "Random item", link: "#/item/1", icon: "home"},
         {text: "Search", link: "#/search", icon: "home"},
         {text: "Want to learn", link: "#/wanttolearn", icon: "home"},
-        {text: "Learning", link: "#/learning", icon: "home"},
         {text: "Finished learning", link: "#/finishedlearning", icon: "home"},
         {text: "Datasette", link: "/learn", icon: "home"}
     ]
@@ -69,10 +68,8 @@
     {:else if currentView === "/search"}
         <AdvancedSearch/>
     {:else if currentView === "/wanttolearn"}
-        <ItemList kind="wanttolearn"/>
-    {:else if currentView === "/learning"}
-        <ItemList kind="learning"/>
+        <ItemList kind={0}/>
     {:else if currentView === "/finishedlearning"}
-        <ItemList kind="finishedlearning"/>
+        <ItemList kind={1}/>
     {/if}
 </TailwindUI.AppShell>
