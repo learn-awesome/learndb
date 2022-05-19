@@ -82,10 +82,9 @@
 
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">released</h3>
-          <span>1729</span>
+          <h3 class="uppercase text-xs text-gray-400">year</h3>
+          <span>{item.year}</span>
         </div>
-        <span class="text-xs">December 31</span>
       </div>
 
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
