@@ -3,7 +3,7 @@
     import * as TailwindUI from "./tailwindui/index"
 
     import Home from "./Home.svelte"
-    import Explore from "./Explore.svelte"
+    import SkillTree from "./SkillTree.svelte"
     import TopicList from "./TopicList.svelte"
     import TopicDetail from "./TopicDetail.svelte"
     import FormatList from "./FormatList.svelte"
@@ -14,7 +14,7 @@
     import AdvancedSearch from "./AdvancedSearch.svelte"
 
     let sidebarItems = [
-        {text: "Explore", link: "#/explore", icon: "home"},
+        {text: "Game", link: "#/game", icon: "home"},
         {text: "Topics", link: "#/topics", icon: "home"},
         {text: "Formats", link: "#/formats", icon: "home"},
         {text: "Random item", link: "#/item/1", icon: "home"},
@@ -51,12 +51,12 @@
 <TailwindUI.AppShell {sidebarItems}>
     {#if currentView === "/home" || currentView === "/"}
         <Home/>
-    {:else if currentView === "/explore"}
-        <Explore/>
+    {:else if currentView === "/game"}
+        <SkillTree/>
     {:else if currentView === "/topics"}
         <TopicList/>
     {:else if currentView.startsWith("/topic/")}
-        <TopicDetail topicname={currentView.split("/")[2]}/>
+        <TopicDetail topicname={currentView.split("/").slice(2).join("/")}/>
     {:else if currentView === "/formats"}
         <FormatList/>
     {:else if currentView.startsWith("/format/")}

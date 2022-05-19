@@ -42,13 +42,13 @@
 
         // Now move child-less top-level objects under Misc
         let count = [...tempmap.keys()].filter(k => tempmap.get(k).length == 0).length;
-        console.log({count}, tempmap.size);
+        // console.log({count}, tempmap.size);
         if(count > 15){
-            console.log("pruning")
+            // console.log("pruning")
             let misc = [];
             [...tempmap.keys()].forEach(key => {
                 if(tempmap.get(key).length == 0) {
-                    console.log({key});
+                    // console.log({key});
                     misc.push(key);
                     tempmap.delete(key);
                 }

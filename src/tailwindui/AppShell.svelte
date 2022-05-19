@@ -123,7 +123,7 @@
         </div>
       </div>
   
-      <main>
+      <main class="bg-gray-100">
         <div class="py-6">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <slot></slot>
