@@ -4,5 +4,6 @@
     "license": "ISC",
     "license_url": "",
     "source": "LearnAwesome.org",
-    "source_url": "https://learnawesome.org/"
+    "source_url": "https://learnawesome.org/",
+    "max_returned_rows": 20000
 }

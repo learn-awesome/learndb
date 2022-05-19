@@ -57,7 +57,7 @@
     {:else if currentView === "/topics"}
         <TopicList/>
     {:else if currentView.startsWith("/topic/")}
-        <TopicDetail topicid={currentView.split("/")[2]}/>
+        <TopicDetail topicname={currentView.split("/")[2]}/>
     {:else if currentView === "/formats"}
         <FormatList/>
     {:else if currentView.startsWith("/format/")}

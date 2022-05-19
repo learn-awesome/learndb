@@ -2,10 +2,10 @@
     import ItemCard from "./ItemCard.svelte"
     import TopicMasonryGrid from "./TopicMasonryGrid.svelte"
 
-    export let topicid;
+    export let topicname;
     let items = [];
 
-    $: fetch(`/learn/items.json?_shape=array&topics__contains=${topicid}`)
+    $: fetch(`/learn/items.json?_shape=array&topics__contains=${topicname}`)
         .then(r => r.json())
         .then(data => {
             items = data;
@@ -13,7 +13,7 @@
 </script>
 
 
-<TopicMasonryGrid {topicid}/>
+<TopicMasonryGrid {topicname}/>
 
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
     {#each items as item}

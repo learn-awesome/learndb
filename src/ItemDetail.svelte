@@ -6,7 +6,6 @@
         .then(r => r.json())
         .then(data => {
             item = data[itemid];
-            console.log(item)
         });
 
 </script>
