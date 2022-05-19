@@ -1,5 +1,4 @@
 <script>
-    import Masonry from './Masonry.svelte'
     export let topicname; // undefined for top level
     let topic;
     let alltopics = [];
@@ -27,7 +26,7 @@
         for(let i = 0; i < topic_array.length; i++){
             if(topic_array[i].parent_id == parent_id){
                 tempmap.set(topic_array[i], []);
-                parentids.push(topic_array[i].id);
+                parentids.push(topic_array[i].name);
             } 
         }
         // console.log(tempmap);
@@ -35,7 +34,7 @@
         // second pass for their children
         for(let i = 0; i < topic_array.length; i++){
             if(parentids.includes(topic_array[i].parent_id)){
-                tempmap.get(topic_array.find(t => t.id == topic_array[i].parent_id)).push(topic_array[i])
+                tempmap.get(topic_array.find(t => t.name == topic_array[i].parent_id)).push(topic_array[i])
             } 
         }
         // console.log(tempmap);
@@ -67,13 +66,13 @@
             alltopics = data;
         });
 
-    $: map = hierarchy(alltopics, topic?.id || "")
+    $: map = hierarchy(alltopics, topic?.name || "")
 
 
 </script>
 
 
-<h1 class="text-2xl font-bold">
+<h1 class="text-2xl font-bold mb-4">
 {#if topic}
     {capitalize(topic.display_name)}
 {:else}
@@ -82,16 +81,17 @@
 </h1>
 
 
-<Masonry gridGap={'0.75rem'}>
+<div class="gap-8 columns-1 sm:columns-2 lg:columns-3 mb-8">
   {#each [...map.entries()] as parent}
-  <div class="bg-white rounded-lg px-4 py-4 shadow-lg focus:outline-none">
+  <div class="bg-white rounded-lg shadow-lg p-4 break-inside-avoid mb-4">
     <a href={"#/topic/" + parent[0]?.name || parent}><span class="mt-1 p-1 text-gray-900 font-semibold text-lg">{ format_topic_name(parent[0]) }</span></a>
   
-      <div class="mt-2 flex flex-wrap text-sm text-gray-900">
-      {#each parent[1] as child}
-          <a href={"#/topic/" + child.name} class="text-purple-600 no-underline hover:underline hover:text-purple-900 px-2">{format_topic_name(child)}</a>
-      {/each}
-      </div>    
+    <div class="mt-2 flex flex-wrap text-sm text-gray-900">
+    {#each parent[1] as child}
+        <a href={"#/topic/" + child.name} class="text-purple-600 no-underline hover:underline hover:text-purple-900 px-2">{format_topic_name(child)}</a>
+    {/each}
+    </div>    
   </div>
   {/each}
-</Masonry>
+</div>
+

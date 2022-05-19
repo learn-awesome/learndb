@@ -3,13 +3,13 @@
   let result_items = [];
   let result_topics = [];
 
-  $: query && fetch(`/learn/items.json?_shape=array&name__contains=${query}`)
+  $: query && fetch(`/learn/items.json?_shape=array&name__contains=${query}&_size=6`)
         .then(r => r.json())
         .then(data => {
             result_items = data;
         });
 
-  $: query && fetch(`/learn/topics.json?_shape=array&display_name__contains=${query}`)
+  $: query && fetch(`/learn/topics.json?_shape=array&display_name__contains=${query}&_size=6`)
         .then(r => r.json())
         .then(data => {
             result_topics = data;
@@ -52,7 +52,7 @@
         {:else if result_items.length + result_topics.length > 0}
   
         <!-- Results, show/hide based on command palette state -->
-        <ul class="max-h-80 scroll-pt-11 scroll-pb-2 space-y-2 overflow-y-auto pb-2" id="options" role="listbox">
+        <ul class="max-h-96 scroll-pt-11 scroll-pb-2 space-y-2 overflow-y-auto pb-2" id="options" role="listbox">
           <li>
             <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900">Items</h2>
             <ul class="mt-2 text-sm text-gray-800">
