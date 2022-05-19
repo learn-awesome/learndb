@@ -65,7 +65,7 @@
             <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900">Topics</h2>
             <ul class="mt-2 text-sm text-gray-800">
                 {#each result_topics as topic}
-                <li><a href="#/topic/{topic.id}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{topic.display_name}</a></li>
+                <li><a href="#/topic/{topic.name}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{topic.display_name}</a></li>
                 {/each}
             </ul>
           </li>

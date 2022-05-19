@@ -35,15 +35,13 @@
         <section>
           <h1 class="text-2xl">{item.name}</h1>
           <p class="font text-gray-500">Into Several Rmote Regions of the World</p>
-          <span class="text-sm">{item.creator}</span>
+          <span class="text-sm">{item.creators}</span>
         </section>
         <!-- ratings and upload buttons -->
         <div class="mt-2 mb-6 flex flex-col justify-between">
           <div class="flex justify-between items-center">
             <div>
-              <span class="text-yellow-500">★★★★★</span>
-              <br />
-              <span class="text-xs text-gray-500">333 Ratings</span>
+              <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
             </div>
             
             <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>
@@ -64,7 +62,7 @@
     <!-- Description  -->
     <section class="my-8">
       <h2 class="text-base font-bold">Description</h2>
-      <p class="mt-4 text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non asperiores vel sint veniam placeat tenetur illum cum voluptatum ducimus aut assumenda nesciunt eum veritatis, fuga ex earum. Consectetur, tempore fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, veniam voluptates explicabo distinctio accusantium eos a commodi aperiam sit neque non corporis iure odit quisquam laboriosam eum quos iusto nesciunt.</p>
+      <p class="mt-4 text-sm">{item.description}</p>
     </section>
     <hr />
     <!-- details  -->
