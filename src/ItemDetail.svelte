@@ -1,4 +1,6 @@
 <script>
+    import WantToLearnButton from './WantToLearnButton.svelte';
+    import Button from "./Button.svelte";
     export let itemid;
     let item;
 
@@ -12,13 +14,13 @@
 
 {#if item}
   <main class="px-12 py-10">
-    <div class="mb-10 flex h-64">
+    <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
       <!-- book image  -->
-      <div>
-        <img class="float-left mr-6 mb-6 aspect-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="" />
+      <div class="flex-nowrap">
+        <img class=" mr-6 mb-6 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="" />
       </div>
       <!-- book details  -->
-      <div class="ml-6 flex w-full flex-col justify-between">
+      <div class="sm:ml-6 md:ml-0 lg:ml-6 flex w-full flex-col justify-between">
         <!-- title, sub title, author  -->
         <section>
           <h1 class="text-2xl">{item.name}</h1>
@@ -26,21 +28,28 @@
           <span class="text-sm">{item.creator}</span>
         </section>
         <!-- ratings and upload buttons -->
-        <div class="mt-2 mb-6 flex justify-between">
-          <div>
-            <span class="text-yellow-500">★★★★★</span>
-            <br />
-            <span class="text-sm text-gray-500">333 Ratings</span>
+        <div class="mt-2 mb-6 flex flex-col justify-between">
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-yellow-500">★★★★★</span>
+              <br />
+              <span class="text-xs text-gray-500">333 Ratings</span>
+            </div>
+            
+            <Button />
           </div>
-          <div class="flex items-center justify-center gap-3 text-gray-500">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"> Book </span>
+          
 
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-gray-800"> Video </span>
+          <div class="flex items-center justify-start gap-3 text-gray-500 mt-5">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-400 text-gray-800"> Book </span>
+
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-400 text-gray-800"> Video </span>
           </div>
         </div>
       </div>
     </div>
     <hr />
+    
     <!-- Description  -->
     <section class="my-8">
       <h2 class="text-base font-bold">Description</h2>
@@ -103,28 +112,57 @@
 
     </div>
     <hr />
-    <!-- Customer review  -->
+    <!-- review  -->
     <section class="my-8">
       <div class="flex justify-between items-center">
-        <h2 class="text-base font-bold">Customer Reviews</h2>
-        <button class="text-xs">See All</button>
+        <h2 class="text-base font-bold">Reviews</h2>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 mt-3 gap-2">
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs">
+      <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
+        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
           <h3 class="font-semibold">About the book</h3>
           <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div>
+          <div class="mt-3">
             <span>★★★★★</span>
             <span class="ml-2">Sep 22, 2021</span>
             <span class="ml-2">Priyanka Trivedi</span>
           </div>
         </article>
   
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs">
+        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
           <h3 class="font-semibold">About the book</h3>
           <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div>
+          <div class="mt-3">
+            <span>★★★★★</span>
+            <span class="ml-2">Sep 22, 2021</span>
+            <span class="ml-2">Priyanka Trivedi</span>
+          </div>
+        </article>
+
+        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
+          <h3 class="font-semibold">About the book</h3>
+          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
+          <div class="mt-3">
+            <span>★★★★★</span>
+            <span class="ml-2">Sep 22, 2021</span>
+            <span class="ml-2">Priyanka Trivedi</span>
+          </div>
+        </article>
+
+        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
+          <h3 class="font-semibold">About the book</h3>
+          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
+          <div class="mt-3">
+            <span>★★★★★</span>
+            <span class="ml-2">Sep 22, 2021</span>
+            <span class="ml-2">Priyanka Trivedi</span>
+          </div>
+        </article>
+
+        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
+          <h3 class="font-semibold">About the book</h3>
+          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
+          <div class="mt-3">
             <span>★★★★★</span>
             <span class="ml-2">Sep 22, 2021</span>
             <span class="ml-2">Priyanka Trivedi</span>
@@ -134,12 +172,13 @@
     </section>
     <hr />
     <!-- more books by same author  -->
-    <section class="my-8 overflow-hidden">
+
+    <!-- <section class="my-8 overflow-hidden">
       <div class="flex justify-between items-center">
         <h2 class="text-base font-bold">More Books by Priyanka Trivedi</h2>
         <button class="float-right text-xs hover:underline">See All</button>
       </div>
-      <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-scroll">
+      <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-auto">
         <div class="shrink-0">
           <div class="" >
             <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
@@ -217,10 +256,13 @@
           </div>
         </div>
       </div>  
+    
     </section>
-    <hr />
+    <hr /> -->
+
     <!-- Also bought  -->
-    <section class="my-8 overflow-hidden">
+
+    <!-- <section class="my-8 overflow-hidden">
       <div class="flex justify-between items-center">
         <h2 class="text-base font-bold">Other items on the same topics</h2>
         <button class="text-xs hover:underline">See All</button>
@@ -276,7 +318,7 @@
           
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 {:else}
 	<p class="loading">loading...</p>
