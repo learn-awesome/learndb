@@ -1,9 +1,6 @@
 <script>
     import Icon from "./Icon.svelte"
     import MenuButton from "./MenuButton.svelte"
-    import SearchForm from "./SearchForm.svelte"
-    import { SearchIcon } from "@rgossiaux/svelte-heroicons/outline";
-    export let sidebarItems = [];
     let isNavDrawerOpen = false
     export let showNotificationBell = false;
     export let showProfileMenu = false;
@@ -70,6 +67,7 @@
                     {text}
                   </a>
               {/each}
+              <slot name="sidebar"></slot>
 
             </nav>
           </div>
@@ -91,13 +89,7 @@
         </div>
         <div class="mt-5 flex-1 flex flex-col">
           <nav class="flex-1 px-2 pb-4 space-y-1">
-            <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-600" -->
-            {#each sidebarItems as { text, link, icon }, i}
-                <a href={link} class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                  <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-                  {text}
-                </a>
-            {/each}
+            <slot name="nav"></slot>
           </nav>
         </div>
       </div>
@@ -127,7 +119,7 @@
       <main class="bg-gray-100">
         <div class="py-6">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <slot></slot>
+            <slot name="content"></slot>
           </div>
         </div>
       </main>
