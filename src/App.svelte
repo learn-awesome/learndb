@@ -36,6 +36,7 @@
     
 </script>
 
+
 <svelte:window on:hashchange={hashchange}/>
 
 <TailwindUI.AppShell>
@@ -66,33 +67,33 @@
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
-        <a href="#/topics" class={(currentView === "/topics" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
+        <a href="#/topics" class={(currentView === "/topics" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Topics
         </a>
-        <a href="#/formats" class={(currentView === "/formats" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
+        <a href="#/formats" class={(currentView === "/formats" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Formats
         </a>
-        <a href="#/item/1" class="text-indigo-100 hover:bg-indigo-600 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+        <a href="#/item/1" class="text-indigo-100 hover:bg-gray-900 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Random Item
         </a>
-        <a href="#/search" class={(currentView === "/search" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
+        <a href="#/search" class={(currentView === "/search" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Search
         </a>
         <hr/>
-        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
+        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Want to learn
         </a>
-        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
+        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Finished learning
         </a>
         <hr/>
-        <a href="/learn" class="text-indigo-100 hover:bg-indigo-600 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+        <a href="/learn" class="text-indigo-100 hover:bg-gray-900 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Datasette
         </a>

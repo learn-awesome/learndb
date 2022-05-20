@@ -21,11 +21,51 @@
       bookmarks.set(newobj)
     }
 
+    let reviews =[
+      {
+        heading: "About the book , My favourite book ever, everyone should read it before the death or else it will be difficult to hold it in hands",
+        details: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.",
+        ratings: 5,
+        by: "Priyanka Nilesh kumar khemji jani trivedi daryavardi",
+        date: "Sep 22, 2021",
+        image: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+      },
+      {
+        heading: "Highly recommended book",
+        details: "Lorem ipsum",
+        ratings: 4,
+        by: "anka",
+        date: "Sep 22, 2081",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+      },
+      {
+        heading: "Nice Book",
+        details: "iusto expedita enim, optio dignissimos eaque officiis perferendis eum",
+        ratings: 3,
+        by: "riya",
+        date: "Sep 22, 2027",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+      }
+    ];
+
 </script>
+
+<style>
+  .line-clamp{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .scroll{
+    scrollbar-width: thin;
+    scrollbar-color: red;
+  }
+</style>
 
 {#if item}
   <main class="px-12 py-10">
-    <h3 class="py-2 mb-5"><a href={"#/topic/" + item.topics} class="font-bold text-violet-800">{item.topics}</a></h3>
+    <h3 class="py-2 mb-5"><a href={"#/topic/" + item.topics} class="font-bold text-cyan-400">{item.topics}</a></h3>
     <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
       <!-- book image  -->
       <div class="flex-nowrap">
@@ -35,8 +75,8 @@
       <div class="flex w-full flex-col justify-between">
         <!-- title, sub title, author  -->
         <section>
-          <h1 class="text-2xl">{item.name}</h1>
-          <p class="font text-gray-500">Into Several Rmote Regions of the World</p>
+          <h1 class="text-2xl text-white">{item.name}</h1>
+          <p class="font text-gray-400">Into Several Rmote Regions of the World</p>
           <span class="text-sm">{item.creators}</span>
         </section>
         <!-- ratings and upload buttons -->
@@ -65,15 +105,15 @@
     
     <!-- Description  -->
     <section class="my-8">
-      <h2 class="text-base font-bold">Description</h2>
-      <p class="mt-4 text-sm">{item.description}</p>
+      <h2 class="text-base font-bold text-gray-100 ">Description</h2>
+      <p class="mt-4 text-sm text-gray-200">{item.description}</p>
     </section>
     <hr />
     <!-- details  -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6  text-gray-400">
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">genre</h3>
+          <h3 class="uppercase text-xs">genre</h3>
           <!-- book svg  -->
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -81,7 +121,7 @@
             </svg>
           </span>
         </div>
-        <span class="text-xs">Fiction</span>
+        <span class="text-xs ">Fiction</span>
       </div>
 
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
@@ -127,62 +167,33 @@
     <!-- review  -->
     <section class="my-8">
       <div class="flex justify-between items-center">
-        <h2 class="text-base font-bold">Reviews</h2>
+        <h2 class="text-base font-bold text-gray-100">Reviews</h2>
       </div>
       
-      <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-  
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
+      <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2 scroll">
+        {#each reviews as review}
+          <article class="px-3 pt-4 bg-gray-800 rounded-lg text-sm shrink-0 w-full lg:w-1/2 flex flex-col justify-between h-48">
+            <div>
+              <h3 class="font-semibold truncate text-gray-50">{review.heading}</h3>
+              <p class="mt-2 line-clamp text-gray-200">{review.details}</p>
+            </div>
+            <div class="mt-4">
+              <div class="flex justify-start items-center">
+                <img src={review.image} class="rounded-full w-10 h-10" alt="user avatar"/>
+                <div class="flex flex-col items-start ml-2 overflow-hidden text-xs text-gray-300">
+                  <p class="truncate pr-2">By {review.by}</p>
+                  <span class="">{review.date}</span>  
+                </div>
+              </div>
+              <div class="ml-10 mt-1">
+                <sl-rating style="--symbol-size: 1rem" readonly precision="0.1" value={review.rating}></sl-rating>
+              </div>
+              
+            </div>
+          </article>
+        {/each}  
       </div>
     </section>
-    <hr />
     <!-- more books by same author  -->
 
     <!-- <section class="my-8 overflow-hidden">

@@ -7,13 +7,6 @@
 
 </script>
 
-<style>
-  .aside-colors{
-    background-color: #224161;
-    color: #a7b7d4;   
-  }
-</style>
-
 <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     {#if isNavDrawerOpen}
@@ -41,7 +34,7 @@
             From: "translate-x-0"
             To: "-translate-x-full"
         -->
-        <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 aside-colors">
+        <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-cyan-900 text-white">
           <!--
             Close button, show/hide based on off-canvas menu state.
   
@@ -82,8 +75,8 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 aside-colors overflow-y-auto">
-        <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wide">
+      <div class="flex flex-col flex-grow pt-5 bg-cyan-900 text-white overflow-y-auto">
+        <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wider text-2xl">
           <a href="/" class="">LearnAwesome</a>
         </div>
         <div class="mt-5 flex-1 flex flex-col">
@@ -94,7 +87,7 @@
       </div>
     </div>
     <div class="md:pl-64 flex flex-col flex-1">
-      <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
+      <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-cyan-900 text-white shadow">
         <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
           <span class="sr-only">Open sidebar</span>
           <Icon kind="menu"/>

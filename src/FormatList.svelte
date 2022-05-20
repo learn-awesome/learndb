@@ -35,14 +35,14 @@
   ]
 </script>
 
-<div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+<div class="max-w-lg mx-auto grid grid-cols-2 gap-5 lg:grid-cols-3 lg:max-w-none">
 
 {#each formats as format}
 <a href="#/format/{format.id}" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
     <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src={format.image} alt="">
+      <img class="h-48 w-full object-cover" src={format.image} alt="">
     </div>
-    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">{format.name}</h1>
+    <h1 class="text-lg font-semibold p-2 bg-gray-800 text-white tracking-wider">{format.name}</h1>
 </a>
 {/each}
 
