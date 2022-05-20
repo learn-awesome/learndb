@@ -22,8 +22,8 @@
        relative inline-flex flex-nowrap items-center px-4 py-2 
       {i == 0 && 'rounded-l-md'}
       {i == tabs.length-1 && 'rounded-r-md'} 
-      border border-indigo-500  text-sm font-medium focus:z-10 focus:outline-none 
-      {currentlySelected === i? 'bg-indigo-700 text-white' : 'bg-gray-100 text-gray-800'}
+      border border-gray-300  text-sm font-medium focus:z-10 focus:outline-none 
+      {currentlySelected === i? 'bg-green-800 text-white' : 'bg-gray-100 text-gray-800'}
      "
   >
      {tab}

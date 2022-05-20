@@ -83,7 +83,7 @@
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 mb-8">
   {#each [...map.entries()] as parent}
-  <div class="bg-white rounded-lg shadow-lg p-4 break-inside-avoid mb-4">
+  <div class="bg-white rounded-lg shadow-lg p-4 break-inside-avoid mb-4 gradient">
     <a href={"#/topic/" + parent[0]?.name || parent}><span class="mt-1 p-1 text-gray-900 font-semibold text-lg">{ format_topic_name(parent[0]) }</span></a>
   
     <div class="mt-2 flex flex-wrap text-sm text-gray-900">
@@ -94,4 +94,11 @@
   </div>
   {/each}
 </div>
+
+<style>
+    .gradient{
+        background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    }
+</style>
 

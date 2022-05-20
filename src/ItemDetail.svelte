@@ -1,6 +1,7 @@
 <script>
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
+    import Icon from "./tailwindui/Icon.svelte"
 
     export let itemid;
     let item;
@@ -24,13 +25,14 @@
 
 {#if item}
   <main class="px-12 py-10">
+    <h3 class="py-2 mb-5"><a href={"#/topic/" + item.topics} class="font-bold text-violet-800">{item.topics}</a></h3>
     <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
       <!-- book image  -->
       <div class="flex-nowrap">
-        <img class=" mr-6 mb-6 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="" />
+        <img class="mr-6 mb-6 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="" />
       </div>
       <!-- book details  -->
-      <div class="sm:ml-6 md:ml-0 lg:ml-6 flex w-full flex-col justify-between">
+      <div class="flex w-full flex-col justify-between">
         <!-- title, sub title, author  -->
         <section>
           <h1 class="text-2xl">{item.name}</h1>
@@ -50,9 +52,11 @@
           
 
           <div class="flex items-center justify-start gap-3 text-gray-500 mt-5">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-400 text-gray-800"> Book </span>
-
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-400 text-gray-800"> Video </span>
+            {#each item.links.split(";") as type}
+            <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-violet-800 text-gray-50 border" target="_blank"> {type.split("|")[0]} 
+              <span class="ml-0.5"><Icon kind="link"/></span>
+            </a>
+            {/each}
           </div>
         </div>
       </div>
