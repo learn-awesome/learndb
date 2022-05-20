@@ -1,29 +1,49 @@
 <script>
 
+  let formats = [
+      {id: "book", name: "Books", image: "https://images.unsplash.com/photo-1524578271613-d550eacf6090?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGJvb2tzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=300"},
+      {id: "podcast", name: "Podcasts / Audio", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "video", name: "Videos / Films", image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "article", name: "Articles", image: "https://images.unsplash.com/photo-1623039405147-547794f92e9e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "app", name: "Apps / Software", image: "https://images.unsplash.com/photo-1601034913836-a1f43e143611?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFwcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400"},
+      {id: "blog", name: "Blogs / Microblogs", image: "https://images.unsplash.com/photo-1649180554466-0c15f6c70d51?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM2fHx0d2l0dGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "chat", name: "Chat groups / Forums", image: "https://images.unsplash.com/photo-1611746869696-d09bce200020?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "cheatsheet", name: "Cheatsheets", image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "code", name: "Code", image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGNvZGV8ZW58MHx8MHx8&auto=format&fit=crop&w=400"},
+      {id: "conference", name: "Conferences", image: "https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "course", name: "Courses", image: "https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "flashcard", name: "Flashcards", image: "https://images.unsplash.com/photo-1616628188859-7a11abb6fcc9?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "game", name: "Games", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "image", name: "Pictures & Infographics", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "interactive", name: "Interactives & Explorables", image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "journal", name: "Journals & Magazines", image: "https://images.unsplash.com/photo-1516179257071-71a54dbb4853?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFnYXppbmV8ZW58MHx8MHx8&auto=format&fit=crop&w=400"},
+      {id: "learning_plan", name: "Syllabuses", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "livestream", name: "Livestreams", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "meetup", name: "Meetups", image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "newsletter", name: "Newsletters", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "people", name: "People", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "qna", name: "Q&A forums", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "research_paper", name: "Research Papers", image: "https://images.unsplash.com/photo-1532153955177-f59af40d6472?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "website", name: "Websites", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "wiki", name: "Wikis", image: "https://images.unsplash.com/photo-1566396223585-c8fbf7fa6b6d?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "thread", name: "Discussion threads", image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400"},
+      {id: "project", name: "Projects", image: "https://images.unsplash.com/photo-1620325867502-221cfb5faa5f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvamVjdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400"},
+      {id: "webmeet", name: "Online meetups", image: "https://images.unsplash.com/photo-1586543354240-2187898bb2e8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "webconf", name: "Online conferences", image: "https://images.unsplash.com/photo-1586985564150-11ee04838034?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
+      {id: "thing", name: "Things & Toys", image: "https://images.unsplash.com/photo-1416339134316-0e91dc9ded92?ixlib=rb-1.2.1&raw_url=true&q=60&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c3R1ZmZ8ZW58MHx8MHx8&auto=format&fit=crop&w=400"},
 
+  ]
 </script>
 
 <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
 
-<a href="#/format/podcast" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
+{#each formats as format}
+<a href="#/format/{format.id}" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
     <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+    <img class="h-48 w-full object-cover" src={format.image} alt="">
     </div>
-    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">Podcasts</h1>
+    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">{format.name}</h1>
 </a>
-
-<a href="#/format/book" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
-    <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
-    </div>
-    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">Books</h1>
-</a>
-
-<a href="#/format/video" class="flex flex-col rounded-lg shadow-lg overflow-hidden transform transition ease-out duration-300 hover:scale-105 hover:shadow-xl">
-    <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
-    </div>
-    <h1 class="text-2xl font-bold p-2 bg-indigo-500 text-white">Videos</h1>
-</a>
+{/each}
 
 </div>

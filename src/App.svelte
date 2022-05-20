@@ -12,17 +12,7 @@
     import ItemDetail from "./ItemDetail.svelte"
     import ItemList from "./ItemList.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
-
-    let sidebarItems = [
-        {text: "Game", link: "#/game", icon: "home"},
-        {text: "Topics", link: "#/topics", icon: "home"},
-        {text: "Formats", link: "#/formats", icon: "home"},
-        {text: "Random item", link: "#/item/1", icon: "home"},
-        {text: "Search", link: "#/search", icon: "home"},
-        {text: "Want to learn", link: "#/wanttolearn", icon: "home"},
-        {text: "Finished learning", link: "#/finishedlearning", icon: "home"},
-        {text: "Datasette", link: "/learn", icon: "home"}
-    ]
+    import { SearchIcon } from "@rgossiaux/svelte-heroicons/outline";
 
     let currentView = "/topics";
 
@@ -48,28 +38,63 @@
 
 <svelte:window on:hashchange={hashchange}/>
 
-<TailwindUI.AppShell {sidebarItems}>
-    {#if currentView === "/home" || currentView === "/"}
-        <Home/>
-    {:else if currentView === "/game"}
-        <SkillTree/>
-    {:else if currentView === "/topics"}
-        <TopicList/>
-    {:else if currentView.startsWith("/topic/")}
-        <TopicDetail topicname={currentView.split("/").slice(2).join("/")}/>
-    {:else if currentView === "/formats"}
-        <FormatList/>
-    {:else if currentView.startsWith("/format/")}
-        <FormatDetail format={currentView.split("/")[2]}/>
-    {:else if currentView === "/courses"}
-        <CourseList/>
-    {:else if currentView.startsWith("/item/")}
-        <ItemDetail itemid={currentView.split("/")[2]}/>
-    {:else if currentView === "/search"}
-        <AdvancedSearch/>
-    {:else if currentView === "/wanttolearn"}
-        <ItemList kind={0}/>
-    {:else if currentView === "/finishedlearning"}
-        <ItemList kind={1}/>
-    {/if}
+<TailwindUI.AppShell>
+    <svelte:fragment slot="content">
+        {#if currentView === "/home" || currentView === "/"}
+            <Home/>
+        {:else if currentView === "/game"}
+            <SkillTree/>
+        {:else if currentView === "/topics"}
+            <TopicList/>
+        {:else if currentView.startsWith("/topic/")}
+            <TopicDetail topicname={currentView.split("/").slice(2).join("/")}/>
+        {:else if currentView === "/formats"}
+            <FormatList/>
+        {:else if currentView.startsWith("/format/")}
+            <FormatDetail format={currentView.split("/")[2]}/>
+        {:else if currentView === "/courses"}
+            <CourseList/>
+        {:else if currentView.startsWith("/item/")}
+            <ItemDetail itemid={currentView.split("/")[2]}/>
+        {:else if currentView === "/search"}
+            <AdvancedSearch/>
+        {:else if currentView === "/wanttolearn"}
+            <ItemList kind={0}/>
+        {:else if currentView === "/finishedlearning"}
+            <ItemList kind={1}/>
+        {/if}
+    </svelte:fragment>
+
+    <svelte:fragment slot="nav">
+        <a href="#/topics" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Topics
+        </a>
+        <a href="#/formats" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Formats
+        </a>
+        <a href="#/item/1" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Random Item
+        </a>
+        <a href="#/search" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Search
+        </a>
+        <hr/>
+        <a href="#/wanttolearn" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Want to learn
+        </a>
+        <a href="#/finishedlearning" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Finished learning
+        </a>
+        <hr/>
+        <a href="/learn" class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            Datasette
+        </a>
+    </svelte:fragment>
 </TailwindUI.AppShell>
