@@ -60,15 +60,7 @@
           </div>
           <div class="mt-5 flex-1 h-0 overflow-y-auto">
             <nav class="px-2 space-y-1">
-              <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-600" -->
-              {#each sidebarItems as { text, link, icon }, i}
-                  <a href={link} class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md">
-                    <Icon kind={icon}/>
-                    {text}
-                  </a>
-              {/each}
               <slot name="sidebar"></slot>
-
             </nav>
           </div>
         </div>
