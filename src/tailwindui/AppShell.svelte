@@ -7,6 +7,13 @@
 
 </script>
 
+<style>
+  .aside-colors{
+    background-color: #224161;
+    color: #a7b7d4;   
+  }
+</style>
+
 <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     {#if isNavDrawerOpen}
@@ -34,7 +41,7 @@
             From: "translate-x-0"
             To: "-translate-x-full"
         -->
-        <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700">
+        <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 aside-colors">
           <!--
             Close button, show/hide based on off-canvas menu state.
   
@@ -83,8 +90,8 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
-        <div class="flex items-center flex-shrink-0 px-4 bg-white">
+      <div class="flex flex-col flex-grow pt-5 aside-colors overflow-y-auto">
+        <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wide">
           <a href="/" class="">LearnAwesome</a>
         </div>
         <div class="mt-5 flex-1 flex flex-col">

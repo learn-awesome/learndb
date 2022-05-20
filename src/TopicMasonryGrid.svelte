@@ -72,7 +72,7 @@
 </script>
 
 
-<h1 class="text-2xl font-bold mb-4">
+<h1 class="text-2xl font-bold mb-4 title-color">
 {#if topic}
     {capitalize(topic.display_name)}
 {:else}
@@ -83,12 +83,12 @@
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 mb-8">
   {#each [...map.entries()] as parent}
-  <div class="bg-white rounded-lg shadow-lg p-4 break-inside-avoid mb-4 gradient">
-    <a href={"#/topic/" + parent[0]?.name || parent}><span class="mt-1 p-1 text-gray-900 font-semibold text-lg">{ format_topic_name(parent[0]) }</span></a>
+  <div class="rounded-lg shadow-lg p-4 break-inside-avoid mb-4 gradient">
+    <a href={"#/topic/" + parent[0]?.name || parent}><span class="mt-1 p-1 text-white font-semibold text-lg">{ format_topic_name(parent[0]) }</span></a>
   
     <div class="mt-2 flex flex-wrap text-sm text-gray-900">
     {#each parent[1] as child}
-        <a href={"#/topic/" + child.name} class="text-purple-600 no-underline hover:underline hover:text-purple-900 px-2">{format_topic_name(child)}</a>
+        <a href={"#/topic/" + child.name} class="link-color no-underline hover:underline hover:text-white hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
     {/each}
     </div>    
   </div>
@@ -97,8 +97,14 @@
 
 <style>
     .gradient{
-        background-color: #8BC6EC;
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+        background-color: #224161;
+        /* background-image: linear-gradient(135deg, #224161 0%, #7084ac 100%); */
+    }
+    .link-color{
+        color: #a7b7d4;
+    }
+    .title-color{
+        color: #84a1cd;
     }
 </style>
 
