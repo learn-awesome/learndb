@@ -9,6 +9,8 @@
     "start": "sirv public --no-clear"
   },
   "devDependencies": {
+    "@rgossiaux/svelte-headlessui": "^1.0.1",
+    "@rgossiaux/svelte-heroicons": "^0.1.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "rollup": "^2.3.4",
@@ -19,6 +21,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@svelte-parts/zoom": "^0.0.23",
     "sirv-cli": "^2.0.0"
   }
 }

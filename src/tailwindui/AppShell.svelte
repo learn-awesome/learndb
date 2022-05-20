@@ -2,6 +2,7 @@
     import Icon from "./Icon.svelte"
     import MenuButton from "./MenuButton.svelte"
     import SearchForm from "./SearchForm.svelte"
+    import { SearchIcon } from "@rgossiaux/svelte-heroicons/outline";
     export let sidebarItems = [];
     let isNavDrawerOpen = false
     export let showNotificationBell = false;
@@ -93,7 +94,7 @@
             <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-600" -->
             {#each sidebarItems as { text, link, icon }, i}
                 <a href={link} class="w-full bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                  <Icon kind={icon}/>
+                  <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
                   {text}
                 </a>
             {/each}
