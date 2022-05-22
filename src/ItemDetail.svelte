@@ -26,7 +26,7 @@
         heading: "About the book , My favourite book ever, everyone should read it before the death or else it will be difficult to hold it in hands",
         details: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.",
         ratings: 5,
-        by: "Priyanka Nilesh kumar khemji jani trivedi daryavardi",
+        by: "lorem ipsum",
         date: "Sep 22, 2021",
         image: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
       },
@@ -42,7 +42,7 @@
         heading: "Nice Book",
         details: "iusto expedita enim, optio dignissimos eaque officiis perferendis eum",
         ratings: 3,
-        by: "riya",
+        by: "lorem",
         date: "Sep 22, 2027",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
       }
@@ -59,24 +59,38 @@
   }
   .scroll{
     scrollbar-width: thin;
-    scrollbar-color: red;
+    scrollbar-color: rgb(31 41 55);
+    scrollbar-gutter: stable;
   }
+  .scroll::-webkit-scrollbar{
+    width:10px
+  }
+  .scroll::-webkit-scrollbar-track{
+    background-color: rgb(55 65 81);
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(31 41 55);
+}
 </style>
 
 {#if item}
   <main class="px-12 py-10">
-    <h3 class="py-2 mb-5"><a href={"#/topic/" + item.topics} class="font-bold text-cyan-400">{item.topics}</a></h3>
+    <h3 class="py-2 mb-5">
+      {#each item.topics.split(";") as topicname}
+      <a href={"#/topic/" + topicname} class="mr-2 font-bold text-cyan-400">{topicname}</a>
+      {/each}
+    </h3>
     <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
       <!-- book image  -->
       <div class="flex-nowrap">
-        <img class="mr-6 mb-6 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="" />
+        <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" />
       </div>
       <!-- book details  -->
-      <div class="flex w-full flex-col justify-between">
+      <div class="flex w-full flex-col justify-between ml-5">
         <!-- title, sub title, author  -->
         <section>
           <h1 class="text-2xl text-white">{item.name}</h1>
-          <p class="font text-gray-400">Into Several Rmote Regions of the World</p>
+          <p class="font text-gray-400">{item.description}</p>
           <span class="text-sm">{item.creators}</span>
         </section>
         <!-- ratings and upload buttons -->

@@ -7,7 +7,7 @@
 
 </script>
 
-<div>
+<div style="font-family: 'Quicksand', sans-serif;">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     {#if isNavDrawerOpen}
     <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
