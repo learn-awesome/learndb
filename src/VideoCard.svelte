@@ -11,8 +11,6 @@
 
   let ytid = youtubeurl && youtube_parser(youtubeurl);
   let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
-
-  let vimeo = GET https://vimeo.com/api/oembed.json?url={video_url}
 </script>
 
 

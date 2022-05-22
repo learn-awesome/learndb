@@ -15,9 +15,13 @@
     import { SearchIcon } from "@rgossiaux/svelte-heroicons/outline";
 
     let currentView = "/topics";
+    let randomItemId;
 
-    function handleTabChanged(event) {
-        currentView = event.detail.tab;
+    function getRandomItemId(){
+        fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
+        .then(data => {
+            randomItemId = data[0].rowid;
+        });
     }
 
 	async function hashchange() {
@@ -32,7 +36,10 @@
 		}
 	}
 
+    onMount(getRandomItemId);
 	onMount(hashchange);
+    
+
     
 </script>
 
@@ -57,6 +64,8 @@
             <CourseList/>
         {:else if currentView.startsWith("/item/")}
             <ItemDetail itemid={currentView.split("/")[2]}/>
+        {:else if currentView == "/random"}
+            {#if randomItemId}<ItemDetail itemid={randomItemId}/>{/if}
         {:else if currentView === "/search"}
             <AdvancedSearch/>
         {:else if currentView === "/wanttolearn"}
@@ -75,7 +84,7 @@
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Formats
         </a>
-        <a href="#/item/1" class="text-indigo-100 hover:bg-gray-900 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-indigo-600 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
             <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Random Item
         </a>

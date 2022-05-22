@@ -5,12 +5,19 @@
 
     export let itemid;
     let item;
+    let reviews = [];
 
     $: fetch(`/learn/items/${itemid}.json?_shape=object`)
         .then(r => r.json())
         .then(data => {
             item = data[itemid];
         });
+    
+    $: fetch(`/learn/reviews.json?_shape=array&item_id__exact=${itemid}`)
+      .then(r => r.json())
+      .then(data => {
+          reviews = data;
+    });
 
     function saveStatusToLocalStorage(event){
       // console.log($bookmarks)
@@ -184,28 +191,18 @@
         <h2 class="text-base font-bold text-gray-100">Reviews</h2>
       </div>
       
-      <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2 scroll">
-        {#each reviews as review}
-          <article class="px-3 pt-4 bg-gray-800 rounded-lg text-sm shrink-0 w-full lg:w-1/2 flex flex-col justify-between h-48">
-            <div>
-              <h3 class="font-semibold truncate text-gray-50">{review.heading}</h3>
-              <p class="mt-2 line-clamp text-gray-200">{review.details}</p>
-            </div>
-            <div class="mt-4">
-              <div class="flex justify-start items-center">
-                <img src={review.image} class="rounded-full w-10 h-10" alt="user avatar"/>
-                <div class="flex flex-col items-start ml-2 overflow-hidden text-xs text-gray-300">
-                  <p class="truncate pr-2">By {review.by}</p>
-                  <span class="">{review.date}</span>  
-                </div>
-              </div>
-              <div class="ml-10 mt-1">
-                <sl-rating style="--symbol-size: 1rem" readonly precision="0.1" value={review.rating}></sl-rating>
-              </div>
-              
-            </div>
-          </article>
-        {/each}  
+      <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
+      {#each reviews as review}
+        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
+          <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
+          <p class="mt-2">{review.blurb}</p>
+          <div class="mt-3">
+            <sl-rating value={review.rating}></sl-rating>
+            <span class="ml-2">...{review.by}</span>
+          </div>
+        </article>
+      {/each}
+  
       </div>
     </section>
     <!-- more books by same author  -->
