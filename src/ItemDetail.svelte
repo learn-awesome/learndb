@@ -4,12 +4,19 @@
 
     export let itemid;
     let item;
+    let reviews = [];
 
     $: fetch(`/learn/items/${itemid}.json?_shape=object`)
         .then(r => r.json())
         .then(data => {
             item = data[itemid];
         });
+    
+    $: fetch(`/learn/reviews.json?_shape=array&item_id__exact=${itemid}`)
+      .then(r => r.json())
+      .then(data => {
+          reviews = data;
+    });
 
     function saveStatusToLocalStorage(event){
       // console.log($bookmarks)
@@ -127,55 +134,17 @@
       </div>
       
       <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
+      {#each reviews as review}
         <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
+          <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
+          <p class="mt-2">{review.blurb}</p>
           <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
+            <sl-rating value={review.rating}></sl-rating>
+            <span class="ml-2">...{review.by}</span>
           </div>
         </article>
+      {/each}
   
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
-
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">About the book</h3>
-          <p class="mt-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.</p>
-          <div class="mt-3">
-            <span>★★★★★</span>
-            <span class="ml-2">Sep 22, 2021</span>
-            <span class="ml-2">Priyanka Trivedi</span>
-          </div>
-        </article>
       </div>
     </section>
     <hr />
