@@ -12,10 +12,11 @@
     import ItemDetail from "./ItemDetail.svelte"
     import ItemList from "./ItemList.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
-    import { SearchIcon } from "@rgossiaux/svelte-heroicons/outline";
+    import { SearchIcon, CogIcon, BookmarkAltIcon, BookmarkIcon } from "@rgossiaux/svelte-heroicons/outline";
 
     let currentView = "/topics";
     let randomItemId;
+    let alltopics = [];
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -23,6 +24,12 @@
             randomItemId = data[0].rowid;
         });
     }
+
+    $: fetch(`/learn/topics.json?_shape=array&_size=5000`)
+        .then(r => r.json())
+        .then(data => {
+            alltopics = data;
+        });
 
 	async function hashchange() {
 		// the poor man's router!
@@ -45,14 +52,14 @@
 
 <svelte:window on:hashchange={hashchange}/>
 
-<TailwindUI.AppShell>
+<TailwindUI.AppShell {alltopics}>
     <svelte:fragment slot="content">
         {#if currentView === "/home" || currentView === "/"}
             <Home/>
         {:else if currentView === "/game"}
             <SkillTree/>
         {:else if currentView === "/topics"}
-            <TopicList/>
+            <TopicList {alltopics}/>
         {:else if currentView.startsWith("/topic/")}
             <TopicDetail topicname={currentView.split("/").slice(2).join("/")}/>
         {:else if currentView === "/formats"}
@@ -93,17 +100,18 @@
         </a>
         <hr/>
         <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <BookmarkIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Want to learn
         </a>
         <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <BookmarkAltIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Finished learning
         </a>
         <hr/>
         <a href="/learn" class="text-indigo-100 hover:bg-indigo-600 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <CogIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
             Datasette
         </a>
+
     </svelte:fragment>
 </TailwindUI.AppShell>

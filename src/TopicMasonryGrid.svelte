@@ -1,7 +1,7 @@
 <script>
     export let topicname; // undefined for top level
     let topic;
-    let alltopics = [];
+    export let alltopics;
     let map = new Map();
 
     function capitalize(str){
@@ -59,12 +59,7 @@
         return tempmap;
     }
 
-    $: fetch(`/learn/topics.json?_shape=array&_size=5000`)
-        .then(r => r.json())
-        .then(data => {
-            topic = data.find(t => t.name == topicname)
-            alltopics = data;
-        });
+    $: topic = alltopics.find(t => t.name == topicname)
 
     $: map = hierarchy(alltopics, topic?.name || "")
 
