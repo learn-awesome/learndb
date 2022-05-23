@@ -3,5 +3,4 @@
     export let alltopics;
 </script>
 
-
 <TopicMasonryGrid {alltopics}/>

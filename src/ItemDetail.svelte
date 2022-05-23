@@ -1,6 +1,7 @@
 <script>
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
+    import Icon from "./tailwindui/Icon.svelte"
 
     export let itemid;
     let item;
@@ -27,21 +28,51 @@
       bookmarks.set(newobj)
     }
 
+    
+
 </script>
+
+<style>
+  .line-clamp{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .scroll{
+    scrollbar-width: thin;
+    scrollbar-color: rgb(31 41 55);
+    scrollbar-gutter: stable;
+  }
+  .scroll::-webkit-scrollbar{
+    width:10px
+  }
+  .scroll::-webkit-scrollbar-track{
+    background-color: rgb(55 65 81);
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(31 41 55);
+}
+</style>
 
 {#if item}
   <main class="px-12 py-10">
+    <h3 class="py-2 mb-5">
+      {#each item.topics.split(";") as topicname}
+      <a href={"#/topic/" + topicname} class="mr-2 font-bold text-cyan-400">{topicname}</a>
+      {/each}
+    </h3>
     <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
       <!-- book image  -->
       <div class="flex-nowrap">
-        <img class=" mr-6 mb-6 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="" />
+        <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" />
       </div>
       <!-- book details  -->
-      <div class="sm:ml-6 md:ml-0 lg:ml-6 flex w-full flex-col justify-between">
+      <div class="flex w-full flex-col justify-between ml-5">
         <!-- title, sub title, author  -->
         <section>
-          <h1 class="text-2xl">{item.name}</h1>
-          <p class="font text-gray-500">Into Several Rmote Regions of the World</p>
+          <h1 class="text-2xl text-white">{item.name}</h1>
+          <p class="font text-gray-400">{item.description}</p>
           <span class="text-sm">{item.creators}</span>
         </section>
         <!-- ratings and upload buttons -->
@@ -57,9 +88,11 @@
           
 
           <div class="flex items-center justify-start gap-3 text-gray-500 mt-5">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-400 text-gray-800"> Book </span>
-
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-400 text-gray-800"> Video </span>
+            {#each item.links.split(";") as type}
+            <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-violet-800 text-gray-50 border" target="_blank"> {type.split("|")[0]} 
+              <span class="ml-0.5"><Icon kind="link"/></span>
+            </a>
+            {/each}
           </div>
         </div>
       </div>
@@ -68,15 +101,15 @@
     
     <!-- Description  -->
     <section class="my-8">
-      <h2 class="text-base font-bold">Description</h2>
-      <p class="mt-4 text-sm">{item.description}</p>
+      <h2 class="text-base font-bold text-gray-100 ">Description</h2>
+      <p class="mt-4 text-sm text-gray-200">{item.description}</p>
     </section>
     <hr />
     <!-- details  -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6  text-gray-400">
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">genre</h3>
+          <h3 class="uppercase text-xs">genre</h3>
           <!-- book svg  -->
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -84,7 +117,7 @@
             </svg>
           </span>
         </div>
-        <span class="text-xs">Fiction</span>
+        <span class="text-xs ">Fiction</span>
       </div>
 
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
@@ -130,7 +163,7 @@
     <!-- review  -->
     <section class="my-8">
       <div class="flex justify-between items-center">
-        <h2 class="text-base font-bold">Reviews</h2>
+        <h2 class="text-base font-bold text-gray-100">Reviews</h2>
       </div>
       
       <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
@@ -147,7 +180,6 @@
   
       </div>
     </section>
-    <hr />
     <!-- more books by same author  -->
 
     <!-- <section class="my-8 overflow-hidden">
