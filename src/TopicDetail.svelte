@@ -7,6 +7,8 @@
     import GenericCard from "./GenericCard.svelte"
 
     export let topicname;
+    export let alltopics;
+
     let items = [];
 
     $: fetch(`/learn/items.json?_shape=array&topics__contains=${topicname}`)
@@ -17,7 +19,7 @@
 </script>
 
 
-<TopicMasonryGrid {topicname}/>
+<TopicMasonryGrid {topicname} {alltopics}/>
 
 <!-- <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
     {#each items as item}
