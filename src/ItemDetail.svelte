@@ -28,32 +28,7 @@
       bookmarks.set(newobj)
     }
 
-    let reviews =[
-      {
-        heading: "About the book , My favourite book ever, everyone should read it before the death or else it will be difficult to hold it in hands",
-        details: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit architecto praesentium expedita? Similique dolor iusto expedita enim, optio dignissimos eaque officiis perferendis eum ullam voluptas esse quia tenetur natus modi.",
-        ratings: 5,
-        by: "lorem ipsum",
-        date: "Sep 22, 2021",
-        image: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-      },
-      {
-        heading: "Highly recommended book",
-        details: "Lorem ipsum",
-        ratings: 4,
-        by: "anka",
-        date: "Sep 22, 2081",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-      },
-      {
-        heading: "Nice Book",
-        details: "iusto expedita enim, optio dignissimos eaque officiis perferendis eum",
-        ratings: 3,
-        by: "lorem",
-        date: "Sep 22, 2027",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-      }
-    ];
+    
 
 </script>
 
