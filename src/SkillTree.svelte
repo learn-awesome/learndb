@@ -1,90 +1,78 @@
 <script>
-	import ZoomSvg from '@svelte-parts/zoom/svg'
-    import { fly } from 'svelte/transition';
-    
-	
-	let sidePanelShown = true;
-	let currentNode = null;
-	let nodes = [
-		{id: 1, name: "test", x: 100, y: 200, size: 50, color: "#ff3e00"},
-		{id: 2, name: "second", x: 400, y: 300, size: 30, color: "#ff3eff"}
-	]
-	
-	let edges = [
-		{id: 1, from: nodes[0], to: nodes[1]}
-	]
-	
-	function handleNodeMouseEnter(ev){
-		ev.target.style.fill = "#aa3e00"
-	}
-	
-	function handleNodeMouseLeave(ev){
-		ev.target.style.fill = "#ff3e00"
-	}
-	
-	function handleNodeClick(ev){
-		sidePanelShown = true;
-		currentNode = ev.target;
-	}
+	import { scale } from 'svelte/transition';
+	import { cubicIn } from 'svelte/easing';
+
+  let graph = {
+	  name: "Top",
+	  children: [
+		  {name: "first", children: [
+			  {name: "first -> A", children: [], color: "red-500"},
+			  {name: "first -> B", children: [], color: "green-500"},
+			  {name: "first -> c", children: [], color: "yellow-500"},
+			  {name: "first -> d", children: [], color: "blue-500"},
+		  ], pos: [], size: 35, color: "green-300"},
+		  {name: "second", children: [], pos: [], size: 35, color: "red-500"},
+		  {name: "third", children: [], pos: [], size: 35, color: "yellow-500"},
+		  {name: "fourth", children: [], pos: [], size: 35, color: "teal-400"},
+	  ]
+
+  }
+  
+  let currentParent = null;
+  let currentChild = graph;
+
+  function findParent(child, tree){
+	  if(graph == child) return null;
+	  if(tree.children.indexOf(child) > -1) return tree;
+	  // Will have to look at grandchildren
+	  tree.children.forEach(c => {
+		  let x = findParent(child, c);
+		  if (x != -1) return c;
+	  });
+	  return -1;
+  }
+
+  function switchTo(parent, child){
+	  [currentParent, currentChild] = [parent, child];
+  }
+
+  function siblings(parent, child){
+	if(!parent) return [];
+	return parent.children.filter(n => n != child)
+  }
+
+
+
 </script>
 
+<div class="flex flex-col">
 
-<ZoomSvg viewBox="0 0 1200 900">
+	{#if currentParent}<div class="flex flex-row justify-center mb-4">
+		<span>
+			<button type="button" on:click="{ e => switchTo(findParent(currentParent, graph), currentParent) }" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+				{currentParent.name}
+			</button>
+		</span>
+	</div>{/if}
 
-{#each edges as edge}
-	<line x1={edge.from.x} y1={edge.from.y} x2={edge.to.x} y2={edge.to.y} stroke="black" stroke-width="5" />
-{/each}
-	
-{#each nodes as node}
-	<circle cx={node.x} cy={node.y} r={node.size} fill={node.color} on:mouseenter={handleNodeMouseEnter} on:mouseleave={handleNodeMouseLeave} on:click={handleNodeClick}/>
-{/each}
+	<h2 class="text-3xl my-4 text-center font-extrabold tracking-tight sm:text-4xl">{currentChild.name}</h2>
 
-<g>
-	<rect x="120" y="320" width="100" height="100" fill="none" stroke="black" rx="15" />
-	<text x="400" y="150" font-family="Verdana" font-size="85" fill="green" stroke="yellow">Hello</text>
-</g>
-	
-</ZoomSvg>
+	<div class="flex flex-row justify-center my-4">
+		<span class="relative z-0 inline-flex shadow-sm rounded-md">
+			{#each siblings(currentParent, currentChild) as sibling}
+			<button type="button" on:click="{ e => switchTo(currentParent, sibling) }" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+				{sibling.name}
+			</button>
+			{/each}
+		</span>
+	</div>
 
+</div>
 
-<div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-    <!-- Background backdrop, show/hide based on slide-over state. -->
-    {#if sidePanelShown}
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-    {/if}
-  
-    <div class="fixed inset-0 overflow-hidden">
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-          {#if sidePanelShown}
-          <div class="pointer-events-auto w-screen max-w-md" transition:fly="{{ x: 200, duration: 600 }}">
-            <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-              <div class="px-4 sm:px-6">
-                <div class="flex items-start justify-between">
-                  <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Panel title</h2>
-                  <div class="ml-3 flex h-7 items-center">
-                    <button on:click="{e => sidePanelShown = false}" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                      <span class="sr-only">Close panel</span>
-                      <!-- Heroicon name: outline/x -->
-                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                <!-- Replace with your content -->
-                <div class="absolute inset-0 px-4 sm:px-6">
-                  <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true"></div>
-                </div>
-                <!-- /End replace -->
-              </div>
-            </div>
-          </div>
-          {/if}
-        </div>
-      </div>
-    </div>
-  </div>
-  
+<div class="grid grid-cols-1 gap-y-0 sm:grid-cols-2 mt-4">
+	{#each currentChild.children as grandchild, i (grandchild)}
+	<button on:click="{ e => switchTo(currentChild, grandchild) }" class="h-96 bg-{grandchild.color} hover:opacity-80 hover:scale-105">
+		<h3>{grandchild.name}</h3>
+	</button>
+	{/each}
+</div>

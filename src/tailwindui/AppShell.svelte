@@ -4,6 +4,8 @@
     let isNavDrawerOpen = false
     export let showNotificationBell = false;
     export let showProfileMenu = false;
+    export let alltopics;
+    import SearchForm from "./SearchForm.svelte"
 
 </script>
 
@@ -87,12 +89,13 @@
       </div>
     </div>
     <div class="md:pl-64 flex flex-col flex-1">
-      <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-cyan-900 text-white shadow">
+      <div class="sticky top-0 z-10 flex-shrink-0 flex bg-cyan-900 text-white shadow">
         <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
           <span class="sr-only">Open sidebar</span>
           <Icon kind="menu"/>
         </button>
-        <div class="flex-1 px-4 flex justify-between">
+        <div class="flex-1 flex justify-between">
+          <SearchForm {alltopics}/>
           {#if showNotificationBell || showProfileMenu}
           <div class="ml-4 flex items-center md:ml-6">
             {#if showNotificationBell}
