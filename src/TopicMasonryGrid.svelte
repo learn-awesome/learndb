@@ -66,17 +66,17 @@
 
 </script>
 
-<div class="mb-10">
+<div class="my-10">
     <sl-breadcrumb>
-        <sl-breadcrumb-item>All Topics</sl-breadcrumb-item>
+        <sl-breadcrumb-item href="#/topics">All Topics</sl-breadcrumb-item>
         {#if topic}
             {#if topic.parent_id}
-                <sl-breadcrumb-item>
+                <sl-breadcrumb-item href={"#/topic/"  + topic.parent_id}>
                     {capitalize(topic.parent_id)}
                 </sl-breadcrumb-item>
             {/if}
              {#if topic.display_name}
-                <sl-breadcrumb-item>
+                <sl-breadcrumb-item href={"#/topic/" + topic.name}>
                     {capitalize(topic.display_name)}
                 </sl-breadcrumb-item>
             {/if}   
