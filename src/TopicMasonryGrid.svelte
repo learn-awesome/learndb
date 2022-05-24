@@ -87,7 +87,11 @@
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 mb-8">
   {#each [...map.entries()] as parent}
   <div class="rounded-lg shadow-lg p-4 break-inside-avoid mb-4 bg-cyan-900">
-    <a href={"#/topic/" + parent[0]?.name || parent}><span class="mt-1 p-1 text-gray-100 font-semibold text-lg">{ format_topic_name(parent[0]) }</span></a>
+    {#if typeof(parent[0]) == "string"}
+    <span class="mt-1 p-1 text-gray-100 font-semibold text-lg">{ parent[0] }</span>
+    {:else}
+    <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-gray-100 font-semibold text-lg">{ format_topic_name(parent[0]) }</span></a>
+    {/if}
   
     <div class="mt-2 flex flex-wrap text-sm text-gray-900">
     {#each parent[1] as child}
