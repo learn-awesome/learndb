@@ -33,10 +33,12 @@
     <div class="">
         <sl-tab-group>
             {#each formats as format}
-                <sl-tab slot="nav" panel="general" class="px-2 py-1 bg-gray-900 rounded-md mr-3 mb-3 text-gray-200 shadow hover:text-gray-100 hover:bg-gray-800">{format.name}</sl-tab>
+                <sl-tab slot="nav" panel="{format.id}" class="px-2 py-1 bg-gray-900 rounded-md mr-3 mb-3 text-gray-200 shadow hover:text-gray-100 hover:bg-gray-800">{format.name}</sl-tab>
+            {/each}
 
+            {#each formats as format}            
                 {#if format.id == 'book'}
-                <sl-tab-panel name="general">
+                <sl-tab-panel name="{format.id}">
                     <div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
                         {#each items.filter(x => x.links.includes(format.id + '|')) as item}
                         <BookCard {item}/>
@@ -46,7 +48,7 @@
                 
 
                 {:else if format.id == 'video'}
-                <sl-tab-panel name="general">
+                <sl-tab-panel name="{format.id}">
                     <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
                         {#each items.filter(x => x.links.includes(format.id + '|')) as item}
                         <VideoCard {item}/>
@@ -55,7 +57,7 @@
                 </sl-tab-panel>
 
                 {:else} 
-                <sl-tab-panel name="general">
+                <sl-tab-panel name="{format.id}">
                     <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
                         {#each items.filter(x => x.links.includes(format.id + '|')) as item}
                         <GenericCard {item}/>

@@ -66,15 +66,23 @@
 
 </script>
 
-
-<h1 class="text-2xl font-bold mb-4 text-gray-100">
-{#if topic}
-    {capitalize(topic.display_name)}
-{:else}
-    All Topics
-{/if}
-</h1>
-
+<div class="mb-10">
+    <sl-breadcrumb>
+        <sl-breadcrumb-item>All Topics</sl-breadcrumb-item>
+        {#if topic}
+            {#if topic.parent_id}
+                <sl-breadcrumb-item>
+                    {capitalize(topic.parent_id)}
+                </sl-breadcrumb-item>
+            {/if}
+             {#if topic.display_name}
+                <sl-breadcrumb-item>
+                    {capitalize(topic.display_name)}
+                </sl-breadcrumb-item>
+            {/if}   
+        {/if}
+    </sl-breadcrumb>
+</div>
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 mb-8">
   {#each [...map.entries()] as parent}
