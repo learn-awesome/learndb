@@ -1,8 +1,5 @@
 <script>
     import ItemCard from "./ItemCard.svelte"
-    
-    import VideoCard from "./VideoCard.svelte"
-    import SearchForm from "./SearchForm.svelte"
 
     export let format;
     export let alltopics;
@@ -14,8 +11,6 @@
             items = data;
         });
 </script>
-
-<SearchForm {alltopics}/>
 
 <div class="md:flex md:items-center md:justify-between mb-8">
     <div class="flex-1 min-w-0">
