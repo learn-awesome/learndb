@@ -5,6 +5,7 @@
     import BookCard from "./BookCard.svelte"
     import VideoCard from "./VideoCard.svelte"
     import GenericCard from "./GenericCard.svelte"
+    import SearchForm from "./SearchForm.svelte"
 
     export let topicname;
     export let alltopics;
@@ -17,6 +18,8 @@
             items = data;
         });  
 </script>
+
+<SearchForm {alltopics}/>
 
 <TopicMasonryGrid {topicname} {alltopics}/>
 

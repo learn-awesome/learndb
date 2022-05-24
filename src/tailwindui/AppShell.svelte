@@ -4,8 +4,6 @@
     let isNavDrawerOpen = false
     export let showNotificationBell = false;
     export let showProfileMenu = false;
-    export let alltopics;
-    import SearchForm from "./SearchForm.svelte"
 
 </script>
 
@@ -95,7 +93,7 @@
           <Icon kind="menu"/>
         </button>
         <div class="flex-1 flex justify-between">
-          <SearchForm {alltopics}/>
+          
           {#if showNotificationBell || showProfileMenu}
           <div class="ml-4 flex items-center md:ml-6">
             {#if showNotificationBell}

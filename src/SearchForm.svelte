@@ -1,6 +1,5 @@
 <script>
-  import Icon from "./Icon.svelte"
-  import ComboBox from "./ComboBox.svelte"
+  import ComboBox from "./tailwindui/ComboBox.svelte"
   export let alltopics;
 
   let query = {

@@ -53,7 +53,7 @@
 
 <svelte:window on:hashchange={hashchange}/>
 
-<TailwindUI.AppShell {alltopics}>
+<TailwindUI.AppShell>
     <svelte:fragment slot="content">
         {#if currentView === "/home" || currentView === "/"}
             <Home/>
@@ -66,7 +66,7 @@
         {:else if currentView === "/formats"}
             <FormatList/>
         {:else if currentView.startsWith("/format/")}
-            <FormatDetail format={currentView.split("/")[2]}/>
+            <FormatDetail format={currentView.split("/")[2]} {alltopics}/>
         {:else if currentView === "/courses"}
             <CourseList/>
         {:else if currentView.startsWith("/item/")}
