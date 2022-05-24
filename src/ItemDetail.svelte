@@ -13,7 +13,7 @@
             item = data[itemid];
         });
     
-    $: fetch(`/learn/reviews.json?_shape=array&item_id__exact=${itemid}`)
+    $: item && fetch(`/learn/reviews.json?_shape=array&item_id__exact=${item.iid}`)
       .then(r => r.json())
       .then(data => {
           reviews = data;
