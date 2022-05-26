@@ -4,6 +4,4 @@
     import SearchForm from "./SearchForm.svelte"
 </script>
 
-<SearchForm {alltopics}/>
-
 <TopicMasonryGrid {alltopics}/>

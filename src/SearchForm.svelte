@@ -1,22 +1,24 @@
 <script>
   import ComboBox from "./tailwindui/ComboBox.svelte"
+  import { createEventDispatcher } from 'svelte';
+
   export let alltopics;
 
   let query = {
-    text: "some text",
-    topic: "algebra",
-    format: "book",
-    level: "beginner",
-    sortby: ""
+    text: "",
+    topic: "",
+    format: "",
+    level: "",
+    sortby: "rating"
   };
-  let results = [];
 
-  function handleSubmit(ev){
-    console.log({query})
-  }
+	const dispatch = createEventDispatcher();
+
+  $: dispatch('queryChanged', query);
+
 </script>
 
-<form class="w-full bg-gray-100 p-2 inline-flex" on:submit|preventDefault={handleSubmit}>
+<form class="w-full bg-gray-100 p-2 inline-flex" on:submit|preventDefault>
     <sl-input type="search" placeholder="Type something to search items by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
       <sl-icon name="search" slot="prefix"></sl-icon>
     </sl-input>
@@ -41,10 +43,9 @@
 
     <sl-select class="ml-2 w-44" on:sl-change="{e => query.sortby = e.target.value}" value={query.sortby}>
       <sl-icon name="sort-down-alt" slot="prefix"></sl-icon>
-      <sl-menu-item value="">Sort by</sl-menu-item>
-      <sl-menu-item value="rating">Rating</sl-menu-item>
-      <sl-menu-item value="year">Year</sl-menu-item>
-      <sl-menu-item value="name">Name</sl-menu-item>
+      <sl-menu-item value="rating">Sort by Rating</sl-menu-item>
+      <sl-menu-item value="year">Sort by Year</sl-menu-item>
+      <sl-menu-item value="name">Sort by Name</sl-menu-item>
     </sl-select>
 </form>
 
