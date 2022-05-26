@@ -83,35 +83,35 @@
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
-        <a href="#/topics" class={(currentView === "/topics" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Topics
+        <a href="#/topics" class={(currentView === "/topics" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Topics</h3>
         </a>
-        <a href="#/formats" class={(currentView === "/formats" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Formats
+        <a href="#/formats" class={(currentView === "/formats" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Formats</h3>
         </a>
-        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-indigo-600 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Random Item
+        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-gray-900 w-full group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Random Item</h3>
         </a>
-        <a href="#/search" class={(currentView === "/search" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Search
-        </a>
-        <hr/>
-        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <BookmarkIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Want to learn
-        </a>
-        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-indigo-800' : '') + " text-white w-full hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <BookmarkAltIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Finished learning
+        <a href="#/search" class={(currentView === "/search" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Search</h3>
         </a>
         <hr/>
-        <a href="/learn" class="text-indigo-100 hover:bg-indigo-600 w-full group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-            <CogIcon class="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"/>
-            Datasette
+        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <BookmarkIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Want to learn</h3>
+        </a>
+        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Finished learning</h3>
+        </a>
+        <hr/>
+        <a href="/learn" class="text-indigo-100 hover:bg-gray-900 w-full group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md">
+            <CogIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+            <h3 class="text-center"> Datasette</h3>
         </a>
 
     </svelte:fragment>

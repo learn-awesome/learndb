@@ -73,7 +73,7 @@
     {/if}
   
     <!-- Static sidebar for desktop -->
-    <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+    <div class="hidden md:flex md:w-32 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-col flex-grow pt-5 bg-cyan-900 text-white overflow-y-auto">
         <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wider text-2xl">

@@ -16,7 +16,8 @@
         .then(r => r.json())
         .then(data => {
             items = data;
-        });  
+        }); 
+        
 </script>
 
 <SearchForm {alltopics}/>
@@ -31,22 +32,21 @@
 
 <div>
     <div class="">
-        <sl-tab-group>
-            {#each formats as format}
-                <sl-tab slot="nav" panel="{format.id}" class="px-2 py-1 bg-gray-900 rounded-md mr-3 mb-3 text-gray-200 shadow hover:text-gray-100 hover:bg-gray-800">{format.name}</sl-tab>
-            {/each}
-
-            {#each formats as format}            
+        <sl-tab-group placement="start">
+            {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format}
+                    <sl-tab slot="nav" panel="{format.id}" class="">{format.name}</sl-tab>
+                
+        
                 {#if format.id == 'book'}
                 <sl-tab-panel name="{format.id}">
                     <div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
                         {#each items.filter(x => x.links.includes(format.id + '|')) as item}
+                        
                         <BookCard {item}/>
                         {/each}
                     </div>
                 </sl-tab-panel>
                 
-
                 {:else if format.id == 'video'}
                 <sl-tab-panel name="{format.id}">
                     <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
@@ -69,29 +69,6 @@
         </sl-tab-group>     
     </div>
 
-    <!-- {#each formats as format} 
-        <h1>{format.name}</h1>
-        {#if format.id == 'book'}
-            <div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
-                {#each items.filter(x => x.links.includes(format.id + '|')) as item}
-                <BookCard {item}/>
-                {/each}
-            </div>
-
-        {:else if format.id == 'video'}
-            <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
-                {#each items.filter(x => x.links.includes(format.id + '|')) as item}
-                <VideoCard {item}/>
-                {/each}    
-            </div>     
-        {:else} 
-            <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
-                {#each items.filter(x => x.links.includes(format.id + '|')) as item}
-                <GenericCard {item}/>
-                {/each} 
-            </div>        
-        {/if}     
-    {/each} -->
 </div>
 
 
