@@ -34,7 +34,7 @@
             From: "translate-x-0"
             To: "-translate-x-full"
         -->
-        <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-cyan-900 text-white">
+        <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1">
           <!--
             Close button, show/hide based on off-canvas menu state.
   
@@ -75,8 +75,8 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-32 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 bg-cyan-900 text-white overflow-y-auto">
-        <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wider text-2xl">
+      <div class="flex flex-col flex-grow pt-5 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 overflow-y-auto">
+        <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wider">
           <a href="/" class="">LearnAwesome</a>
         </div>
         <div class="mt-5 flex-1 flex flex-col">

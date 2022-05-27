@@ -1,20 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="//cdn.tailwindcss.com/?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 		<script>
 			tailwind.config = {
+				darkMode: "dark",
 				theme: {
 					extend: {
 						colors: {
-							clifford: '#da373d',
+							lightPrimaryBg: 'rgb(248 250 252)', //bg-slate-50
+							lightPrimaryText: 'rgb(15 23 42)', //bg-slate-900
+							lightSecondary1: 'rgb(250 245 255)', //bg-purple-50 
+							lightSecondary2: 'rgb(88 28 135)', //bg-purple-900
+							lightButton1: 'rgb(240 253 250)', //bg-teal-50
+							lightButton2: 'rgb(19 78 74)', //bg-teal-900
+
+							darkPrimaryBg: 'rgb(15 23 42)', //bg-slate-900						
+							darkPrimaryText: 'rgb(248 250 252)', //bg-slate-50							
+							darkSecondary1: 'rgb(88 28 135)', //bg-purple-900
+							darkSecondary2: 'rgb(250 245 255)', //bg-purple-50
+
+							DarkButton1: 'rgb(19 78 74)', //bg-teal-900
+							DarkButton2: 'rgb(240 253 250)', //bg-teal-50
 						}
 					}
 				}
 			}
 		</script>
+		<script>
+			// light and darkmode toggle button  
+			const checkbox = document.querySelector("#checkbox");
+			const html = document.querySelector("html");
+
+			const toggleDarkMode = function () {
+				checkbox.checked
+				? html.classList.add("dark")
+				: html.classList.remove("dark");
+			}
+
+				//calling the function directly
+
+			toggleDarkMode();
+			checkbox.addEventListener("click",toggleDarkMode);
+		</script>
+
         <script src="/static/bundle.js" defer></script>
 		<link href="/static/bundle.css" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.73/dist/themes/light.css" />
@@ -25,7 +56,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 	</head>
-	<body class="h-full bg-gray-900">
+	<body class="h-full bg-lightPrimaryBg dark:bg-darkPrimaryBg text-lightPrimaryText dark:text-darkPrimaryText">
 		<div class="h-full" id="app"></div>
 	</body>
 </html>

@@ -42,7 +42,7 @@
     <div class="flex-shrink-0">
       <img class="h-48 w-full object-cover" src={format.image} alt="">
     </div>
-    <h1 class="text-lg font-semibold p-2 bg-gray-800 text-white tracking-wider">{format.name}</h1>
+    <h1 class="text-lg font-semibold p-2 bg-lightButton2 text-lightButton1 tracking-wider">{format.name}</h1>
 </a>
 {/each}
 

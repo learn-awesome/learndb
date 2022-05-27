@@ -2,10 +2,24 @@
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
     import Icon from "./tailwindui/Icon.svelte"
-
+    
     export let itemid;
     let item;
     let reviews = [];
+
+    function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+  }
+
+  function get_thumbnail_image_url(item){
+    let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
+    let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
+    let ytid = youtubeurl && youtube_parser(youtubeurl);
+    let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
+    return thumbnail_image_url
+  }
 
     $: fetch(`/learn/items/${itemid}.json?_shape=object`)
         .then(r => r.json())
@@ -59,20 +73,38 @@
   <main class="px-12 py-10">
     <h3 class="py-2 mb-5">
       {#each item.topics.split(";") as topicname}
-      <a href={"#/topic/" + topicname} class="mr-2 font-bold text-cyan-400">{topicname}</a>
+      <a href={"#/topic/" + topicname} class="mr-2 font-bold text-lightSecondary2 dark:text-DarkSecondary2">{topicname}</a>
       {/each}
     </h3>
     <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
       <!-- book image  -->
       <div class="flex-nowrap">
-        <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" />
+        {#if item.image}
+          <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="{item.name}" />
+
+        {:else if item.links.includes('book')}
+          <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+
+        {:else if item.links.includes('video')}
+          <div class="relative">
+            <img class="h-28 w-44 flex justify-center items-center border-r border-gray-500 relative" src="{get_thumbnail_image_url(item)}" alt="{item.name}">
+            <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
+              <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
+            </div>
+          </div>
+
+        {:else}
+          <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+
+        {/if}
+        <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
       </div>
       <!-- book details  -->
       <div class="flex w-full flex-col justify-between ml-5">
         <!-- title, sub title, author  -->
         <section>
-          <h1 class="text-2xl text-white">{item.name}</h1>
-          <p class="font text-gray-400">{item.description}</p>
+          <h1 class="text-2xl">{item.name}</h1>
+          <p class="font">{item.description}</p>
           <span class="text-sm">{item.creators}</span>
         </section>
         <!-- ratings and upload buttons -->
@@ -87,9 +119,9 @@
           </div>
           
 
-          <div class="flex items-center justify-start gap-3 text-gray-500 mt-5">
+          <div class="flex items-center justify-start gap-3 mt-5">
             {#each item.links.split(";") as type}
-            <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-violet-800 text-gray-50 border" target="_blank"> {type.split("|")[0]} 
+            <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 border" target="_blank"> {type.split("|")[0]} 
               <span class="ml-0.5"><Icon kind="link"/></span>
             </a>
             {/each}
@@ -101,12 +133,13 @@
     
     <!-- Description  -->
     <section class="my-8">
-      <h2 class="text-base font-bold text-gray-100 ">Description</h2>
-      <p class="mt-4 text-sm text-gray-200">{item.description}</p>
+      <h2 class="text-base font-bold ">Description</h2>
+      <p class="mt-4 text-sm">{item.description}</p>
     </section>
     <hr />
     <!-- details  -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6  text-gray-400">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+      {#if item.genre}
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
           <h3 class="uppercase text-xs">genre</h3>
@@ -117,50 +150,61 @@
             </svg>
           </span>
         </div>
-        <span class="text-xs ">Fiction</span>
+        <span class="text-xs ">{item.genre}</span>
       </div>
+      {/if}
 
-      <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+      {#if item.year}
+      <div class="flex flex-col justify-between items-center gap-1 border py-5 border-gray-200">
         <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">year</h3>
+          <h3 class="uppercase text-xs ">year</h3>
           <span>{item.year}</span>
         </div>
       </div>
+      {/if}
 
+      {#if item.difficulty}
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">language</h3>
-          <span>EN</span>
+          <h3 class="uppercase text-xs ">Difficulty</h3>
+          <span></span>
         </div>
-        <span class="text-xs">English</span>
+        <span class="text-xs">{item.difficulty}</span>
       </div>
+      {/if}
 
+      {#if item.creators}
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">Length</h3>
-          <span>209</span>
+          <h3 class="uppercase text-xs ">Creator</h3>
+          <span></span>
         </div>
-        <span class="text-xs">Pages</span>
+        <span class="text-xs">{item.creators}</span>
       </div>
+      {/if}
 
+      <!-- {#if }
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
-        <h3 class="uppercase text-xs text-gray-400">Publisher</h3>
+        <h3 class="uppercase text-xs ">Publisher</h3>
         <span></span>
         <br />
         <span class="text-xs">Public Domain</span>
       </div>
+      {/if} -->
 
+      {#if item.size}
       <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
         <div class="flex flex-col items-center">
           <h3 class="uppercase text-xs text-gray-400">Size</h3>
-          <span>310.4</span>
+          <span></span>
         </div>
-        <span class="text-xs">KB</span>
+        <span class="text-xs">{item.size}</span>
       </div>
-
+      {/if}
     </div>
     <hr />
     <!-- review  -->
+    {#if item.review}
     <section class="my-8">
       <div class="flex justify-between items-center">
         <h2 class="text-base font-bold text-gray-100">Reviews</h2>
@@ -168,7 +212,7 @@
       
       <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
       {#each reviews as review}
-        <article class="px-3 py-4 bg-gray-200 rounded-lg text-xs w-48 max-w-sm shrink-0">
+        <article class="px-3 py-4 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 rounded-lg text-xs w-48 max-w-sm shrink-0">
           <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
           <p class="mt-2">{review.blurb}</p>
           <div class="mt-3">
@@ -180,6 +224,7 @@
   
       </div>
     </section>
+    {/if}
     <!-- more books by same author  -->
 
     <!-- <section class="my-8 overflow-hidden">

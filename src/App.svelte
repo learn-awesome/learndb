@@ -46,14 +46,38 @@
     onMount(getRandomItemId);
 	onMount(hashchange);
     
-
+    
     
 </script>
 
+<style>
+    #checkbox:checked + label .switch-ball{
+      background-color: white;
+      transform: translateX(24px);
+      transition: transform 0.3s linear;
+    }
+  </style>
 
 <svelte:window on:hashchange={hashchange}/>
+<div class="flex items-center justify-center mx-auto absolute top-5 right-0 left-1/3">
+    <div class="flex justify-end items-center space-x-2 mx-auto relative">
+        <span class="text-xs font-extralight">Light 
+            <div>
+                <input type="checkbox" name="" id="checkbox" class="hidden" />
+                <label for="checkbox" class="cursor-pointer">
+                  <div class="w-9 h-5 flex items-center bg-gray-300 rounded-full p2">
+                    <div class="w-4 h-4 bg-white rounded-full shadow switch-ball"></div>
+                  </div>
+                </label>
+              </div>
+        </span>
+        <span class="text-xs font-semibold">Dark</span>
+      </div>
+</div>
 
 <TailwindUI.AppShell>
+
+        
     <svelte:fragment slot="content">
         {#if currentView === "/home" || currentView === "/"}
             <Home/>
@@ -83,34 +107,34 @@
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
-        <a href="#/topics" class={(currentView === "/topics" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="#/topics" class={(currentView === "/topics" ? 'bg-lightSecondary1 text-lightSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Topics</h3>
         </a>
-        <a href="#/formats" class={(currentView === "/formats" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="#/formats" class={(currentView === "/formats" ? 'bg-lightSecondary1 text-lightSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Formats</h3>
         </a>
-        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-gray-900 w-full group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md">
-            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 w-full group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md">
+            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Random Item</h3>
         </a>
-        <a href="#/search" class={(currentView === "/search" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <SearchIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="#/search" class={(currentView === "/search" ? 'bg-lightSecondary1 text-lightSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Search</h3>
         </a>
         <hr/>
-        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <BookmarkIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-lightSecondary1 text-lightSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <BookmarkIcon class=" flex-shrink-0 h-6 w-6 "/>
             <h3 class="text-center"> Want to learn</h3>
         </a>
-        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-gray-900' : '') + " text-white w-full hover:bg-gray-900 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
-            <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-lightSecondary1 text-lightSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md"}>
+            <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6 "/>
             <h3 class="text-center"> Finished learning</h3>
         </a>
         <hr/>
-        <a href="/learn" class="text-indigo-100 hover:bg-gray-900 w-full group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md">
-            <CogIcon class=" flex-shrink-0 h-6 w-6 text-indigo-300"/>
+        <a href="/learn" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 w-full group flex flex-col items-center px-2 py-2 text-sm font-medium rounded-md">
+            <CogIcon class=" flex-shrink-0 h-6 w-6 "/>
             <h3 class="text-center"> Datasette</h3>
         </a>
 

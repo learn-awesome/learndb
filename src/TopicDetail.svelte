@@ -46,9 +46,11 @@
     
 </script>
 
-<SearchForm {alltopics} on:queryChanged={handleQueryChanged}/>
+
 
 <TopicMasonryGrid {topicname} {alltopics}/>
+
+<SearchForm {alltopics} on:queryChanged={handleQueryChanged}/>
 
 <!-- <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
     {#each items as item}
@@ -56,7 +58,7 @@
     {/each}
 </div> -->
 
-<div>
+<div class="mt-10">
     <div class="">
         <sl-tab-group placement="start">
             {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format}
@@ -65,13 +67,8 @@
         
                 {#if format.id == 'book'}
                 <sl-tab-panel name="{format.id}">
-                    <div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
-<<<<<<< HEAD
-                        {#each items.filter(x => x.links.includes(format.id + '|')) as item}
-                        
-=======
+                    <div class="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
                         {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
->>>>>>> upstream/main
                         <BookCard {item}/>
                         {/each}
                     </div>
@@ -79,7 +76,7 @@
                 
                 {:else if format.id == 'video'}
                 <sl-tab-panel name="{format.id}">
-                    <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
+                    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
                         {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
                         <VideoCard {item}/>
                         {/each}    
@@ -88,7 +85,7 @@
 
                 {:else} 
                 <sl-tab-panel name="{format.id}">
-                    <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
+                    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
                         {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
                         <GenericCard {item}/>
                         {/each} 
