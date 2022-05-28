@@ -18,7 +18,7 @@
 
 </script>
 
-<form class="w-full bg-gray-100 p-2 inline-flex" on:submit|preventDefault>
+<form class="w-full bg-lightSecondary1 text-lightSecondary2 dark:bg-darkSecondaryBg dark:text-darkSecondary2 p-2 inline-flex" on:submit|preventDefault>
     <sl-input type="search" placeholder="Type something to search items by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
       <sl-icon name="search" slot="prefix"></sl-icon>
     </sl-input>

@@ -86,16 +86,16 @@
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 mb-8">
   {#each [...map.entries()] as parent}
-  <div class="rounded-lg shadow-lg p-4 break-inside-avoid mb-4 bg-lightSecondary1 border-2 border-lightButton2 ">
+  <div class="rounded-lg shadow-lg p-4 break-inside-avoid mb-4 bg-lightSecondary1 border-2 border-lightButton2 dark:bg-darkSecondaryBg">
     {#if typeof(parent[0]) == "string"}
     <span class="mt-1 p-1  font-semibold text-lg">{ parent[0] }</span>
     {:else}
-    <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightButton2 font-extrabold text-lg">{ format_topic_name(parent[0]) }</span></a>
+    <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightButton2 dark:text-darkButton2 font-extrabold text-lg">{ format_topic_name(parent[0]) }</span></a>
     {/if}
   
     <div class="mt-2 flex flex-wrap text-sm text-gray-900">
     {#each parent[1] as child}
-        <a href={"#/topic/" + child.name} class="text-lightSecondary2 no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
+        <a href={"#/topic/" + child.name} class="text-lightSecondary2 dark:text-darkSecondary2 no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
     {/each}
     </div>    
   </div>

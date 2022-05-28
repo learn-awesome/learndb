@@ -7,7 +7,7 @@
 
 </script>
 
-<div style="font-family: 'Quicksand', sans-serif;">
+<div style="font-family: 'Quicksand', sans-serif;" class="max-w-7xl mx-auto">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     {#if isNavDrawerOpen}
     <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
@@ -73,20 +73,20 @@
     {/if}
   
     <!-- Static sidebar for desktop -->
-    <div class="hidden md:flex md:w-32 md:flex-col md:fixed md:inset-y-0">
+    <div class="hidden md:flex md:w-44 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 overflow-y-auto">
+      <div class="flex flex-col flex-grow pt-5 bg-lightSecondary2 text-lightSecondary1 dark:text-darkSecondary1 overflow-y-auto">
         <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wider">
           <a href="/" class="">LearnAwesome</a>
         </div>
         <div class="mt-5 flex-1 flex flex-col">
-          <nav class="flex-1 px-2 pb-4 space-y-1">
+          <nav class="flex-1 pb-4 space-y-1">
             <slot name="nav"></slot>
           </nav>
         </div>
       </div>
     </div>
-    <div class="md:pl-64 flex flex-col flex-1">
+    <div class="md:pl-44 flex flex-col flex-1">
       <div class="sticky top-0 z-10 flex-shrink-0 flex bg-cyan-900 text-white shadow">
         <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
           <span class="sr-only">Open sidebar</span>
