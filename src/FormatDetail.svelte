@@ -1,6 +1,6 @@
 <script>
     import ItemCard from "./ItemCard.svelte"
-
+    
     export let format;
     export let alltopics;
     let items = [];
@@ -17,6 +17,8 @@
       <h2 class="text-2xl font-bold leading-7 text-gray-100 sm:text-3xl sm:truncate"> {format}</h2>
     </div>
 </div>
+
+
 
 {#if format == 'book'}
 <div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 justify-items-center">
