@@ -70,310 +70,313 @@
 </style>
 
 {#if item}
-  <main class="px-12 py-10">
-    <h3 class="py-2 mb-5">
+    <h3 class="my-10 text-lightButton2 dark:text-darkSecondary2">
       {#each item.topics.split(";") as topicname}
       <a href={"#/topic/" + topicname} class="mr-2 font-bold text-lightSecondary2 dark:text-DarkSecondary2">{topicname}</a>
       {/each}
     </h3>
-    <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
-      <!-- book image  -->
-      <div class="flex-nowrap">
-        {#if item.image}
-          <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="{item.name}" />
-
-        {:else if item.links.includes('book')}
-          <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
-
-        {:else if item.links.includes('video')}
-          <div class="relative">
-            <img class="h-28 w-44 flex justify-center items-center border-r border-gray-500 relative" src="{get_thumbnail_image_url(item)}" alt="{item.name}">
-            <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
-              <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
+    <div>
+      <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
+        <!-- book image  -->
+        <div class="flex-nowrap">
+          {#if item.image}
+            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="{item.name}" />
+  
+          {:else if item.links.includes('book')}
+            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+  
+          {:else if item.links.includes('video')}
+            <div class="relative">
+              <img class="h-28 w-44 flex justify-center items-center border-r border-gray-500 relative" src="{get_thumbnail_image_url(item)}" alt="{item.name}">
+              <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
+                <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
+              </div>
             </div>
-          </div>
-
-        {:else}
-          <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
-
-        {/if}
-        <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
-      </div>
-      <!-- book details  -->
-      <div class="flex w-full flex-col justify-between ml-5">
-        <!-- title, sub title, author  -->
-        <section>
-          <h1 class="text-2xl">{item.name}</h1>
-          <p class="font">{item.description}</p>
-          <span class="text-sm">{item.creators}</span>
-        </section>
-        <!-- ratings and upload buttons -->
-        <div class="mt-2 mb-6 flex flex-col justify-between">
-          <div class="flex justify-between items-center">
-            <div>
-              <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
+  
+          {:else}
+            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+  
+          {/if}
+          <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
+        </div>
+        <!-- book details  -->
+        <div class="flex w-full flex-col justify-between ml-5">
+          <!-- title, sub title, author  -->
+          <section>
+            <h1 class="text-2xl">{item.name}</h1>
+            <p class="font max-w-lg">{item.description}</p>
+            <span class="text-sm">{item.creators}</span>
+          </section>
+          <!-- ratings and upload buttons -->
+          <div class="mt-2 mb-6 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <div>
+                <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
+              </div>
+              
+              <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>
+  
             </div>
             
-            <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>
-
-          </div>
-          
-
-          <div class="flex items-center justify-start gap-3 mt-5">
-            {#each item.links.split(";") as type}
-            <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 border" target="_blank"> {type.split("|")[0]} 
-              <span class="ml-0.5"><Icon kind="link"/></span>
-            </a>
-            {/each}
+  
+            <div class="flex items-center justify-start gap-3 mt-5">
+              {#each item.links.split(";") as type}
+              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondaryBg dark:text-darkSecondary2 border" target="_blank"> {type.split("|")[0]} 
+                <span class="ml-0.5"><Icon kind="link"/></span>
+              </a>
+              {/each}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <hr />
-    
-    <!-- Description  -->
-    <section class="my-8">
-      <h2 class="text-base font-bold ">Description</h2>
-      <p class="mt-4 text-sm">{item.description}</p>
-    </section>
-    <hr />
-    <!-- details  -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-      {#if item.genre}
-      <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
-        <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs">genre</h3>
-          <!-- book svg  -->
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </span>
-        </div>
-        <span class="text-xs ">{item.genre}</span>
-      </div>
-      {/if}
-
-      {#if item.year}
-      <div class="flex flex-col justify-between items-center gap-1 border py-5 border-gray-200">
-        <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs ">year</h3>
-          <span>{item.year}</span>
-        </div>
-      </div>
-      {/if}
-
-      {#if item.difficulty}
-      <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
-        <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs ">Difficulty</h3>
-          <span></span>
-        </div>
-        <span class="text-xs">{item.difficulty}</span>
-      </div>
-      {/if}
-
-      {#if item.creators}
-      <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
-        <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs ">Creator</h3>
-          <span></span>
-        </div>
-        <span class="text-xs">{item.creators}</span>
-      </div>
-      {/if}
-
-      <!-- {#if }
-      <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
-        <h3 class="uppercase text-xs ">Publisher</h3>
-        <span></span>
-        <br />
-        <span class="text-xs">Public Domain</span>
-      </div>
-      {/if} -->
-
-      {#if item.size}
-      <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
-        <div class="flex flex-col items-center">
-          <h3 class="uppercase text-xs text-gray-400">Size</h3>
-          <span></span>
-        </div>
-        <span class="text-xs">{item.size}</span>
-      </div>
-      {/if}
-    </div>
-    <hr />
-    <!-- review  -->
-    {#if item.review}
-    <section class="my-8">
-      <div class="flex justify-between items-center">
-        <h2 class="text-base font-bold text-gray-100">Reviews</h2>
-      </div>
+      <hr />
       
-      <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2">
-      {#each reviews as review}
-        <article class="px-3 py-4 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 rounded-lg text-xs w-48 max-w-sm shrink-0">
-          <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
-          <p class="mt-2">{review.blurb}</p>
-          <div class="mt-3">
-            <sl-rating value={review.rating}></sl-rating>
-            <span class="ml-2">...{review.by}</span>
-          </div>
-        </article>
-      {/each}
-  
-      </div>
-    </section>
-    {/if}
-    <!-- more books by same author  -->
+      <!-- Description  -->
+      {#if item.description}
+      <section class="my-8">
+        <h2 class="text-base font-bold ">Description</h2>
+        <p class="mt-4 text-sm max-w-lg">{item.description}</p>
+      </section>
+      {/if}
 
-    <!-- <section class="my-8 overflow-hidden">
-      <div class="flex justify-between items-center">
-        <h2 class="text-base font-bold">More Books by Priyanka Trivedi</h2>
-        <button class="float-right text-xs hover:underline">See All</button>
+      <hr />
+      <!-- details  -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+        {#if item.genre}
+        <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+          <div class="flex flex-col items-center">
+            <h3 class="uppercase text-xs">genre</h3>
+            <!-- book svg  -->
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </span>
+          </div>
+          <span class="text-xs ">{item.genre}</span>
+        </div>
+        {/if}
+  
+        {#if item.year}
+        <div class="flex flex-col justify-between items-center gap-1 border py-5 border-gray-200">
+          <div class="flex flex-col items-center">
+            <h3 class="uppercase text-xs ">year</h3>
+            <span>{item.year}</span>
+          </div>
+        </div>
+        {/if}
+  
+        {#if item.difficulty}
+        <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+          <div class="flex flex-col items-center">
+            <h3 class="uppercase text-xs ">Difficulty</h3>
+            <span></span>
+          </div>
+          <span class="text-xs">{item.difficulty}</span>
+        </div>
+        {/if}
+  
+        {#if item.creators}
+        <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+          <div class="flex flex-col items-center">
+            <h3 class="uppercase text-xs ">Creator</h3>
+            <span></span>
+          </div>
+          <span class="text-xs">{item.creators}</span>
+        </div>
+        {/if}
+  
+        <!-- {#if }
+        <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+          <h3 class="uppercase text-xs ">Publisher</h3>
+          <span></span>
+          <br />
+          <span class="text-xs">Public Domain</span>
+        </div>
+        {/if} -->
+  
+        {#if item.size}
+        <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+          <div class="flex flex-col items-center">
+            <h3 class="uppercase text-xs text-gray-400">Size</h3>
+            <span></span>
+          </div>
+          <span class="text-xs">{item.size}</span>
+        </div>
+        {/if}
       </div>
-      <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-auto">
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
+      <hr />
+      <!-- review  -->
+      {#if item.review}
+      <section class="my-8">
+        <div class="flex justify-between items-center">
+          <h2 class="text-base font-bold text-gray-100">Reviews</h2>
         </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          <div class="flex flex-col items-start text-xs gap-1">
-            <h4 class="font-semibold">A Modest Proposal</h4>
-            <span class="text-gray-500">Priyanka Trivedi</span>
-            <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-          </div>
-        </div>
-      </div>  
-    
-    </section>
-    <hr /> -->
-
-    <!-- Also bought  -->
-
-    <!-- <section class="my-8 overflow-hidden">
-      <div class="flex justify-between items-center">
-        <h2 class="text-base font-bold">Other items on the same topics</h2>
-        <button class="text-xs hover:underline">See All</button>
-      </div>
         
-        <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-scroll">
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          
+        <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2 scroll">
+        {#each reviews as review}
+          <article class="px-3 py-4 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 rounded-lg text-xs w-48 max-w-sm shrink-0">
+            <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
+            <p class="mt-2 line-clamp">{review.blurb}</p>
+            <div class="mt-3">
+              <sl-rating value={review.rating}></sl-rating>
+              <span class="ml-2">...{review.by}</span>
+            </div>
+          </article>
+        {/each}
+    
         </div>
+      </section>
+      {/if}
+      <!-- more books by same author  -->
   
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          
+      <!-- <section class="my-8 overflow-hidden">
+        <div class="flex justify-between items-center">
+          <h2 class="text-base font-bold">More Books by Priyanka Trivedi</h2>
+          <button class="float-right text-xs hover:underline">See All</button>
         </div>
+        <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-auto">
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            <div class="flex flex-col items-start text-xs gap-1">
+              <h4 class="font-semibold">A Modest Proposal</h4>
+              <span class="text-gray-500">Priyanka Trivedi</span>
+              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
+            </div>
+          </div>
+        </div>  
+      
+      </section>
+      <hr /> -->
   
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          
-        </div>
+      <!-- Also bought  -->
   
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
-          
+      <!-- <section class="my-8 overflow-hidden">
+        <div class="flex justify-between items-center">
+          <h2 class="text-base font-bold">Other items on the same topics</h2>
+          <button class="text-xs hover:underline">See All</button>
         </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-          </div>
           
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+          <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-scroll">
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
           </div>
-          
-        </div>
-  
-        <div class="shrink-0">
-          <div class="" >
-            <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
           </div>
-          
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
+          </div>
+    
+          <div class="shrink-0">
+            <div class="" >
+              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
+            </div>
+            
+          </div>
         </div>
-      </div>
-    </section> -->
-  </main>
+      </section> -->
+    </div>
 {:else}
 	<p class="loading">loading...</p>
 {/if}

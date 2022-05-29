@@ -18,7 +18,7 @@
 </script>
 
 
-<a class="flex flex-wrap w-full mb-8 justify-between overflow-hidden rounded-lg bg-lightSecondary1 border-2 border-lightButton2 hover:scale-105 duration-300" href="#/item/{item.rowid}">
+<a class="flex flex-wrap w-full mb-8 justify-between overflow-hidden rounded-lg bg-lightSecondary1 border-2 border-lightButton2 hover:bg-lightButton2 duration-300 break-inside-avoid text-lightPrimary dark:bg-darkSecondaryBg dark:text-darkSecondary2 hover:text-gray-50" href="#/item/{item.rowid}">
   <div class="relative w-full h-28 max-w-sm shadow-lg ring-1 ring-black/5 rounded-xl flex items-start">
     <div class="h-28 w-44 flex justify-center items-center border-r border-gray-500 relative">
 
@@ -42,8 +42,8 @@
     </div>
     
     <div class="flex flex-col ml-5 w-2/3 mt-2">
-      <strong class="text-lightPrimaryText font-extrabold">{item.name}</strong>
-      <span class="text-lightSecondary2 text-sm font-medium">{item.creators}</span>
+      <strong class="font-extrabold">{item.name}</strong>
+      <span class="text-sm font-medium">{item.creators}</span>
     </div>
   </div>
 </a> 
