@@ -2,7 +2,7 @@
   export let item;
 </script>
 
-<a class="relative flex flex-col w-44 items-center mb-4 rounded-md shadow-lg overflow-hidden transform transition ease-out duration-300 hover:bg-lightButton2 hover:shadow-xl bg-lightSecondary1 break-inside-avoid dark:bg-darkSecondaryBg dark:text-darkSecondary2" href="#/item/{item.rowid}">
+<a class="relative flex flex-col w-44 items-center mb-4 rounded-md overflow-hidden transform transition ease-out duration-300 hover:bg-lightSecondary2 hover:shadow-xl break-inside-avoid dark:bg-darkSecondaryBg dark:text-darkSecondary2" href="#/item/{item.rowid}">
   <img class="object-cover h-64 w-44" src={item.image || '/static/book-cover.png'} alt="{item.name}"/>
   <h1 class="text-lg font-semibold p-2 text-white tracking-wider">
     <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>

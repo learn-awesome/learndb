@@ -122,7 +122,7 @@
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
               <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondaryBg dark:text-darkSecondary2 border" target="_blank"> {type.split("|")[0]} 
-                <span class="ml-0.5"><Icon kind="link"/></span>
+                <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
               </a>
               {/each}
             </div>
