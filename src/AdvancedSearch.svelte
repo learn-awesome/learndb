@@ -1,4 +1,8 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
+  export let showSearch = false;
   let query = '';
   let result_items = [];
   let result_topics = [];
@@ -16,20 +20,18 @@
         });
 </script>
 
-<div class="relative">
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
-    <div class="overflow-y-auto p-4 sm:p-6 md:p-20">
-      <!--
-        Command palette, show/hide based on modal state.
+  {#if showSearch}
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  {/if}
   
-        Entering: "ease-out duration-300"
-          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          To: "opacity-100 translate-y-0 sm:scale-100"
-        Leaving: "ease-in duration-200"
-          From: "opacity-100 translate-y-0 sm:scale-100"
-          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      -->
-      <div class="mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
+
+  {#if showSearch}
+  <div class="fixed z-10 inset-0 overflow-y-auto" on:click="{e => dispatch('closed',{}) }">
+    <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+
+      <div class="mx-auto w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all" on:click|stopPropagation>
         <div class="relative">
           <!-- Heroicon name: solid/search -->
           <svg class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -87,3 +89,5 @@
       </div>
     </div>
   </div>
+  {/if}
+</div>

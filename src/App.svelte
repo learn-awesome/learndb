@@ -18,6 +18,7 @@
     let currentView = "/topics";
     let randomItemId;
     let alltopics = [];
+    let showSearch = false;
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -71,13 +72,13 @@
             <ItemDetail itemid={currentView.split("/")[2]}/>
         {:else if currentView == "/random"}
             {#if randomItemId}<ItemDetail itemid={randomItemId}/>{/if}
-        {:else if currentView === "/search"}
-            <AdvancedSearch/>
         {:else if currentView === "/wanttolearn"}
             <ItemList kind={0}/>
         {:else if currentView === "/finishedlearning"}
             <ItemList kind={1}/>
         {/if}
+
+        <AdvancedSearch {showSearch} on:closed="{e => showSearch = false}"/>
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
@@ -93,11 +94,11 @@
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Random Item</h3>
         </a>
-       
 
-        <NavButtonWithLabel isActive={currentView === "/search"} target="#/search" label="Search">
+        <button on:click="{e => showSearch = true}" class="text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium">
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
-        </NavButtonWithLabel>
+            <h3 class="text-center"> Search</h3>
+        </button>
 
         <NavButtonWithLabel isActive={currentView === "/wanttolearn"} target="#/wanttolearn" label="Want to learn">
             <BookmarkIcon class=" flex-shrink-0 h-6 w-6"/>
@@ -106,7 +107,6 @@
         <NavButtonWithLabel isActive={currentView === "/finishedlearning"} target="#/finishedlearning" label="Finished learning">
             <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
-
         
         <a href="/learn" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium hover:dark:text-darkSecondary2 mb-5 pl-4">
             <CogIcon class=" flex-shrink-0 h-6 w-6 "/>
