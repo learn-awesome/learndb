@@ -12,7 +12,8 @@
     import ItemDetail from "./ItemDetail.svelte"
     import ItemList from "./ItemList.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
-    import { SearchIcon, CogIcon, BookmarkAltIcon, BookmarkIcon } from "@rgossiaux/svelte-heroicons/outline";
+    import NavButtonWithLabel from './NavButtonWithLabel.svelte';
+    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon } from "@rgossiaux/svelte-heroicons/outline";
 
     let currentView = "/topics";
     let randomItemId;
@@ -80,33 +81,34 @@
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
-        <a href="#/topics" class={(currentView === "/topics" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex flex-col items-center py-2 text-sm font-medium"}>
-            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
-            <h3 class="text-center"> Topics</h3>
-        </a>
-        <a href="#/formats" class={(currentView === "/formats" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium"}>
-            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
-            <h3 class="text-center"> Formats</h3>
-        </a>
-        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex flex-col items-center py-2 text-sm font-medium">
-            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
+        <NavButtonWithLabel isActive={currentView === "/topics"} target="#/topics" label="Topics">
+            <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
+        <NavButtonWithLabel isActive={currentView === "/formats"} target="#/formats" label="Formats">
+            <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
+        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium mb-5 pl-4">
+            <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Random Item</h3>
         </a>
-        <a href="#/search" class={(currentView === "/search" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg  dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium"}>
+       
+
+        <NavButtonWithLabel isActive={currentView === "/search"} target="#/search" label="Search">
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
-            <h3 class="text-center"> Search</h3>
-        </a>
+        </NavButtonWithLabel>
+
+        <NavButtonWithLabel isActive={currentView === "/wanttolearn"} target="#/wanttolearn" label="Want to learn">
+            <BookmarkIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
+        <NavButtonWithLabel isActive={currentView === "/finishedlearning"} target="#/finishedlearning" label="Finished learning">
+            <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
         
-        <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2  hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium"}>
-            <BookmarkIcon class=" flex-shrink-0 h-6 w-6 "/>
-            <h3 class="text-center"> Want to learn</h3>
-        </a>
-        <a href="#/finishedlearning" class={(currentView === "/finishedlearning" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2  hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center  py-2 text-sm font-medium"}>
-            <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6 "/>
-            <h3 class="text-center"> Finished learning</h3>
-        </a>
-        
-        <a href="/learn" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex flex-col items-center py-2 text-sm font-medium hover:dark:text-darkSecondary2">
+        <a href="/learn" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium hover:dark:text-darkSecondary2 mb-5 pl-4">
             <CogIcon class=" flex-shrink-0 h-6 w-6 "/>
             <h3 class="text-center"> Datasette</h3>
         </a>

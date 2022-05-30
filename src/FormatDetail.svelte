@@ -14,14 +14,14 @@
 
 <div class="md:flex md:items-center md:justify-between mb-8">
     <div class="flex-1 min-w-0">
-      <h2 class="text-2xl font-bold leading-7 text-gray-100 sm:text-3xl sm:truncate"> {format}</h2>
+      <h2 class="text-2xl font-bold leading-7 text-lightSecondary2 sm:text-3xl sm:truncate"> {format.toUpperCase()+"s"}</h2>
     </div>
 </div>
 
 
 
 {#if format == 'book'}
-<div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 justify-items-center">
+<div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
     {#each items as item}
     <ItemCard {item} displayType={format}/>
     {/each}

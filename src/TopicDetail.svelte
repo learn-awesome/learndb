@@ -85,7 +85,7 @@
 
                 {:else} 
                 <sl-tab-panel name="{format.id}">
-                    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
+                    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-4 2xl:grid-cols-6">
                         {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
                         <GenericCard {item}/>
                         {/each} 
