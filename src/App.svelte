@@ -10,15 +10,16 @@
     import FormatDetail from "./FormatDetail.svelte"
     import CourseList from "./CourseList.svelte"
     import ItemDetail from "./ItemDetail.svelte"
-    import ItemList from "./ItemList.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
     import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon } from "@rgossiaux/svelte-heroicons/outline";
+    import Bookmarks from './Bookmarks.svelte';
 
     let currentView = "/topics";
     let randomItemId;
     let alltopics = [];
     let showSearch = false;
+    let isActive;
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -73,9 +74,9 @@
         {:else if currentView == "/random"}
             {#if randomItemId}<ItemDetail itemid={randomItemId}/>{/if}
         {:else if currentView === "/wanttolearn"}
-            <ItemList kind={0}/>
+            <Bookmarks kind={0}/>
         {:else if currentView === "/finishedlearning"}
-            <ItemList kind={1}/>
+            <Bookmarks kind={1}/>
         {/if}
 
         <AdvancedSearch {showSearch} on:closed="{e => showSearch = false}"/>
@@ -90,12 +91,12 @@
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <a href="#/random" on:click={getRandomItemId} class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium mb-5 pl-4">
+        <a href="#/random" on:click={getRandomItemId} class="text-lightSecondary1 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4">
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Random Item</h3>
         </a>
 
-        <button on:click="{e => showSearch = true}" class="text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium">
+        <button on:click="{e => showSearch = true}" class="text-lightSecondary1 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4">
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Search</h3>
         </button>

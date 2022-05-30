@@ -55,7 +55,7 @@
     {/each}
 </div>
 {:else}
-<div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
+<div class="mt-12 mx-auto gap-5 flex flex-wrap">
     {#each filteredItems as item}
     <ItemCard {item} displayType={format}/>
     {/each}

@@ -75,14 +75,14 @@
       <a href={"#/topic/" + topicname} class="mr-2 font-bold text-lightSecondary2 dark:text-DarkSecondary2">{topicname}</a>
       {/each}
     </h3>
-    <div>
+    <div class="">
       <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
         <!-- book image  -->
         <div class="flex-nowrap">
           {#if item.image}
             <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="{item.name}" />
   
-          {:else if item.links.includes('book')}
+          <!-- {:else if item.links.includes('book')}
             <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
   
           {:else if item.links.includes('video')}
@@ -94,7 +94,7 @@
             </div>
   
           {:else}
-            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" /> -->
   
           {/if}
           <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
@@ -121,7 +121,7 @@
   
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
-              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondaryBg dark:text-darkSecondary2 border" target="_blank"> {type.split("|")[0]} 
+              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightTertiary dark:bg-darkTertiary text-lightBg dark:text-darkBg border" target="_blank"> {type.split("|")[0]} 
                 <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
               </a>
               {/each}
