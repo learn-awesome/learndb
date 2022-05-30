@@ -23,7 +23,7 @@
 <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
   {#if showSearch}
-  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  <div class="fixed inset-0 bg-lightSecondary bg-opacity-75 transition-opacity"></div>
   {/if}
   
 
@@ -31,7 +31,7 @@
   <div class="fixed z-10 inset-0 overflow-y-auto" on:click="{e => dispatch('closed',{}) }">
     <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
 
-      <div class="mx-auto w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all" on:click|stopPropagation>
+      <div class="mx-auto w-xl transform overflow-hidden rounded-xl bg-lightBg dark:bg-darkBg text-lightPrimary dark:darkPrimary shadow-2xl ring-1 ring-black ring-opacity-5 transition-all" on:click|stopPropagation>
         <div class="relative">
           <!-- Heroicon name: solid/search -->
           <svg class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

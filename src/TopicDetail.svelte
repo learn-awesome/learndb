@@ -1,10 +1,8 @@
 <script>
-    import ItemCard from "./ItemCard.svelte"
+    import ItemList from "./ItemList.svelte"
     import TopicMasonryGrid from "./TopicMasonryGrid.svelte"
-    import { formats } from "./formats.js"
-    import BookCard from "./BookCard.svelte"
-    import VideoCard from "./VideoCard.svelte"
-    import GenericCard from "./GenericCard.svelte"
+   
+
     import SearchForm from "./SearchForm.svelte"
 
     export let topicname;
@@ -54,7 +52,9 @@
 
 <SearchForm {alltopics} on:queryChanged={handleQueryChanged} hideTopic={true} hideFormat={true}/>
 
-<div class="mt-10">
+<ItemList items={filteredItems}/>
+
+<!-- <div class="mt-10">
     <div class="">
         <sl-tab-group placement="start">
             {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format, i}
@@ -92,6 +92,6 @@
         </sl-tab-group>     
     </div>
 
-</div>
+</div> -->
 
 

@@ -87,7 +87,7 @@
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 mb-8">
   {#each [...map.entries()] as parent}
     <a href={"#/topic/" + parent[0].name}>
-        <div class="rounded-lg shadow-lg p-4 break-inside-avoid mb-4 bg-lightSecondary1 border-2 border-lightButton2 dark:bg-darkSecondaryBg">
+        <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary">
             {#if typeof(parent[0]) == "string"}
             <span class="mt-1 p-1  font-semibold text-lg">{ parent[0] }</span>
             {:else}

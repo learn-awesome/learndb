@@ -75,11 +75,11 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow pt-5 bg-lightSecondary2 text-lightSecondary1 dark:text-darkSecondary1 overflow-y-auto">
-        <div class="flex items-center flex-shrink-0 px-4 text-white tracking-wider">
+      <div class="flex flex-col flex-grow pt-5 border-r overflow-y-auto">
+        <div class="flex items-center flex-shrink-0 px-4 tracking-wider font-bold text-lightTertiary">
           <a href="/" class="">LearnAwesome</a>
         </div>
-        <div class="mt-5 flex-1 flex flex-col">
+        <div class="mt-5 flex-1 flex flex-col bg-lightTertiary text-lightBg">
           <nav class="flex-1 pb-4 space-y-1">
             <slot name="nav"></slot>
           </nav>

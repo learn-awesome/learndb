@@ -6,7 +6,7 @@
 </script>
 
 
-<a href={target} class={(isActive ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+<a href={target} class={(isActive ? 'bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
   <slot></slot>
   
   <h3 class="text-center"> {label}</h3>
