@@ -1,14 +1,42 @@
 <script>
     import ItemCard from "./ItemCard.svelte"
+    import SearchForm from "./SearchForm.svelte"
     
     export let format;
     export let alltopics;
     let items = [];
+    let filteredItems = [];
+
+    let query = {
+        text: "",
+        topic: "",
+        format: "",
+        level: "",
+        quality: "",
+        sortby: "rating"
+    };
 
     $: fetch(`/learn/items.json?_shape=array&links__contains=${format}|`)
         .then(r => r.json())
         .then(data => {
             items = data;
+        });
+
+    function handleQueryChanged(event){
+        console.log("queryChanged: ", event.detail);
+        query = event.detail;
+    }
+
+    $:  filteredItems = items.filter(item => {
+            if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
+            if(query.format && !item.links.includes(query.format)) { return false; }
+            if(query.level && item.difficulty != query.level){ return false; }
+            // TODO Apply quality filter
+            return true;
+        }).sort((a,b) => {
+            if(query.sortby == 'rating') { return (a.rating - b.rating) };
+            if(query.sortby == 'year') { return (a.year - b.year)};
+            if(query.sortby == 'name') { return a.name.localeCompare(b.name)};
         });
 </script>
 
@@ -18,17 +46,17 @@
     </div>
 </div>
 
-
+<SearchForm {alltopics} on:queryChanged={handleQueryChanged} hideFormat={true}/>
 
 {#if format == 'book'}
 <div class="mt-12 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 justify-items-center">
-    {#each items as item}
+    {#each filteredItems as item}
     <ItemCard {item} displayType={format}/>
     {/each}
 </div>
 {:else}
 <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
-    {#each items as item}
+    {#each filteredItems as item}
     <ItemCard {item} displayType={format}/>
     {/each}
 </div>

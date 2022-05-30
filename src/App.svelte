@@ -17,6 +17,7 @@
     let currentView = "/topics";
     let randomItemId;
     let alltopics = [];
+    let showSearch = false;
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -70,13 +71,13 @@
             <ItemDetail itemid={currentView.split("/")[2]}/>
         {:else if currentView == "/random"}
             {#if randomItemId}<ItemDetail itemid={randomItemId}/>{/if}
-        {:else if currentView === "/search"}
-            <AdvancedSearch/>
         {:else if currentView === "/wanttolearn"}
             <ItemList kind={0}/>
         {:else if currentView === "/finishedlearning"}
             <ItemList kind={1}/>
         {/if}
+
+        <AdvancedSearch {showSearch} on:closed="{e => showSearch = false}"/>
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
@@ -92,10 +93,10 @@
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Random Item</h3>
         </a>
-        <a href="#/search" class={(currentView === "/search" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg  dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium"}>
+        <button on:click="{e => showSearch = true}" class="text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium">
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Search</h3>
-        </a>
+        </button>
         
         <a href="#/wanttolearn" class={(currentView === "/wanttolearn" ? 'bg-lightSecondary1 text-lightSecondary2 dark:bg-darkPrimaryBg dark:text-darkSecondary2' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:text-lightSecondary2  hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg group flex flex-col items-center py-2 text-sm font-medium"}>
             <BookmarkIcon class=" flex-shrink-0 h-6 w-6 "/>
