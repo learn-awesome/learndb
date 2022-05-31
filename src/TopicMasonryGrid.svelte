@@ -87,16 +87,16 @@
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 mb-8">
   {#each [...map.entries()] as parent}
     <a href={"#/topic/" + parent[0].name}>
-        <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary">
+        <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 border-8 border-lightPrimCont dark:border-darkPrimCont hover:bg-lightPrimCont dark:bg-darkPrimCont ">
             {#if typeof(parent[0]) == "string"}
             <span class="mt-1 p-1  font-semibold text-lg">{ parent[0] }</span>
             {:else}
-            <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightButton2 dark:text-darkButton2 hover:font-extrabold text-lg ">{ format_topic_name(parent[0]) }</span></a>
+            <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightPrimary dark:text-darkPrimary hover:text-lightSecondary dark:hover:text-darkSecondary text-lg ">{ format_topic_name(parent[0]) }</span></a>
             {/if}
         
             <div class="mt-2 flex flex-wrap text-sm text-gray-900">
             {#each parent[1] as child}
-                <a href={"#/topic/" + child.name} class="text-lightSecondary2 dark:text-darkSecondary2 no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
+                <a href={"#/topic/" + child.name} class="text-lightTertiary dark:text-darkTertiary hover:text-lightPrimary dark:hover:darkPrimary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
             {/each}
             </div>    
         </div>

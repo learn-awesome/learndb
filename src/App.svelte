@@ -18,7 +18,7 @@
     let currentView = "/topics";
     let randomItemId;
     let alltopics = [];
-    let showSearch = false;
+    let showSearch = null;
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -43,7 +43,6 @@
 			window.location.hash = '/home';
             currentView = '/home'
 		}
-        showSearch = false;
 	}
 
     onMount(getRandomItemId);
@@ -79,7 +78,7 @@
             <Bookmarks kind={1}/>
         {/if}
 
-        <AdvancedSearch {showSearch} on:closed="{e => showSearch = false}"/>
+        <AdvancedSearch {showSearch} on:closed="{e => showSearch = null}"/>
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
@@ -96,7 +95,7 @@
             <h3 class="text-center"> Random Item</h3>
         </a>
 
-        <button on:click="{e => showSearch = true}" class="text-lightSecondary1 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4">
+        <button on:click="{e => showSearch = true}" class={(currentView === "/search" ? 'bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary' : '') + "text-lightSecondary1 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4"}>
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Search</h3>
         </button>
