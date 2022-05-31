@@ -7,6 +7,10 @@
   let result_items = [];
   let result_topics = [];
 
+  function resetQuery(){
+    query = '';
+  }
+
   $: query && fetch(`/learn/items.json?_shape=array&name__contains=${query}&_size=6`)
         .then(r => r.json())
         .then(data => {
@@ -31,13 +35,13 @@
   <div class="fixed z-10 inset-0 overflow-y-auto" on:click="{e => dispatch('closed',{}) }">
     <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
 
-      <div class="mx-auto w-xl transform overflow-hidden rounded-xl bg-lightBg dark:bg-darkBg text-lightPrimary dark:darkPrimary shadow-2xl ring-1 ring-black ring-opacity-5 transition-all" on:click|stopPropagation>
+      <div class="w-md transform overflow-hidden rounded-xl bg-lightBg dark:bg-darkBg text-lightPrimary dark:darkPrimary shadow-2xl ring-1 ring-black ring-opacity-5 transition-all" on:click|stopPropagation>
         <div class="relative">
           <!-- Heroicon name: solid/search -->
           <svg class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
           </svg>
-          <input bind:value={query} type="text" class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm" placeholder="Search..." role="combobox" aria-expanded="false" aria-controls="options">
+          <input bind:value={query} type="text" class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm" placeholder="Search..." role="combobox" aria-expanded="false" aria-controls="options" autofocus>
         </div>
   
         {#if !query }
@@ -59,7 +63,7 @@
             <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900">Items</h2>
             <ul class="mt-2 text-sm text-gray-800">
               {#each result_items as item}
-              <li><a href="#/item/{item.rowid}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{item.name}</a></li>
+              <li><a href="#/item/{item.rowid}" on:click={resetQuery} class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" role="option" tabindex="-1">{item.name}</a></li>
               {/each}
             </ul>
           </li>
@@ -67,7 +71,7 @@
             <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900">Topics</h2>
             <ul class="mt-2 text-sm text-gray-800">
                 {#each result_topics as topic}
-                <li><a href="#/topic/{topic.name}" class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" id="option-1" role="option" tabindex="-1">{topic.display_name}</a></li>
+                <li><a href="#/topic/{topic.name}" on:click={resetQuery} class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" role="option" tabindex="-1">{topic.display_name}</a></li>
                 {/each}
             </ul>
           </li>

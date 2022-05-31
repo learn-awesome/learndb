@@ -19,7 +19,6 @@
     let randomItemId;
     let alltopics = [];
     let showSearch = false;
-    let isActive;
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -44,6 +43,7 @@
 			window.location.hash = '/home';
             currentView = '/home'
 		}
+        showSearch = false;
 	}
 
     onMount(getRandomItemId);
@@ -91,7 +91,7 @@
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <a href="#/random" on:click={getRandomItemId} class="text-lightSecondary1 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4">
+        <a href="#/random" on:click={getRandomItemId} class={(currentView === "/random" ? 'bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <h3 class="text-center"> Random Item</h3>
         </a>
@@ -109,7 +109,7 @@
             <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
         
-        <a href="/learn" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium hover:dark:text-darkSecondary2 mb-5 pl-4">
+        <a href="/learn" target="_blank" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium hover:dark:text-darkSecondary2 mb-5 pl-4">
             <CogIcon class=" flex-shrink-0 h-6 w-6 "/>
             <h3 class="text-center"> Datasette</h3>
         </a>
