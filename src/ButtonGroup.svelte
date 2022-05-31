@@ -23,7 +23,7 @@
       {i == 0 && 'rounded-l-md'}
       {i == tabs.length-1 && 'rounded-r-md'} 
       border border-gray-800 text-sm font-medium focus:z-10 focus:outline-none 
-      {currentlySelected === i? 'bg-lightButton2 text-lightButton1' : 'bg-gray-100 text-gray-800'}
+      {currentlySelected === i? 'bg-lightButtonBg text-lightBg dark:bg-darkButtonBg dark:text-darkBg' : 'bg-lightPrimCont text-lightPrimary'}
      "
   >
      {tab}

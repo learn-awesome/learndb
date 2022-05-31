@@ -77,7 +77,6 @@
     </h3>
     <div class="">
       <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
-        <!-- book image  -->
         <div class="flex-nowrap">
           {#if item.image}
             <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="{item.name}" />
