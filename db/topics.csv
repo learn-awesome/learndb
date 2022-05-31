@@ -1,4 +1,4 @@
-name,display_name,image,parent_id
+name,display_name,image,parent_id,sort_index
 pricing,pricing,https://images.unsplash.com/photo-1530856021941-02c71be5926f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 prisoners-dilemma,prisoners-dilemma,https://images.unsplash.com/photo-1603340424570-3a4603d4814d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 libreria-ingegneria,libreria-ingegneria,https://images.unsplash.com/photo-1519032465794-2da0ceef0b63?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
@@ -6,7 +6,7 @@ libreria-ingegneria,libreria-ingegneria,https://images.unsplash.com/photo-151903
 lockpicking,lockpicking,https://images.unsplash.com/photo-1514820402329-de527fdd2e6d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 tensor-analysis,tensor-analysis,https://images.unsplash.com/photo-1582719471180-aad67c6023c8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,linear-algebra
 sleep,sleep,https://images.unsplash.com/photo-1482434368596-fbd06cae4f89?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,health
-complex-numbers,complex-numbers,https://images.unsplash.com/photo-1532264523420-881a47db012d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,mathematics
+complex-numbers,complex-numbers,https://images.unsplash.com/photo-1532264523420-881a47db012d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,mathematics,2
 electronics-engineering,electronics-engineering,https://images.unsplash.com/photo-1581091871343-9a6c099886ed?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,engineering
 linear-algebra,linear-algebra,https://images.unsplash.com/photo-1544386912-a19598079867?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,mathematics
 flat-earth,flat-earth,https://images.unsplash.com/photo-1545537619-3b5475acd977?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
@@ -51,7 +51,7 @@ optimal-stopping,optimal stopping,https://images.unsplash.com/photo-156529139570
 heron-formula,Heron Formula,https://images.unsplash.com/photo-1567718203978-9d37d57d4199?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400,
 witchcraft,witchcraft,https://images.unsplash.com/photo-1572965733111-499bd7022cf3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 smoking,Smoking,https://images.unsplash.com/photo-1601675165519-19a19211406d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400,
-algebra,algebra,https://images.unsplash.com/photo-1548691905-57c36cc8d935?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,mathematics
+algebra,algebra,https://images.unsplash.com/photo-1548691905-57c36cc8d935?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,mathematics,1
 audio-wanted,audio-wanted,https://images.unsplash.com/photo-1595500982573-a1132d41df41?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 amateur-radio,amateur-radio,https://images.unsplash.com/photo-1596024141450-8818990ee803?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,hobbies
 memristor,Memristor,https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200,
@@ -265,7 +265,7 @@ historie,historie,https://images.unsplash.com/photo-1597175579909-62af6b71354b?c
 geochemistry,geochemistry,https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200,
 language,language,https://images.unsplash.com/photo-1585521551675-64daba4ba31e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 probability,probability,https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200,mathematics
-mathematics,mathematics,https://images.unsplash.com/photo-1548691905-57c36cc8d935?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
+mathematics,mathematics,https://images.unsplash.com/photo-1548691905-57c36cc8d935?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,,1
 aviation,aviation,https://images.unsplash.com/photo-1560952860-2a06028bab16?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,engineering
 complexity-science,complexity-science,https://images.unsplash.com/photo-1555952494-efd681c7e3f9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,science
 economics,economics,https://images.unsplash.com/photo-1475275083424-b4ff81625b60?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,humanities
@@ -2948,7 +2948,7 @@ programming-languages/rust,programming-languages/rust,https://images.unsplash.co
 mobile-app-development,mobile-app-development,https://images.unsplash.com/photo-1557804483-ef3ae78eca57?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,programming
 time-management,time-management,https://images.unsplash.com/photo-1563371386-187140095137?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,personal-development
 relationships,relationships,https://images.unsplash.com/photo-1504447660567-77a0a12ebb75?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,personal-development
-programming-languages,programming-languages,https://images.unsplash.com/photo-1489389944381-3471b5b30f04?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
+programming-languages,programming-languages,https://images.unsplash.com/photo-1489389944381-3471b5b30f04?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,,2
 programming-languages/c++,programming-languages/c++,https://images.unsplash.com/photo-1484417894907-623942c8ee29?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,programming-languages
 information-overload,information-overload,https://images.unsplash.com/photo-1564760290292-23341e4df6ec?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,
 programming-languages/haskell,programming-languages/haskell,https://images.unsplash.com/photo-1503676593575-d732ab11be71?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400,programming-languages

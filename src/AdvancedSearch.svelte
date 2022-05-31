@@ -7,6 +7,8 @@
   let result_items = [];
   let result_topics = [];
 
+  let elm;
+
   function resetQuery(){
     query = '';
   }
@@ -22,6 +24,10 @@
         .then(data => {
             result_topics = data;
         });
+  
+  $: showSearch && elm && elm.focus();
+  
+
 </script>
 
 <sl-dialog no-header open={showSearch} style="--header-spacing: 0px; --body-spacing: 0px; --footer-spacing: 0px" on:sl-hide="{e => dispatch('closed',{})}">
