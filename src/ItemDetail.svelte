@@ -70,7 +70,7 @@
 </style>
 
 {#if item}
-    <h3 class="my-10 text-lightButton2 dark:text-darkSecondary2">
+    <h3 class="my-2 text-lightButton2 dark:text-darkSecondary2">
       {#each item.topics.split(";") as topicname}
       <a href={"#/topic/" + topicname} class="mr-2 font-bold text-lightSecondary2 dark:text-DarkSecondary2">{topicname}</a>
       {/each}

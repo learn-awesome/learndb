@@ -66,7 +66,7 @@
 
 </script>
 
-<div class="my-10 text-lightButton2">
+<div class="my-2 text-lightButton2">
     <sl-breadcrumb>
         <sl-breadcrumb-item href="#/topics" class="text-lg">All Topics</sl-breadcrumb-item>
         {#if topic}
