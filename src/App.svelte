@@ -16,6 +16,7 @@
     import Bookmarks from './Bookmarks.svelte';
 
     let currentView = "/topics";
+    let randomTopicName;
     let randomItemId;
     let alltopics = [];
     let showSearch = false;
@@ -24,6 +25,13 @@
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
         .then(data => {
             randomItemId = data[0].rowid;
+        });
+    }
+
+    function getRandomTopicName(){
+        fetch('/learn.json?_shape=array&sql=select+name+from+topics+order+by+random()+limit+1').then(r => r.json())
+        .then(data => {
+            randomTopicName = data[0].name;
         });
     }
 
@@ -47,6 +55,7 @@
 	}
 
     onMount(getRandomItemId);
+    onMount(getRandomTopicName);
 	onMount(hashchange);
     
 </script>
@@ -71,7 +80,9 @@
             <CourseList/>
         {:else if currentView.startsWith("/item/")}
             <ItemDetail itemid={currentView.split("/")[2]}/>
-        {:else if currentView == "/random"}
+        {:else if currentView == "/randomtopic"}
+            {#if randomTopicName}<TopicDetail topicname={randomTopicName} {alltopics}/>{/if}
+        {:else if currentView == "/randomitem"}
             {#if randomItemId}<ItemDetail itemid={randomItemId}/>{/if}
         {:else if currentView === "/wanttolearn"}
             <Bookmarks kind={0}/>
@@ -91,9 +102,14 @@
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <a href="#/random" on:click={getRandomItemId} class={(currentView === "/random" ? 'bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+        <a href="#/randomtopic" on:click={getRandomTopicName} class={(currentView === "/randomtopic" ? 'bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
-            <h3 class="text-center"> Random Item</h3>
+            <h3 class="text-center">Random Topic</h3>
+        </a>
+
+        <a href="#/randomitem" on:click={getRandomItemId} class={(currentView === "/randomitem" ? 'bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary' : '') + " text-lightSecondary1 w-full hover:bg-lightSecondary1 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg hover:text-lightSecondary2 group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+            <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
+            <h3 class="text-center">Random Item</h3>
         </a>
 
         <button on:click="{e => showSearch = true}" class="text-lightSecondary1 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:text-darkSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4">
