@@ -13,12 +13,18 @@
     "@rgossiaux/svelte-heroicons": "^0.1.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@tsconfig/svelte": "^3.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
-    "svelte": "^3.0.0"
+    "rollup-plugin-typescript2": "^0.31.2",
+    "svelte": "^3.0.0",
+    "svelte-check": "^2.7.1",
+    "svelte-preprocess": "^4.10.6",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.2"
   },
   "dependencies": {
     "@svelte-parts/zoom": "^0.0.23",
