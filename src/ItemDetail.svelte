@@ -103,7 +103,7 @@
           <!-- title, sub title, author  -->
           <section>
             <h1 class="text-2xl">{item.name}</h1>
-            <p class="font max-w-lg">{item.description}</p>
+            <!-- <p class="font max-w-lg">{item.description}</p> -->
             <span class="text-sm">{item.creators}</span>
           </section>
           <!-- ratings and upload buttons -->

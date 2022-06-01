@@ -5,6 +5,7 @@
     import GenericCard from "./GenericCard.svelte"
     export let item;
     export let displayType = null;
+    export let showBadge = false;
 </script>
 
 {#if item.links.includes('book|') && item.links.includes('video|')}
@@ -18,5 +19,5 @@
 {:else if item.links.includes('video|')}
   <VideoCard {item}/>
 {:else}
-  <GenericCard {item}/>
+  <GenericCard {item} {showBadge}/>
 {/if}

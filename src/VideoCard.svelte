@@ -1,4 +1,5 @@
 <script>
+  import ButtonGroup from "./ButtonGroup.svelte";
   export let item;
   
   function youtube_parser(url){
@@ -14,7 +15,7 @@
     let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
     return thumbnail_image_url
   }
-  
+
 </script>
 
 
@@ -45,6 +46,7 @@
       <strong class="font-extrabold">{item.name}</strong>
       <span class="text-sm font-medium">{item.creators}</span>
     </div>
+
   </div>
 </a> 
 

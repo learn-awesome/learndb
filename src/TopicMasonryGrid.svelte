@@ -94,9 +94,9 @@
             <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightPrimary dark:text-darkPrimary hover:text-lightSecondary dark:hover:text-darkSecondary text-lg ">{ format_topic_name(parent[0]) }</span></a>
             {/if}
         
-            <div class="mt-2 flex flex-wrap text-sm text-gray-900">
+            <div class="mt-2 flex flex-wrap">
             {#each parent[1].sort((t1,t2) => (t1.sort_index || 100) - (t2.sort_index || 100)) as child}
-                <a href={"#/topic/" + child.name} class="text-lightSecondary2 dark:text-darkSecondary2 no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
+                <a href={"#/topic/" + child.name} class="text-lightSecondary dark:text-darkSecondary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
             {/each}
             </div>    
         </div>
