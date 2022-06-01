@@ -29,5 +29,6 @@ export const formats = [
   {id: "webmeet", name: "Online meetups", image: "https://images.unsplash.com/photo-1586543354240-2187898bb2e8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
   {id: "webconf", name: "Online conferences", image: "https://images.unsplash.com/photo-1586985564150-11ee04838034?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
   {id: "thing", name: "Things & Toys", image: "https://images.unsplash.com/photo-1416339134316-0e91dc9ded92?ixlib=rb-1.2.1&raw_url=true&q=60&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c3R1ZmZ8ZW58MHx8MHx8&auto=format&fit=crop&w=400"},
+  {id: "summary", name: "Summaries & Notes", image: "https://images.unsplash.com/photo-1623039405147-547794f92e9e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"},
 
 ]

@@ -16,7 +16,7 @@
         topic: "",
         format: "",
         level: "",
-        quality: "",
+        tags: "",
         sortby: "rating"
     };
 
@@ -36,7 +36,7 @@
             if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
             if(query.format && !item.links.includes(query.format)) { return false; }
             if(query.level && item.difficulty != query.level){ return false; }
-            // TODO: apply quality filter
+            // TODO: apply tags filter
             return true;
         }).sort((a,b) => {
             if(query.sortby == 'rating') { return (a.rating - b.rating) };
@@ -46,52 +46,8 @@
     
 </script>
 
-
-
 <TopicMasonryGrid {topicname} {alltopics}/>
 
 <SearchForm {alltopics} on:queryChanged={handleQueryChanged} hideTopic={true} hideFormat={true}/>
 
 <ItemList items={filteredItems}/>
-
-<!-- <div class="mt-10">
-    <div class="">
-        <sl-tab-group placement="start">
-            {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format, i}
-                    <sl-tab slot="nav" panel={format.id} active={i == 0}>{format.name}</sl-tab>
-                
-        
-                {#if format.id == 'book'}
-                <sl-tab-panel name={format.id} active={i == 0}>
-                    <div class="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
-                        {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
-                        <BookCard {item}/>
-                        {/each}
-                    </div>
-                </sl-tab-panel>
-                
-                {:else if format.id == 'video'}
-                <sl-tab-panel name={format.id} active={i == 0}>
-                    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-3">
-                        {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
-                        <VideoCard {item}/>
-                        {/each}    
-                    </div>     
-                </sl-tab-panel>
-
-                {:else} 
-                <sl-tab-panel name={format.id} active={i == 0}>
-                    <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-2 lg:max-w-none xl:grid-cols-4 2xl:grid-cols-6 ">
-                        {#each filteredItems.filter(x => x.links.includes(format.id + '|')) as item}
-                        <GenericCard {item}/>
-                        {/each} 
-                    </div>
-                </sl-tab-panel>       
-                {/if}   
-            {/each}
-        </sl-tab-group>     
-    </div>
-
-</div> -->
-
-
