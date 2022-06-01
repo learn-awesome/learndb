@@ -13,7 +13,8 @@
     format: "",
     level: "",
     quality: "",
-    sortby: "rating"
+    sortby: "rating",
+    tag: ""
   };
 
 	const dispatch = createEventDispatcher();
@@ -22,7 +23,7 @@
 
 </script>
 
-<form class="w-full bg-lightSecondary1 text-lightSecondary2 dark:bg-darkSecondaryBg dark:text-darkSecondary2 p-2 inline-flex" on:submit|preventDefault>
+<form class="w-full p-2 inline-flex" on:submit|preventDefault>
     <sl-input type="search" placeholder="Type something to search items by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
       <sl-icon name="search" slot="prefix"></sl-icon>
     </sl-input>
@@ -39,6 +40,16 @@
       <sl-menu-item value="audio">Podcasts</sl-menu-item>
     </sl-select>
     {/if}
+
+    <sl-select class="ml-2 w-44"  on:sl-change="{e => query.tag = e.target.value}" value={query.tag}>
+      <sl-menu-item value="">Any tag</sl-menu-item>
+      <sl-menu-item value="childlike">Inspirational</sl-menu-item>
+      <sl-menu-item value="beginner">Educational</sl-menu-item>
+      <sl-menu-item value="intermediate">Challenging</sl-menu-item>
+      <sl-menu-item value="advanced">Entertaining</sl-menu-item>
+      <sl-menu-item value="research">Visual</sl-menu-item>
+      <sl-menu-item value="research">Interactive</sl-menu-item>
+    </sl-select>
 
     <sl-select class="ml-2 w-44"  on:sl-change="{e => query.level = e.target.value}" value={query.level}>
       <sl-menu-item value="">Any level</sl-menu-item>
