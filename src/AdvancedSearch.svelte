@@ -55,26 +55,27 @@
 
     <!-- Results, show/hide based on command palette state -->
     <ul class="scroll-pt-11 scroll-pb-2 space-y-2 overflow-y-auto pb-2" id="options" role="listbox">
-      {#if result_items.length > 0}
-      <li>
-        <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900 text-center">Items</h2>
-        <ul class="mt-2 text-sm text-gray-800">
-          {#each result_items as item}
-          <li><a href="#/item/{item.rowid}" on:click={resetQuery} class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" role="option" tabindex="-1">{item.name}</a></li>
-          {/each}
-        </ul>
-      </li>
-      {/if}
       {#if result_topics.length > 0}
       <li>
         <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900 text-center">Topics</h2>
         <ul class="mt-2 text-sm text-gray-800">
             {#each result_topics as topic}
-            <li><a href="#/topic/{topic.name}" on:click={resetQuery} class="block cursor-default select-none px-4 py-2 hover:bg-indigo-600 hover:text-white cursor-pointer" role="option" tabindex="-1">{topic.display_name}</a></li>
+            <li><a href="#/topic/{topic.name}" on:click={resetQuery} class="block cursor-default select-none px-4 py-2 hover:bg-lightTertiary hover:text-white cursor-pointer" role="option" tabindex="-1">{topic.display_name}</a></li>
             {/each}
         </ul>
       </li>
       {/if}
+      {#if result_items.length > 0}
+      <li>
+        <h2 class="bg-gray-100 py-2.5 px-4 text-xs font-semibold text-gray-900 text-center">Items</h2>
+        <ul class="mt-2 text-sm text-gray-800">
+          {#each result_items as item}
+          <li><a href="#/item/{item.rowid}" on:click={resetQuery} class="block cursor-default select-none px-4 py-2 hover:bg-lightTertiary hover:text-white cursor-pointer" role="option" tabindex="-1">{item.name}</a></li>
+          {/each}
+        </ul>
+      </li>
+      {/if}
+      
     </ul>
 
     {:else}

@@ -42,7 +42,7 @@
 
 <div class="md:flex md:items-center md:justify-between mb-8">
     <div class="flex-1 min-w-0">
-      <h2 class="text-2xl font-bold leading-7 text-lightSecondary2 sm:text-3xl sm:truncate"> {format.toUpperCase()+"s"}</h2>
+      <h2 class="text-2xl font-bold leading-7 text-lightSecondary2 sm:text-3xl sm:truncate"> {format.toUpperCase()+"s".toUpperCase()}</h2>
     </div>
 </div>
 
