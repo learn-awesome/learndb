@@ -23,13 +23,13 @@
 
 </script>
 
-<form class="w-full p-2 inline-flex" on:submit|preventDefault>
+<form class="w-full p-2 inline-flex flex-wrap" on:submit|preventDefault>
     <sl-input type="search" placeholder="Type something to search items by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
       <sl-icon name="search" slot="prefix"></sl-icon>
     </sl-input>
 
     {#if !hideTopic}
-    <ComboBox options={alltopics.map(t => { return {label: t.display_name, value: t.name}; }).sort((a,b) => a.label.localeCompare(b.label))} selected={null}/>
+    <ComboBox options={alltopics.map(t => { return {label: t.display_name, value: t.name}; }).sort((a,b) => a.label.localeCompare(b.label)).slice(0,10)} selected={null}/>
     {/if}
 
     {#if !hideFormat}
@@ -75,5 +75,7 @@
       <sl-menu-item value="year">Sort by Year</sl-menu-item>
       <sl-menu-item value="name">Sort by Name</sl-menu-item>
     </sl-select>
+
+
 </form>
 

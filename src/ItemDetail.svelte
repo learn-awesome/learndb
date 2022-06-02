@@ -70,16 +70,21 @@
 </style>
 
 {#if item}
-    <h3 class="my-2 text-lightButton2 dark:text-darkSecondary2">
+  
+  <div class="max-w-4xl mx-auto border shadow-2xl px-20 py-8 rounded-xl mt-20">
+    <h3 class="my-2">
       {#each item.topics.split(";") as topicname}
-      <a href={"#/topic/" + topicname} class="mr-2 font-bold text-lightSecondary2 dark:text-DarkSecondary2">{topicname}</a>
+      <a href={"#/topic/" + topicname} class="mr-2 font-bold">{topicname.toUpperCase()}</a>
       {/each}
     </h3>
-    <div class="">
+    <div class="mt-10">
       <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
         <div class="flex-nowrap">
           {#if item.image}
-            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image}" alt="{item.name}" />
+          <div class="mr-5">
+            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
+          </div>
+            
   
           <!-- {:else if item.links.includes('book')}
             <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
@@ -99,36 +104,29 @@
           <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
         </div>
         <!-- book details  -->
-        <div class="flex w-full flex-col justify-between ml-5">
+        <div class="flex w-full flex-col justify-between">
           <!-- title, sub title, author  -->
           <section>
             <h1 class="text-2xl">{item.name}</h1>
-            <!-- <p class="font max-w-lg">{item.description}</p> -->
-            <span class="text-sm">{item.creators}</span>
+            <span class="text-sm mt-5">{item.creators}</span>
+            <div class="mt-5">
+              <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
+            </div>
           </section>
           <!-- ratings and upload buttons -->
           <div class="mt-2 mb-6 flex flex-col justify-between">
-            <div class="flex justify-between items-center">
-              <div>
-                <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
-              </div>
-              
-              <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>
-  
-            </div>
-            
-  
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
-              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-lightTertiary dark:bg-darkTertiary text-lightBg dark:text-darkBg border" target="_blank"> {type.split("|")[0]} 
+              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium border drop-shadow-lg" target="_blank"> {type.split("|")[0]} 
                 <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
               </a>
               {/each}
             </div>
+            <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>    
           </div>
         </div>
       </div>
-      <hr />
+      <hr class="bg-lightPrimary"/>
       
       <!-- Description  -->
       {#if item.description}
@@ -138,10 +136,12 @@
       </section>
       {/if}
 
-      <hr />
+      
       <!-- details  -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+        
         {#if item.genre}
+          
         <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
           <div class="flex flex-col items-center">
             <h3 class="uppercase text-xs">genre</h3>
@@ -204,9 +204,10 @@
         </div>
         {/if}
       </div>
-      <hr />
+      
       <!-- review  -->
       {#if item.review}
+      <hr />
       <section class="my-8">
         <div class="flex justify-between items-center">
           <h2 class="text-base font-bold text-gray-100">Reviews</h2>
@@ -376,6 +377,7 @@
         </div>
       </section> -->
     </div>
+  </div> 
 {:else}
 	<p class="loading">loading...</p>
 {/if}
