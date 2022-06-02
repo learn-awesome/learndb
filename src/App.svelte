@@ -3,7 +3,7 @@
     import * as TailwindUI from "./tailwindui/index"
 
     import Home from "./Home.svelte"
-    import SkillTree from "./SkillTree.svelte"
+    import TreeMap from "./TreeMap.svelte"
     import TopicList from "./TopicList.svelte"
     import TopicDetail from "./TopicDetail.svelte"
     import FormatList from "./FormatList.svelte"
@@ -65,8 +65,8 @@
     <svelte:fragment slot="content">
         {#if currentView === "/home" || currentView === "/"}
             <Home/>
-        {:else if currentView === "/game"}
-            <SkillTree/>
+        {:else if currentView === "/map"}
+            <TreeMap/>
         {:else if currentView === "/topics"}
             <TopicList {alltopics}/>
         {:else if currentView.startsWith("/topic/")}
@@ -94,6 +94,10 @@
 
     <svelte:fragment slot="nav">
         <NavButtonWithLabel isActive={currentView === "/topics"} target="#/topics" label="Topics">
+            <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
+        <NavButtonWithLabel isActive={currentView === "/map"} target="#/map" label="TreeMap">
             <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 

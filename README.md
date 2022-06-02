@@ -1,16 +1,55 @@
 # LearnAwesome
 
-An offline-browsable collection of learning resources organized by topics, formats, difficulty level etc.
+This is a collection of learning resources organized by topics, formats, difficulty levels, and quality tags like visual / interactive / challenging etc. It also includes reviews from experts and metadata like paywall/loginwall to help you find the best resource for your learning goals.
 
-## Users
+For certain resources like research paper or books, there will be direct links thanks to projects like InternetArchive, LibGen, Arxiv, SciHub etc.
 
-Run `datasette . -o` in the top-level directory which opens the Datasette default view. Click on "home" in the top-left to open the custom UI which is much nicer.
+This requires us to build a giant taxonomy of all human knowledge. Arranging topics in a hierarchy is not sufficient. Instead we are creating a graph of topics and levels with multiple types of edges: "is-a-subtopic-of", "is-a-prerequisite-of" etc. If you are an expert or educator in some domain, you can contribute to this project via our GitHub repository.
 
-## Developers
+In conjunction with this, we're also building an online game where this is presented as a skill-tree for life and allows you to chase ambitious life goals and keep track of your progress while inspiring and being inspired by your friends. More on this will be revealed soon.
 
-When you modify the *.csv files in `db/`, generate the sqlite database with `./generatedb.sh`.
-Run `npm run dev` to keep building the JS bundle as you edit the source code.
+## To use:
 
-## Details
+[Visit https://learnawesome.vercel.app/](https://learnawesome.vercel.app/)
 
-The dataset here is identical to https://learnawesome.org/. But this runs on your computer so there are no user accounts, no social features like learning feeds or ActivityPub. Your bookmarks will be saved in browser's localStorage.
+This is the exact same version. Your bookmarks will still be saved in localStorage so be assured that no personal data is being tracked or saved on this site.
+
+But if you'd like faster performance or to self-host this, say in your company's intranet, you need a general-purpose computer (that means Linux/Windows/Mac but not crippled OSes like Android or iOS) with Datasette (which is an exploratory tool for SQLite databases) installed. You can find [installation instructions specific to your operating system here](https://docs.datasette.io/en/stable/installation.html).
+
+After cloning this git repository on your local machine, run `datasette . -o` in the top-level directory to start the datasette serve and open the app in your browser.
+
+## To contribute:
+
+This is a Wikipedia-scale project and we could use all kind of help:
+
+- Spread word about this project among your friends, family, colleagues and online followers
+- To donate funds, [visit our OpenCollective](https://opencollective.com/learnawesome)
+- To report bugs, [create an issue](https://github.com/learn-awesome/learndb/issues)
+- To improve our topic taxonomy (improve sub-topics / prerequisites etc), [raise a PR on our Github with changes in `db/topics.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve the data about learning resources, [raise a PR on our Github with changes in `db/items.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve design and suggest features, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
+- To fix technical bugs, [propose solutions on the issues](https://github.com/learn-awesome/learndb/issues)
+- For anything else, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
+
+## To develop:
+
+When you modify the *.csv files in `db/`, you should re-generate the sqlite database with `./generatedb.sh`.
+Run `npm run dev` to keep live-building the JS bundle as you edit the source code.
+And then run `datasette . -o` to open the app in your browser.
+
+You can install Datasette's Vercel plugin with: `datasette install datasette-publish-vercel`.
+To publish this, we first run `npm run build` followed by `npm run publish`.
+
+## Architecture
+
+The dataset here is identical to https://learnawesome.org/. But there are no user accounts, no social features like learning feeds or ActivityPub. Users' bookmarks are saved in browser's localStorage.
+
+The source data is in `db/*.csv` files. This is imported into a sqlite database with `./generatedb.sh`.
+We then rely on datasette to load this file and offer JSON APIs over HTTP.
+Settings and metadata are specified in `settings.json` and `metadata.json` which datasette uses.
+
+For the front-end, we write Svelte components in `src` and generate `bundle.js` and `bundle.css` via `npm run dev` / `npm run build`.
+
+These bundles are then used by `templates/index.html` which datasette loads on the first visit. We keep a second database file `dummy.db` in the same directory so that datasette opens `/` and not `/learn`.
+
+For UI, we make use of TailwindCSS (currently loaded via CDN with some plugins) and Shoelace.Style. Whenever possible, we use Shoelace's existing components.

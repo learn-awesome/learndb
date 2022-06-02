@@ -1,6 +1,6 @@
 <script>
     export let kind;
-    export let size;
+    export const size = 0;
 </script>
 
 {#if kind === 'home'}

@@ -43,12 +43,12 @@
 
     <sl-select class="ml-2 w-44"  on:sl-change="{e => query.tag = e.target.value}" value={query.tag}>
       <sl-menu-item value="">Any tag</sl-menu-item>
-      <sl-menu-item value="childlike">Inspirational</sl-menu-item>
-      <sl-menu-item value="beginner">Educational</sl-menu-item>
-      <sl-menu-item value="intermediate">Challenging</sl-menu-item>
-      <sl-menu-item value="advanced">Entertaining</sl-menu-item>
-      <sl-menu-item value="research">Visual</sl-menu-item>
-      <sl-menu-item value="research">Interactive</sl-menu-item>
+      <sl-menu-item value="inspirational">Inspirational</sl-menu-item>
+      <sl-menu-item value="educational">Educational</sl-menu-item>
+      <sl-menu-item value="challenging">Challenging</sl-menu-item>
+      <sl-menu-item value="entertaining">Entertaining</sl-menu-item>
+      <sl-menu-item value="visual">Visual</sl-menu-item>
+      <sl-menu-item value="interactive">Interactive</sl-menu-item>
     </sl-select>
 
     <sl-select class="ml-2 w-44"  on:sl-change="{e => query.level = e.target.value}" value={query.level}>

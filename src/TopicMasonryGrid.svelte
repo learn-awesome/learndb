@@ -1,5 +1,5 @@
 <script>
-    export let topicname; // undefined for top level
+    export let topicname = null; // undefined for top level
     let topic;
     export let alltopics;
     let map = new Map();

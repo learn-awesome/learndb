@@ -2,6 +2,7 @@
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
     import Icon from "./tailwindui/Icon.svelte"
+    import Review from "./Review.svelte"
     
     export let itemid;
     let item;
@@ -206,8 +207,7 @@
       </div>
       
       <!-- review  -->
-      {#if item.review}
-      <hr />
+      {#if reviews}
       <section class="my-8">
         <div class="flex justify-between items-center">
           <h2 class="text-base font-bold text-gray-100">Reviews</h2>
@@ -215,167 +215,12 @@
         
         <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2 scroll">
         {#each reviews as review}
-          <article class="px-3 py-4 bg-lightSecondary2 text-lightSecondary1 dark:bg-darkSecondary2 dark:text-darkSecondary1 rounded-lg text-xs w-48 max-w-sm shrink-0">
-            <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
-            <p class="mt-2 line-clamp">{review.blurb}</p>
-            <div class="mt-3">
-              <sl-rating value={review.rating}></sl-rating>
-              <span class="ml-2">...{review.by}</span>
-            </div>
-          </article>
+          <Review {review}/>
         {/each}
     
         </div>
       </section>
       {/if}
-      <!-- more books by same author  -->
-  
-      <!-- <section class="my-8 overflow-hidden">
-        <div class="flex justify-between items-center">
-          <h2 class="text-base font-bold">More Books by Priyanka Trivedi</h2>
-          <button class="float-right text-xs hover:underline">See All</button>
-        </div>
-        <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-auto">
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            <div class="flex flex-col items-start text-xs gap-1">
-              <h4 class="font-semibold">A Modest Proposal</h4>
-              <span class="text-gray-500">Priyanka Trivedi</span>
-              <button class="border rounded-2xl uppercase px-2 py-0.5 border-black">Get</button>
-            </div>
-          </div>
-        </div>  
-      
-      </section>
-      <hr /> -->
-  
-      <!-- Also bought  -->
-  
-      <!-- <section class="my-8 overflow-hidden">
-        <div class="flex justify-between items-center">
-          <h2 class="text-base font-bold">Other items on the same topics</h2>
-          <button class="text-xs hover:underline">See All</button>
-        </div>
-          
-          <div class="flex pb-5 mt-3 gap-2 w-full overflow-x-scroll">
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-    
-          <div class="shrink-0">
-            <div class="" >
-              <img class="mb-4 h-44 w-auto transform rounded-md border border-purple-200 shadow-md md:shadow-xl" src="{item.image}" alt="" />
-            </div>
-            
-          </div>
-        </div>
-      </section> -->
     </div>
   </div> 
 {:else}
