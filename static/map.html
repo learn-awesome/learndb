@@ -94,7 +94,7 @@ function hierarchy(topic_array, parent_id){
 d3.json("/learn/topics.json?_shape=array&_size=5000", function(alltopics){
   // console.log({alltopics});
   var root = hierarchy(alltopics, "");
-  console.log({root});
+  // console.log({root});
   initialize(root);
   accumulate(root);
   layout(root);

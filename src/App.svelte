@@ -97,10 +97,6 @@
             <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <NavButtonWithLabel isActive={currentView === "/map"} target="#/map" label="TreeMap">
-            <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
-        </NavButtonWithLabel>
-
         <NavButtonWithLabel isActive={currentView === "/formats"} target="#/formats" label="Formats">
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
