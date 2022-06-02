@@ -18,12 +18,27 @@ But if you'd like faster performance or to self-host this, say in your company's
 
 After cloning this git repository on your local machine, run `datasette . -o` in the top-level directory to start the datasette serve and open the app in your browser.
 
+## To contribute:
+
+This is a Wikipedia-scale project and we could use all kind of help:
+
+- Spread word about this project among your friends, family, colleagues and online followers
+- To donate funds, [visit our OpenCollective](https://opencollective.com/learnawesome)
+- To report bugs, [create an issue](https://github.com/learn-awesome/learndb/issues)
+- To improve our topic taxonomy (improve sub-topics / prerequisites etc), [raise a PR on our Github with changes in `db/topics.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve the data about learning resources, [raise a PR on our Github with changes in `db/items.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve design and suggest features, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
+- To fix technical bugs, [propose solutions on the issues](https://github.com/learn-awesome/learndb/issues)
+- For anything else, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
+
 ## To develop:
 
 When you modify the *.csv files in `db/`, you should re-generate the sqlite database with `./generatedb.sh`.
 Run `npm run dev` to keep live-building the JS bundle as you edit the source code.
+And then run `datasette . -o` to open the app in your browser.
 
-To publish this on Vercel, we first run `npm run build` followed by `npm run publish`.
+You can install Datasette's Vercel plugin with: `datasette install datasette-publish-vercel`.
+To publish this, we first run `npm run build` followed by `npm run publish`.
 
 ## Architecture
 
