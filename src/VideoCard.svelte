@@ -19,19 +19,19 @@
       oEmded_image_ytb_url = data.thumbnail_url    
     });
   
-  function youtube_parser(url){
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return (match&&match[7].length==11)? match[7] : false;
-  }
+  // function youtube_parser(url){
+  //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  //   var match = url.match(regExp);
+  //   return (match&&match[7].length==11)? match[7] : false;
+  // }
 
-  function get_thumbnail_image_url(item){
-    let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
-    let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
-    let ytid = youtubeurl && youtube_parser(youtubeurl);
-    let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
-    return thumbnail_image_url
-  }
+  // function get_thumbnail_image_url(item){
+  //   let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
+  //   let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
+  //   let ytid = youtubeurl && youtube_parser(youtubeurl);
+  //   let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
+  //   return thumbnail_image_url
+  // }
 
 </script>
 

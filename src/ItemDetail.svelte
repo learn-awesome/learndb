@@ -8,20 +8,6 @@
     let item;
     let reviews = [];
 
-    function youtube_parser(url){
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return (match&&match[7].length==11)? match[7] : false;
-  }
-
-  function get_thumbnail_image_url(item){
-    let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
-    let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
-    let ytid = youtubeurl && youtube_parser(youtubeurl);
-    let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
-    return thumbnail_image_url
-  }
-
     $: fetch(`/learn/items/${itemid}.json?_shape=object`)
         .then(r => r.json())
         .then(data => {
@@ -43,17 +29,42 @@
       bookmarks.set(newobj)
     }
 
+    let oEmded_image_ytb_url = null;
+
+  function oEmded_image(item){
+      let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
+      let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
+
+      if(!youtubeurl) return;
+
+      return `https://www.youtube.com/oembed?url=${youtubeurl}&format=json`
+    }
+  
+  $: item && item.links.includes('video|') && oEmded_image(item) && fetch(oEmded_image(item))
+    .then( r => r.json())
+    .then(data => {
+      oEmded_image_ytb_url = data.thumbnail_url    
+    });
+
     
+
+  //   function youtube_parser(url){
+  //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  //   var match = url.match(regExp);
+  //   return (match&&match[7].length==11)? match[7] : false;
+  // }
+
+  // function get_thumbnail_image_url(item){
+  //   let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
+  //   let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
+  //   let ytid = youtubeurl && youtube_parser(youtubeurl);
+  //   let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
+  //   return thumbnail_image_url
+  // }
 
 </script>
 
 <style>
-  .line-clamp{
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-  }
   .scroll{
     scrollbar-width: thin;
     scrollbar-color: rgb(31 41 55);
@@ -72,7 +83,7 @@
 
 {#if item}
   
-  <div class="max-w-4xl mx-auto border shadow-2xl px-20 py-8 rounded-xl mt-20">
+  <div class="max-w-4xl mx-auto border shadow-2xl px-20 py-8 rounded-xl mt-20 bg-white font-sans">
     <h3 class="my-2">
       {#each item.topics.split(";") as topicname}
       <a href={"#/topic/" + topicname} class="mr-2 font-bold">{topicname.toUpperCase()}</a>
@@ -81,26 +92,29 @@
     <div class="mt-10">
       <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
         <div class="flex-nowrap">
+
           {#if item.image}
-          <div class="mr-5">
-            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
+          <div class="mr-10">
+            <img class="mr-28 mb-6 w-44 h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
           </div>
-            
   
           <!-- {:else if item.links.includes('book')}
-            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" /> -->
   
-          {:else if item.links.includes('video')}
-            <div class="relative">
-              <img class="h-28 w-44 flex justify-center items-center border-r border-gray-500 relative" src="{get_thumbnail_image_url(item)}" alt="{item.name}">
+          {:else if item.links.includes('video') }
+            <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
+              <div class="w-80 h-60 bg-lightPrimary">
+                <img class="h-auto w-80 flex justify-center items-center border-r border-gray-500 relative" src="{oEmded_image_ytb_url}" alt="{item.name}">
+              </div>
               <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
                 <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
               </div>
             </div>
   
-          {:else}
-            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" /> -->
-  
+          {:else if !item.links.includes('video') && item.links.includes('book')}
+          <div class="mr-10 shadow-lg">
+            <img class="mr-28 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+          </div>
           {/if}
           <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
         </div>
@@ -108,7 +122,7 @@
         <div class="flex w-full flex-col justify-between">
           <!-- title, sub title, author  -->
           <section>
-            <h1 class="text-2xl">{item.name}</h1>
+            <h1 class="text-4xl">{item.name}</h1>
             <span class="text-sm mt-5">{item.creators}</span>
             <div class="mt-5">
               <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
@@ -118,7 +132,7 @@
           <div class="mt-2 mb-6 flex flex-col justify-between">
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
-              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium border drop-shadow-lg" target="_blank"> {type.split("|")[0]} 
+              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-lightPrimary border drop-shadow-lg hover:scale-x-105" title='Visit the original link' target="_blank"> {type.split("|")[0]} 
                 <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
               </a>
               {/each}
@@ -132,8 +146,8 @@
       <!-- Description  -->
       {#if item.description}
       <section class="my-8">
-        <h2 class="text-base font-bold ">Description</h2>
-        <p class="mt-4 text-sm max-w-lg">{item.description}</p>
+        <h2 class="font-bold text-lg">Description</h2>
+        <p class="mt-4 tracking-wide">{item.description}</p>
       </section>
       {/if}
 
@@ -207,10 +221,10 @@
       </div>
       
       <!-- review  -->
-      {#if reviews}
+      {#if reviews.length > 0}
       <section class="my-8">
         <div class="flex justify-between items-center">
-          <h2 class="text-base font-bold text-gray-100">Reviews</h2>
+          <h2 class="text-base font-bold">Reviews</h2>
         </div>
         
         <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2 scroll">

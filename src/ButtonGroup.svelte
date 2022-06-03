@@ -22,7 +22,7 @@
        relative inline-flex flex-nowrap items-center px-4 py-2 
       {i == 0 && 'rounded-l-md'}
       {i == tabs.length-1 && 'rounded-r-md'} 
-      border border-gray-800 text-sm font-medium focus:z-10 focus:outline-none 
+      border border-gray-800 text-sm font-medium hover:scale-x-105 focus:z-10 focus:outline-none 
       {currentlySelected === i? 'bg-lightTertiary text-lightBg dark:bg-darkTertiary dark:text-darkBg' : 'bg-lightPrimCont text-lightPrimary'}
      "
   >
