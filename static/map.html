@@ -21,7 +21,7 @@ body {
 }
 
 text {
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .grandparent text {
@@ -49,6 +49,16 @@ rect.parent,
 .children rect.parent,
 .grandparent rect {
   cursor: pointer;
+}
+
+.leaf rect.parent {
+  cursor: pointer;
+  fill: #c9d9ff;
+}
+
+.leaf rect.parent:hover {
+  cursor: pointer;
+  fill: #d9e9ff;
 }
 
 .children rect.parent {
@@ -203,7 +213,11 @@ grandparent.append("text")
       .classed("children", true)
       .on("click", transition);
 
-    g.selectAll(".child")
+    g.filter(function(d) { return !d._children; })
+      .classed("leaf", true)
+      .on("click",(n) => { window.parent.location.href = "/#/topic/" + n.name;});
+
+    g.filter(function(d) { return d._children; }).selectAll(".child")
       .data(function(d) { return d._children || [d]; })
       .enter().append("rect")
       .attr("class", "child")
@@ -217,6 +231,7 @@ grandparent.append("text")
 
     g.append("text")
       .attr("dy", ".75em")
+      .on("click", (n) => { window.parent.location.href = "/#/topic/" + n.name;})
       .text(function(d) { return d.name.split('{')[0].split('(')[0]
 			  .split('[')[0]; })
       .call(text);
@@ -260,7 +275,8 @@ grandparent.append("text")
 
   function text(text) {
     text.attr("x", function(d) { return x(d.x) + 10; })
-      .attr("y", function(d) { return y(d.y) + 10; });
+      .attr("y", function(d) { return y(d.y) + 10; })
+      .attr("text-decoration","underline");
   }
 
   function rect(rect) {

@@ -16,7 +16,7 @@ This is the exact same version. Your bookmarks will still be saved in localStora
 
 But if you'd like faster performance or to self-host this, say in your company's intranet, you need a general-purpose computer (that means Linux/Windows/Mac but not crippled OSes like Android or iOS) with Datasette (which is an exploratory tool for SQLite databases) installed. You can find [installation instructions specific to your operating system here](https://docs.datasette.io/en/stable/installation.html).
 
-After cloning this git repository on your local machine, run `datasette . -o` in the top-level directory to start the datasette serve and open the app in your browser.
+After cloning this git repository on your local machine, run `npm run start` in the top-level directory to start the datasette server and open the app in your browser.
 
 ## To contribute:
 
@@ -26,7 +26,7 @@ This is a Wikipedia-scale project and we could use all kind of help:
 - To donate funds, [visit our OpenCollective](https://opencollective.com/learnawesome)
 - To report bugs, [create an issue](https://github.com/learn-awesome/learndb/issues)
 - To improve our topic taxonomy (improve sub-topics / prerequisites etc), [raise a PR on our Github with changes in `db/topics.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
-- To improve the data about learning resources, [raise a PR on our Github with changes in `db/items.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve the data about learning resources, first read [db/README.md](db/README.md) and [raise a PR on our Github with changes in `db/items.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
 - To improve design and suggest features, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
 - To fix technical bugs, [propose solutions on the issues](https://github.com/learn-awesome/learndb/issues)
 - For anything else, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
@@ -34,8 +34,7 @@ This is a Wikipedia-scale project and we could use all kind of help:
 ## To develop:
 
 When you modify the *.csv files in `db/`, you should re-generate the sqlite database with `./generatedb.sh`.
-Run `npm run dev` to keep live-building the JS bundle as you edit the source code.
-And then run `datasette . -o` to open the app in your browser.
+Run `npm run dev` to keep live-building the JS bundle as you edit the source code. This automatically runs `datasette . -o` to open the app in your browser.
 
 You can install Datasette's Vercel plugin with: `datasette install datasette-publish-vercel`.
 To publish this, we first run `npm run build` followed by `npm run publish`.
@@ -44,7 +43,8 @@ To publish this, we first run `npm run build` followed by `npm run publish`.
 
 The dataset here is identical to https://learnawesome.org/. But there are no user accounts, no social features like learning feeds or ActivityPub. Users' bookmarks are saved in browser's localStorage.
 
-The source data is in `db/*.csv` files. This is imported into a sqlite database with `./generatedb.sh`.
+The source data is in `db/*.csv` files. The schema is described in [db/README.md](db/README.md).
+These CSV files get imported into a sqlite database with `./generatedb.sh`.
 We then rely on datasette to load this file and offer JSON APIs over HTTP.
 Settings and metadata are specified in `settings.json` and `metadata.json` which datasette uses.
 
