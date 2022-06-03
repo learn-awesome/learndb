@@ -6,6 +6,7 @@
         <title>TreeMap</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <style>
 body {
   margin: 0px;
@@ -21,7 +22,9 @@ body {
 }
 
 text {
-  pointer-events: none;
+  cursor: pointer;
+  fill: #7a28cb;
+  
 }
 
 .grandparent text {
@@ -39,11 +42,11 @@ rect.parent,
 }
 
 .grandparent rect {
-  fill: rgb(232, 255, 0);
+  fill: #f4b393;
 }
 
 .grandparent:hover rect {
-  fill: rgb(202, 225, 0);
+  fill: #f4d393;
 }
 
 .children rect.parent,
@@ -51,21 +54,30 @@ rect.parent,
   cursor: pointer;
 }
 
+.leaf rect.parent {
+  cursor: pointer;
+  fill: #ffdbd1;
+}
+
+.leaf rect.parent:hover {
+  cursor: pointer;
+  fill: #ffcfd4;
+}
+
 .children rect.parent {
-  fill: #99F6E4;
+  fill: #ceec97;
   fill-opacity: .5;
 }
 
 .children:hover rect.child {
-  fill: #D7CBFA;
+  fill: #deec97;
 }
 
         </style>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     </head>
     <body>
 	<p id="chart"></p>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
 
 function hierarchy(topic_array, parent_id){
@@ -78,8 +90,8 @@ function hierarchy(topic_array, parent_id){
       .map(item => ({ ...item, children: nest(items, item.name), value: 100 }))
       .map(item => {
         return item.children.length == 0 ?
-        {id: item.name, name: item.name.split("/").reverse()[0], value: 100} :
-        {id: item.name, name: item.name.split("/").reverse()[0], children: item.children}
+        {id: item.name, name: item.name, value: 100} :
+        {id: item.name, name: item.name, children: item.children}
       });
 
     let topnodes = nest(topic_array, ''); // includes childless nodes
@@ -88,13 +100,13 @@ function hierarchy(topic_array, parent_id){
     let misc = {id: 'misc', name: 'Misc', children: topnodes.filter(t => t.value).slice(0,15)};
 
 
-    return {name: "·", children: [...topnodes.filter(t => t.children), misc]};
+    return {name: "", children: [...topnodes.filter(t => t.children), misc]};
 }
 
 d3.json("/learn/topics.json?_shape=array&_size=5000", function(alltopics){
   // console.log({alltopics});
   var root = hierarchy(alltopics, "");
-  console.log({root});
+  // console.log({root});
   initialize(root);
   accumulate(root);
   layout(root);
@@ -203,7 +215,11 @@ grandparent.append("text")
       .classed("children", true)
       .on("click", transition);
 
-    g.selectAll(".child")
+    g.filter(function(d) { return !d._children; })
+      .classed("leaf", true)
+      .on("click",(n) => { window.parent.location.href = "/#/topic/" + n.name;});
+
+    g.filter(function(d) { return d._children; }).selectAll(".child")
       .data(function(d) { return d._children || [d]; })
       .enter().append("rect")
       .attr("class", "child")
@@ -217,7 +233,8 @@ grandparent.append("text")
 
     g.append("text")
       .attr("dy", ".75em")
-      .text(function(d) { return d.name.split('{')[0].split('(')[0]
+      .on("click", (n) => { window.parent.location.href = "/#/topic/" + n.name;})
+      .text(function(d) { return d.name.split('/').reverse()[0].split('{')[0].split('(')[0]
 			  .split('[')[0]; })
       .call(text);
 
@@ -260,7 +277,8 @@ grandparent.append("text")
 
   function text(text) {
     text.attr("x", function(d) { return x(d.x) + 10; })
-      .attr("y", function(d) { return y(d.y) + 10; });
+      .attr("y", function(d) { return y(d.y) + 10; })
+      .attr("text-decoration","underline");
   }
 
   function rect(rect) {

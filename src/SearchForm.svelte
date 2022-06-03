@@ -3,16 +3,12 @@
   import { createEventDispatcher } from 'svelte';
 
   export let alltopics;
-  export let hideFormat = false;
   export let hideTopic = false;
-  export let hideQuality = true;
 
   let query = {
     text: "",
     topic: "",
-    format: "",
     level: "",
-    quality: "",
     sortby: "rating",
     tag: ""
   };
@@ -24,24 +20,19 @@
 </script>
 
 <form class="w-full p-2 inline-flex flex-wrap" on:submit|preventDefault>
-    <sl-input type="search" placeholder="Type something to search items by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
+    <sl-input type="search" placeholder="Search by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
       <sl-icon name="search" slot="prefix"></sl-icon>
     </sl-input>
 
     {#if !hideTopic}
-    <ComboBox options={alltopics.map(t => { return {label: t.display_name, value: t.name}; }).sort((a,b) => a.label.localeCompare(b.label)).slice(0,10)} selected={null}/>
+      <fluent-combobox autocomplete="both" placeholder="Any topic" class="ml-2 mt-1 outline-none border-2 border-grey-600" on:change="{e => query.topic = e.target.value}">
+        {#each alltopics.sort((a,b) => a.display_name.localeCompare(b.display_name)) as topic}
+          <fluent-option value={topic.name}>{topic.display_name}</fluent-option>
+        {/each}
+      </fluent-combobox>
     {/if}
 
-    {#if !hideFormat}
-    <sl-select class="ml-2 w-44"  on:sl-change="{e => query.format = e.target.value}" value={query.format}>
-      <sl-menu-item value="">Any format</sl-menu-item>
-      <sl-menu-item value="book">Books</sl-menu-item>
-      <sl-menu-item value="video">Videos</sl-menu-item>
-      <sl-menu-item value="audio">Podcasts</sl-menu-item>
-    </sl-select>
-    {/if}
-
-    <sl-select class="ml-2 w-44"  on:sl-change="{e => query.tag = e.target.value}" value={query.tag}>
+    <sl-select class="ml-2 w-52"  on:sl-change="{e => query.tag = e.target.value}" value={query.tag}>
       <sl-menu-item value="">Any tag</sl-menu-item>
       <sl-menu-item value="inspirational">Inspirational</sl-menu-item>
       <sl-menu-item value="educational">Educational</sl-menu-item>
@@ -49,6 +40,7 @@
       <sl-menu-item value="entertaining">Entertaining</sl-menu-item>
       <sl-menu-item value="visual">Visual</sl-menu-item>
       <sl-menu-item value="interactive">Interactive</sl-menu-item>
+      <sl-menu-item value="oer">Open (no login or pay)</sl-menu-item>
     </sl-select>
 
     <sl-select class="ml-2 w-44"  on:sl-change="{e => query.level = e.target.value}" value={query.level}>
@@ -59,15 +51,6 @@
       <sl-menu-item value="advanced">Advanced</sl-menu-item>
       <sl-menu-item value="research">Research</sl-menu-item>
     </sl-select>
-
-    {#if !hideQuality}
-    <sl-select class="ml-2 w-44"  on:sl-change="{e => query.quality = e.target.value}" value={query.quality}>
-      <sl-menu-item value="">Any quality</sl-menu-item>
-      <sl-menu-item value="visual">Visual</sl-menu-item>
-      <sl-menu-item value="interactive">Interactive</sl-menu-item>
-      <sl-menu-item value="entertaining">Entertaining</sl-menu-item>
-    </sl-select>
-    {/if}
 
     <sl-select class="ml-2 w-52" on:sl-change="{e => query.sortby = e.target.value}" value={query.sortby}>
       <sl-icon name="sort-down-alt" slot="prefix"></sl-icon>

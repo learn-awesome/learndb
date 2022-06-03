@@ -14,9 +14,8 @@
     let query = {
         text: "",
         topic: "",
-        format: "",
         level: "",
-        tags: "",
+        tag: "",
         sortby: "rating"
     };
 
@@ -28,15 +27,14 @@
         });  
     
     function handleQueryChanged(event){
-        console.log("queryChanged: ", event.detail);
+        // console.log("queryChanged: ", event.detail);
         query = event.detail;
     }
 
     $:  filteredItems = items.filter(item => {
             if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
-            if(query.format && !item.links.includes(query.format)) { return false; }
             if(query.level && item.difficulty != query.level){ return false; }
-            // TODO: apply tags filter
+            if(query.tag && !item.tags.includes(query.tag)){ return false; }
             return true;
         }).sort((a,b) => {
             if(query.sortby == 'rating') { return (a.rating - b.rating) };

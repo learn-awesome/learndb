@@ -10,28 +10,27 @@
     let query = {
         text: "",
         topic: "",
-        format: "",
         level: "",
-        tags: "",
+        tag: "",
         sortby: "rating"
     };
 
-    $: fetch(`/learn/items.json?_shape=array&links__contains=${format}|`)
+    $: query && fetch(`/learn/items.json?_shape=array&_size=100&links__contains=${format}|&topics__contains=${query.topic}`)
         .then(r => r.json())
         .then(data => {
             items = data;
         });
 
     function handleQueryChanged(event){
-        console.log("queryChanged: ", event.detail);
+        // console.log("queryChanged: ", event.detail);
         query = event.detail;
     }
 
     $:  filteredItems = items.filter(item => {
             if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
-            if(query.format && !item.links.includes(query.format)) { return false; }
+            if(query.topic && !item.topics.includes(query.topic)){ return false; }
             if(query.level && item.difficulty != query.level){ return false; }
-            // TODO Apply tags filter
+            if(query.tag && !item.tags.includes(query.tag)){ return false; }
             return true;
         }).sort((a,b) => {
             if(query.sortby == 'rating') { return (a.rating - b.rating) };

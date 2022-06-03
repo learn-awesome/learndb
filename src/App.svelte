@@ -97,10 +97,6 @@
             <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <NavButtonWithLabel isActive={currentView === "/map"} target="#/map" label="TreeMap">
-            <LibraryIcon class=" flex-shrink-0 h-6 w-6"/>
-        </NavButtonWithLabel>
-
         <NavButtonWithLabel isActive={currentView === "/formats"} target="#/formats" label="Formats">
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
@@ -127,11 +123,6 @@
         <NavButtonWithLabel isActive={currentView === "/finishedlearning"} target="#/finishedlearning" label="Finished learning">
             <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
-        
-        <a href="/learn" target="_blank" class="text-indigo-100 hover:bg-lightSecondary1 hover:text-lightSecondary2 hover:dark:bg-darkPrimaryBg w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium hover:dark:text-darkSecondary2 mb-5 pl-4">
-            <CogIcon class=" flex-shrink-0 h-6 w-6 "/>
-            <h3 class="text-center"> Datasette</h3>
-        </a>
 
     </svelte:fragment>
 </TailwindUI.AppShell>
