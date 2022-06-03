@@ -72,12 +72,12 @@
         {#if topic}
             {#if topic.parent_id}
                 <sl-breadcrumb-item href={"#/topic/"  + topic.parent_id}>
-                    {capitalize(topic.parent_id)}
+                    {capitalize(topic.parent_id.replace('-',' '))}
                 </sl-breadcrumb-item>
             {/if}
              {#if topic.display_name}
                 <sl-breadcrumb-item href={"#/topic/" + topic.name}>
-                    {capitalize(topic.display_name)}
+                    {capitalize(topic.display_name.split('/').reverse()[0])}
                 </sl-breadcrumb-item>
             {/if}   
         {/if}

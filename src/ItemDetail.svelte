@@ -22,6 +22,10 @@
     return thumbnail_image_url
   }
 
+  function get_tld(url){
+    return (new URL(url)).hostname.replace('www.','');
+  }
+
     $: fetch(`/learn/items/${itemid}.json?_shape=object`)
         .then(r => r.json())
         .then(data => {
@@ -43,7 +47,10 @@
       bookmarks.set(newobj)
     }
 
-    
+    function wikiUrlForEmbed(item){
+      var wikiurl = item.links.split(";").find((l) => l.includes('wiki|')).split('|')[1];
+      return wikiurl.replace('simple.wikipedia.org/','simple.m.wikipedia.org/').replace('en.wikipedia.org/','en.m.wikipedia.org/');
+    }
 
 </script>
 
@@ -108,7 +115,7 @@
         <div class="flex w-full flex-col justify-between">
           <!-- title, sub title, author  -->
           <section>
-            <h1 class="text-2xl">{item.name}</h1>
+            <h1 class="text-4xl font-extrabold">{item.name}</h1>
             <span class="text-sm mt-5">{item.creators}</span>
             <div class="mt-5">
               <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
@@ -118,7 +125,7 @@
           <div class="mt-2 mb-6 flex flex-col justify-between">
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
-              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium border drop-shadow-lg" target="_blank"> {type.split("|")[0]} 
+              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium border drop-shadow-lg" target="_blank"> {type.split("|")[0]} at {get_tld(type.split("|")[1])}
                 <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
               </a>
               {/each}
@@ -206,8 +213,8 @@
         {/if}
       </div>
       
-      <!-- review  -->
-      {#if reviews}
+      <!-- reviews  -->
+      {#if reviews.length > 0}
       <section class="my-8">
         <div class="flex justify-between items-center">
           <h2 class="text-base font-bold text-gray-100">Reviews</h2>
@@ -220,6 +227,10 @@
     
         </div>
       </section>
+      {/if}
+
+      {#if item.links.includes('wiki|')}
+      <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
       {/if}
     </div>
   </div> 

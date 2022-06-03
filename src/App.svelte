@@ -12,7 +12,7 @@
     import ItemDetail from "./ItemDetail.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
-    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon } from "@rgossiaux/svelte-heroicons/outline";
+    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon } from "@rgossiaux/svelte-heroicons/outline";
     import Bookmarks from './Bookmarks.svelte';
 
     let currentView = "/topics";
@@ -122,6 +122,10 @@
 
         <NavButtonWithLabel isActive={currentView === "/finishedlearning"} target="#/finishedlearning" label="Finished learning">
             <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
+        <NavButtonWithLabel target="https://github.com/learn-awesome/learndb" label="Contribute">
+            <SupportIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
     </svelte:fragment>
