@@ -23,6 +23,8 @@ body {
 
 text {
   cursor: pointer;
+  fill: #7a28cb;
+  
 }
 
 .grandparent text {
@@ -40,11 +42,11 @@ rect.parent,
 }
 
 .grandparent rect {
-  fill: rgb(232, 255, 0);
+  fill: #f4b393;
 }
 
 .grandparent:hover rect {
-  fill: rgb(202, 225, 0);
+  fill: #f4d393;
 }
 
 .children rect.parent,
@@ -54,21 +56,21 @@ rect.parent,
 
 .leaf rect.parent {
   cursor: pointer;
-  fill: #c9d9ff;
+  fill: #ffdbd1;
 }
 
 .leaf rect.parent:hover {
   cursor: pointer;
-  fill: #d9e9ff;
+  fill: #ffcfd4;
 }
 
 .children rect.parent {
-  fill: #99F6E4;
+  fill: #ceec97;
   fill-opacity: .5;
 }
 
 .children:hover rect.child {
-  fill: #D7CBFA;
+  fill: #deec97;
 }
 
         </style>
@@ -88,8 +90,8 @@ function hierarchy(topic_array, parent_id){
       .map(item => ({ ...item, children: nest(items, item.name), value: 100 }))
       .map(item => {
         return item.children.length == 0 ?
-        {id: item.name, name: item.name.split("/").reverse()[0], value: 100} :
-        {id: item.name, name: item.name.split("/").reverse()[0], children: item.children}
+        {id: item.name, name: item.name, value: 100} :
+        {id: item.name, name: item.name, children: item.children}
       });
 
     let topnodes = nest(topic_array, ''); // includes childless nodes
@@ -98,7 +100,7 @@ function hierarchy(topic_array, parent_id){
     let misc = {id: 'misc', name: 'Misc', children: topnodes.filter(t => t.value).slice(0,15)};
 
 
-    return {name: "·", children: [...topnodes.filter(t => t.children), misc]};
+    return {name: "", children: [...topnodes.filter(t => t.children), misc]};
 }
 
 d3.json("/learn/topics.json?_shape=array&_size=5000", function(alltopics){
@@ -232,7 +234,7 @@ grandparent.append("text")
     g.append("text")
       .attr("dy", ".75em")
       .on("click", (n) => { window.parent.location.href = "/#/topic/" + n.name;})
-      .text(function(d) { return d.name.split('{')[0].split('(')[0]
+      .text(function(d) { return d.name.split('/').reverse()[0].split('{')[0].split('(')[0]
 			  .split('[')[0]; })
       .call(text);
 

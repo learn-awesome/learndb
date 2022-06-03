@@ -84,7 +84,7 @@
     </sl-breadcrumb>
 </div>
 
-<div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 mb-8">
+<div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 3xl:columns-5 mb-8">
   {#each [...map.entries()].sort((t1,t2) => (t1[0].sort_index || 100) - (t2[0].sort_index || 100)) as parent}
     <a href={"#/topic/" + parent[0].name}>
         <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 border-8 border-lightPrimCont dark:border-darkPrimCont hover:bg-lightPrimCont dark:bg-darkPrimCont ">
