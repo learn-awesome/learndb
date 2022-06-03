@@ -12,9 +12,15 @@ In conjunction with this, we're also building an online game where this is prese
 
 [Visit https://learnawesome.vercel.app/](https://learnawesome.vercel.app/)
 
-This is the exact same version. Your bookmarks will still be saved in localStorage so be assured that no personal data is being tracked or saved on this site.
+<img width="1689" alt="image" src="https://user-images.githubusercontent.com/19304/171865328-b8c22482-15d7-476e-9b91-a1c482809f29.png">
 
-But if you'd like faster performance or to self-host this, say in your company's intranet, you need a general-purpose computer (that means Linux/Windows/Mac but not crippled OSes like Android or iOS) with Datasette (which is an exploratory tool for SQLite databases) installed. You can find [installation instructions specific to your operating system here](https://docs.datasette.io/en/stable/installation.html).
+<img width="1697" alt="image" src="https://user-images.githubusercontent.com/19304/171865412-e3bec0b3-3205-4f89-8d95-4c0af8476c7a.png">
+
+<img width="1687" alt="image" src="https://user-images.githubusercontent.com/19304/171865546-9cd68586-a096-4754-a78f-9aaebe6164ae.png">
+
+Your bookmarks are saved in localStorage so be assured that no personal data is being tracked or saved on this site.
+
+But if you'd like faster performance or to self-host this, you need a general-purpose computer (that means Linux/Windows/Mac) with Datasette (which is an exploratory tool for SQLite databases) installed. You can find [installation instructions specific to your operating system here](https://docs.datasette.io/en/stable/installation.html).
 
 After cloning this git repository on your local machine, run `npm run start` in the top-level directory to start the datasette server and open the app in your browser.
 
