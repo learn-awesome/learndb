@@ -97,7 +97,9 @@
         <div class="mt-5 flex-1 flex flex-col bg-lightTertiary text-lightBg">
           <nav class="flex-1 pb-4 space-y-1">
             <slot name="nav"></slot>
-            <button on:click={themeRandomize}>Randomize</button>
+            {#if window.location.href.startsWith('http://127.0.0.1')}
+            <button class="" on:click={themeRandomize}>Randomize</button>
+            {/if}
           </nav>
         </div>
       </div>
