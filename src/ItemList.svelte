@@ -16,7 +16,7 @@
         
                 {#if format.id == 'book'}
                 <sl-tab-panel name={format.id} active={i == 0}>
-                    <div class="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+                    <div class="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
                         {#each items.filter(x => x.links.includes(format.id + '|')) as item}
                         <BookCard {item}/>
                         {/each}

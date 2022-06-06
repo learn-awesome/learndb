@@ -19,7 +19,7 @@
 
 </script>
 
-<form class="w-full p-2 inline-flex flex-wrap" on:submit|preventDefault>
+<form class="w-full p-2 gap-3 mt-12 inline-flex flex-wrap" on:submit|preventDefault>
     <sl-input type="search" placeholder="Search by keywords" size="medium" clearable class="flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
       <sl-icon name="search" slot="prefix"></sl-icon>
     </sl-input>
@@ -32,7 +32,7 @@
       </fluent-combobox>
     {/if}
 
-    <sl-select class="ml-2 w-52"  on:sl-change="{e => query.tag = e.target.value}" value={query.tag}>
+    <sl-select class="w-52"  on:sl-change="{e => query.tag = e.target.value}" value={query.tag}>
       <sl-menu-item value="">Any tag</sl-menu-item>
       <sl-menu-item value="inspirational">Inspirational</sl-menu-item>
       <sl-menu-item value="educational">Educational</sl-menu-item>
@@ -43,7 +43,7 @@
       <sl-menu-item value="oer">Open (no login or pay)</sl-menu-item>
     </sl-select>
 
-    <sl-select class="ml-2 w-44"  on:sl-change="{e => query.level = e.target.value}" value={query.level}>
+    <sl-select class="w-44"  on:sl-change="{e => query.level = e.target.value}" value={query.level}>
       <sl-menu-item value="">Any level</sl-menu-item>
       <sl-menu-item value="childlike">Childlike</sl-menu-item>
       <sl-menu-item value="beginner">Beginner</sl-menu-item>
@@ -52,7 +52,7 @@
       <sl-menu-item value="research">Research</sl-menu-item>
     </sl-select>
 
-    <sl-select class="ml-2 w-52" on:sl-change="{e => query.sortby = e.target.value}" value={query.sortby}>
+    <sl-select class="w-52" on:sl-change="{e => query.sortby = e.target.value}" value={query.sortby}>
       <sl-icon name="sort-down-alt" slot="prefix"></sl-icon>
       <sl-menu-item value="rating">Sort by Rating</sl-menu-item>
       <sl-menu-item value="year">Sort by Year</sl-menu-item>

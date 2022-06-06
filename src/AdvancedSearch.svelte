@@ -11,6 +11,7 @@
 
   function resetQuery(){
     query = '';
+    showSearch =false;
   }
 
   $: query && fetch(`/learn/items.json?_shape=array&name__contains=${query}&_size=6`)
