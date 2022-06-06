@@ -47,6 +47,10 @@
     });
 
     
+    function wikiUrlForEmbed(item){
+      var wikiurl = item.links.split(";").find((l) => l.includes('wiki|')).split('|')[1];
+      return wikiurl.replace('simple.wikipedia.org/','simple.m.wikipedia.org/').replace('en.wikipedia.org/','en.m.wikipedia.org/');
+    }
 
   //   function youtube_parser(url){
   //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
@@ -122,7 +126,7 @@
         <div class="flex w-full flex-col justify-between">
           <!-- title, sub title, author  -->
           <section>
-            <h1 class="text-4xl">{item.name}</h1>
+            <h1 class="text-4xl font-extrabold">{item.name}</h1>
             <span class="text-sm mt-5">{item.creators}</span>
             <div class="mt-5">
               <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
@@ -132,9 +136,22 @@
           <div class="mt-2 mb-6 flex flex-col justify-between">
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
-              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border-lightPrimary border drop-shadow-lg hover:scale-x-105" title='Visit the original link' target="_blank"> {type.split("|")[0]} 
-                <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
-              </a>
+              <sl-button-group>
+                <sl-button size="small" href={type.split("|")[1]} target="_blank">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
+                {#if type.split("|")[2]}
+                  <sl-dropdown placement="bottom-end" on:sl-select="{e => document.location.href = e.detail.item.value}">
+                    <sl-button slot="trigger" size="small" caret>
+                      <sl-icon name="cloud-download"></sl-icon>
+                    </sl-button>
+                    <sl-menu>
+                      <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2]}>Cloudflare</sl-menu-item>
+                      <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2]}>IPFS.io</sl-menu-item>
+                      <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2]}>Infura</sl-menu-item>
+                      <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2]}>Pinata</sl-menu-item>
+                    </sl-menu>
+                  </sl-dropdown>
+                {/if}
+              </sl-button-group>
               {/each}
             </div>
             <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>    
@@ -220,7 +237,7 @@
         {/if}
       </div>
       
-      <!-- review  -->
+      <!-- reviews  -->
       {#if reviews.length > 0}
       <section class="my-8">
         <div class="flex justify-between items-center">
@@ -234,6 +251,10 @@
     
         </div>
       </section>
+      {/if}
+
+      {#if item.links.includes('wiki|')}
+      <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
       {/if}
     </div>
   </div> 

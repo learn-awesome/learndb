@@ -10,9 +10,10 @@
     import FormatDetail from "./FormatDetail.svelte"
     import CourseList from "./CourseList.svelte"
     import ItemDetail from "./ItemDetail.svelte"
+    import Settings from "./Settings.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
-    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon } from "@rgossiaux/svelte-heroicons/outline";
+    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon } from "@rgossiaux/svelte-heroicons/outline";
     import Bookmarks from './Bookmarks.svelte';
 
     let currentView = "/topics";
@@ -87,6 +88,8 @@
             <Bookmarks kind={0}/>
         {:else if currentView === "/finishedlearning"}
             <Bookmarks kind={1}/>
+        {:else if currentView === "/settings"}
+            <Settings/>
         {/if}
 
         <AdvancedSearch {showSearch} on:closed="{e => showSearch = null}"/>
@@ -126,6 +129,14 @@
 
         <NavButtonWithLabel isActive={currentView === "/finishedlearning"} target="#/finishedlearning" label="Finished learning">
             <BookmarkAltIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
+        <!-- <NavButtonWithLabel isActive={currentView === "/settings"} target="#/settings" label="Settings">
+            <CogIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel> -->
+
+        <NavButtonWithLabel target="https://github.com/learn-awesome/learndb" label="Contribute">
+            <SupportIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
     </svelte:fragment>

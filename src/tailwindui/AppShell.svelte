@@ -5,6 +5,21 @@
     export let showNotificationBell = false;
     export let showProfileMenu = false;
 
+    const randint = (min, max) => min + Math.round(Math.random() * (max - min))
+
+    function themeRandomize(){
+      var hue = randint(0,360)
+      var saturation = randint(0,100)
+      var lightness = randint(0,100)
+
+      let primary = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+      let opposite = `hsl(${(hue + 180) % 360}, ${saturation}%, ${100-lightness}%)`;
+      tailwind.config.theme.extend.colors.lightTertiary = primary;
+      tailwind.config.theme.extend.colors.lightBg = opposite;
+      console.log({primary});
+      console.log({opposite});
+    }
+
 </script>
 
 <div >
@@ -79,6 +94,9 @@
         <div class="ml-6 flex-1 h-0 overflow-y-auto">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
+            {#if window.location.href.startsWith('http://127.0.0.1')}
+            <button class="" on:click={themeRandomize}>Randomize</button>
+            {/if}
           </nav>
         </div>
       </div>

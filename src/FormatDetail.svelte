@@ -1,6 +1,8 @@
 <script>
     import ItemCard from "./ItemCard.svelte"
     import SearchForm from "./SearchForm.svelte"
+    import { formats } from "./formats.js"
+import { fix_and_destroy_block } from "svelte/internal";
     
     export let format;
     export let alltopics;
@@ -41,7 +43,7 @@
 
 <div class="md:flex md:items-center md:justify-between mb-8">
     <div class="flex-1 min-w-0">
-      <h2 class="text-2xl font-bold leading-7 text-lightSecondary2 sm:text-3xl sm:truncate"> {format.toUpperCase()+"s".toUpperCase()}</h2>
+      <h2 class="text-2xl font-bold leading-7 text-lightSecondary2 sm:text-3xl sm:truncate"> {formats.find((f) => f.id === format).name}</h2>
     </div>
 </div>
 
