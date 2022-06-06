@@ -125,9 +125,22 @@
           <div class="mt-2 mb-6 flex flex-col justify-between">
             <div class="flex items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
-              <a href={type.split("|")[1]} class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium border drop-shadow-lg" target="_blank"> {type.split("|")[0]} at {get_tld(type.split("|")[1])}
-                <span class="ml-0.5 h-4 w-4"><Icon kind="link"/></span>
-              </a>
+              <sl-button-group>
+                <sl-button size="small" href={type.split("|")[1]} target="_blank">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
+                {#if type.split("|")[2]}
+                  <sl-dropdown placement="bottom-end" on:sl-select="{e => document.location.href = e.detail.item.value}">
+                    <sl-button slot="trigger" size="small" caret>
+                      <sl-icon name="cloud-download"></sl-icon>
+                    </sl-button>
+                    <sl-menu>
+                      <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2]}>Cloudflare</sl-menu-item>
+                      <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2]}>IPFS.io</sl-menu-item>
+                      <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2]}>Infura</sl-menu-item>
+                      <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2]}>Pinata</sl-menu-item>
+                    </sl-menu>
+                  </sl-dropdown>
+                {/if}
+              </sl-button-group>
               {/each}
             </div>
             <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>    
