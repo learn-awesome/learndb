@@ -52,6 +52,10 @@
       return wikiurl.replace('simple.wikipedia.org/','simple.m.wikipedia.org/').replace('en.wikipedia.org/','en.m.wikipedia.org/');
     }
 
+    function get_tld(url){
+      return (new URL(url)).hostname.replace('www.','');
+    }
+
   //   function youtube_parser(url){
   //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
   //   var match = url.match(regExp);
