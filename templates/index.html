@@ -9,35 +9,26 @@
 				theme: {
 					extend: {
 						colors: {
-							// lightPrimaryBg: 'rgb(248 250 252)', //bg-slate-50
-							// lightPrimaryText: 'rgb(15 23 42)', //bg-slate-900
-							// lightSecondary1: 'rgb(250 245 255)', //bg-purple-50 
-							// lightSecondary2: 'rgb(88 28 135)', //bg-purple-900
-							// lightButton1: 'rgb(240 253 250)', //bg-teal-50
-							// lightButton2: 'rgb(19 78 74)', //bg-teal-900
-
-							// darkPrimaryBg: 'rgb(15 23 42)', //bg-slate-900						
-							// darkPrimaryText: 'rgb(248 250 252)', //bg-slate-50							
-							// darkSecondary1: 'rgb(88 28 135)', //bg-purple-900
-							// darkSecondary2: 'rgb(250 245 255)', //bg-purple-50
-							// darkButton1: 'rgb(19 78 74)', //bg-teal-900
-							// darkButton2: 'rgb(240 253 250)', //bg-teal-50
-							// darkSecondaryBg: 'rgb(30 41 59)', //bg-slate-800
-
 							lightPrimary: 'rgb(30 64 175)',  //blue-800
 							lightSecondary: 'rgb(75 85 99)', //gray-600
 							lightTertiary: 'rgb(168 85 247)', //purple-500
 							lightBg: '#fafafa', //zinc-50
 							lightPrimCont: '#dbeafe', // blue-200
 							lightButtonBg: 'rgb(20 83 45)', //green-900
+							light: '#ffffff', //white
 
+							dark: '#0F172A', //slate-900
 							darkPrimary: 'rgb(147 197 253)',  //blue-300
 							darkSecondary: 'rgb(203 213 225)', //slate-300
 							darkTertiary: 'rgb(216 180 254)', //purple-300
 							darkBg: 'rgb(23 23 23)', //nutral-900
 							darkPrimCont: 'rgb(3 105 161)', //sky-700
 							darkButtonBg: 'rgb(34 197 94)'//green-500
-						}
+						},
+					},
+					fontFamily: {
+							sans: ['Gentium Plus', 'sans'],
+							serif: ['Libre Franklin','serif']
 					}
 				}
 			}
@@ -54,8 +45,12 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
 
+		<!-- fonts Gentium Plus -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
 	</head>
-	<body style="font-family: 'Libre Franklin', sans-serif;" class="max-w-none mx-auto h-full bg-lightBg dark:bg-darkBg text-lightPrimary dark:text-darkPrimary">
+	<body class="max-w-none mx-auto h-full bg-light dark:bg-dark text-lightPrimary dark:text-darkPrimary font-serif">
 		<div class="h-full" id="app"></div>
 	</body>
 </html>
