@@ -127,16 +127,31 @@
               {#each item.links.split(";") as type}
               <sl-button-group>
                 <sl-button size="small" href={type.split("|")[1]} target="_blank">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
-                {#if type.split("|")[2]}
-                  <sl-dropdown placement="bottom-end" on:sl-select="{e => document.location.href = e.detail.item.value}">
+                {#if type.split("|")[2] || type.split("|")[0] === 'book'}
+                  <sl-dropdown placement="bottom-end" on:sl-select="{e => window.open(e.detail.item.value, '_blank')}">
                     <sl-button slot="trigger" size="small" caret>
                       <sl-icon name="cloud-download"></sl-icon>
                     </sl-button>
-                    <sl-menu>
-                      <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2]}>Cloudflare</sl-menu-item>
-                      <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2]}>IPFS.io</sl-menu-item>
-                      <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2]}>Infura</sl-menu-item>
-                      <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2]}>Pinata</sl-menu-item>
+                    <sl-menu style="width: 200px;">
+                      {#if type.split("|")[2] && type.split("|")[2].startsWith('ipfs:')}
+                      <sl-menu-label>Download via IPFS:</sl-menu-label>
+                      <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Cloudflare</sl-menu-item>
+                      <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>IPFS.io</sl-menu-item>
+                      <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Infura</sl-menu-item>
+                      <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Pinata</sl-menu-item>
+                      {/if}
+
+                      {#if type.split("|")[2] && type.split("|")[2].startsWith('doi:')}
+                      <sl-menu-item value={'https://sci-hub.se/' + type.split("|")[2].replace('doi:','')}>On SciHub</sl-menu-item>
+                      {/if}
+                      
+                      {#if type.split("|")[0] === 'book'}
+                      <sl-divider></sl-divider>
+                      <sl-menu-label>Look up on:</sl-menu-label>
+                      <sl-menu-item value={'http://libgen.rs/search.php?req=' + encodeURIComponent(item.name)}>LibGen</sl-menu-item>
+                      <sl-menu-item value={'https://openlibrary.org/search?q=' + encodeURIComponent(item.name)}>OpenLibrary</sl-menu-item>
+                      <sl-menu-item value={'https://www.goodreads.com/search?q=' + encodeURIComponent(item.name)}>GoodReads</sl-menu-item>
+                      {/if}
                     </sl-menu>
                   </sl-dropdown>
                 {/if}
