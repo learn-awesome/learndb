@@ -23,24 +23,24 @@
 
 <div >
   <div class="md:pl-64 flex flex-col flex-1">
-    <div class=" sticky top-0 z-10 flex-shrink-0 flex bg-lightPrimary text-lightPrimCont shadow">
+    <div class=" sticky top-0 z-10 flex-shrink-0 flex text-primary shadow">
       {#if isNavDrawerOpen == false}
-      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-gray-200 text-lightPrimCont focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
         <span class="sr-only">Open sidebar</span>
         <Icon kind="menu"/>
       </button>
       {/if}
 
       {#if isNavDrawerOpen}
-      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-gray-200 text-lightPrimCont focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
         <span class="sr-only">Close sidebar</span>
         <Icon kind="close"/>
       </button>
       {/if}
 
-      <div class="md:hidden py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-lightPrimCont group">
+      <div class="md:hidden py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
         <a href="/" class="">LearnAwesome</a>
-        <div class="w-1/5 mt-0.25 h-0.5 bg-light group-hover:w-full ease-in-out duration-300"></div>
+        <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div>
 
       <div class="flex-1 flex justify-between">
@@ -71,10 +71,10 @@
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   {#if isNavDrawerOpen}
   <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-lightSecondary bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
+    <div class="fixed inset-0 bg-nutral_Light bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
-      <div class="relative flex-1 flex flex-col w-64 w-full pt-5 pb-4 bg-lightPrimary text-lightBg dark:bg-darkSecondary dark:text-darkBg">
+      <div class="relative flex-1 flex flex-col w-64 w-full pt-5 pb-4 bg-primary_light text-primary dark:bg-nutral_dark dark:text-primary_light">
         <!-- <div class="absolute top-0 right-0 -mr-12 pt-2"> -->
           
           <!-- <button on:click={e => isNavDrawerOpen = false} type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -109,11 +109,12 @@
   <!-- Static sidebar for desktop -->
   <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="flex flex-col flex-grow pt-5 border-r overflow-y-auto">
-      <div class="flex items-center flex-shrink-0 px-4 tracking-wider font-bold text-lightTertiary">
+    <div class="flex flex-col flex-grow pt-5 border-r-8 overflow-y-auto">
+      <div class="flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-primary">
         <a href="/" class="">LearnAwesome</a>
+        <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div>
-      <div class="mt-5 flex-1 flex flex-col bg-lightPrimary text-lightBg">
+      <div class="mt-5 flex-1 flex flex-col bg-primary_light text-primary">
         <nav class="flex-1 pb-4 space-y-1">
           <slot name="nav"></slot>
         </nav>
