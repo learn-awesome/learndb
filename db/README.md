@@ -17,9 +17,9 @@
 
 `description` can contain markdown with multiple lines.
 
-`links` is an array value separated by `;`. Each item in this array a pair of `format` and `url` separated by `|`. For eg, `links` can have a value like this: `summary|https://sivers.org/book/Decisive;book|https://www.goodreads.com/book/show/15798078-decisive;summary|https://fourminutebooks.com/decisive-summary/`.
+`links` is an array value separated by `;`. Each item in this array is `format`, `url` and optional identifiers separated by `|`. For eg, `links` can have a value like this: `summary|https://sivers.org/book/Decisive|ipfs:bafykbzaceaejt6z54qnwnl3ccvw2lsdfksbeuwuh4sv77ixj4c3ldeof2c5so?filename=Daniel%20Higginbotham%20-%20Clojure%20for%20the%20Brave%20and%20True-No%20Starch%20Press%20%282015%29.pdf;book|https://www.goodreads.com/book/show/15798078-decisive;summary|https://fourminutebooks.com/decisive-summary/|doi:https://doi.org/10.2307/2687687`.
 
-We are considering including other fields like `ipfsHash` and `image` in each value of `links`. This decision is yet to be made.
+Currently `ipfs:` and `doi:` identifiers are supported. In future, ISBN can also be supported using the `isbn:` or `isbn13:` schemes.
 
 `topics` is a array value of topic names separated by `;`. These should exactly match `topics` table's `name` column.
 
@@ -29,7 +29,7 @@ We are considering including other fields like `ipfsHash` and `image` in each va
 
 `rating` is on a 5.0 point scale with up to two decimal places allowed. This is a curated value and should not be simply copied from external sources.
 
-`tags` can describe quality: `visual`, `entertaining`, `challenging`, `inspirational`, `interactive`.
+`tags` can describe quality: `visual`, `entertaining`, `challenging`, `inspirational`, `interactive`, `oer`. `oer` stands for "Open Educational Resource" and can be used if the linked content does not require payment or user login.
 
 ## reviews.csv
 
