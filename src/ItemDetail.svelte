@@ -20,6 +20,10 @@
           reviews = data;
     });
 
+    function get_tld(url){
+      return(new URL(url)).hostname.replace('www.','');
+    }
+
     function saveStatusToLocalStorage(event){
       // console.log($bookmarks)
       let newobj = {};
