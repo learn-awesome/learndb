@@ -1,7 +1,6 @@
 <script>
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
-    import Icon from "./tailwindui/Icon.svelte"
     import Review from "./Review.svelte"
     
     export let itemid;
@@ -54,6 +53,10 @@
     function wikiUrlForEmbed(item){
       var wikiurl = item.links.split(";").find((l) => l.includes('wiki|')).split('|')[1];
       return wikiurl.replace('simple.wikipedia.org/','simple.m.wikipedia.org/').replace('en.wikipedia.org/','en.m.wikipedia.org/');
+    }
+
+    function get_tld(url){
+      return (new URL(url)).hostname.replace('www.','');
     }
 
   //   function youtube_parser(url){

@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
-    import * as TailwindUI from "./tailwindui/index"
 
+    import AppShell from "./AppShell.svelte"
     import Home from "./Home.svelte"
     import TreeMap from "./TreeMap.svelte"
     import TopicList from "./TopicList.svelte"
@@ -62,7 +62,7 @@
 
 <svelte:window on:hashchange={hashchange}/>
 
-<TailwindUI.AppShell>   
+<AppShell>   
     <svelte:fragment slot="content">
         {#if currentView === "/home" || currentView === "/"}
             <Home/>
@@ -152,4 +152,4 @@
         </NavButtonWithLabel>
 
     </svelte:fragment>
-</TailwindUI.AppShell>
+</AppShell>
