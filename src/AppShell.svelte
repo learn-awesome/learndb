@@ -8,6 +8,7 @@
     const randomHue = () => randint(0,360)
 
     function themeRandomize(){
+      // TODO: Be more smarter than trying random hues
       var hues = [randomHue(), randomHue(), randomHue(), randomHue(), randomHue(), randomHue(), randomHue()]
       var saturation = randint(0,100)
       var lightness = randint(0,100)
