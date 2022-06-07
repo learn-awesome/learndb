@@ -33,6 +33,7 @@
     }
 
     let oEmded_image_ytb_url = null;
+    let oembed_iframe = null;
 
   function oEmded_image(item){
       let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
@@ -46,7 +47,8 @@
   $: item && item.links.includes('video|') && oEmded_image(item) && fetch(oEmded_image(item))
     .then( r => r.json())
     .then(data => {
-      oEmded_image_ytb_url = data.thumbnail_url    
+      oEmded_image_ytb_url = data.thumbnail_url   
+      oembed_iframe = data.html 
     });
 
     
@@ -279,6 +281,8 @@
 
       {#if item.links.includes('wiki|')}
       <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
+      {:else if item.links.includes('video|') && oembed_iframe}
+      {@html oembed_iframe.replace('width="200"','width="100%"').replace('height="113"','height="400"')}
       {/if}
     </div>
   </div> 

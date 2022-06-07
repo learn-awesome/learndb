@@ -5,18 +5,30 @@
     export let showProfileMenu = false;
 
     const randint = (min, max) => min + Math.round(Math.random() * (max - min))
+    const randomHue = () => randint(0,360)
 
     function themeRandomize(){
-      var hue = randint(0,360)
+      // TODO: Be more smarter than trying random hues
+      var hues = [randomHue(), randomHue(), randomHue(), randomHue(), randomHue(), randomHue(), randomHue()]
       var saturation = randint(0,100)
       var lightness = randint(0,100)
+      
+      tailwind.config.theme.extend.colors.lightPrimary = `hsl(${hues[0]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightSecondary = `hsl(${hues[1]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightTertiary = `hsl(${hues[2]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightBg = `hsl(${hues[3]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightPrimCont = `hsl(${hues[4]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightButtonBg = `hsl(${hues[5]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.light = `hsl(${hues[6]}, ${saturation}%, ${lightness}%)`;
 
-      let primary = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-      let opposite = `hsl(${(hue + 180) % 360}, ${saturation}%, ${100-lightness}%)`;
-      tailwind.config.theme.extend.colors.lightTertiary = primary;
-      tailwind.config.theme.extend.colors.lightBg = opposite;
-      console.log({primary});
-      console.log({opposite});
+      tailwind.config.theme.extend.colors.darkPrimary = `hsl(${(hues[0] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.darkSecondary = `hsl(${(hues[1] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.darkTertiary = `hsl(${(hues[2] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.darkBg = `hsl(${(hues[3] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.darkPrimCont = `hsl(${(hues[4] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.darkButtonBg = `hsl(${(hues[5] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.dark = `hsl(${(hues[6] + 180) % 360}, ${saturation}%, ${lightness}%)`;
+
     }
 
 </script>
@@ -117,6 +129,9 @@
       <div class="mt-5 flex-1 flex flex-col bg-primary_light text-primary">
         <nav class="flex-1 pb-4 space-y-1">
           <slot name="nav"></slot>
+          {#if window.location.href.startsWith('http://127.0.0.1')}
+            <button class="" on:click={themeRandomize}>Randomize</button>
+            {/if}
         </nav>
       </div>
     </div>
