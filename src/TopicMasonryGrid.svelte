@@ -52,7 +52,7 @@
                     tempmap.delete(key);
                 }
             });
-            tempmap.set('Misc', misc.slice(0,15));
+            tempmap.set('Misc', misc.slice(0,25));
         }
 
         // console.log(tempmap);
