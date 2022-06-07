@@ -102,8 +102,8 @@
         <div class="flex-nowrap">
 
           {#if item.image}
-          <div class="mr-10">
-            <img class="mr-28 mb-6 w-44 h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
+          <div class="sm:mr-10">
+            <img class="mr-28 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
           </div>
   
           <!-- {:else if item.links.includes('book')}
@@ -120,8 +120,14 @@
             </div>
   
           {:else if !item.links.includes('video') && item.links.includes('book')}
-          <div class="mr-10 shadow-lg">
-            <img class="mr-28 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+          <div class="sm:mr-10 relative">
+            <img class="mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+
+            <div class="absolute inset-y-0 pl-4 pr-6 py-4 break-inside-avoid">
+              <p class="font-bold text-white text-2xl">{item.name}</p>
+              <p class="text-sm text-white mt-3">{item.creators}</p>
+            </div>
+  
           </div>
           {/if}
           <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
