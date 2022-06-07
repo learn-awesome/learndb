@@ -40,7 +40,7 @@
 
       <div class="md:hidden py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-lightPrimCont group">
         <a href="/" class="">LearnAwesome</a>
-        <div class="w-1/5 mt-0.25 h-0.5 bg-white group-hover:w-full ease-in-out duration-300"></div>
+        <div class="w-1/5 mt-0.25 h-0.5 bg-light group-hover:w-full ease-in-out duration-300"></div>
       </div>
 
       <div class="flex-1 flex justify-between">
@@ -113,7 +113,7 @@
       <div class="flex items-center flex-shrink-0 px-4 tracking-wider font-bold text-lightTertiary">
         <a href="/" class="">LearnAwesome</a>
       </div>
-      <div class="mt-5 flex-1 flex flex-col bg-lightTertiary text-lightBg">
+      <div class="mt-5 flex-1 flex flex-col bg-lightPrimary text-lightBg">
         <nav class="flex-1 pb-4 space-y-1">
           <slot name="nav"></slot>
         </nav>
