@@ -1,6 +1,5 @@
 <script>
     import Icon from "./Icon.svelte"
-    import MenuButton from "./MenuButton.svelte"
     let isNavDrawerOpen = false
     export let showNotificationBell = false;
     export let showProfileMenu = false;
@@ -55,7 +54,6 @@
           </button>
           {/if}
 
-          {#if showProfileMenu}<MenuButton />{/if}
         </div>
         {/if}
       </div>

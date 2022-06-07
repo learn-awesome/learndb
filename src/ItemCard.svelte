@@ -1,5 +1,4 @@
 <script>
-    import Icon from "./tailwindui/Icon.svelte"
     import BookCard from "./BookCard.svelte"
     import VideoCard from "./VideoCard.svelte"
     import GenericCard from "./GenericCard.svelte"

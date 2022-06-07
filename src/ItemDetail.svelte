@@ -1,7 +1,6 @@
 <script>
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
-    import Icon from "./tailwindui/Icon.svelte"
     import Review from "./Review.svelte"
     
     export let itemid;

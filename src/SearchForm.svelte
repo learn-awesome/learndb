@@ -1,5 +1,4 @@
 <script>
-  import ComboBox from "./tailwindui/ComboBox.svelte"
   import { createEventDispatcher } from 'svelte';
 
   export let alltopics;
