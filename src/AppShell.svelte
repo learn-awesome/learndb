@@ -35,16 +35,16 @@
 
 <div >
   <div class="md:pl-64 flex flex-col flex-1">
-    <div class=" sticky top-0 z-10 flex-shrink-0 flex text-primary shadow">
+    <div class="sticky top-0 z-10 flex-shrink-0 flex text-primary_light bg-primary shadow">
       {#if isNavDrawerOpen == false}
-      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
         <span class="sr-only">Open sidebar</span>
         <Icon kind="menu"/>
       </button>
       {/if}
 
       {#if isNavDrawerOpen}
-      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
         <span class="sr-only">Close sidebar</span>
         <Icon kind="close"/>
       </button>
@@ -83,10 +83,10 @@
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   {#if isNavDrawerOpen}
   <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-nutral_Light bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
+    <div class="fixed inset-0 bg-neutral_Light bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
-      <div class="relative flex-1 flex flex-col w-64 w-full pt-5 pb-4 bg-primary_light text-primary dark:bg-nutral_dark dark:text-primary_light">
+      <div class="relative flex-1 flex flex-col w-64 w-full pt-5 pb-4 bg-primary_light text-primary dark:bg-neutral_dark dark:text-primary_light">
         <!-- <div class="absolute top-0 right-0 -mr-12 pt-2"> -->
           
           <!-- <button on:click={e => isNavDrawerOpen = false} type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -101,7 +101,7 @@
         <!-- <div class="flex-shrink-0 flex items-center tracking-wider font-bold text-lightPrimCont">
           <a href="#/" class="">LearnAwesome</a>
         </div> -->
-        <div class="ml-6 flex-1 h-0 overflow-y-auto">
+        <div class="md:ml-6 flex-1 h-0 overflow-y-auto">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
             {#if window.location.href.startsWith('http://127.0.0.1')}

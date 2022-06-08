@@ -46,6 +46,10 @@
 
 <TopicMasonryGrid {topicname} {alltopics}/>
 
-<SearchForm {alltopics} on:queryChanged={handleQueryChanged} hideTopic={true} hideFormat={true}/>
+<div>
+    <SearchForm {alltopics} on:queryChanged={handleQueryChanged} hideTopic={true} hideFormat={true}/>
 
-<ItemList items={filteredItems}/>
+    <ItemList items={filteredItems}/>
+</div>
+
+
