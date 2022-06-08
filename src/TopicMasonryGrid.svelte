@@ -88,16 +88,16 @@
   {#each [...map.entries()].sort((t1,t2) => (t1[0].sort_index || 100) - (t2[0].sort_index || 100)) as parent}
   {#if parent[0] !== 'Misc'}
     <a href={"#/topic/" + parent[0].name}>
-        <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 border-8 border-lightPrimCont dark:border-darkPrimCont hover:bg-lightPrimCont dark:bg-darkPrimCont ">
+        <div class="rounded shadow-md p-4 break-inside-avoid mb-4 border border-primary dark:border-primary_light bg-white ease-in-out duration-300 hover:rounded-3xl dark:bg-nutral_light ">
             {#if typeof(parent[0]) == "string"}
-            <span class="mt-1 p-1  font-semibold text-lg">{ parent[0] }</span>
+            <span class="mt-1 p-1  font-extrabold text-lg text-primary underline">{ parent[0] }</span>
             {:else}
-            <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightPrimary dark:text-darkPrimary hover:text-lightSecondary dark:hover:text-darkSecondary text-lg ">{ format_topic_name(parent[0]) }</span></a>
+            <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-primary font-extrabold underline underline-offset-4 text-lg ">{ format_topic_name(parent[0]) }</span></a>
             {/if}
         
             <div class="mt-2 flex flex-wrap">
             {#each parent[1].sort((t1,t2) => (t1.sort_index || 100) - (t2.sort_index || 100)) as child}
-                <a href={"#/topic/" + child.name} class="text-lightSecondary dark:text-darkSecondary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
+                <a href={"#/topic/" + child.name} class="text-primary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
             {/each}
             </div>    
         </div>
@@ -105,16 +105,16 @@
     {/if}
 
     {#if parent[0] == 'Misc'}
-    <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 border-8 border-lightPrimCont dark:border-darkPrimCont hover:bg-lightPrimCont dark:bg-darkPrimCont ">
+    <div class="rounded-lg shadow-md p-4 break-inside-avoid mb-4 border border-primary dark:border-primary_light bg-primary_light hover:bg-white ">
         {#if typeof(parent[0]) == "string"}
-        <span class="mt-1 p-1  font-semibold text-lg">{ parent[0] }</span>
+        <span class="mt-1 p-1  font-semibold text-lg text-primary">{ parent[0] }</span>
         {:else}
-        <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-lightPrimary dark:text-darkPrimary hover:text-lightSecondary dark:hover:text-darkSecondary text-lg ">{ format_topic_name(parent[0]) }</span></a>
+        <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-primary text-lg ">{ format_topic_name(parent[0]) }</span></a>
         {/if}
     
         <div class="mt-2 flex flex-wrap">
         {#each parent[1].sort((t1,t2) => (t1.sort_index || 100) - (t2.sort_index || 100)) as child}
-            <a href={"#/topic/" + child.name} class="text-lightSecondary dark:text-darkSecondary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
+            <a href={"#/topic/" + child.name} class="text-primary dark:text-darkSecondary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
         {/each}
         </div>    
     </div>
