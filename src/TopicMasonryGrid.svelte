@@ -66,9 +66,18 @@
 
 </script>
 
-<div class="my-2 text-lightButton2">
+<style>
+    .title::part(base) {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #1E3A8A;
+}
+</style>
+<div class="my-2">
     <sl-breadcrumb>
-        <sl-breadcrumb-item href="#/topics" class="text-lg">All Topics</sl-breadcrumb-item>
+        
+        <sl-breadcrumb-item href="#/topics" class="title">All Topics</sl-breadcrumb-item>
+        
         {#if topic}
             {#if topic.parent_id}
                 <sl-breadcrumb-item href={"#/topic/"  + topic.parent_id}>
@@ -88,11 +97,16 @@
   {#each [...map.entries()].sort((t1,t2) => (t1[0].sort_index || 100) - (t2[0].sort_index || 100)) as parent}
   {#if parent[0] !== 'Misc'}
     <a href={"#/topic/" + parent[0].name}>
-        <div class="rounded shadow-md p-4 break-inside-avoid mb-4 border border-primary dark:border-primary_light bg-white ease-in-out duration-300 hover:rounded-3xl dark:bg-nutral_light ">
+        <div class="rounded shadow-md p-4 break-inside-avoid mb-4 border border-secondary dark:border-primary_light bg-white ease-in-out duration-300 hover:rounded-3xl dark:bg-neutral_light ">
             {#if typeof(parent[0]) == "string"}
             <span class="mt-1 p-1  font-extrabold text-lg text-primary underline">{ parent[0] }</span>
             {:else}
-            <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-primary font-extrabold underline underline-offset-4 text-lg ">{ format_topic_name(parent[0]) }</span></a>
+            <div class="group inline-flex">
+                <a href={"#/topic/" + parent[0].name}><span class="mt-1 p-1 text-primary font-extrabold text-lg ">{ format_topic_name(parent[0]) }</span>
+                    <div class="w-5 mt-0.25 h-0.5 ml-1 bg-primary group-hover:w-full ease-in-out duration-300"></div>
+                </a>
+            </div>
+            
             {/if}
         
             <div class="mt-2 flex flex-wrap">

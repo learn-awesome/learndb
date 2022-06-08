@@ -18,7 +18,8 @@
     <div class="">
         <sl-tab-group placement="start">
             {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format, i}
-                    <sl-tab slot="nav" panel={format.id} active={i == 0}>{getFormatDisplayName(format.name)} </sl-tab>
+                
+            <sl-tab slot="nav" panel={format.id} active={i == 0} class="sticky left-0">{getFormatDisplayName(format.name)} </sl-tab>
         
                 {#if format.id == 'book'}
                 <sl-tab-panel name={format.id} active={i == 0}>

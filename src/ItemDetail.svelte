@@ -88,16 +88,25 @@
   .scroll::-webkit-scrollbar-thumb {
     background-color: rgb(31 41 55);
 }
+  .linkButton::part(base){
+    max-width: fit-content;
+    min-height: fit-content;
+  }
 </style>
 
 {#if item}
   
-  <div class="max-w-4xl mx-auto border shadow-2xl px-20 py-8 rounded-xl mt-20 bg-white font-sans">
+  <div class="w-full px-6 py-4 mt-10 md:max-w-4xl mx-auto border shadow-2xl md:px-20 md:py-8 rounded-xl md:mt-20 bg-white font-sans">
     <h3 class="my-2">
       {#each item.topics.split(";") as topicname}
-      <a href={"#/topic/" + topicname} class="mr-2 font-bold">{topicname.toUpperCase()}</a>
+      <div class="group inline-flex">
+        <a href={"#/topic/" + topicname} class="mr-2 font-bold">{topicname.toUpperCase()}
+          <div class="w-5 mt-0.25 h-0.5 ml-1 bg-primary group-hover:w-full ease-in-out duration-300"></div>
+        </a>
+      </div>
       {/each}
     </h3>
+
     <div class="mt-10">
       <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
         <div class="flex-nowrap">
@@ -137,7 +146,7 @@
         <div class="flex w-full flex-col justify-between">
           <!-- title, sub title, author  -->
           <section>
-            <h1 class="text-4xl font-extrabold">{item.name}</h1>
+            <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>
             <span class="text-sm mt-5">{item.creators}</span>
             <div class="mt-5">
               <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
@@ -145,10 +154,10 @@
           </section>
           <!-- ratings and upload buttons -->
           <div class="mt-2 mb-6 flex flex-col justify-between">
-            <div class="flex items-center justify-start gap-3 mt-5">
+            <div class="flex flex-wrap items-center justify-start gap-3 mt-5">
               {#each item.links.split(";") as type}
               <sl-button-group>
-                <sl-button size="small" href={type.split("|")[1]} target="_blank">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
+                <sl-button size="small" href={type.split("|")[1]} target="_blank" class="linkButton">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
                 {#if type.split("|")[2] || type.split("|")[0] === 'book'}
                   <sl-dropdown placement="bottom-end" on:sl-select="{e => window.open(e.detail.item.value, '_blank')}">
                     <sl-button slot="trigger" size="small" caret>
