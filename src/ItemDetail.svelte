@@ -95,15 +95,15 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
     </h3>
 
     <div class="mt-10">
-        <div class="mb-10 flex md:flex-wrap  justify-start">
+        <div class="mb-10 flex flex-wrap  justify-start">
           <div class="w-full">
             {#if item.links.includes('wiki|')}
               <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
             {:else if item.links.includes('video|') && oembed_iframe}
               {@html oembed_iframe.replace('width="200"','width="100%"').replace('height="113"','height="400"')}
             {:else if item.image}
-              <div class="sm:mr-10">
-                <img class="mr-28 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
+              <div class="">
+                <img class="mr-5 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
               </div>
             {:else if item.links.includes('video') }
               <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
@@ -129,7 +129,7 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
           </div>
 
           <!-- item details  -->
-          <div class="w-full mt-10 flex flex-col justify-between">
+          <div class="w-full mt-10 flex flex-col justify-between flex-1">
             <!-- title, sub title, author  -->
             <section>
               <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>
