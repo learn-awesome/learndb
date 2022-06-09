@@ -6,8 +6,8 @@
   <img class="object-cover h-36 w-24 lg:h-64 lg:w-44" src={item.image || '/static/book-cover.png'} alt="{item.name}"/>
   
   {#if item.rating}
-  <h1 class="text-lg font-semibold p-2 text-white tracking-wider">
-    <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
+  <h1 class="text-sm md:text-lg font-semibold p-2 text-white tracking-wider">
+    <sl-rating style="--symbol-size: 0.80 rem;" readonly precision="0.1" value={item.rating}></sl-rating>
   </h1>
   {/if}
   

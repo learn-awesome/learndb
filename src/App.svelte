@@ -108,29 +108,29 @@
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <a href="#/randomtopic" on:click={getRandomTopicName} class={(currentView === "/randomtopic" ? 'text-secondary dark:bg-dark dark:text-darkPrimary' : '') + " w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+        <a href="#/randomtopic" on:click={getRandomTopicName} class={(currentView === "/randomtopic" ? 'text-secondary dark:text-primary_light' : '') + " w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <div class="flex flex-col items-start">
                 <h3 class="text-center">Random Topic</h3>
-                <div class={(currentView === "/randomtopic" ? 'bg-secondary w-full' : '') + " w-5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"}></div>
+                <div class={(currentView === "/randomtopic" ? 'bg-secondary w-full dark:bg-primary_light' : '') + " w-5 mt-0.25 h-0.5 bg-primary dark:bg-neutral_light group-hover:w-full ease-in-out duration-300"}></div>
             </div>
             
         </a>
 
-        <a href="#/randomitem" on:click={getRandomItemId} class={(currentView === "/randomitem" ? 'text-secondary dark:bg-dark dark:text-darkPrimary' : '') + "  w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+        <a href="#/randomitem" on:click={getRandomItemId} class={(currentView === "/randomitem" ? 'text-secondary dark:text-primary_light' : '') + "  w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <div class="flex flex-col items-start">
                 <h3 class="text-center">Random Item</h3>
-                <div class={(currentView === "/randomitem" ? 'bg-secondary w-full' : '') + " w-5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"}></div>
+                <div class={(currentView === "/randomitem" ? 'bg-secondary w-full dark:bg-primary_light' : '') + " w-5 mt-0.25 h-0.5 bg-primary dark:bg-neutral_light group-hover:w-full ease-in-out duration-300"}></div>
             </div>
             
         </a>
 
-        <button on:click="{e => showSearch = true}" class={(currentView === "/search" ? 'text-secondary dark:bg-dark dark:text-darkPrimary' : '') + " w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4"}>
+        <button on:click="{e => showSearch = true}" class={(currentView === "/search" ? 'text-secondary dark:text-primary_light' : '') + " w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4"}>
             <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
             <div class="flex flex-col items-start">
                 <h3 class="text-center"> Search</h3>
-                <div class={(currentView === "/search" ? 'bg-secondary w-full' : '') + " w-5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"}></div>
+                <div class={(currentView === "/randomitem" ? 'bg-secondary w-full dark:bg-primary_light' : '') + " w-5 mt-0.25 h-0.5 bg-primary dark:bg-neutral_light group-hover:w-full ease-in-out duration-300"}></div>
             </div>
             
         </button>

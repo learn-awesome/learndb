@@ -32,7 +32,7 @@
 </script>
 
 <sl-dialog no-header open={showSearch} style="--header-spacing: 0px; --body-spacing: 0px; --footer-spacing: 0px" on:sl-hide="{e => dispatch('closed',{})}">
-  <div class="transform overflow-hidden rounded-xl bg-lightBg dark:bg-darkBg text-lightPrimary dark:darkPrimary shadow-2xl ring-1 ring-black ring-opacity-5 transition-all fixed top-32 inset-x-20 sm:inset-x-auto max-w-lg">
+  <div class="transform overflow-hidden rounded-xl bg-primary_light shadow-2xl ring-1 ring-black ring-opacity-5 transition-all fixed top-32 sm:inset-x-auto w-72 md:w-96">
     <div class="relative">
       <!-- Heroicon name: solid/search -->
       <svg class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

@@ -109,7 +109,7 @@
         <a href="/" class="">LearnAwesome</a>
         <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div> -->
-      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary">
+      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary dark:bg-neutral_dark dark:text-neutral_light">
         <nav class="flex-1 pb-4 space-y-1 pt-5">
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}
