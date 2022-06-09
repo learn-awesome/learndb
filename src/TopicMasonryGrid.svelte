@@ -73,8 +73,8 @@
         color: #1E3A8A;
 }
 </style>
-<div class="my-2">
-    <sl-breadcrumb>
+<div class="my-2 flex flex-row">
+    <sl-breadcrumb class="flex-grow">
         
         <sl-breadcrumb-item href="#/topics" class="title">All Topics</sl-breadcrumb-item>
         
@@ -91,6 +91,7 @@
             {/if}   
         {/if}
     </sl-breadcrumb>
+    <a href="https://github.com/learn-awesome/learndb" target="_blank" class="underline text-primary hover:font-bold px-2">Help us improve this taxonomy</a>
 </div>
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 3xl:columns-5 mb-8">

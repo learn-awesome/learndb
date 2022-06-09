@@ -77,6 +77,9 @@ rect.parent,
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     </head>
     <body>
+    <div style="text-align: right;">
+      <a href="https://github.com/learn-awesome/learndb" target="_blank" style="text-decoration:underline; padding: 2px 3px; font-weight: 700;">Help us improve this taxonomy</a>
+    </div>
 	<p id="chart"></p>
     <script type="text/javascript">
 
@@ -113,7 +116,7 @@ d3.json("/learn/topics.json?_shape=array&_size=5000", function(alltopics){
   display(root);
 });
 
-var margin = {top: 20, right: 0, bottom: 0, left: 0},
+var margin = {top: 30, right: 0, bottom: 0, left: 0},
 wh = browserDimensions(),
 width = wh[0] - (2 * margin.left) - (2*margin.right),
 height = wh[1] - (2 * margin.top - margin.bottom),
