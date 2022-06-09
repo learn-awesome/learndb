@@ -13,13 +13,13 @@
       var saturation = randint(0,100)
       var lightness = randint(0,100)
       
-      tailwind.config.theme.extend.colors.lightPrimary = `hsl(${hues[0]}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.lightSecondary = `hsl(${hues[1]}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.lightTertiary = `hsl(${hues[2]}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.lightBg = `hsl(${hues[3]}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.lightPrimCont = `hsl(${hues[4]}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.lightButtonBg = `hsl(${hues[5]}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.light = `hsl(${hues[6]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.primary = `hsl(${hues[0]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.primary_light = `hsl(${hues[1]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.neutral_light = `hsl(${hues[2]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.neutral_dark = `hsl(${hues[3]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.secondary = `hsl(${hues[4]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightGradOne = `hsl(${hues[5]}, ${saturation}%, ${lightness}%)`;
+      tailwind.config.theme.extend.colors.lightGradTwo = `hsl(${hues[6]}, ${saturation}%, ${lightness}%)`;
 
       tailwind.config.theme.extend.colors.darkPrimary = `hsl(${(hues[0] + 180) % 360}, ${saturation}%, ${lightness}%)`;
       tailwind.config.theme.extend.colors.darkSecondary = `hsl(${(hues[1] + 180) % 360}, ${saturation}%, ${lightness}%)`;
@@ -34,43 +34,44 @@
 </script>
 
 <div >
-  <div class="md:pl-64 flex flex-col flex-1">
-    <div class="sticky top-0 z-10 flex-shrink-0 flex text-primary_light bg-primary shadow">
-      {#if isNavDrawerOpen == false}
-      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
-        <span class="sr-only">Open sidebar</span>
-        <Icon kind="menu"/>
-      </button>
-      {/if}
+  <!-- sticky top bar  -->
+  <div class="sticky top-0 z-10 flex-shrink-0 flex text-primary_light bg-primary shadow">
+    {#if isNavDrawerOpen == false}
+    <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <span class="sr-only">Open sidebar</span>
+      <Icon kind="menu"/>
+    </button>
+    {/if}
 
-      {#if isNavDrawerOpen}
-      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
-        <span class="sr-only">Close sidebar</span>
-        <Icon kind="close"/>
-      </button>
-      {/if}
+    {#if isNavDrawerOpen}
+    <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <span class="sr-only">Close sidebar</span>
+      <Icon kind="close"/>
+    </button>
+    {/if}
 
-      <div class="md:hidden py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
-        <a href="/" class="">LearnAwesome</a>
-        <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
-      </div>
-
-      <div class="flex-1 flex justify-between">
-        
-        {#if showNotificationBell || showProfileMenu}
-        <div class="ml-4 flex items-center md:ml-6">
-          {#if showNotificationBell}
-          <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <span class="sr-only">View notifications</span>
-            <Icon kind="bell"/>
-          </button>
-          {/if}
-
-        </div>
-        {/if}
-      </div>
+    <div class=" py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
+      <a href="/" class="">LearnAwesome</a>
+      <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
     </div>
 
+    <div class="flex-1 flex justify-between">
+      
+      {#if showNotificationBell || showProfileMenu}
+      <div class="ml-4 flex items-center md:ml-6">
+        {#if showNotificationBell}
+        <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <span class="sr-only">View notifications</span>
+          <Icon kind="bell"/>
+        </button>
+        {/if}
+
+      </div>
+      {/if}
+    </div>
+  </div>
+  <!-- main container  -->
+  <div class="md:pl-64 flex flex-col flex-1">
     <!-- content  -->
     <main class="">
       <div class="py-6">
@@ -87,20 +88,6 @@
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
       <div class="relative flex-1 flex flex-col w-64 w-full pt-5 pb-4 bg-primary_light text-primary dark:bg-neutral_dark dark:text-primary_light">
-        <!-- <div class="absolute top-0 right-0 -mr-12 pt-2"> -->
-          
-          <!-- <button on:click={e => isNavDrawerOpen = false} type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-            <span class="sr-only">Close sidebar</span> -->
-            <!-- Heroicon name: outline/x -->
-            <!-- <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button> -->
-        <!-- </div> -->
-
-        <!-- <div class="flex-shrink-0 flex items-center tracking-wider font-bold text-lightPrimCont">
-          <a href="#/" class="">LearnAwesome</a>
-        </div> -->
         <div class="md:ml-6 flex-1 h-0 overflow-y-auto">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
@@ -110,24 +97,20 @@
           </nav>
         </div>
       </div>
-
-      <!-- <div class="flex-shrink-0 w-14" aria-hidden="true"> -->
-        <!-- Dummy element to force sidebar to shrink to fit close icon -->
-      <!-- </div> -->
     </div>
   </div>
   {/if}
 
   <!-- Static sidebar for desktop -->
   <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-    <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="flex flex-col flex-grow pt-5 border-r-8 overflow-y-auto">
-      <div class="flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-primary">
+    <!-- Sidebar component -->
+    <div class="flex flex-col flex-grow border-r-8 overflow-y-auto">
+      <!-- <div class="flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-primary">
         <a href="/" class="">LearnAwesome</a>
         <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
-      </div>
-      <div class="mt-5 flex-1 flex flex-col bg-primary_light text-primary">
-        <nav class="flex-1 pb-4 space-y-1">
+      </div> -->
+      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary">
+        <nav class="flex-1 pb-4 space-y-1 pt-5">
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}
             <button class="" on:click={themeRandomize}>Randomize</button>

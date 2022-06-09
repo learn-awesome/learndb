@@ -2,6 +2,7 @@
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
     import Review from "./Review.svelte"
+import AdvancedSearch from "./AdvancedSearch.svelte";
     
     export let itemid;
     let item;
@@ -57,20 +58,6 @@
       return wikiurl.replace('simple.wikipedia.org/','simple.m.wikipedia.org/').replace('en.wikipedia.org/','en.m.wikipedia.org/');
     }
 
-  //   function youtube_parser(url){
-  //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-  //   var match = url.match(regExp);
-  //   return (match&&match[7].length==11)? match[7] : false;
-  // }
-
-  // function get_thumbnail_image_url(item){
-  //   let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
-  //   let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
-  //   let ytid = youtubeurl && youtube_parser(youtubeurl);
-  //   let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
-  //   return thumbnail_image_url
-  // }
-
 </script>
 
 <style>
@@ -96,7 +83,7 @@
 
 {#if item}
   
-  <div class="w-full px-6 py-4 mt-10 md:max-w-4xl mx-auto border shadow-2xl md:px-20 md:py-8 rounded-xl md:mt-20 bg-white font-sans">
+  <div class="w-full px-6 py-4 mt-10 lg:max-w-4xl mx-auto border shadow-2xl lg:px-20 lg:py-8 rounded-xl lg:mt-20 bg-primary_light font-sans">
     <h3 class="my-2">
       {#each item.topics.split(";") as topicname}
       <div class="group inline-flex">
@@ -108,103 +95,101 @@
     </h3>
 
     <div class="mt-10">
-      {#if !item.links.includes('video|') && oembed_iframe}
-      <div class="mb-10 flex flex-col sm:flex-row md:flex-col lg:flex-row">
-        <div class="flex-nowrap">
-
-          {#if item.image}
-          <div class="sm:mr-10">
-            <img class="mr-28 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
-          </div>
-  
-          <!-- {:else if item.links.includes('book')}
-            <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" /> -->
-  
-          {:else if item.links.includes('video') }
-            <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
-              <div class="w-80 h-60 bg-lightPrimary">
-                <img class="h-auto w-80 flex justify-center items-center border-r border-gray-500 relative" src="{oEmded_image_ytb_url}" alt="{item.name}">
+        <div class="mb-10 flex flex-wrap  justify-start">
+          <div class="w-full">
+            {#if item.links.includes('wiki|')}
+              <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
+            {:else if item.links.includes('video|') && oembed_iframe}
+              {@html oembed_iframe.replace('width="200"','width="100%"').replace('height="113"','height="400"')}
+            {:else if item.image}
+              <div class="">
+                <img class="mr-5 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
               </div>
-              <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
-                <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
+            {:else if item.links.includes('video') }
+              <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
+                <div class="w-80 h-60">
+                  <img class="h-auto w-80 flex justify-center items-center border-r border-gray-500 relative" src="{oEmded_image_ytb_url}" alt="{item.name}">
+                </div>
+                <div class="absolute inset-0 w-full h-full flex items-center justify-center" aria-hidden="true">
+                  <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
+                </div>
               </div>
-            </div>
-  
-          {:else if !item.links.includes('video') && item.links.includes('book')}
-          <div class="sm:mr-10 relative">
-            <img class="mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+            {:else if !item.links.includes('video') && item.links.includes('book')}
+            <div class="sm:mr-10 w-44 h-64 relative">
+              <img class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
 
-            <div class="absolute inset-y-0 pl-4 pr-6 py-4 break-inside-avoid">
-              <p class="font-bold text-white text-2xl">{item.name}</p>
-              <p class="text-sm text-white mt-3">{item.creators}</p>
+              <div class="absolute inset-y-0 pl-4 pr-6 py-4 break-inside-avoid">
+                <p class="font-bold text-white text-2xl">{item.name}</p>
+                <p class="text-sm text-white mt-3">{item.creators}</p>
+              </div>
+    
             </div>
-  
-          </div>
-          {/if}
-          <!-- <img class="mr-6 mb-6 w-44 h-64 transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="{item.image || '/static/book-cover.png'}" alt="" /> -->
-        </div>
-        <!-- book details  -->
-        <div class="flex w-full flex-col justify-between">
-          <!-- title, sub title, author  -->
-          <section>
-            <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>
-            <span class="text-sm mt-5">{item.creators}</span>
-            <div class="mt-5">
-              <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
-            </div>
-          </section>
-          <!-- ratings and upload buttons -->
-          <div class="mt-2 mb-6 flex flex-col justify-between">
-            <div class="flex flex-wrap items-center justify-start gap-3 mt-5">
-              {#each item.links.split(";") as type}
-              <sl-button-group>
-                <sl-button size="small" href={type.split("|")[1]} target="_blank" class="linkButton">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
-                {#if type.split("|")[2] || type.split("|")[0] === 'book'}
-                  <sl-dropdown placement="bottom-end" on:sl-select="{e => window.open(e.detail.item.value, '_blank')}">
-                    <sl-button slot="trigger" size="small" caret>
-                      <sl-icon name="cloud-download"></sl-icon>
-                    </sl-button>
-                    <sl-menu style="width: 200px;">
-                      {#if type.split("|")[2] && type.split("|")[2].startsWith('ipfs:')}
-                      <sl-menu-label>Download via IPFS:</sl-menu-label>
-                      <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Cloudflare</sl-menu-item>
-                      <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>IPFS.io</sl-menu-item>
-                      <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Infura</sl-menu-item>
-                      <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Pinata</sl-menu-item>
-                      {/if}
+            {/if}
 
-                      {#if type.split("|")[2] && type.split("|")[2].startsWith('doi:')}
-                      <sl-menu-item value={'https://sci-hub.se/' + type.split("|")[2].replace('doi:','')}>On SciHub</sl-menu-item>
-                      {/if}
-                      
-                      {#if type.split("|")[0] === 'book'}
-                      <sl-divider></sl-divider>
-                      <sl-menu-label>Look up on:</sl-menu-label>
-                      <sl-menu-item value={'http://libgen.rs/search.php?req=' + encodeURIComponent(item.name)}>LibGen</sl-menu-item>
-                      <sl-menu-item value={'https://openlibrary.org/search?q=' + encodeURIComponent(item.name)}>OpenLibrary</sl-menu-item>
-                      <sl-menu-item value={'https://www.goodreads.com/search?q=' + encodeURIComponent(item.name)}>GoodReads</sl-menu-item>
-                      {/if}
-                    </sl-menu>
-                  </sl-dropdown>
-                {/if}
-              </sl-button-group>
-              {/each}
+          </div>
+
+          <!-- item details  -->
+          <div class="w-full mt-10 flex flex-col justify-between flex-1">
+            <!-- title, sub title, author  -->
+            <section>
+              <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>
+              <span class="text-sm mt-5">{item.creators}</span>
+              <div class="mt-5">
+                <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
+              </div>
+            </section>
+            <!-- ratings and upload buttons -->
+            <div class="mt-2 mb-6 flex flex-col justify-between">
+              <div class="flex flex-wrap items-center justify-start gap-3 mt-5">
+                {#each item.links.split(";") as type}
+                <sl-button-group>
+                  <sl-button size="small" href={type.split("|")[1]} target="_blank" class="linkButton">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
+                  {#if type.split("|")[2] || type.split("|")[0] === 'book'}
+                    <sl-dropdown placement="bottom-end" on:sl-select="{e => window.open(e.detail.item.value, '_blank')}">
+                      <sl-button slot="trigger" size="small" caret>
+                        <sl-icon name="cloud-download"></sl-icon>
+                      </sl-button>
+                      <sl-menu style="width: 200px;">
+                        {#if type.split("|")[2] && type.split("|")[2].startsWith('ipfs:')}
+                        <sl-menu-label>Download via IPFS:</sl-menu-label>
+                        <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Cloudflare</sl-menu-item>
+                        <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>IPFS.io</sl-menu-item>
+                        <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Infura</sl-menu-item>
+                        <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Pinata</sl-menu-item>
+                        {/if}
+
+                        {#if type.split("|")[2] && type.split("|")[2].startsWith('doi:')}
+                        <sl-menu-item value={'https://sci-hub.se/' + type.split("|")[2].replace('doi:','')}>On SciHub</sl-menu-item>
+                        {/if}
+                        
+                        {#if type.split("|")[0] === 'book'}
+                        <sl-divider></sl-divider>
+                        <sl-menu-label>Look up on:</sl-menu-label>
+                        <sl-menu-item value={'http://libgen.rs/search.php?req=' + encodeURIComponent(item.name)}>LibGen</sl-menu-item>
+                        <sl-menu-item value={'https://openlibrary.org/search?q=' + encodeURIComponent(item.name)}>OpenLibrary</sl-menu-item>
+                        <sl-menu-item value={'https://www.goodreads.com/search?q=' + encodeURIComponent(item.name)}>GoodReads</sl-menu-item>
+                        {/if}
+                      </sl-menu>
+                    </sl-dropdown>
+                  {/if}
+                </sl-button-group>
+                {/each}
+              </div>
+              <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>    
             </div>
-            <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>    
           </div>
         </div>
-      </div>
-      <hr class="bg-lightPrimary"/>
-       <!-- Description  -->
-       {#if item.description}
-       <section class="my-8">
-         <h2 class="font-bold text-lg">Description</h2>
-         <p class="mt-4 tracking-wide">{item.description}</p>
-       </section>
-       {/if}
-      {/if}
+        <hr class="bg-neutral_light"/>
+
+        <!-- Description  -->
+        {#if item.description}
+        <section class="my-8">
+          <h2 class="font-bold text-lg">Description</h2>
+          <p class="mt-4 tracking-wide">{item.description}</p>
+        </section>
+        {/if}
        
-      <!-- details  -->
+      <!-- item fields  -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
         
         {#if item.genre}
@@ -288,72 +273,9 @@
       </section>
       {/if}
 
-      <div>
-        {#if item.links.includes('wiki|')}
-        <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
-        {:else if item.links.includes('video|') && oembed_iframe}
-        {@html oembed_iframe.replace('width="200"','width="100%"').replace('height="113"','height="400"')}
-        {/if}
 
-        <div class="mt-10 flex w-full flex-col justify-between">
-          <!-- title, sub title, author  -->
-          <section>
-            <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>
-            <span class="text-sm mt-5">{item.creators}</span>
-            <div class="mt-5">
-              <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
-            </div>
-          </section>
-
-           <!-- Description  -->
-          {#if item.description}
-          <section class="my-8">
-            <h2 class="font-bold text-lg">Description</h2>
-            <p class="mt-4 tracking-wide">{item.description}</p>
-          </section>
-          {/if}
-          <!-- ratings and upload buttons -->
-          <div class="mt-2 mb-6 flex flex-col justify-between">
-            <div class="flex flex-wrap items-center justify-start gap-3 mt-5">
-              {#each item.links.split(";") as type}
-              <sl-button-group>
-                <sl-button size="small" href={type.split("|")[1]} target="_blank" class="linkButton">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
-                {#if type.split("|")[2] || type.split("|")[0] === 'book'}
-                  <sl-dropdown placement="bottom-end" on:sl-select="{e => window.open(e.detail.item.value, '_blank')}">
-                    <sl-button slot="trigger" size="small" caret>
-                      <sl-icon name="cloud-download"></sl-icon>
-                    </sl-button>
-                    <sl-menu style="width: 200px;">
-                      {#if type.split("|")[2] && type.split("|")[2].startsWith('ipfs:')}
-                      <sl-menu-label>Download via IPFS:</sl-menu-label>
-                      <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Cloudflare</sl-menu-item>
-                      <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>IPFS.io</sl-menu-item>
-                      <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Infura</sl-menu-item>
-                      <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Pinata</sl-menu-item>
-                      {/if}
-
-                      {#if type.split("|")[2] && type.split("|")[2].startsWith('doi:')}
-                      <sl-menu-item value={'https://sci-hub.se/' + type.split("|")[2].replace('doi:','')}>On SciHub</sl-menu-item>
-                      {/if}
-                      
-                      {#if type.split("|")[0] === 'book'}
-                      <sl-divider></sl-divider>
-                      <sl-menu-label>Look up on:</sl-menu-label>
-                      <sl-menu-item value={'http://libgen.rs/search.php?req=' + encodeURIComponent(item.name)}>LibGen</sl-menu-item>
-                      <sl-menu-item value={'https://openlibrary.org/search?q=' + encodeURIComponent(item.name)}>OpenLibrary</sl-menu-item>
-                      <sl-menu-item value={'https://www.goodreads.com/search?q=' + encodeURIComponent(item.name)}>GoodReads</sl-menu-item>
-                      {/if}
-                    </sl-menu>
-                  </sl-dropdown>
-                {/if}
-              </sl-button-group>
-              {/each}
-            </div>
-            <ButtonGroup tabs={['Want to learn','Finished']} currentlySelected={$bookmarks[itemid]} on:change={saveStatusToLocalStorage}/>    
-          </div>
-        </div>
-      </div>
     </div>
+
   </div> 
 {:else}
 	<p class="loading">loading...</p>

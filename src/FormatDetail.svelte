@@ -56,7 +56,7 @@ import { fix_and_destroy_block } from "svelte/internal";
     {/each}
 </div>
 {:else}
-<div class="mt-12 mx-auto gap-5 flex flex-wrap">
+<div class="mt-12 mx-auto gap-5 flex flex-wrap justify-center">
     {#each filteredItems as item}
     <ItemCard {item} displayType={format}/>
     {/each}

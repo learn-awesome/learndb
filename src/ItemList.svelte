@@ -15,7 +15,8 @@
 
 
 <div class="mt-10">
-    <div class="">
+    <!-- desktop view  -->
+    <div class="hidden md:block">
         <sl-tab-group placement="start">
             {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format, i}
                 
@@ -23,7 +24,7 @@
         
                 {#if format.id == 'book'}
                 <sl-tab-panel name={format.id} active={i == 0}>
-                    <div class="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+                    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
                         {#each items.filter(x => x.links.includes(format.id + '|')) as item}
                         <BookCard {item}/>
                         {/each}
@@ -52,6 +53,43 @@
         </sl-tab-group>     
     </div>
 
+    <!-- mobile view  -->
+    <div class="md:hidden">
+        <sl-tab-group>
+            {#each formats.filter(f => items.filter(x => x.links.includes(f.id + '|')).length > 0) as format, i}
+                
+            <sl-tab slot="nav" panel={format.id} active={i == 0}>{getFormatDisplayName(format.name)} </sl-tab>
+        
+                {#if format.id == 'book'}
+                <sl-tab-panel name={format.id} active={i == 0}>
+                    <div class="grid gap-5 grid-cols-2 justify-items-center">
+                        {#each items.filter(x => x.links.includes(format.id + '|')) as item}
+                        <BookCard {item}/>
+                        {/each}
+                    </div>
+                </sl-tab-panel>
+                
+                {:else if format.id == 'video'}
+                <sl-tab-panel name={format.id} active={i == 0}>
+                    <div class="mx-auto gap-5 flex flex-wrap">
+                        {#each items.filter(x => x.links.includes(format.id + '|')) as item}
+                        <VideoCard {item}/>
+                        {/each}    
+                    </div>     
+                </sl-tab-panel>
+
+                {:else} 
+                <sl-tab-panel name={format.id} active={i == 0}>
+                    <div class="mx-auto gap-5 flex flex-wrap">
+                        {#each items.filter(x => x.links.includes(format.id + '|')) as item}
+                        <GenericCard {item}/>
+                        {/each} 
+                    </div>
+                </sl-tab-panel>       
+                {/if}   
+            {/each}
+        </sl-tab-group>     
+    </div>
 </div>
 
 

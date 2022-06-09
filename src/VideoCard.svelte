@@ -18,25 +18,11 @@
     .then(data => {
       oEmded_image_ytb_url = data.thumbnail_url    
     });
-  
-  // function youtube_parser(url){
-  //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-  //   var match = url.match(regExp);
-  //   return (match&&match[7].length==11)? match[7] : false;
-  // }
-
-  // function get_thumbnail_image_url(item){
-  //   let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
-  //   let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
-  //   let ytid = youtubeurl && youtube_parser(youtubeurl);
-  //   let thumbnail_image_url  = ytid && `https://img.youtube.com/vi/${ytid}/mqdefault.jpg`
-  //   return thumbnail_image_url
-  // }
 
 </script>
 
 
-<a class="flex flex-wrap justify-between overflow-hidden w-full rounded-lg duration-300 break-inside-avoid max-w-lg bg-lightPrimCont text-lightPrimary dark:bg-darkPrimCont dark:text-darkPrimary hover:bg-lightPrimary hover:bg-darkPrimary border-secondary" href="#/item/{item.rowid}">
+<a class="flex flex-wrap overflow-hidden rounded-lg duration-300 break-inside-avoid max-w-lg border-secondary" href="#/item/{item.rowid}">
   <div class="relative w-full max-w-sm w-full md:w-64 ring-black/5 rounded-xl flex flex-col items-start">
     <div class="h-36 w-full md:w-64 flex justify-center items-center relative ">
 
