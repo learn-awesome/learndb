@@ -34,43 +34,44 @@
 </script>
 
 <div >
-  <div class="md:pl-64 flex flex-col flex-1">
-    <div class="sticky top-0 z-10 flex-shrink-0 flex text-primary_light bg-primary shadow">
-      {#if isNavDrawerOpen == false}
-      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
-        <span class="sr-only">Open sidebar</span>
-        <Icon kind="menu"/>
-      </button>
-      {/if}
+  <!-- sticky top bar  -->
+  <div class="sticky top-0 z-10 flex-shrink-0 flex text-primary_light bg-primary shadow">
+    {#if isNavDrawerOpen == false}
+    <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <span class="sr-only">Open sidebar</span>
+      <Icon kind="menu"/>
+    </button>
+    {/if}
 
-      {#if isNavDrawerOpen}
-      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
-        <span class="sr-only">Close sidebar</span>
-        <Icon kind="close"/>
-      </button>
-      {/if}
+    {#if isNavDrawerOpen}
+    <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <span class="sr-only">Close sidebar</span>
+      <Icon kind="close"/>
+    </button>
+    {/if}
 
-      <div class="md:hidden py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
-        <a href="/" class="">LearnAwesome</a>
-        <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
-      </div>
-
-      <div class="flex-1 flex justify-between">
-        
-        {#if showNotificationBell || showProfileMenu}
-        <div class="ml-4 flex items-center md:ml-6">
-          {#if showNotificationBell}
-          <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <span class="sr-only">View notifications</span>
-            <Icon kind="bell"/>
-          </button>
-          {/if}
-
-        </div>
-        {/if}
-      </div>
+    <div class=" py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
+      <a href="/" class="">LearnAwesome</a>
+      <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
     </div>
 
+    <div class="flex-1 flex justify-between">
+      
+      {#if showNotificationBell || showProfileMenu}
+      <div class="ml-4 flex items-center md:ml-6">
+        {#if showNotificationBell}
+        <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <span class="sr-only">View notifications</span>
+          <Icon kind="bell"/>
+        </button>
+        {/if}
+
+      </div>
+      {/if}
+    </div>
+  </div>
+  <!-- main container  -->
+  <div class="md:pl-64 flex flex-col flex-1">
     <!-- content  -->
     <main class="">
       <div class="py-6">
