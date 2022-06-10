@@ -1,9 +1,11 @@
 <script>
   export let item;
+  import { randomCover } from './utility.js'
+  
 </script>
 
 <a class="relative flex flex-col lg:w-44 items-center mb-4 rounded-md overflow-hidden transform transition ease-out duration-300 drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 break-inside-avoid" href="#/item/{item.rowid}">
-  <img class="object-cover h-36 w-24 lg:h-64 lg:w-44" src={item.image || '/static/book-cover.png'} alt="{item.name}"/>
+  <img class="object-cover h-36 w-24 lg:h-64 lg:w-44" src={item.image || randomCover(item.iid)} alt="{item.name}"/>
   
   {#if item.rating}
   <h1 class="text-sm md:text-lg font-semibold p-2 text-white tracking-wider">
