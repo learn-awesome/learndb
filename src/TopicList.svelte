@@ -4,7 +4,4 @@
     import SearchForm from "./SearchForm.svelte"
 </script>
 
-<div class="hidden lg:flex lg:justify-end">
-    <a href="#/map" class="font-semibold bg-secondary text-primary_light rounded-lg hover:scale-110 px-3 py-2 hover:ease-in-out transition duration-200">Explore Map</a>
-</div>
 <TopicMasonryGrid {alltopics}/>
