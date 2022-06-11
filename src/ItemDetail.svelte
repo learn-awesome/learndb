@@ -2,6 +2,7 @@
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
     import Review from "./Review.svelte"
+    import { randomCover } from './utility.js'
 import AdvancedSearch from "./AdvancedSearch.svelte";
     
     export let itemid;
@@ -96,7 +97,7 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
 
     <div class="mt-10">
         <div class="mb-10 flex flex-wrap  justify-start">
-          <div class="w-full">
+          <div class={((item.links.includes('video|') && oembed_iframe) || (item.links.includes('wiki|')) ? 'w-full' : '')}>
             {#if item.links.includes('wiki|')}
               <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
             {:else if item.links.includes('video|') && oembed_iframe}
@@ -116,7 +117,7 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
               </div>
             {:else if !item.links.includes('video') && item.links.includes('book')}
             <div class="sm:mr-10 w-44 h-64 relative">
-              <img class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src="/static/book-cover.png" alt="{item.name}" />
+              <img class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src={randomCover(item.iid)} alt="{item.name}" />
 
               <div class="absolute inset-y-0 pl-4 pr-6 py-4 break-inside-avoid">
                 <p class="font-bold text-white text-2xl">{item.name}</p>
@@ -129,7 +130,7 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
           </div>
 
           <!-- item details  -->
-          <div class="w-full mt-10 flex flex-col justify-between flex-1">
+          <div class={(item.image ? 'lg:mt-0' : '') + " mt-10 w-full flex flex-col justify-between flex-1"}>
             <!-- title, sub title, author  -->
             <section>
               <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>

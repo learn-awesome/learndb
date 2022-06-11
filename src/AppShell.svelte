@@ -84,11 +84,11 @@
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   {#if isNavDrawerOpen}
   <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-neutral_Light bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
+    <div class="fixed inset-0 bg-neutral_light bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
-      <div class="relative flex-1 flex flex-col w-64 w-full pt-5 pb-4 bg-primary_light text-primary dark:bg-neutral_dark dark:text-primary_light">
-        <div class="md:ml-6 flex-1 h-0 overflow-y-auto">
+      <div class="relative flex-1 flex flex-col w-64 w-full pb-4">
+        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-gradient-to-r from-lightGradOne to-lightGradTwo text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
             {#if window.location.href.startsWith('http://127.0.0.1')}
@@ -104,12 +104,12 @@
   <!-- Static sidebar for desktop -->
   <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
     <!-- Sidebar component -->
-    <div class="flex flex-col flex-grow border-r-8 overflow-y-auto">
+    <div class="flex flex-col flex-grow border-r-8 border-lightGradOne overflow-y-auto">
       <!-- <div class="flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-primary">
         <a href="/" class="">LearnAwesome</a>
         <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div> -->
-      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary dark:bg-neutral_dark dark:text-neutral_light">
+      <div class="mt-12 flex-1 flex flex-col bg-gradient-to-r from-lightGradOne to-lightGradTwo text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
         <nav class="flex-1 pb-4 space-y-1 pt-5">
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}
