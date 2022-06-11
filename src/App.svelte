@@ -8,10 +8,9 @@
     import TopicDetail from "./TopicDetail.svelte"
     import FormatList from "./FormatList.svelte"
     import FormatDetail from "./FormatDetail.svelte"
-    import CourseList from "./CourseList.svelte"
     import ItemDetail from "./ItemDetail.svelte"
     import Settings from "./Settings.svelte"
-    import AdvancedSearch from "./AdvancedSearch.svelte"
+    
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
     import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon } from "@rgossiaux/svelte-heroicons/outline";
     import Bookmarks from './Bookmarks.svelte';
@@ -20,7 +19,6 @@
     let randomTopicName;
     let randomItemId;
     let alltopics = [];
-    let showSearch = null;
 
     function getRandomItemId(){
         fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
@@ -76,8 +74,6 @@
             <FormatList/>
         {:else if currentView.startsWith("/format/")}
             <FormatDetail format={currentView.split("/")[2]} {alltopics}/>
-        {:else if currentView === "/courses"}
-            <CourseList/>
         {:else if currentView.startsWith("/item/")}
             <ItemDetail itemid={currentView.split("/")[2]}/>
         {:else if currentView == "/randomtopic"}
@@ -92,7 +88,7 @@
             <Settings/>
         {/if}
 
-        <AdvancedSearch {showSearch} on:closed="{e => showSearch = null}"/>
+        
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
@@ -133,15 +129,6 @@
             </div>
             
         </a>
-
-        <button on:click="{e => showSearch = true}" class={(currentView === "/search" ? 'text-secondary dark:text-primary_light' : '') + " w-full group flex justify-start gap-3 items-center py-5 text-sm font-medium pl-4"}>
-            <SearchIcon class=" flex-shrink-0 h-6 w-6"/>
-            <div class="flex flex-col items-start">
-                <h3 class="text-center"> Search</h3>
-                <div class={(currentView === "/randomitem" ? 'bg-secondary w-full dark:bg-primary_light' : '') + " w-5 mt-0.25 h-0.5 bg-primary dark:bg-neutral_light group-hover:w-full ease-in-out duration-300"}></div>
-            </div>
-            
-        </button>
 
         <NavButtonWithLabel isActive={currentView === "/wanttolearn"} target="#/wanttolearn" label="Want to learn">
             <BookmarkIcon class=" flex-shrink-0 h-6 w-6"/>

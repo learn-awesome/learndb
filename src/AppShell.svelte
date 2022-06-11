@@ -1,5 +1,8 @@
 <script>
+
     import Icon from "./Icon.svelte"
+    import AdvancedSearch from "./AdvancedSearch.svelte"
+
     let isNavDrawerOpen = false
     export let showNotificationBell = false;
     export let showProfileMenu = false;
@@ -35,28 +38,32 @@
 
 <div >
   <!-- sticky top bar  -->
-  <div class="sticky top-0 z-10 flex-shrink-0 flex text-primary_light bg-primary shadow">
-    {#if isNavDrawerOpen == false}
-    <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
-      <span class="sr-only">Open sidebar</span>
-      <Icon kind="menu"/>
-    </button>
-    {/if}
+  <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-primary_light bg-primary shadow h-16">
+    <div class="flex items-center">
+      {#if isNavDrawerOpen == false}
+      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+        <span class="sr-only">Open sidebar</span>
+        <Icon kind="menu"/>
+      </button>
+      {/if}
 
-    {#if isNavDrawerOpen}
-    <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
-      <span class="sr-only">Close sidebar</span>
-      <Icon kind="close"/>
-    </button>
-    {/if}
+      {#if isNavDrawerOpen}
+      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+        <span class="sr-only">Close sidebar</span>
+        <Icon kind="close"/>
+      </button>
+      {/if}
 
-    <div class=" py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
-      <a href="/" class="">LearnAwesome</a>
-      <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
+      <div class=" py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
+        <a href="/" class="">LearnAwesome</a>
+        <div class="w-1/5 mt-0.25 h-0.5 bg-primary_light group-hover:w-full ease-in-out duration-300"></div>
+      </div>
     </div>
+    
+    <AdvancedSearch/>
+   
 
-    <div class="flex-1 flex justify-between">
-      
+    <div class="flex-1 flex justify-between">  
       {#if showNotificationBell || showProfileMenu}
       <div class="ml-4 flex items-center md:ml-6">
         {#if showNotificationBell}
@@ -65,7 +72,6 @@
           <Icon kind="bell"/>
         </button>
         {/if}
-
       </div>
       {/if}
     </div>
@@ -88,7 +94,7 @@
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
       <div class="relative flex-1 flex flex-col w-64 w-full pb-4">
-        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-gradient-to-r from-lightGradOne to-lightGradTwo text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
+        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-primary_light text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
             {#if window.location.href.startsWith('http://127.0.0.1')}
@@ -109,7 +115,7 @@
         <a href="/" class="">LearnAwesome</a>
         <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div> -->
-      <div class="mt-12 flex-1 flex flex-col bg-gradient-to-r from-lightGradOne to-lightGradTwo text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
+      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
         <nav class="flex-1 pb-4 space-y-1 pt-5">
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}

@@ -21,7 +21,7 @@
 
 </script>
 
-<div class="sticky z-10 top-[50px] lg:-ml-10 bg-gradient-to-r from-lightGradOne to-lightGradTwo dark:bg-gradient-to-r dark:from-neutral_light dark:to-neutral_light rounded">
+<div class="sticky z-10 top-16 lg:-ml-10 bg-gradient-to-r from-lightGradOne to-lightGradTwo dark:bg-gradient-to-r dark:from-neutral_light dark:to-neutral_light rounded">
   <div class="relative pt-1">
     {#if  showForm == false}
     <div class="bg-primary rounded absolute top-0 right-0">
