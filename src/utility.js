@@ -9,6 +9,7 @@ export function randomCover(itemid){
     '/static/book-cover-5.png',
     '/static/book-cover-6.png',
     '/static/book-cover-7.png',
+
   ]
   return images[itemid.charCodeAt(0) % images.length];  
 }
