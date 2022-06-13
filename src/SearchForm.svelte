@@ -25,7 +25,7 @@
   <div class="relative pt-1">
     {#if  showForm == false}
     <div class="bg-primary rounded absolute top-0 right-0">
-      <button on:click={e => showForm = true} type="button" class=" p-2 text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <button on:click={e => showForm = true} type="button" class=" p-2 text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary lg:hidden">
         <span class="sr-only">Open search form</span>
         <Icon kind="search"/>
       </button>
@@ -34,7 +34,7 @@
 
     {#if showForm}
     <div class="bg-primary rounded absolute top-0 right-0">
-      <button on:click={e => showForm = false} type="button" class="p-2 text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <button on:click={e => showForm = false} type="button" class="p-2 text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary lg:hidden">
         <span class="sr-only">Close search form</span>
         <Icon kind="close"/>
       </button>
@@ -42,7 +42,7 @@
     {/if}
 
     {#if showForm}
-      <form class="w-full p-2 gap-3 mt-10 flex flex-col xl:flex-row" on:submit|preventDefault>
+      <form class="w-full p-2 gap-3 mt-10 lg:mt-0 flex flex-col xl:flex-row" on:submit|preventDefault>
           <sl-input type="search" placeholder="Search by keywords" size="medium" clearable class="w-full flex-1 border-0 p-0 focus:ring-0" value={query.text} on:sl-input="{e => query.text = e.target.value}">
             <sl-icon name="search" slot="prefix"></sl-icon>
           </sl-input>
@@ -77,7 +77,7 @@
           </sl-select>
         </div>
 
-        <sl-select class="w-full md:w-2/5" on:sl-change="{e => query.sortby = e.target.value}" value={query.sortby}>
+        <sl-select class="w-full md:w-1/2" on:sl-change="{e => query.sortby = e.target.value}" value={query.sortby}>
           <sl-icon name="sort-down-alt" slot="prefix"></sl-icon>
           <sl-menu-item value="rating">Sort by Rating</sl-menu-item>
           <sl-menu-item value="year">Sort by Year</sl-menu-item>
