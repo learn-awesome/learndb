@@ -2,7 +2,6 @@
     import ItemCard from "./ItemCard.svelte"
     import SearchForm from "./SearchForm.svelte"
     import { formats } from "./formats.js"
-import { fix_and_destroy_block } from "svelte/internal";
     
     export let format;
     export let alltopics;
@@ -39,12 +38,30 @@ import { fix_and_destroy_block } from "svelte/internal";
             if(query.sortby == 'year') { return (a.year - b.year)};
             if(query.sortby == 'name') { return a.name.localeCompare(b.name)};
         });
+
+    function capitalize(str){
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    }    
 </script>
 
-<div class="md:flex md:items-center md:justify-between mb-8">
+<!-- <div class="md:flex md:items-center md:justify-between mb-8">
     <div class="flex-1 min-w-0">
-      <h2 class="text-2xl font-bold leading-7 text-lightSecondary2 sm:text-3xl sm:truncate"> {formats.find((f) => f.id === format).name}</h2>
+      <h2 class="text-2xl font-bold leading-7 text-secondary sm:text-3xl sm:truncate"> 
+        {formats.find((f) => f.id === format).name}
+      </h2>
     </div>
+</div> -->
+
+<div class="my-2 flex flex-row">
+    <sl-breadcrumb class="flex-grow">    
+        <sl-breadcrumb-item href="#/formats" class="title">All Formats</sl-breadcrumb-item>
+        <sl-breadcrumb-item href={"#/format/" + format}>
+            {capitalize(format)}
+        </sl-breadcrumb-item>    
+    </sl-breadcrumb>
+    <a href="https://github.com/learn-awesome/learndb" target="_blank" class="underline text-primary hover:font-bold px-2">
+        Help us improve this taxonomy
+    </a>
 </div>
 
 <SearchForm {alltopics} on:queryChanged={handleQueryChanged} hideFormat={true}/>

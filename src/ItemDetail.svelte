@@ -101,7 +101,7 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
             {#if item.links.includes('wiki|')}
               <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
             {:else if item.links.includes('video|') && oembed_iframe}
-              {@html oembed_iframe.replace('width="200"','width="100%"').replace('height="113"','height="400"')}
+              {@html oembed_iframe.replace('width="200"','width="100%"').replace(/height=["'][0-9]+["']/i,'height="400"')}
             {:else if item.image}
               <div class="">
                 <img class="mr-5 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
