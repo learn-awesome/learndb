@@ -9,7 +9,7 @@
     <img class=" h-36 w-24 md:h-56 md:w-40 shrink-0" src={item.image || randomCover(item.iid)} alt="{item.name}"/>
   
     {#if item.rating}
-    <h1 class="text-sm md:text-lg font-semibold p-2 text-white tracking-wider">
+    <h1 class="text-sm md:text-lg font-semibold p-2 text-primary_light tracking-wider">
       <sl-rating style="--symbol-size: 0.80 rem;" readonly precision="0.1" value={item.rating}></sl-rating>
     </h1>
     {/if}
