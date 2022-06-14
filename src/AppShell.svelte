@@ -23,22 +23,15 @@
       tailwind.config.theme.extend.colors.secondary = `hsl(${hues[4]}, ${saturation}%, ${lightness}%)`;
       tailwind.config.theme.extend.colors.lightGradOne = `hsl(${hues[5]}, ${saturation}%, ${lightness}%)`;
       tailwind.config.theme.extend.colors.lightGradTwo = `hsl(${hues[6]}, ${saturation}%, ${lightness}%)`;
-
-      tailwind.config.theme.extend.colors.darkPrimary = `hsl(${(hues[0] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.darkSecondary = `hsl(${(hues[1] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.darkTertiary = `hsl(${(hues[2] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.darkBg = `hsl(${(hues[3] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.darkPrimCont = `hsl(${(hues[4] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.darkButtonBg = `hsl(${(hues[5] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-      tailwind.config.theme.extend.colors.dark = `hsl(${(hues[6] + 180) % 360}, ${saturation}%, ${lightness}%)`;
-
+      tailwind.config.theme.extend.colors.primary_medium = `hsl(${hues[6]}, ${saturation}%, ${lightness}%)`;
     }
-
+    
+    
 </script>
 
 <div >
   <!-- sticky top bar  -->
-  <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-primary_light bg-primary shadow h-16">
+  <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-neutral-50 bg-blue-900 shadow h-16">
     <div class="flex items-center">
       {#if isNavDrawerOpen == false}
       <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
@@ -56,7 +49,7 @@
 
       <div class=" py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
         <a href="/" class="">LearnAwesome</a>
-        <div class="w-1/5 mt-0.25 h-0.5 bg-primary_light group-hover:w-full ease-in-out duration-300"></div>
+        <div class="w-1/5 mt-0.25 h-0.5 bg-neutral-50 group-hover:w-full ease-in-out duration-300"></div>
       </div>
     </div>
     
@@ -94,7 +87,7 @@
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
       <div class="relative flex-1 flex flex-col w-64 w-full pb-4">
-        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-primary_light text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
+        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-primary_light text-primary">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
             {#if window.location.href.startsWith('http://127.0.0.1')}
@@ -115,7 +108,7 @@
         <a href="/" class="">LearnAwesome</a>
         <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div> -->
-      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary dark:from-neutral_dark dark:to-neutral_dark dark:text-primary_light">
+      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary">
         <nav class="flex-1 pb-4 space-y-1 pt-5">
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}
