@@ -23,6 +23,6 @@
 
 </script>
 
-<h1 class="my-2 text-lightButton2 dark:text-darkButton2">{kind == 0 ? 'Want to learn' : 'Finished learning'}</h1>
+<h1 class="my-2">{kind == 0 ? 'Want to learn' : 'Finished learning'}</h1>
 
 <ItemList {items}/>

@@ -180,10 +180,11 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
             </div>
           </div>
         </div>
-        <hr class="bg-neutral_light"/>
+        
 
         <!-- Description  -->
         {#if item.description}
+        <hr class="bg-neutral_light"/>
         <section class="my-8">
           <h2 class="font-bold text-lg">Description</h2>
           <p class="mt-4 tracking-wide">{item.description}</p>
