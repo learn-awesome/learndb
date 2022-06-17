@@ -230,12 +230,12 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
         {/if}
   
         {#if item.creators}
-        <div class="flex flex-col justify-between items-center gap-1 border border-gray-200 py-5">
+        <div class="flex flex-col justify-between items-center gap-1 border border-neutral_dark py-5 px-2">
           <div class="flex flex-col items-center">
             <h3 class="uppercase text-xs ">Creator</h3>
             <span></span>
           </div>
-          <span class="text-xs">{item.creators}</span>
+          <span class="text-xs text-center font-bold">{item.creators}</span>
         </div>
         {/if}
   
@@ -266,7 +266,7 @@ import AdvancedSearch from "./AdvancedSearch.svelte";
           <h2 class="text-base font-bold">Reviews</h2>
         </div>
         
-        <div class="flex flex-col md:flex-row md:overflow-x-auto md:pb-5 mt-3 gap-2 scroll">
+        <div class="grid grid-cols-1 md:grid-cols-2 md:overflow-x-auto md:pb-5 mt-3 gap-3 scroll">
         {#each reviews as review}
           <Review {review}/>
         {/each}
