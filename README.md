@@ -1,5 +1,7 @@
 # LearnAwesome
 
+[Visit the online version at https://learnawesome.vercel.app/](https://learnawesome.vercel.app/) but you can also run it on your own machine.
+
 This is a collection of learning resources organized by topics, formats, difficulty levels, and quality tags like visual / interactive / challenging etc. It also includes reviews from experts and metadata like paywall/loginwall to help you find the best resource for your learning goals.
 
 For certain resources like research paper or books, there will be direct links thanks to projects like InternetArchive, LibGen, Arxiv, SciHub etc.
@@ -12,11 +14,12 @@ In conjunction with this, we're also building an online game where this is prese
 
 [Visit https://learnawesome.vercel.app/](https://learnawesome.vercel.app/)
 
-<img width="1689" alt="image" src="https://user-images.githubusercontent.com/19304/171865328-b8c22482-15d7-476e-9b91-a1c482809f29.png">
+<img width="1699" alt="image" src="https://user-images.githubusercontent.com/19304/173263135-a3a02843-93d0-4c9c-b84f-a42b4883ff66.png">
 
-<img width="1697" alt="image" src="https://user-images.githubusercontent.com/19304/171865412-e3bec0b3-3205-4f89-8d95-4c0af8476c7a.png">
+<img width="1694" alt="image" src="https://user-images.githubusercontent.com/19304/173263184-2b72e006-91f1-43d6-9bde-3d151272e177.png">
 
-<img width="1687" alt="image" src="https://user-images.githubusercontent.com/19304/171865546-9cd68586-a096-4754-a78f-9aaebe6164ae.png">
+<img width="1682" alt="image" src="https://user-images.githubusercontent.com/19304/173263247-275ef166-ee59-4ba9-8123-f0e7e6d19988.png">
+
 
 Your bookmarks are saved in localStorage so be assured that no personal data is being tracked or saved on this site.
 
