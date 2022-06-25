@@ -29,12 +29,17 @@ const encodeArray = (kind, bookmarks) => {
 };
 
 export const io_fetchBookmark = (kind, bookmarks, asyncReturn) => {
-  fetch(`/learn/items.json?_shape=array&rowid__in=${encodeArray(kind)}`)
+  if (!kind || !kind.length) asyncReturn([]);
+  if (!bookmarks) asyncReturn([]);
+
+  fetch(`/learn/items.json?_shape=array&rowid__in=${encodeArray(kind, bookmarks)}`)
     .then((r) => r.json())
     .then(asyncReturn);
 };
 
 export const io_fetchItemWithTopic = (format, topic, asyncReturn) => {
+  if (!format || !format.length) asyncReturn([]);
+  if (!topic || !topic.length) asyncReturn([]);
   fetch(
     `/learn/items.json?_shape=array&_size=100&links__contains=${format}|&topics__contains=${topic}`
   )
