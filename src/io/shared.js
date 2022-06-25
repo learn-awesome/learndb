@@ -1,4 +1,4 @@
-export const io_fetchUrl = (asyncReturn) => {
+export const io_fetchUrl = (url, asyncReturn) => {
   fetch(url)
     .then((r) => r.json())
     .then((data) => {

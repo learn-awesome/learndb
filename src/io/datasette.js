@@ -21,6 +21,7 @@ export const io_getTopicList = (asyncReturn) => {
 };
 
 const encodeArray = (kind, bookmarks) => {
+  if (!bookmarks) return '';
   return Object.entries(bookmarks)
     .filter((pair) => pair[1] == kind)
     .map((pair) => pair[0])
