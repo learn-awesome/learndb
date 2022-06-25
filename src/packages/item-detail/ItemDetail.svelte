@@ -1,8 +1,8 @@
 <script>
   import ButtonGroup from './ButtonGroup.svelte';
-  import { bookmarks } from '../../stores.js';
+  import { bookmarks } from '../stores.js';
   import Review from './Review.svelte';
-  import { randomCover } from '../../utility.js';
+  import { randomCover } from '../random-cover/random-cover.js';
   import AdvancedSearch from '../search-advanced/AdvancedSearch.svelte';
 
   export let itemid;

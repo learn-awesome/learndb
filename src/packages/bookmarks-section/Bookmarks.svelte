@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import ItemList from '../item-list/ItemList.svelte';
-  import { bookmarks } from '../../stores.js';
+  import { bookmarks } from '../stores.js';
 
   export let kind;
   let items = [];

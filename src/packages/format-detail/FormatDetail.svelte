@@ -1,7 +1,7 @@
 <script>
   import ItemCard from '../item-card/ItemCard.svelte';
   import SearchForm from '../search-form/SearchForm.svelte';
-  import { formats } from '../../formats.js';
+  import { formats } from './formats.js';
 
   export let format;
   export let alltopics;

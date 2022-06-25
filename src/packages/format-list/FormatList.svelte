@@ -1,5 +1,5 @@
 <script>
-  import { formats } from '../../formats.js';
+  import { formats } from '../format-detail/formats.js';
 </script>
 
 <div

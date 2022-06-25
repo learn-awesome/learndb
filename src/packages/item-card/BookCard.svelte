@@ -1,6 +1,6 @@
 <script>
   export let item;
-  import { randomCover } from '../../utility.js';
+  import { randomCover } from '../random-cover/random-cover.js';
 </script>
 
 <a
