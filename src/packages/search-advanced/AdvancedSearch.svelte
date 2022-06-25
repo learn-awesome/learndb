@@ -11,13 +11,15 @@
     result_topics = [];
   }
 
-  $: io_fetchItemWithName(query, (d) => {
-    result_items = d;
-  });
+  $: query &&
+    io_fetchItemWithName(query, (d) => {
+      result_items = d;
+    });
 
-  $: io_fetchTopicByName(query, (d) => {
-    result_topics = d;
-  });
+  $: query &&
+    io_fetchTopicByName(query, (d) => {
+      result_topics = d;
+    });
 </script>
 
 <form class="hidden w-full md:pl-24 md:flex justify-center" on:submit|preventDefault>
