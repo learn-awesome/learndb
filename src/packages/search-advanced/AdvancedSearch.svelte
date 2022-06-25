@@ -38,7 +38,7 @@
         <sl-icon name="search" slot="prefix" />
       </sl-input>
 
-      {#if result_items.length + result_topics.length > 0}
+      {#if result_items.length || result_topics.length}
         <sl-menu
           on:sl-select={(e) => {
             resetQuery();
