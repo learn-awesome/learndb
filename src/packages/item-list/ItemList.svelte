@@ -3,7 +3,7 @@
   import VideoCard from '../item-card/VideoCard.svelte';
   import GenericCard from '../item-card/GenericCard.svelte';
   export let items = [];
-  import { formats } from '../../formats.js';
+  import { formats } from '../format-detail/formats.js';
 
   function isMobile() {
     return window.innerWidth < 680;
