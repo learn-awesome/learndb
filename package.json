@@ -7,14 +7,18 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "datasette . -o",
-    "publish": "datasette publish vercel learn.db --project learnawesome -m metadata.json --template-dir templates --static static:static --setting max_returned_rows 20000"
+    "publish": "datasette publish vercel learn.db --project learnawesome -m metadata.json --template-dir templates --static static:static --setting max_returned_rows 20000",
+    "usage": "parcel -p 1234 --no-hmr src/packages/$npm_config_package/__usage__/index.html"
   },
   "devDependencies": {
+    "@parcel/resolver-default": "^2.6.2",
     "@rgossiaux/svelte-headlessui": "^1.0.1",
     "@rgossiaux/svelte-heroicons": "^0.1.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@tsconfig/svelte": "^3.0.0",
+    "parcel": "^2.6.0",
+    "parcel-transformer-svelte": "^1.2.3",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",

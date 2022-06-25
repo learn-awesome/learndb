@@ -1,0 +1,21 @@
+{
+  "name": "format-detail",
+  "version": "0.0.0",
+  "description": "Example usage of svelte component with Parcel",
+  "source": "src/index.js",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "scripts": {
+    "start": "vite",
+    "usage": "yarn parcel __usage__/index.html"
+  },
+  "author": "Marielle Lange",
+  "license": "All Rights Reserved",
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.42",
+    "parcel": "^2.6.0",
+    "parcel-transformer-svelte": "^1.2.3",
+    "svelte": "^3.22.2",
+    "vite": "^2.9.8"
+  }
+}

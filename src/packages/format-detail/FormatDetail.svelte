@@ -47,6 +47,8 @@
       return true;
     })
     .sort((a, b) => {
+      if (!a || !b) return 0;
+      if (!query) return 0;
       if (query.sortby == 'rating') {
         return a.rating - b.rating;
       }
@@ -58,7 +60,7 @@
       }
     });
 
-  function capitalize(str) {
+  function capitalize(str = '') {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 </script>
