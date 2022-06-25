@@ -2,3 +2,5 @@ node_modules
 static/bundle.css
 static/bundle.js
 static/bundle.js.map
+
+.parcel-cache
