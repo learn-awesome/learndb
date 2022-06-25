@@ -29,8 +29,8 @@ const encodeArray = (kind, bookmarks) => {
 };
 
 export const io_fetchBookmark = (kind, bookmarks, asyncReturn) => {
-  if (!kind || !kind.length) asyncReturn('');
-  if (!bookmarks) asyncReturn('');
+  if (!kind || !kind.length) asyncReturn([]);
+  if (!bookmarks) asyncReturn([]);
 
   fetch(`/learn/items.json?_shape=array&rowid__in=${encodeArray(kind, bookmarks)}`)
     .then((r) => r.json())
@@ -78,7 +78,7 @@ export const io_fetchTopicByName = (text, asyncReturn) => {
 };
 
 export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
-  if (!topic || !topic.length) asyncReturn('');
+  if (!topic || !topic.length) asyncReturn([]);
   fetch(`/learn/items.json?_shape=array&topics__contains=${topic}`)
     .then((r) => r.json())
     .then(asyncReturn);
