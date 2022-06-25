@@ -10,11 +10,13 @@
   let reviews = [];
 
   $: io_getItemById(itemid, (d) => {
+    console.log('item', d);
     item = d;
   });
 
   $: item &&
     io_fetchReviews(item.iid, (d) => {
+      console.log('reviews', d);
       reviews = d;
     });
 
@@ -46,6 +48,7 @@
   }
 
   $: item &&
+    item.links &&
     item.links.includes('video|') &&
     oEmded_image(item) &&
     io_fetchUrl(oEmded_image(item), (url, html) => {
