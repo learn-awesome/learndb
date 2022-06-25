@@ -54,6 +54,7 @@ export const io_fetchVideoThumbnailUrl = (youtubeurl, asyncReturn) => {
 };
 
 export const io_getItemById = (itemid, asyncReturn) => {
+  if (!itemid || !itemid.length) asyncReturn([]);
   fetch(`/learn/items/${itemid}.json?_shape=object`)
     .then((r) => r.json())
     .then((data) => {
@@ -62,29 +63,28 @@ export const io_getItemById = (itemid, asyncReturn) => {
 };
 
 export const io_fetchReviews = (itemid, asyncReturn) => {
+  if (!itemid || !itemid.length) asyncReturn([]);
   fetch(`/learn/reviews.json?_shape=array&item_id__exact=${itemid}`)
     .then((r) => r.json())
     .then(asyncReturn);
 };
 
 export const io_fetchItemWithName = (text, asyncReturn) => {
-  if (!text) asyncReturn([]);
+  if (!text || !text.length) asyncReturn([]);
   fetch(`/learn/items.json?_shape=array&name__contains=${text}&_size=6`)
     .then((r) => r.json())
     .then(asyncReturn);
 };
 
 export const io_fetchTopicByName = (text, asyncReturn) => {
-  if (!text) {
-    asyncReturn([]);
-  }
+  if (!text || !text.length) asyncReturn([]);
   fetch(`/learn/topics.json?_shape=array&display_name__contains=${text}&_size=6`)
     .then((r) => r.json())
     .then(asyncReturn);
 };
 
 export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
-  if (!topic) asyncReturn([]);
+  if (!topic || !topic.length) asyncReturn([]);
   fetch(`/learn/items.json?_shape=array&topics__contains=${topic}`)
     .then((r) => r.json())
     .then(asyncReturn);
