@@ -2,7 +2,7 @@
   import ItemCard from '../item-card/ItemCard.svelte';
   import SearchForm from '../search-form/SearchForm.svelte';
   import { formats } from './formats.js';
-
+  import { io_fetchItemWithTopic } from '../../io/datasette.js';
   export let format;
   export let alltopics;
   let items = [];
@@ -17,13 +17,9 @@
   };
 
   $: query &&
-    fetch(
-      `/learn/items.json?_shape=array&_size=100&links__contains=${format}|&topics__contains=${query.topic}`
-    )
-      .then((r) => r.json())
-      .then((data) => {
-        items = data;
-      });
+    io_fetchItemWithTopic(format, query.topic, (d) => {
+      items = d;
+    });
 
   function handleQueryChanged(event) {
     // console.log("queryChanged: ", event.detail);

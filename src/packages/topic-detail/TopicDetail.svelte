@@ -3,6 +3,7 @@
   import TopicMasonryGrid from '../topic-gallery/TopicMasonryGrid.svelte';
 
   import SearchForm from '../search-form/SearchForm.svelte';
+  import { io_fetchItemsWithTopic } from '../../io';
 
   export let topicname;
   export let alltopics;
@@ -18,12 +19,10 @@
     sortby: 'rating',
   };
 
-  $: fetch(`/learn/items.json?_shape=array&topics__contains=${topicname}`)
-    .then((r) => r.json())
-    .then((data) => {
-      items = data;
-      filteredItems = data;
-    });
+  $: io_fetchItemsWithTopic(topicname, (d) => {
+    items = d;
+    filteredItems = d;
+  });
 
   function handleQueryChanged(event) {
     // console.log("queryChanged: ", event.detail);

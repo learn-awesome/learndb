@@ -4,23 +4,19 @@
   import Review from './Review.svelte';
   import { randomCover } from '../random-cover/random-cover.js';
   import AdvancedSearch from '../search-advanced/AdvancedSearch.svelte';
-
+  import { io_getItemById, io_fetchReviews, io_fetchUrl } from '../../io';
   export let itemid;
   let item;
   let reviews = [];
 
-  $: fetch(`/learn/items/${itemid}.json?_shape=object`)
-    .then((r) => r.json())
-    .then((data) => {
-      item = data[itemid];
-    });
+  $: io_getItemById(itemid, (d) => {
+    item = d;
+  });
 
   $: item &&
-    fetch(`/learn/reviews.json?_shape=array&item_id__exact=${item.iid}`)
-      .then((r) => r.json())
-      .then((data) => {
-        reviews = data;
-      });
+    io_fetchReviews(item.iid, (d) => {
+      reviews = d;
+    });
 
   function get_tld(url) {
     return new URL(url).hostname.replace('www.', '');
@@ -52,12 +48,10 @@
   $: item &&
     item.links.includes('video|') &&
     oEmded_image(item) &&
-    fetch(oEmded_image(item))
-      .then((r) => r.json())
-      .then((data) => {
-        oEmded_image_ytb_url = data.thumbnail_url;
-        oembed_iframe = data.html;
-      });
+    io_fetchUrl(oEmded_image(item), (url, html) => {
+      oEmded_image_ytb_url = url;
+      oembed_iframe = html;
+    });
 
   function wikiUrlForEmbed(item) {
     var wikiurl = item.links

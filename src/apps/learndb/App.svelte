@@ -23,33 +23,31 @@
     SupportIcon,
   } from '@rgossiaux/svelte-heroicons/outline';
   import Bookmarks from '../../packages/bookmarks-section/Bookmarks.svelte';
-
+  import {
+    io_getRandomItemId,
+    io_getRandomTopicName,
+    io_getTopicList,
+  } from '../../io/datasette.js';
   let currentView = '/topics';
   let randomTopicName;
   let randomItemId;
   let alltopics = [];
 
   function getRandomItemId() {
-    fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1')
-      .then((r) => r.json())
-      .then((data) => {
-        randomItemId = data[0].rowid;
-      });
+    io_getRandomItemId((d) => {
+      randomItemId = d;
+    });
   }
 
   function getRandomTopicName() {
-    fetch('/learn.json?_shape=array&sql=select+name+from+topics+order+by+random()+limit+1')
-      .then((r) => r.json())
-      .then((data) => {
-        randomTopicName = data[0].name;
-      });
+    io_getRandomTopicName((d) => {
+      randomTopicName = d;
+    });
   }
 
-  $: fetch(`/learn/topics.json?_shape=array&_size=5000`)
-    .then((r) => r.json())
-    .then((data) => {
-      alltopics = data;
-    });
+  $: io_getTopicList((d) => {
+    alltopics = d;
+  });
 
   async function hashchange() {
     // the poor man's router!
