@@ -23,11 +23,7 @@
     SupportIcon,
   } from '@rgossiaux/svelte-heroicons/outline';
   import Bookmarks from '../../packages/bookmarks-section/Bookmarks.svelte';
-  import {
-    io_getRandomItemId,
-    io_getRandomTopicName,
-    io_getTopicList,
-  } from '../../io/datasette.js';
+  import { io_getRandomItemId, io_getRandomTopicName, io_getTopicList } from '../../io';
   let currentView = '/topics';
   let randomTopicName;
   let randomItemId;

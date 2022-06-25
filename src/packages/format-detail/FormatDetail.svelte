@@ -2,7 +2,7 @@
   import ItemCard from '../item-card/ItemCard.svelte';
   import SearchForm from '../search-form/SearchForm.svelte';
   import { formats } from './formats.js';
-  import { io_fetchItemWithTopic } from '../../io/datasette.js';
+  import { io_fetchItemWithTopic } from '../../io';
   export let format;
   export let alltopics;
   let items = [];

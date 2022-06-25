@@ -1,7 +1,7 @@
 <script>
   // import ButtonGroup from "./ButtonGroup.svelte";
   // import { oEmdedProviders } from "./oEmbedProviders.js"
-  import { io_fetchVideoThumbnailUrl } from '../../io/datasette.js';
+  import { io_fetchVideoThumbnailUrl } from '../../io';
 
   export let item;
   let oEmded_image_ytb_url = null;

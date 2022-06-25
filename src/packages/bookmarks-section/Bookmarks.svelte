@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import ItemList from '../item-list/ItemList.svelte';
   import { bookmarks } from '../stores.js';
-  import { io_fetchBookmark } from '../../io/datasette.js';
+  import { io_fetchBookmark } from '../../io';
 
   export let kind;
   let items = [];
