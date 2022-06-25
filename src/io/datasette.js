@@ -42,17 +42,6 @@ export const io_fetchItemWithTopic = (format, topic, asyncReturn) => {
     .then(asyncReturn);
 };
 
-export const io_fetchVideoThumbnailUrl = (youtubeurl, asyncReturn) => {
-  if (!youtubeurl) asyncReturn(null);
-  const url = `https://www.youtube.com/oembed?url=${youtubeurl}&format=json`;
-
-  fetch(url)
-    .then((r) => r.json())
-    .then((data) => {
-      asyncReturn(data.thumbnail_url);
-    });
-};
-
 export const io_getItemById = (itemid, asyncReturn) => {
   if (!itemid || !itemid.length) asyncReturn([]);
   fetch(`/learn/items/${itemid}.json?_shape=object`)
