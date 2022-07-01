@@ -22,7 +22,7 @@
 
 <a
   class="flex flex-wrap overflow-hidden rounded-lg duration-300 break-inside-avoid max-w-lg border-secondary"
-  href="#/item/{item.rowid}"
+  href="#/item/{item.iid}"
 >
   <div
     class="relative w-full max-w-sm w-full md:w-64 ring-black/5 rounded-xl flex flex-col items-start"

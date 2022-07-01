@@ -10,17 +10,16 @@
   let reviews = [];
 
   $: io_getItemById(itemid, (d) => {
-    console.log('item', d);
     item = d;
   });
 
   $: item &&
     io_fetchReviews(item.iid, (d) => {
-      console.log('reviews', d);
       reviews = d;
     });
 
   function get_tld(url) {
+    console.log('url', url);
     return new URL(url).hostname.replace('www.', '');
   }
 
@@ -57,7 +56,7 @@
     });
 
   function wikiUrlForEmbed(item) {
-    var wikiurl = item.links
+    var wikiurl = (item.links || '')
       .split(';')
       .find((l) => l.includes('wiki|'))
       .split('|')[1];
@@ -72,7 +71,7 @@
     class="w-full px-6 py-4 mt-10 lg:max-w-4xl mx-auto border shadow-2xl lg:px-20 lg:py-8 rounded-xl lg:mt-20 bg-primary_light font-sans"
   >
     <h3 class="my-2">
-      {#each item.topics.split(';') as topicname}
+      {#each (item.topics || '').split(';') as topicname}
         <div class="group inline-flex">
           <a href={'#/topic/' + topicname} class="mr-2 font-bold"
             >{topicname.toUpperCase()}
@@ -87,13 +86,14 @@
     <div class="mt-10">
       <div class="mb-10 flex flex-wrap  justify-start">
         <div
-          class={(item.links.includes('video|') && oembed_iframe) || item.links.includes('wiki|')
+          class={((item.links || '').includes('video|') && oembed_iframe) ||
+          item.links.includes('wiki|')
             ? 'w-full'
             : ''}
         >
-          {#if item.links.includes('wiki|')}
+          {#if (item.links || '').includes('wiki|')}
             <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki" />
-          {:else if item.links.includes('video|') && oembed_iframe}
+          {:else if (item.links || '').includes('video|') && oembed_iframe}
             {@html oembed_iframe
               .replace('width="200"', 'width="100%"')
               .replace(/height=["'][0-9]+["']/i, 'height="400"')}
@@ -105,7 +105,7 @@
                 alt={item.name}
               />
             </div>
-          {:else if item.links.includes('video')}
+          {:else if (item.links || '').includes('video')}
             <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
               <div class="w-80 h-60">
                 <img
@@ -125,7 +125,7 @@
                 >
               </div>
             </div>
-          {:else if !item.links.includes('video') && item.links.includes('book')}
+          {:else if !(item.links || '').includes('video') && (item.links || '').includes('book')}
             <div class="sm:mr-10 w-44 h-64 relative">
               <img
                 class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl"
@@ -157,7 +157,7 @@
           <!-- ratings and upload buttons -->
           <div class="mt-2 mb-6 flex flex-col justify-between">
             <div class="flex flex-wrap items-center justify-start gap-3 mt-5">
-              {#each item.links.split(';') as type}
+              {#each (item.links || '').split(';') as type}
                 <sl-button-group>
                   <sl-button
                     size="small"

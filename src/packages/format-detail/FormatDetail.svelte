@@ -2,7 +2,7 @@
   import ItemCard from '../item-card/ItemCard.svelte';
   import SearchForm from '../search-form/SearchForm.svelte';
   import { formats } from './formats.js';
-  import { io_fetchItemWithTopic } from '../../io';
+  import { io_fetchItemsWithLinkTopic } from '../../io';
   export let format;
   export let alltopics;
   let items = [];
@@ -17,7 +17,7 @@
   };
 
   $: query &&
-    io_fetchItemWithTopic(format, query.topic, (d) => {
+    io_fetchItemsWithLinkTopic(format, query.topic, (d) => {
       items = d;
     });
 
@@ -26,7 +26,7 @@
     query = event.detail;
   }
 
-  $: filteredItems = items
+  $: filteredItems = (items || [])
     .filter((item) => {
       if (query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())) {
         return false;
