@@ -34,7 +34,7 @@
           </sl-tab-panel>
         {:else if format.id == 'video'}
           <sl-tab-panel name={format.id} active={i == 0}>
-            <div class="mx-auto gap-5 flex flex-wrap">
+            <div class="mx-auto gap-5  masonry">
               {#each items.filter((x) => x.links.includes(format.id + '|')) as item}
                 <VideoCard {item} />
               {/each}
@@ -42,7 +42,7 @@
           </sl-tab-panel>
         {:else}
           <sl-tab-panel name={format.id} active={i == 0}>
-            <div class="mx-auto gap-5 flex flex-wrap">
+            <div class="mx-auto gap-5 masonry">
               {#each items.filter((x) => x.links.includes(format.id + '|')) as item}
                 <GenericCard {item} />
               {/each}
@@ -71,7 +71,7 @@
           </sl-tab-panel>
         {:else if format.id == 'video'}
           <sl-tab-panel name={format.id} active={i == 0}>
-            <div class="mx-auto gap-5 flex flex-wrap">
+            <div class="mx-auto gap-5 flex flex-wrap ">
               {#each items.filter((x) => x.links.includes(format.id + '|')) as item}
                 <VideoCard {item} />
               {/each}
@@ -96,3 +96,12 @@
 <ItemCard {item}/>
 {/each}
 </div> -->
+<style>
+  .masonry {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 1000px;
+  }
+</style>

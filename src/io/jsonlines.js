@@ -83,6 +83,7 @@ export const io_getItemById = (itemid, asyncReturn) => {
 export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
   console.log('---io_fetchItemsWithTopic---------');
   if (!topic || !topic.length) asyncReturn([]);
+  topic = decodeURI(topic);
 
   const items = items_db.filter((d) => d.topics.includes(topic));
   asyncReturn(items);
@@ -90,9 +91,10 @@ export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
 
 export const io_fetchItemsWithLinkTopic = (format, topic, asyncReturn) => {
   console.log('---io_fetchItemsWithLinkTopic---------');
+
   if (!format || !format.length) asyncReturn('');
   if (!topic || !topic.length) asyncReturn('');
-
+  topic = decodeURI(topic);
   const items = items_db
     .filter((d) => d.topics.includes(topic))
     .filter((d) => d.links.includes(format));

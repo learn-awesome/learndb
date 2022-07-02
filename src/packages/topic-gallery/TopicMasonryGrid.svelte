@@ -138,7 +138,7 @@
           >
         {/if}
 
-        <div class="mt-2 flex flex-wrap">
+        <div class="mt-2 flex flex-wrap ">
           {#each parent[1].sort((t1, t2) => (t1.sort_index || 100) - (t2.sort_index || 100)) as child}
             <a
               href={'#/topic/' + child.name}
