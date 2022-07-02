@@ -2531,7 +2531,6 @@ export let topics = `
 {"$_":"social-justice","@_":"social-justice","i_":"unsplash://1591622414918-3f63a4da1b4e"}
 {"$_":"social-media","@_":"social-media","i_":"unsplash://1514580426463-fd77dc4d0672"}
 {"$_":"social-network","@_":"social-network","i_":"unsplash://1519389950473-47ba0277781c"}
-{"$_":"social-networks","@_":"social-networks","i_":"unsplash://1519389950473-47ba0277781c"}
 {"$_":"social-psychology","@_":"social-psychology","i_":"unsplash://1591034455539-0352f7ed55ee"}
 {"$_":"social-science","@_":"social-science","i_":"unsplash://1584714268709-c3dd9c92b378","^_":"humanities"}
 {"$_":"social","@_":"social","i_":"unsplash://1514580426463-fd77dc4d0672"}
