@@ -18,6 +18,7 @@
       reviews = d;
     });
 
+  console.log('ItemDetail', itemid, item);
   function get_tld(url) {
     console.log('url', url);
     return new URL(url).hostname.replace('www.', '');

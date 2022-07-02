@@ -12,8 +12,8 @@
     if (topic.display_name == undefined) {
       return capitalize(topic);
     }
-    if (topic.display_name.includes('/')) {
-      return capitalize(topic.display_name.split('/')[1]);
+    if (topic.display_name.includes('»')) {
+      return capitalize(topic.display_name.split('»')[1]);
     } else {
       return capitalize(topic.display_name);
     }
@@ -29,7 +29,6 @@
         parentids.push(topic_array[i].name);
       }
     }
-    // console.log(tempmap);
 
     // second pass for their children
     for (let i = 0; i < topic_array.length; i++) {
@@ -63,7 +62,7 @@
 
   $: topic = alltopics.find((t) => t.name == topicname);
 
-  $: map = hierarchy(alltopics, topic?.name || '');
+  $: map = hierarchy(alltopics, topic ? topic.name : '');
 </script>
 
 <div class="my-2 flex flex-row">

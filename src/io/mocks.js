@@ -17,6 +17,25 @@ export const io_getItemById_mock = {
   tags: '',
 };
 
+
+export const io_getItemById__mock = {
+  rowid: 483,
+  iid: 'e4af7c19-a6f4-4664-b843-4f3dc3cc46f3',
+  name: 'Visual Group Theory',
+  description: '',
+  image: '',
+  links:
+    'book|https://www.goodreads.com/book/show/7629307-visual-group-theory-maa-classroom-resource-materials;course|http://www.math.clemson.edu/~macaule/classes/m20_math4120/',
+  topics: 'abstract-algebra',
+  creators: '',
+  year: '',
+  difficulty: '',
+  cost: '',
+  rating: '',
+  tags: '',
+};
+
+
 export const io_fetchBookmark_mock = [
   {
     rowid: 14631,
@@ -34,23 +53,6 @@ export const io_fetchBookmark_mock = [
     tags: '',
   },
 ];
-
-export const io_getItemById_mock = {
-  rowid: 483,
-  iid: 'e4af7c19-a6f4-4664-b843-4f3dc3cc46f3',
-  name: 'Visual Group Theory',
-  description: '',
-  image: '',
-  links:
-    'book|https://www.goodreads.com/book/show/7629307-visual-group-theory-maa-classroom-resource-materials;course|http://www.math.clemson.edu/~macaule/classes/m20_math4120/',
-  topics: 'abstract-algebra',
-  creators: '',
-  year: '',
-  difficulty: '',
-  cost: '',
-  rating: '',
-  tags: '',
-};
 
 export const io_fetchReviews_mock = [
   {

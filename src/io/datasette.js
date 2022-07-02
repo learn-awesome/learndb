@@ -24,7 +24,7 @@ export const io_getItemById = (itemid, asyncReturn) => {
     });
 };
 
-// d
+// x
 export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
   console.log('---io_fetchItemsWithTopic---------');
   if (!topic || !topic.length) asyncReturn([]);
@@ -33,7 +33,7 @@ export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
     .then(asyncReturn);
 };
 
-// d
+// x
 export const io_fetchItemsWithLinkTopic = (format, topic, asyncReturn) => {
   if (!format || !format.length) asyncReturn('');
   if (!topic || !topic.length) asyncReturn('');
@@ -44,7 +44,7 @@ export const io_fetchItemsWithLinkTopic = (format, topic, asyncReturn) => {
     .then(asyncReturn);
 };
 
-// d
+// x
 export const io_fetchBookmark = (kind, bookmarks, asyncReturn) => {
   if (!kind || !kind.length) asyncReturn([]);
   if (!bookmarks) asyncReturn([]);
@@ -62,7 +62,22 @@ export const io_fetchBookmark = (kind, bookmarks, asyncReturn) => {
     .then(asyncReturn);
 };
 
-// d
+// x
+export const io_fetchItemWithName = (text, asyncReturn) => {
+  if (!text || !text.length) asyncReturn('');
+  fetch(`/learn/items.json?_shape=array&name__contains=${text}&_size=6`)
+    .then((r) => r.json())
+    .then(asyncReturn);
+};
+
+// x
+export const io_getTopicList = (asyncReturn) => {
+  fetch(`/learn/topics.json?_shape=array&_size=5000`)
+    .then((r) => r.json())
+    .then(asyncReturn);
+};
+
+// x
 export const io_getRandomTopicName = (asyncReturn) => {
   fetch('/learn.json?_shape=array&sql=select+name+from+topics+order+by+random()+limit+1')
     .then((r) => r.json())
@@ -71,33 +86,18 @@ export const io_getRandomTopicName = (asyncReturn) => {
     });
 };
 
-// d
-export const io_getTopicList = (asyncReturn) => {
-  fetch(`/learn/topics.json?_shape=array&_size=5000`)
-    .then((r) => r.json())
-    .then(asyncReturn);
-};
-
-// d
-export const io_fetchReviews = (itemid, asyncReturn) => {
-  if (!itemid || !itemid.length) asyncReturn('');
-  fetch(`/learn/reviews.json?_shape=array&item_id__exact=${itemid}`)
-    .then((r) => r.json())
-    .then(asyncReturn);
-};
-
-// d
-export const io_fetchItemWithName = (text, asyncReturn) => {
-  if (!text || !text.length) asyncReturn('');
-  fetch(`/learn/items.json?_shape=array&name__contains=${text}&_size=6`)
-    .then((r) => r.json())
-    .then(asyncReturn);
-};
-
-// d
+// x
 export const io_fetchTopicByName = (text, asyncReturn) => {
   if (!text || !text.length) asyncReturn('');
   fetch(`/learn/topics.json?_shape=array&display_name__contains=${text}&_size=6`)
+    .then((r) => r.json())
+    .then(asyncReturn);
+};
+
+// x
+export const io_fetchReviews = (itemid, asyncReturn) => {
+  if (!itemid || !itemid.length) asyncReturn('');
+  fetch(`/learn/reviews.json?_shape=array&item_id__exact=${itemid}`)
     .then((r) => r.json())
     .then(asyncReturn);
 };
