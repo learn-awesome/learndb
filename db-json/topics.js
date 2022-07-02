@@ -1,4 +1,5 @@
 export let topics = `
+{"$_":"+","@_":"Software Tools","i_":"unsplash://1581389058490-a7cb2a234758"}
 {"$_":"+»ableton-live","@_":"ableton-live","i_":"unsplash://1581389058490-a7cb2a234758"}
 {"$_":"+»android","@_":"android","i_":"unsplash://1596831749402-783c83a82655"}
 {"$_":"+»angularjs","@_":"angularjs","i_":"unsplash://1565483584767-e29e31d96d49"}
@@ -25,7 +26,6 @@ export let topics = `
 {"$_":"+»elasticsearch","@_":"elasticsearch","i_":"https://images.unsplash.com/flagged/photo-1551277816-36355be656eb","^_":"pg"}
 {"$_":"+»emacs","@_":"emacs","i_":"unsplash://1594750272033-d4fc872fecf9"}
 {"$_":"+»emberjs","@_":"emberjs","i_":"unsplash://1559812466-a8cf5e993a43"}
-{"$_":"+»excel","@_":"data-science/software-tools/excel","i_":"unsplash://1558903619-229c7bfcf634"}
 {"$_":"+»excel","@_":"excel","i_":"unsplash://1532119421444-cb013aaed2e7","^_":"computers"}
 {"$_":"+»exchange","@_":"exchange","i_":"unsplash://1577072183238-03686d7da74e"}
 {"$_":"+»expression-engine","@_":"expression-engine","i_":"unsplash://1547408133-ae738478d78c"}

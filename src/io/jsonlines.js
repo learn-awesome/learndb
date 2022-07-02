@@ -66,33 +66,23 @@ const random_item = (arr) => {
 const items_db = items.trimStart().trimEnd().split('\n').map(asItem);
 
 export const io_getRandomItemId = (asyncReturn) => {
-  console.log('---io_getRandomItemId---------');
-
   asyncReturn(random_item(items_db).iid);
 };
 
 export const io_getItemById = (itemid, asyncReturn) => {
-  console.log('---io_getItemById---------');
-
   itemid = itemid.split('-')[0];
   const d = items_db.find((d) => d.iid === itemid);
-  console.log('io_getItemById', itemid, '--', d);
   asyncReturn(d);
 };
 
 export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
-  console.log('---io_fetchItemsWithTopic---------');
   if (!topic || !topic.length) asyncReturn([]);
   topic = decodeURI(topic);
-  console.log('--', topic);
   const items = items_db.filter((d) => d.topics.includes(topic));
-  console.log('--', items);
   asyncReturn(items);
 };
 
 export const io_fetchItemsWithLinkTopic = (format, topic, asyncReturn) => {
-  console.log('---io_fetchItemsWithLinkTopic---------');
-
   if (!format || !format.length) asyncReturn('');
   if (!topic || !topic.length) asyncReturn('');
   topic = decodeURI(topic);
@@ -104,7 +94,6 @@ export const io_fetchItemsWithLinkTopic = (format, topic, asyncReturn) => {
 };
 
 export const io_fetchBookmark = (kind, bookmarks, asyncReturn) => {
-  console.log('---io_fetchBookmark---------');
   if (!kind || !kind.length) asyncReturn([]);
   if (!bookmarks) asyncReturn([]);
 
@@ -123,14 +112,12 @@ export const io_fetchBookmark = (kind, bookmarks, asyncReturn) => {
 };
 
 export const io_fetchItemWithName = (text, asyncReturn) => {
-  console.log('---io_fetchItemWithName---------');
   text = text.toLowerCase();
   if (!text || !text.length) asyncReturn('');
   const searchItem = () => {
     const items = items_db.filter((d) => {
       return d.name.toLowerCase().includes(text);
     });
-    console.log(text, items);
     asyncReturn(items);
   };
   asyncReturn('');
@@ -159,12 +146,10 @@ const asTopic = (json) => {
 const topics_db = topics.trimStart().trimEnd().split('\n').map(asTopic);
 
 export const io_getTopicList = (asyncReturn) => {
-  console.log('---io_getTopicList---------');
   asyncReturn([...topics_db]);
 };
 
 export const io_getRandomTopicName = (asyncReturn) => {
-  console.log('---io_getRandomTopicName ---------');
   asyncReturn(random_item(topics_db).name);
 };
 
