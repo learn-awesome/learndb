@@ -84,8 +84,9 @@ export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
   console.log('---io_fetchItemsWithTopic---------');
   if (!topic || !topic.length) asyncReturn([]);
   topic = decodeURI(topic);
-
+  console.log('--', topic);
   const items = items_db.filter((d) => d.topics.includes(topic));
+  console.log('--', items);
   asyncReturn(items);
 };
 

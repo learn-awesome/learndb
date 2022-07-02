@@ -11,6 +11,7 @@
   let items = [];
   let filteredItems = [];
 
+  console.log('topicname', topicname);
   let query = {
     text: '',
     topic: '',
@@ -20,8 +21,8 @@
   };
 
   $: io_fetchItemsWithTopic(topicname, (d) => {
-    items = d;
-    filteredItems = d;
+    items = [...d];
+    filteredItems = [...d];
   });
 
   function handleQueryChanged(event) {

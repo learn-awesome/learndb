@@ -50,7 +50,7 @@
     const path = window.location.hash.slice(1);
 
     if (path.length > 0) {
-      currentView = path;
+      currentView = decodeURI(path);
     } else {
       window.location.hash = '/home';
       currentView = '/home';
