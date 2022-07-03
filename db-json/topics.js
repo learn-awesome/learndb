@@ -74,7 +74,7 @@ export let topics = `
 {"$_":"+»rails","@_":"rails","i_":"unsplash://1588871369217-3c4dfc279f32","^_":"pg"}
 {"$_":"+»rapidminer","@_":"RapidMiner","i_":"unsplash://1584900761409-8d782705be6a"}
 {"$_":"+»react","@_":"react","i_":"unsplash://1558903619-229c7bfcf634","^_":"pg"}
-{"$_":"+»react-native","@_":"react-native","i_":"unsplash://1579584346148-0876908a7da2"}
+{"$_":"+»react-native","@_":"react-native","i_":"unsplash://1579584346148-0876908a7da2","^_":"pg"}
 {"$_":"+»redis","@_":"redis","i_":"unsplash://1579908195100-9ef4a81beb88","^_":"pg"}
 {"$_":"+»redux","@_":"redux","i_":"unsplash://1587754256282-a11d04e3472d","^_":"pg"}
 {"$_":"+»roam","@_":"Roam","i_":"unsplash://1579291465619-36677919aa62","^_":"pg"}
@@ -145,12 +145,12 @@ export let topics = `
 {"$_":"age","@_":"Age Group","i_":"unsplash://1522673999312-93aa76caeda6","^_":"psychology"}
 {"$_":"ageing","@_":"ageing","i_":"unsplash://1521139342376-d2f8686c09b7","^_":"health"}
 {"$_":"age»adolescence","@_":"adolescence","i_":"unsplash://1522673999312-93aa76caeda6","^_":"psychology"}
-{"$_":"age»children","@_":"children","i_":"unsplash://1565964249363-88573c500ab4"}
-{"$_":"age»kids","@_":"kids","i_":"unsplash://1542317785-ae7b6fa20f55"}
-{"$_":"age»middle-grade","@_":"middle-grade","i_":"unsplash://1527822618093-743f3e57977c"}
-{"$_":"age»newborn","@_":"newborn","i_":"unsplash://1587345554781-106aa64ab5fc"}
-{"$_":"age»teenager","@_":"teenagers","i_":"unsplash://1576426846595-64bac8ffd3a8"}
-{"$_":"age»young-adult","@_":"young-adult","i_":"unsplash://1524383880260-db51af30f5e6"}
+{"$_":"age»children","@_":"children","i_":"unsplash://1565964249363-88573c500ab4","^_":"age"}
+{"$_":"age»kids","@_":"kids","i_":"unsplash://1542317785-ae7b6fa20f55","^_":"age"}
+{"$_":"age»middle-grade","@_":"middle-grade","i_":"unsplash://1527822618093-743f3e57977c","^_":"age"}
+{"$_":"age»newborn","@_":"newborn","i_":"unsplash://1587345554781-106aa64ab5fc","^_":"age"}
+{"$_":"age»teenager","@_":"teenagers","i_":"unsplash://1576426846595-64bac8ffd3a8","^_":"age"}
+{"$_":"age»young-adult","@_":"young-adult","i_":"unsplash://1524383880260-db51af30f5e6","^_":"age"}
 {"$_":"agile","@_":"agile","i_":"unsplash://1550874296-8c8769b8ebef"}
 {"$_":"agricultural-engineering","@_":"Agricultural Engineering","i_":"unsplash://1554769945-af468c934022","^_":"engineering"}
 {"$_":"agriculture","@_":"agriculture","i_":"unsplash://1573119798379-011dfedae008"}
