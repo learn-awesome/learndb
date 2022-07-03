@@ -78,7 +78,9 @@ export const io_getItemById = (itemid, asyncReturn) => {
 export const io_fetchItemsWithTopic = (topic, asyncReturn) => {
   if (!topic || !topic.length) asyncReturn([]);
   topic = decodeURI(topic);
-  const items = items_db.filter((d) => d.topics.includes(topic));
+  const items = items_db.filter(
+    (d) => d.topics.includes(`${topic}»`) || d.topics.split(';').includes(topic)
+  );
   asyncReturn(items);
 };
 
@@ -87,7 +89,7 @@ export const io_fetchItemsWithLinkTopic = (format, topic, asyncReturn) => {
   if (!topic || !topic.length) asyncReturn('');
   topic = decodeURI(topic);
   const items = items_db
-    .filter((d) => d.topics.includes(topic))
+    .filter((d) => d.topics.includes(`${topic}»`) || d.topics.split(';').includes(topic))
     .filter((d) => d.links.includes(format));
 
   asyncReturn(items);
@@ -155,7 +157,7 @@ export const io_getRandomTopicName = (asyncReturn) => {
 
 export const io_fetchTopicByName = (text, asyncReturn) => {
   if (!text || !text.length) asyncReturn('');
-  const d = topics_db.filter((d) => d.name.includes(text));
+  const d = topics_db.filter((d) => d.name === text || d.name.includes(`${text}»`));
   asyncReturn(d);
 };
 
