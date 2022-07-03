@@ -25,7 +25,8 @@
     "svelte-check": "^2.7.1",
     "svelte-preprocess": "^4.10.6",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.2",
+    "d3": "^7.0.0"
   },
   "dependencies": {
     "@svelte-parts/zoom": "^0.0.23",
