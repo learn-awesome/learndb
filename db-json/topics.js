@@ -7,7 +7,6 @@ export let topics = `
 {"$_":"+»app-inventor","@_":"app-inventor","i_":"unsplash://1562894252-7b102e5d10a5"}
 {"$_":"+»ar-kit","@_":"ar-kit","i_":"unsplash://1597691603190-71981b02a79c"}
 {"$_":"+»autodesk","@_":"autodesk","i_":"unsplash://1586962262129-7de7fd522639"}
-{"$_":"+»awk","@_":"Awk","i_":"unsplash://1564085317-2abb668f398c"}
 {"$_":"+»aws","@_":"aws","i_":"unsplash://1545981822-c7905bd4988d"}
 {"$_":"+»azure","@_":"azure","i_":"unsplash://1544718054-b550cc9c972b"}
 {"$_":"+»backbonejs","@_":"backbonejs","i_":"unsplash://1581389058490-a7cb2a234758"}
@@ -1201,6 +1200,7 @@ export let topics = `
 {"$_":"lg»ada","@_":"ada","i_":"unsplash://1525571453712-090270b8354f","^_":"lg"}
 {"$_":"lg»agda","@_":"agda","i_":"unsplash://1471107191679-f26174d2d41e","^_":"lg"}
 {"$_":"lg»assembly","@_":"assembly","i_":"unsplash://1589792923910-d9e81a470d11","^_":"lg"}
+{"$_":"lg»awk","@_":"Awk","i_":"unsplash://1564085317-2abb668f398c"}
 {"$_":"lg»c","@_":"c","i_":"unsplash://1472772224448-b24d00409675","^_":"lg"}
 {"$_":"lg»c++","@_":"c++","i_":"unsplash://1484417894907-623942c8ee29","^_":"lg"}
 {"$_":"lg»clojure","@_":"clojure","i_":"unsplash://1565022536102-f7645c84354a","^_":"lg"}
