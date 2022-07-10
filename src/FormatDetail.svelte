@@ -2,6 +2,7 @@
     import ItemCard from "./ItemCard.svelte"
     import SearchForm from "./SearchForm.svelte"
     import { formats } from "./formats.js"
+    import { io_getItemsForTopicAndFormat } from "../db/jsonlines";
     
     export let format;
     export let alltopics;
@@ -16,11 +17,8 @@
         sortby: "rating"
     };
 
-    $: query && fetch(`/learn/items.json?_shape=array&_size=100&links__contains=${format}|&topics__contains=${query.topic}`)
-        .then(r => r.json())
-        .then(data => {
-            items = data;
-        });
+    $: items = io_getItemsForTopicAndFormat(format, query?.topic)
+    $: console.log(items.length)
 
     function handleQueryChanged(event){
         // console.log("queryChanged: ", event.detail);

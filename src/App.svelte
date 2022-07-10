@@ -14,31 +14,21 @@
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
     import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon } from "@rgossiaux/svelte-heroicons/outline";
     import Bookmarks from './Bookmarks.svelte';
+    import { io_getRandomTopicName, io_getTopicByName, io_getTopicList, io_getRandomItemId } from "../db/jsonlines.js"
 
     let currentView = "/topics";
     let randomTopicName;
     let randomItemId;
-    let alltopics = [];
 
-    function getRandomItemId(){
-        fetch('/learn.json?_shape=array&sql=select+rowid+from+items+order+by+random()+limit+1').then(r => r.json())
-        .then(data => {
-            randomItemId = data[0].rowid;
-        });
+    $: alltopics = io_getTopicList();
+
+    function getRandomItemId() {
+        randomItemId = io_getRandomItemId();
     }
 
-    function getRandomTopicName(){
-        fetch('/learn.json?_shape=array&sql=select+name+from+topics+order+by+random()+limit+1').then(r => r.json())
-        .then(data => {
-            randomTopicName = data[0].name;
-        });
+    function getRandomTopicName() {
+        randomTopicName = io_getRandomTopicName();
     }
-
-    $: fetch(`/learn/topics.json?_shape=array&_size=5000`)
-        .then(r => r.json())
-        .then(data => {
-            alltopics = data;
-        });
 
 	async function hashchange() {
 		// the poor man's router!
@@ -52,8 +42,8 @@
 		}
 	}
 
-    onMount(getRandomItemId);
     onMount(getRandomTopicName);
+    onMount(getRandomItemId);
 	onMount(hashchange);
     
 </script>

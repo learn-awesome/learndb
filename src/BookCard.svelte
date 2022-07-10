@@ -4,7 +4,7 @@
   
 </script>
 
-<a class="relative flex flex-col items-center rounded-md overflow-hidden transform transition ease-out duration-300 drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 break-inside-avoid" href="#/item/{item.rowid}">
+<a class="relative flex flex-col items-center rounded-md overflow-hidden transform transition ease-out duration-300 drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 break-inside-avoid" href="#/item/{item.iid}">
   
     <img class=" h-36 w-24 md:h-56 md:w-40 shrink-0" src={item.image || randomCover(item.iid)} alt="{item.name}"/>
   

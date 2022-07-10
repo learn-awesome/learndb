@@ -23,6 +23,7 @@
         let tempmap = new Map();
         // first pass to find all top-level objects
         let parentids = [];
+        // console.log({topic_array}, {parent_id});
         for(let i = 0; i < topic_array.length; i++){
             if(topic_array[i].parent_id == parent_id){
                 tempmap.set(topic_array[i], []);
@@ -61,7 +62,7 @@
 
     $: topic = alltopics.find(t => t.name == topicname)
 
-    $: map = hierarchy(alltopics, topic?.name || "")
+    $: map = hierarchy(alltopics, topic?.name || null)
 
 
 </script>

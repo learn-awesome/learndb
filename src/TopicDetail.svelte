@@ -1,7 +1,7 @@
 <script>
     import ItemList from "./ItemList.svelte"
     import TopicMasonryGrid from "./TopicMasonryGrid.svelte"
-   
+    import { io_getItemsForTopic } from "../db/jsonlines.js"
 
     import SearchForm from "./SearchForm.svelte"
 
@@ -19,12 +19,11 @@
         sortby: "rating"
     };
 
-    $: fetch(`/learn/items.json?_shape=array&topics__contains=${topicname}`)
-        .then(r => r.json())
-        .then(data => {
-            items = data;
-            filteredItems = data;
-        });  
+    $: {
+        let data = io_getItemsForTopic(topicname);
+        items = data;
+        filteredItems = data;
+    }
     
     function handleQueryChanged(event){
         // console.log("queryChanged: ", event.detail);

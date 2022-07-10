@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "datasette . -o",
+    "start": "http-server static -o /",
     "publish": "datasette publish vercel learn.db --project learnawesome -m metadata.json --template-dir templates --static static:static --setting max_returned_rows 20000"
   },
   "devDependencies": {

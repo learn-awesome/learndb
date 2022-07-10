@@ -3,23 +3,12 @@
     import { bookmarks } from "./stores.js"
     import Review from "./Review.svelte"
     import { randomCover } from './utility.js'
-import AdvancedSearch from "./AdvancedSearch.svelte";
+    import { io_getItem, io_getReviewsForItem } from "../db/jsonlines";
     
     export let itemid;
-    let item;
-    let reviews = [];
 
-    $: fetch(`/learn/items/${itemid}.json?_shape=object`)
-        .then(r => r.json())
-        .then(data => {
-            item = data[itemid];
-        });
-    
-    $: item && fetch(`/learn/reviews.json?_shape=array&item_id__exact=${item.iid}`)
-      .then(r => r.json())
-      .then(data => {
-          reviews = data;
-    });
+    $: item = io_getItem(itemid);
+    $: reviews = io_getReviewsForItem(item?.id)
 
     function get_tld(url){
       return(new URL(url)).hostname.replace('www.','');

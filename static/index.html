@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="//cdn.tailwindcss.com/?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+
+							primary: '#1e3a8a', //blue-900
+							primary_light: '#FAFAFA', //neutral-50
+							neutral_light: '#e5e5e5', // neutral-200
+							neutral_dark: '#262626', // neutral-800
+							secondary: '#6B21A8', // purple-800
+							// primary_medium: '#60A5FA', //blue-400
+							gradOne: '#DBEAFE', //blue-100
+							gradTwo: '#F3E8FF', //purple-100
+						},
+					},
+					fontFamily: {
+							sans: ['Gentium Plus', 'sans'],
+							serif: ['Libre Franklin','serif']
+					}
+				}
+			}
+
+		function darkmode(){
+			return;
+      tailwind.config.theme.extend.colors.primary = '#787A91';
+      tailwind.config.theme.extend.colors.primary_light = '#262626';
+      tailwind.config.theme.extend.colors.neutral_light = '#737373';
+      tailwind.config.theme.extend.colors.neutral_dark = '#FAFAFA';
+      tailwind.config.theme.extend.colors.secondary = '#FAFAFA';
+      tailwind.config.theme.extend.colors.gradOne = '#444444';
+      tailwind.config.theme.extend.colors.gradTwo = '#171717';
+      tailwind.config.theme.extend.colors.primary_medium = '#141E61';
+    }
+
+		function lightmode(){
+      tailwind.config.theme.extend.colors.primary = '#1E3A8A';
+      tailwind.config.theme.extend.colors.primary_light = '#FAFAFA';
+      tailwind.config.theme.extend.colors.neutral_light = '#e5e5e5';
+      tailwind.config.theme.extend.colors.neutral_dark = '#262626';
+      tailwind.config.theme.extend.colors.secondary = '#6B21A8';
+      tailwind.config.theme.extend.colors.gradOne = '#DBEAFE';
+      tailwind.config.theme.extend.colors.gradTwo = '#F3E8FF';
+      tailwind.config.theme.extend.colors.primary_medium = '#60A5FA';
+    }
+
+		window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmode() : lightmode();
+		
+		window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",   e => e.matches ? darkmode() : lightmode() );
+		</script>	
+    
+        <script src="/bundle.js" defer></script>
+		<link href="/bundle.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.73/dist/themes/light.css" />
+		<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.73/dist/shoelace.js"></script>
+		<script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+		<title>LearnAwesome</title>
+
+		<!-- fonts  -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
+
+		<!-- fonts Gentium Plus -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+	</head>
+	<body class="max-w-none mx-auto h-full bg-gradient-to-r from-gradOne to-gradTwo text-nutral_dark font-serif">
+		<div class="h-full" id="app"></div>
+	</body>
+</html>

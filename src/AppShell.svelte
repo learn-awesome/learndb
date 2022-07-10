@@ -113,7 +113,7 @@
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}
             <button class="" on:click={themeRandomize}>Randomize</button>
-            {/if}
+          {/if}
         </nav>
       </div>
     </div>

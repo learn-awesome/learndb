@@ -1,1 +1,1 @@
-<iframe title="treemap" src="/static/map.html" class="w-full h-screen"></iframe>
+<iframe title="treemap" src="/map.html" class="w-full h-screen"></iframe>

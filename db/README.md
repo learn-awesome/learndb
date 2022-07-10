@@ -1,6 +1,6 @@
-# CSV format
+# JSON format
 
-## topics.csv
+## topics.js
 
 `name` is used as primary key and therefore, must be unique and avoid uppercase and special characters other than hyphen and slash. Here are some examples: `physics`, `linear-algebra`, `nations/india`, `programming-languages/objective-c`.
 
@@ -11,9 +11,9 @@
 `sort_index` is an integer that's used for controlling the ordering in which topics are displayed.
 
 
-## items.csv
+## items.js
 
-`iid` should be a unique UUID. It is needed because `reviews.csv` needs to refer to items and there is no other natural primary key. Later, if we'd want to build collections of items, the same `iid` key would be helpful.
+`iid` should be a unique UUID. It is needed because `reviews.js` needs to refer to items and there is no other natural primary key. Later, if we'd want to build collections of items, the same `iid` key would be helpful.
 
 `description` can contain markdown with multiple lines.
 
@@ -31,8 +31,8 @@ Currently `ipfs:` and `doi:` identifiers are supported. In future, ISBN can also
 
 `tags` can describe quality: `visual`, `entertaining`, `challenging`, `inspirational`, `interactive`, `oer`. `oer` stands for "Open Educational Resource" and can be used if the linked content does not require payment or user login.
 
-## reviews.csv
+## reviews.js
 
-`item_id` is a foreign key to `items.csv`.
+`item_id` is a foreign key to `items.js`.
 `by` is the name of the person or item.
 `blurb` is small description in markdown format.

@@ -22,7 +22,7 @@
 </script>
 
 
-<a class="flex flex-wrap overflow-hidden rounded-lg duration-300 break-inside-avoid max-w-lg border-secondary" href="#/item/{item.rowid}">
+<a class="flex flex-wrap overflow-hidden rounded-lg duration-300 break-inside-avoid max-w-lg border-secondary" href="#/item/{item.iid}">
   <div class="relative w-full max-w-sm w-full md:w-64 ring-black/5 rounded-xl flex flex-col items-start">
     <div class="h-36 w-full md:w-64 flex justify-center items-center relative ">
 
@@ -51,7 +51,7 @@
     
     <div class="flex flex-col ml-5 my-5">
       <strong class="font-extrabold">{item.name}</strong>
-      <span class="text-sm font-medium">{item.creators}</span>
+      {#if item.creators}<span class="text-sm font-medium">{item.creators}</span>{/if}
     </div>
 
   </div>
