@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@svelte-parts/zoom": "^0.0.23",
+    "http-server": "^14.1.1",
     "sirv-cli": "^2.0.0"
   }
 }
