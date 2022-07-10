@@ -45,6 +45,18 @@ export const io_getReviewsForItem = (item_id) => {
 
 export const io_getItemsWithIDs = (ids) => {
     let results = items_db.filter(i => ids.includes(i.iid));
-    console.log({ids}, {results});
+    // console.log({ids}, {results});
     return results;
+}
+
+export const io_search_items = (query) => {
+    if(!query) return [];
+    let items = items_db.filter(i => i.name.toLowerCase().includes(query.toLowerCase())).slice(0,6);
+    return items;
+}
+
+export const io_search_topics = (query) => {
+    if(!query) return [];
+    let topics = topics_db.filter(t => t.display_name.toLowerCase().includes(query.toLowerCase())).slice(0,6);
+    return topics;
 }

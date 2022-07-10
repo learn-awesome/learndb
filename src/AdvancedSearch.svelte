@@ -1,4 +1,6 @@
 <script>
+  import { io_search_items, io_search_topics } from "../db/jsonlines.js"
+
   let query = '';
   let result_items = [];
   let result_topics = [];
@@ -9,18 +11,8 @@
     result_topics=[];
   }
 
-  $: query && fetch(`/learn/items.json?_shape=array&name__contains=${query}&_size=6`)
-        .then(r => r.json())
-        .then(data => {
-            result_items = data;
-        });
-
-  $: query && fetch(`/learn/topics.json?_shape=array&display_name__contains=${query}&_size=6`)
-        .then(r => r.json())
-        .then(data => {
-            result_topics = data;
-        });
-  
+  $: result_items = io_search_items(query);
+  $: result_topics = io_search_topics(query);
 
 </script>
 
