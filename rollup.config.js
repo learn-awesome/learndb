@@ -8,6 +8,19 @@ import css from 'rollup-plugin-css-only';
 import autoPreprocess from 'svelte-preprocess';
 import typescript from 'rollup-plugin-typescript2';
 
+import { topics } from './db/topics.js'
+import fs from 'fs';
+
+function generateTopicJSON(){
+	const topics_db = topics.trimStart().trimEnd().split('\n').map(j => JSON.parse(j));
+	try {
+		fs.writeFileSync('static/alltopics.json', JSON.stringify(topics_db));
+	} catch (error) {
+		console.error(error);
+	}
+	
+}
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -67,9 +80,12 @@ export default {
 		// the bundle has been generated
 		!production && serve(),
 
+		// generate alltopics.json 
+		production && generateTopicJSON(),
+
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
-		!production && livereload('public'),
+		!production && livereload('static'),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify

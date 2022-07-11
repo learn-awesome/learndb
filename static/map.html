@@ -107,7 +107,7 @@ function hierarchy(topic_array, parent_id){
     return {name: "", children: [...topnodes.filter(t => t.children), misc]};
 }
 
-d3.json("/topicjson", function(alltopics){
+d3.json("/alltopics.json", function(alltopics){
   // console.log({alltopics});
   var root = hierarchy(alltopics, null);
   // console.log({root});
