@@ -2,12 +2,11 @@
   "name": "learndb",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "http-server static -o /"
+    "start": "sirv static --single --dev"
   },
   "devDependencies": {
     "@rgossiaux/svelte-headlessui": "^1.0.1",
@@ -28,9 +27,6 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "@svelte-parts/zoom": "^0.0.23",
-    "express": "^4.18.1",
-    "http-server": "^14.1.1",
-    "sirv-cli": "^2.0.0"
+    "sirv-cli": "^2.0.2"
   }
 }
