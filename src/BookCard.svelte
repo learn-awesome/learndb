@@ -1,6 +1,6 @@
-<script>
-  export let item;
-  import { randomCover } from './utility.js'
+<script lang="ts">
+  export let item: {name: string, creators: string, iid: number, image: string | null, rating: number};
+  import { randomCover } from './utility.js';
   
 </script>
 

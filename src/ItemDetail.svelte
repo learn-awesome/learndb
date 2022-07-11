@@ -110,7 +110,9 @@
 
               <div class="absolute inset-y-0 pl-4 pr-6 py-4 break-inside-avoid">
                 <p class="font-bold text-white text-2xl">{item.name}</p>
+                {#if item.creators}
                 <p class="text-sm text-white mt-3">{item.creators}</p>
+                {/if}
               </div>
     
             </div>
@@ -123,7 +125,9 @@
             <!-- title, sub title, author  -->
             <section>
               <h1 class="text-xl md:text-4xl font-extrabold">{item.name}</h1>
+              {#if item.creators}
               <span class="text-sm mt-5">{item.creators}</span>
+              {/if}
               <div class="mt-5">
                 <sl-rating readonly precision="0.1" value={item.rating}></sl-rating>
               </div>
