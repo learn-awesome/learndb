@@ -2,3 +2,4 @@ node_modules
 static/bundle.css
 static/bundle.js
 static/bundle.js.map
+static/alltopics.json
