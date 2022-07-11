@@ -6,8 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "http-server static -o /",
-    "publish": "datasette publish vercel learn.db --project learnawesome -m metadata.json --template-dir templates --static static:static --setting max_returned_rows 20000"
+    "start": "sirv static --single --dev"
   },
   "devDependencies": {
     "@rgossiaux/svelte-headlessui": "^1.0.1",
@@ -28,8 +27,6 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "@svelte-parts/zoom": "^0.0.23",
-    "http-server": "^14.1.1",
-    "sirv-cli": "^2.0.0"
+    "sirv-cli": "^2.0.2"
   }
 }
