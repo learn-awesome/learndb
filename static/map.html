@@ -98,7 +98,7 @@ function hierarchy(topic_array, parent_id){
         {id: item.name, name: item.name, children: item.children}
       });
 
-    let topnodes = nest(topic_array, ''); // includes childless nodes
+    let topnodes = nest(topic_array, null); // includes childless nodes
 
     // put childless nodes under misc
     let misc = {id: 'misc', name: 'Misc', children: topnodes.filter(t => t.value).slice(0,15)};
@@ -107,9 +107,9 @@ function hierarchy(topic_array, parent_id){
     return {name: "", children: [...topnodes.filter(t => t.children), misc]};
 }
 
-d3.json("/learn/topics.json?_shape=array&_size=5000", function(alltopics){
+d3.json("/topicjson", function(alltopics){
   // console.log({alltopics});
-  var root = hierarchy(alltopics, "");
+  var root = hierarchy(alltopics, null);
   // console.log({root});
   initialize(root);
   accumulate(root);

@@ -2,11 +2,12 @@
   "name": "learndb",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "http-server static -o /",
+    "start": "node server.js",
     "publish": "datasette publish vercel learn.db --project learnawesome -m metadata.json --template-dir templates --static static:static --setting max_returned_rows 20000"
   },
   "devDependencies": {
@@ -29,7 +30,7 @@
   },
   "dependencies": {
     "@svelte-parts/zoom": "^0.0.23",
-    "http-server": "^14.1.1",
+    "express": "^4.18.1",
     "sirv-cli": "^2.0.0"
   }
 }
