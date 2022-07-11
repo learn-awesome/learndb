@@ -1,6 +1,6 @@
-<script>
-  export let item;
-  import { randomCover } from './utility.js'
+<script lang="ts">
+  export let item: {name: string, creators: string, iid: number, image: string | null, rating: number};
+  import { randomCover } from './utility.js';
   
 </script>
 
@@ -17,7 +17,9 @@
     {#if !item.image}
       <div class="absolute inset-y-0 pl-3 pr-2 py-4 break-inside-avoid">
         <p class="font-bold text-xs md:font-extrabold text-primary_light md:text-base">{item.name}</p>
+        {#if item.creators}
         <p class="text-xs text-primary_light mt-3">{item.creators}</p>
+        {/if}
       </div>
     {/if} 
   

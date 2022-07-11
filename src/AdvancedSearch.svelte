@@ -43,7 +43,7 @@
         {#if result_items.length > 0}
         <sl-menu-label class="bg-gray-200">Items</sl-menu-label>
           {#each result_items as item}
-            <sl-menu-item value="#/item/{item.rowid}">{item.name}
+            <sl-menu-item value="#/item/{item.iid}">{item.name}
               {#each item.links.split(";") as type} 
                   {#if type.split("|")[0] === 'book'}
                   <sl-icon name="book" slot="suffix"></sl-icon>
