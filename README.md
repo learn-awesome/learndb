@@ -12,7 +12,7 @@ In conjunction with this, we're also building an online game where this is prese
 
 ## To use:
 
-[Visit https://learnawesome.vercel.app/](https://learnawesome.vercel.app/)
+[Visit https://learndb.vercel.app/](https://learndb.vercel.app/)
 
 <img width="1699" alt="image" src="https://user-images.githubusercontent.com/19304/173263135-a3a02843-93d0-4c9c-b84f-a42b4883ff66.png">
 
@@ -34,31 +34,19 @@ This is a Wikipedia-scale project and we could use all kind of help:
 - Spread word about this project among your friends, family, colleagues and online followers
 - To donate funds, [visit our OpenCollective](https://opencollective.com/learnawesome)
 - To report bugs, [create an issue](https://github.com/learn-awesome/learndb/issues)
-- To improve our topic taxonomy (improve sub-topics / prerequisites etc), [raise a PR on our Github with changes in `db/topics.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
-- To improve the data about learning resources, first read [db/README.md](db/README.md) and [raise a PR on our Github with changes in `db/items.csv` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve our topic taxonomy (improve sub-topics / prerequisites etc), [raise a PR on our Github with changes in `db/topics.js` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve the data about learning resources, first read [db/README.md](db/README.md) and [raise a PR on our Github with changes in `db/items.js` file](https://github.com/learn-awesome/learndb/tree/main/db)
 - To improve design and suggest features, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
 - To fix technical bugs, [propose solutions on the issues](https://github.com/learn-awesome/learndb/issues)
 - For anything else, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
 
-## To develop:
 
-When you modify the *.csv files in `db/`, you should re-generate the sqlite database with `./generatedb.sh`.
-Run `npm run dev` to keep live-building the JS bundle as you edit the source code. This automatically runs `datasette . -o` to open the app in your browser.
-
-You can install Datasette's Vercel plugin with: `datasette install datasette-publish-vercel`.
-To publish this, we first run `npm run build` followed by `npm run publish`.
 
 ## Architecture
 
 The dataset here is identical to https://learnawesome.org/. But there are no user accounts, no social features like learning feeds or ActivityPub. Users' bookmarks are saved in browser's localStorage.
 
-The source data is in `db/*.csv` files. The schema is described in [db/README.md](db/README.md).
-These CSV files get imported into a sqlite database with `./generatedb.sh`.
-We then rely on datasette to load this file and offer JSON APIs over HTTP.
-Settings and metadata are specified in `settings.json` and `metadata.json` which datasette uses.
-
+The source data is in `db/*.js` files. The schema is described in [db/README.md](db/README.md).
 For the front-end, we write Svelte components in `src` and generate `bundle.js` and `bundle.css` via `npm run dev` / `npm run build`.
-
-These bundles are then used by `templates/index.html` which datasette loads on the first visit. We keep a second database file `dummy.db` in the same directory so that datasette opens `/` and not `/learn`.
 
 For UI, we make use of TailwindCSS (currently loaded via CDN with some plugins) and Shoelace.Style. Whenever possible, we use Shoelace's existing components.
