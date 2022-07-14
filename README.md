@@ -1,6 +1,6 @@
 # LearnAwesome
 
-[Visit the online version at https://learnawesome.vercel.app/](https://learnawesome.vercel.app/) but you can also run it on your own machine.
+[Visit the online version at https://learndb.vercel.app/](https://learndb.vercel.app/) but you can also run it on your own machine.
 
 This is a collection of learning resources organized by topics, formats, difficulty levels, and quality tags like visual / interactive / challenging etc. It also includes reviews from experts and metadata like paywall/loginwall to help you find the best resource for your learning goals.
 
