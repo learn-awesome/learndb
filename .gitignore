@@ -1,5 +1,22 @@
+.DS_Store
+
 node_modules
 static/bundle.css
 static/bundle.js
 static/bundle.js.map
 static/alltopics.json
+
+# Developer tools' files
+.lite_workspace.lua
+
+# Neutralinojs binaries and builds
+/bin
+/dist
+
+# Neutralinojs client (minified)
+neutralino.js
+
+# Neutralinojs related files
+.storage
+*.log
+
