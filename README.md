@@ -50,3 +50,14 @@ The source data is in `db/*.js` files. The schema is described in [db/README.md]
 For the front-end, we write Svelte components in `src` and generate `bundle.js` and `bundle.css` via `npm run dev` / `npm run build`.
 
 For UI, we make use of TailwindCSS (currently loaded via CDN with some plugins) and Shoelace.Style. Whenever possible, we use Shoelace's existing components.
+
+## Build
+
+We use Neutralino.js to generate native apps for Mac/Windows/Linux. Currently only the .app file (not .dmg) for Mac runs correctly.
+
+```
+neu build
+mv dist/learndb/learndb-mac_x64 dist/learndb/learndb-mac_x64.app
+chmod +x dist/learndb/learndb-mac_x64.app
+appdmg ./appdmg.json dist/learndb/LearnDB.dmg
+```
