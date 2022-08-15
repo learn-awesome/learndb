@@ -18,7 +18,6 @@
     };
 
     $: items = io_getItemsForTopicAndFormat(format, query?.topic)
-    $: console.log(items.length)
 
     function handleQueryChanged(event){
         // console.log("queryChanged: ", event.detail);
@@ -29,7 +28,7 @@
             if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
             if(query.topic && !item.topics.includes(query.topic)){ return false; }
             if(query.level && item.difficulty != query.level){ return false; }
-            if(query.tag && !item.tags.includes(query.tag)){ return false; }
+            if(query.tag && !(item.tags || []).includes(query.tag)){ return false; }
             return true;
         }).sort((a,b) => {
             if(query.sortby == 'rating') { return (a.rating - b.rating) };

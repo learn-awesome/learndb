@@ -33,7 +33,7 @@
     $:  filteredItems = items.filter(item => {
             if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
             if(query.level && item.difficulty != query.level){ return false; }
-            if(query.tag && !item.tags.includes(query.tag)){ return false; }
+            if(query.tag && !(item.tags || []).includes(query.tag)){ return false; }
             return true;
         }).sort((a,b) => {
             if(query.sortby == 'rating') { return (a.rating - b.rating) };
