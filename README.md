@@ -1,6 +1,6 @@
 # LearnAwesome
 
-[Visit the online version at https://learndb.vercel.app/](https://learndb.vercel.app/) but you can also run it on your own machine.
+[Visit the online version at https://learnawesome.org/](https://learnawesome.org/) but you can also run it on your own machine.
 
 This is a collection of learning resources organized by topics, formats, difficulty levels, and quality tags like visual / interactive / challenging etc. It also includes reviews from experts and metadata like paywall/loginwall to help you find the best resource for your learning goals.
 
@@ -12,7 +12,7 @@ In conjunction with this, we're also building an online game where this is prese
 
 ## To use:
 
-[Visit https://learndb.vercel.app/](https://learndb.vercel.app/)
+[Visit https://learnawesome.org/](https://learnawesome.org/)
 
 <img width="1699" alt="image" src="https://user-images.githubusercontent.com/19304/173263135-a3a02843-93d0-4c9c-b84f-a42b4883ff66.png">
 
@@ -44,7 +44,7 @@ This is a Wikipedia-scale project and we could use all kind of help:
 
 ## Architecture
 
-The dataset here is identical to https://learnawesome.org/. But there are no user accounts, no social features like learning feeds or ActivityPub. Users' bookmarks are saved in browser's localStorage.
+There are no user accounts, no social features like learning feeds or ActivityPub. Users' bookmarks are saved in browser's localStorage.
 
 The source data is in `db/*.js` files. The schema is described in [db/README.md](db/README.md).
 For the front-end, we write Svelte components in `src` and generate `bundle.js` and `bundle.css` via `npm run dev` / `npm run build`.
