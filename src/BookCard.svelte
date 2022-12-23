@@ -1,5 +1,5 @@
-<script lang="ts">
-  export let item: {name: string, creators: string, iid: number, image: string | null, rating: number};
+<script>
+  export let item;
   import { randomCover } from './utility.js';
   
 </script>

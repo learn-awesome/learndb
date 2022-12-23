@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
   // import ButtonGroup from "./ButtonGroup.svelte";
   // import { oEmdedProviders } from "./oEmbedProviders.js"
-  export let item: {image: string | null, name: string, creators: string, iid: number };
+  export let item;
   let oEmded_image_ytb_url = null;
 
   function oEmded_image(item){

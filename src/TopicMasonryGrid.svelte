@@ -1,6 +1,6 @@
-<script lang="ts">
+<script>
     export let topicname = null; // undefined for top level
-    let topic: {display_name: string, parent_id: string, name: string};
+    let topic;
     export let alltopics;
     let map = new Map();
 

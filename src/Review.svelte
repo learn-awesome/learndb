@@ -1,5 +1,5 @@
-<script lang="ts">
-    export let review: any;
+<script>
+    export let review;
 </script>
 
 <style>

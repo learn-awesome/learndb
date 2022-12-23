@@ -55,8 +55,9 @@
 
 		window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches ? darkmode() : lightmode());
 	</script>
-	<script src="/static/bundle.js" defer></script>
-	<link href="/static/bundle.css" rel="stylesheet" />
+	
+	<script type="module" src='/src/main.js'></script>
+
 	<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.86/dist/themes/light.css" />
 	<script type="module"
