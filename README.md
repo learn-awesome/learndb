@@ -23,10 +23,6 @@ In conjunction with this, we're also building an online game where this is prese
 
 Your bookmarks are saved in localStorage so be assured that no personal data is being tracked or saved on this site.
 
-But if you'd like faster performance or to self-host this, you need a general-purpose computer (that means Linux/Windows/Mac) with Datasette (which is an exploratory tool for SQLite databases) installed. You can find [installation instructions specific to your operating system here](https://docs.datasette.io/en/stable/installation.html).
-
-After cloning this git repository on your local machine, run `npm run start` in the top-level directory to start the datasette server and open the app in your browser.
-
 ## To contribute:
 
 This is a Wikipedia-scale project and we could use all kind of help:
@@ -34,8 +30,7 @@ This is a Wikipedia-scale project and we could use all kind of help:
 - Spread word about this project among your friends, family, colleagues and online followers
 - To donate funds, [visit our OpenCollective](https://opencollective.com/learnawesome)
 - To report bugs, [create an issue](https://github.com/learn-awesome/learndb/issues)
-- To improve our topic taxonomy (improve sub-topics / prerequisites etc), [raise a PR on our Github with changes in `db/topics.js` file](https://github.com/learn-awesome/learndb/tree/main/db)
-- To improve the data about learning resources, first read [db/README.md](db/README.md) and [raise a PR on our Github with changes in `db/items.js` file](https://github.com/learn-awesome/learndb/tree/main/db)
+- To improve the topic taxonomy or to add/modify the dataset, wait till we put together a public contribution workflow. You can always fork and create your own collection at any time.
 - To improve design and suggest features, [start a discussion](https://github.com/learn-awesome/learndb/discussions)
 - To fix technical bugs, [propose solutions on the issues](https://github.com/learn-awesome/learndb/issues)
 - For anything else, [start a discussion](https://github.com/learn-awesome/learndb/discussions)

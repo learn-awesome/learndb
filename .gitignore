@@ -1,9 +1,6 @@
 .DS_Store
 
 node_modules
-public/bundle.css
-public/bundle.js
-public/bundle.js.map
 public/alltopics.json
 
 # Developer tools' files

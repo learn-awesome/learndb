@@ -1,47 +1,70 @@
-PRAGMA foreign_keys=OFF;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS topics;
+DROP TABLE IF EXISTS creators;
 
 CREATE TABLE topics (
-	name VARCHAR(255) PRIMARY KEY, -- url-friendly slug
-	display_name VARCHAR(255), -- allow null, use name
+	name VARCHAR(255) PRIMARY KEY, -- url-friendly unique slug
+	hname VARCHAR(255), -- human-readable name, allow null, use name
 	parent_name VARCHAR(255), -- create a hierarchy with self-reference
 	sort_index INTEGER, -- used for sorting children of a parent
 	FOREIGN KEY (parent_name) REFERENCES topics(name)
 );
 
 CREATE TABLE creators (
-	id VARCHAR(255) PRIMARY KEY,
-	name VARCHAR(1024) NOT NULL,
+	name VARCHAR(255) PRIMARY KEY, -- readable, but url-friendly and unique name eg: bill_gates_1
+	hname VARCHAR(255) NOT NULL,
+	description TEXT,
 	image_url VARCHAR(1024),
-	bio TEXT,
-	occupation VARCHAR(255),
-	links TEXT
+	tags TEXT[] NOT NULL,
+	links TEXT[] NOT NULL
 );
 
+
 CREATE TABLE items (
-	id VARCHAR(255) PRIMARY KEY, -- uuid
-	name VARCHAR(1024) NOT NULL,
-	description VARCHAR(4096), -- in markdown
+	id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+	hname VARCHAR(1024) NOT NULL,
+	description TEXT, -- in markdown
 	image_url VARCHAR(1024),
-	links TEXT NOT NULL, -- json array of {item_type, url, misc}
-	topics TEXT NOT NULL, -- json array of topic names
-	creators TEXT, -- json array of creator_ids
-	year varchar(32),
-	difficulty INTEGER,
+	tags TEXT[] NOT NULL, -- eg: is_oer, is_nsfw etc
+	links TEXT[] NOT NULL, -- json array of {item_type|url|tags}
+	topics TEXT[] NOT NULL, -- json array of topic names
+	creators TEXT[] NOT NULL, -- json array of creator_ids
+	year VARCHAR(32),
+	level INTEGER,
 	cost TEXT,
-	rating INTEGER, -- scale of 1 to 100, divide by 10 if needed
-	tags TEXT
+	rating INTEGER -- scale of 1 to 100, divide by 10 if needed
 );
 
 CREATE TABLE reviews (
-	item_id VARCHAR(255) NOT NULL,
-	by_item VARCHAR(255),
-	by_creator VARCHAR(255),
+	item_id uuid NOT NULL,
+	by_item uuid REFERENCES items(id),
+	by_creator VARCHAR(255) REFERENCES creators(name),
 	rating INTEGER, -- scale of 1 to 100, divide by 10 if needed
 	blurb TEXT,
 	url VARCHAR(1024),
-	PRIMARY KEY (item_id, by_item, by_creator),
+	UNIQUE (item_id, by_item, by_creator),
 	FOREIGN KEY (item_id) REFERENCES items(id),
-	FOREIGN KEY (by_item) REFERENCES items(id),
-	FOREIGN KEY (by_creator) REFERENCES creators(id),
 	CHECK(by_item IS NOT NULL OR by_creator IS NOT NULL) -- one of the two must be present. Ideally both.
-)
+);
+
+-- Dump from database to JSON files
+-- COPY (
+--   SELECT json_agg(row_to_json(topics)) :: text
+--   FROM topics
+-- ) to '/Users/eshnil/code/learndb/db/topics.json';
+
+-- COPY (
+--   SELECT json_agg(row_to_json(creators)) :: text
+--   FROM creators
+-- ) to '/Users/eshnil/code/learndb/db/creators.json';
+
+-- COPY (
+--   SELECT json_agg(row_to_json(items)) :: text
+--   FROM items
+-- ) to '/Users/eshnil/code/learndb/db/items.json';
+
+-- COPY (
+--   SELECT json_agg(row_to_json(reviews)) :: text
+--   FROM reviews
+-- ) to '/Users/eshnil/code/learndb/db/reviews.json';
