@@ -4,9 +4,9 @@
   
 </script>
 
-<a class="relative flex flex-col items-center rounded-md overflow-hidden transform transition ease-out duration-300 drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 break-inside-avoid" href="#/item/{item.iid}">
+<a class="relative flex flex-col items-center rounded-md overflow-hidden transform transition ease-out duration-300 drop-shadow-lg hover:drop-shadow-2xl hover:scale-105 break-inside-avoid" href="#/item/{item.id}">
   
-    <img class=" h-36 w-24 md:h-56 md:w-40 shrink-0" src={item.image || randomCover(item.iid)} alt="{item.name}"/>
+    <img class=" h-36 w-24 md:h-56 md:w-40 shrink-0" src={item.image || randomCover(item.id)} alt="{item.name}"/>
   
     {#if item.rating}
     <h1 class="text-sm md:text-lg font-semibold p-2 text-primary_light tracking-wider">

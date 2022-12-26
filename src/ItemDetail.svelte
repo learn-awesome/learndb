@@ -27,7 +27,7 @@
     let oembed_iframe = null;
 
   function oEmded_image(item){
-      let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
+      let youtubeformat = item.links.find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
       let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
 
       if(!youtubeurl) return;
@@ -44,7 +44,7 @@
 
     
     function wikiUrlForEmbed(item){
-      var wikiurl = item.links.split(";").find((l) => l.includes('wiki|')).split('|')[1];
+      var wikiurl = item.links.find((l) => l.includes('wiki|')).split('|')[1];
       return wikiurl.replace('simple.wikipedia.org/','simple.m.wikipedia.org/').replace('en.wikipedia.org/','en.m.wikipedia.org/');
     }
 
@@ -75,7 +75,7 @@
   
   <div class="w-full px-6 py-4 mt-10 lg:max-w-4xl mx-auto border shadow-2xl lg:px-20 lg:py-8 rounded-xl lg:mt-20 bg-primary_light font-sans">
     <h3 class="my-2">
-      {#each item.topics.split(";") as topicname}
+      {#each item.topics as topicname}
       <div class="group inline-flex">
         <a href={"#/topic/" + topicname} class="mr-2 font-bold">{topicname.toUpperCase()}
           <div class="w-5 mt-0.25 h-0.5 ml-1 bg-primary group-hover:w-full ease-in-out duration-300"></div>
@@ -106,7 +106,7 @@
               </div>
             {:else if !item.links.includes('video') && item.links.includes('book')}
             <div class="sm:mr-10 w-44 h-64 relative">
-              <img class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src={randomCover(item.iid)} alt="{item.name}" />
+              <img class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src={randomCover(item.id)} alt="{item.name}" />
 
               <div class="absolute inset-y-0 pl-4 pr-6 py-4 break-inside-avoid">
                 <p class="font-bold text-white text-2xl">{item.name}</p>
@@ -135,7 +135,7 @@
             <!-- ratings and upload buttons -->
             <div class="mt-2 mb-6 flex flex-col justify-between">
               <div class="flex flex-wrap items-center justify-start gap-3 mt-5">
-                {#each item.links.split(";") as type}
+                {#each item.links as type}
                 <sl-button-group>
                   <sl-button size="small" href={type.split("|")[1]} target="_blank" class="linkButton">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
                   {#if type.split("|")[2] || type.split("|")[0] === 'book'}

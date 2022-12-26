@@ -26,7 +26,7 @@ CREATE TABLE items (
 	hname VARCHAR(1024) NOT NULL,
 	description TEXT, -- in markdown
 	image_url VARCHAR(1024),
-	tags TEXT[] NOT NULL, -- eg: is_oer, is_nsfw etc
+	tags TEXT[] NOT NULL, -- eg: oer, nsfw, free/paid etc
 	links TEXT[] NOT NULL, -- json array of {item_type|url|tags}
 	topics TEXT[] NOT NULL, -- json array of topic names
 	creators TEXT[] NOT NULL, -- json array of creator_ids

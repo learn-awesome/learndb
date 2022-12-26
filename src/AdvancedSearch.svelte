@@ -36,15 +36,15 @@
         {#if result_topics.length > 0}
         <sl-menu-label class="bg-gray-200">Topics</sl-menu-label>
           {#each result_topics as topic}
-          <sl-menu-item value="#/topic/{topic.name}">{topic.display_name}</sl-menu-item>
+          <sl-menu-item value="#/topic/{topic.name}">{topic.hname}</sl-menu-item>
           {/each}
         {/if}
         <sl-divider></sl-divider>
         {#if result_items.length > 0}
         <sl-menu-label class="bg-gray-200">Items</sl-menu-label>
           {#each result_items as item}
-            <sl-menu-item value="#/item/{item.iid}">{item.name}
-              {#each item.links.split(";") as type} 
+            <sl-menu-item value="#/item/{item.id}">{item.name}
+              {#each item.links as type} 
                   {#if type.split("|")[0] === 'book'}
                   <sl-icon name="book" slot="suffix"></sl-icon>
                   {/if}

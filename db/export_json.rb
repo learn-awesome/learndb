@@ -10,7 +10,7 @@ class Topic < MyDB
 	def as_json(options = {})
 		{
 			name: name,
-			display_name: hname,
+			hname: hname,
 			parent_id: parent_name,
 			sort_index: sort_index
 		}
@@ -23,18 +23,18 @@ end
 class Item < MyDB
 	def as_json(options = {})
 		{
-			iid: id, # not a typo
+			id: id,
 			name: hname,
 			description: description,
 			image: image_url,
-			links: links.join(';'),
-			topics: topics.join(';'),
-			creators: creators.join(';'),
+			links: links,
+			topics: topics,
+			creators: creators,
 			year: year,
 			difficulty: level,
 			cost: cost,
 			rating: rating,
-			tags: tags.join(';')
+			tags: tags
 		}
 	end
 end

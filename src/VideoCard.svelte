@@ -5,7 +5,7 @@
   let oEmded_image_ytb_url = null;
 
   function oEmded_image(item){
-    let youtubeformat = item.links.split(";").find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
+    let youtubeformat = item.links.find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
     let youtubeurl = youtubeformat && youtubeformat.split('|')[1];
 
     if(!youtubeurl) return;
@@ -22,7 +22,7 @@
 </script>
 
 
-<a class="flex flex-wrap overflow-hidden rounded-lg duration-300 break-inside-avoid max-w-lg border-secondary" href="#/item/{item.iid}">
+<a class="flex flex-wrap overflow-hidden rounded-lg duration-300 break-inside-avoid max-w-lg border-secondary" href="#/item/{item.id}">
   <div class="relative w-full max-w-sm w-full md:w-64 ring-black/5 rounded-xl flex flex-col items-center">
     <div class="h-36 w-full md:w-64 flex justify-center items-center relative ">
 

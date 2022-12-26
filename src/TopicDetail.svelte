@@ -36,7 +36,7 @@
             if(query.tag && !(item.tags || []).includes(query.tag)){ return false; }
             return true;
         }).sort((a,b) => {
-            if(query.sortby == 'rating') { return (a.rating - b.rating) };
+            if(query.sortby == 'rating') { return ((a.rating || 0) - (b.rating || 0)) };
             if(query.sortby == 'year') { return (a.year - b.year)};
             if(query.sortby == 'name') { return a.name.localeCompare(b.name)};
         });

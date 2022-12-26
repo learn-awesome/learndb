@@ -56,7 +56,7 @@
             {capitalize(format)}
         </sl-breadcrumb-item>    
     </sl-breadcrumb>
-    <a href="https://github.com/learn-awesome/learndb" target="_blank" class="underline text-primary hover:font-bold px-2">
+    <a href="https://github.com/learn-awesome/learndb" rel="noreferrer" target="_blank" class="underline text-primary hover:font-bold px-2">
         Help us improve this taxonomy
     </a>
 </div>

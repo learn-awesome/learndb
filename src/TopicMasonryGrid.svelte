@@ -9,13 +9,13 @@
     }
 
     function format_topic_name(topic){
-        if(topic.display_name == undefined){
+        if(topic.hname == undefined){
             return capitalize(topic);
         }
-        if(topic.display_name.includes("/")){
-            return capitalize(topic.display_name.split("/")[1]);
+        if(topic.hname.includes("/")){
+            return capitalize(topic.hname.split("/")[1]);
         } else {
-            return capitalize(topic.display_name);
+            return capitalize(topic.hname);
         }
     }
 
@@ -85,14 +85,14 @@
                     {capitalize(topic.parent_id.replace('-',' '))}
                 </sl-breadcrumb-item>
             {/if}
-             {#if topic.display_name}
+             {#if topic.hname}
                 <sl-breadcrumb-item href={"#/topic/" + topic.name}>
-                    {capitalize(topic.display_name.split('/').reverse()[0])}
+                    {capitalize(topic.hname.split('/').reverse()[0])}
                 </sl-breadcrumb-item>
             {/if}   
         {/if}
     </sl-breadcrumb>
-    <a href="https://github.com/learn-awesome/learndb" target="_blank" class="underline text-primary hover:font-bold px-2">Help us improve this taxonomy</a>
+    <a href="https://github.com/learn-awesome/learndb" target="_blank" rel="noreferrer" class="underline text-primary hover:font-bold px-2">Help us improve this taxonomy</a>
 </div>
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 3xl:columns-5 mb-8">

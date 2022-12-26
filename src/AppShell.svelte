@@ -29,6 +29,7 @@
     
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div >
   <!-- sticky top bar  -->
   <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-neutral-50 bg-blue-900 shadow h-16">
