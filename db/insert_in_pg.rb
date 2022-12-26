@@ -16,9 +16,9 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 ActiveRecord::Base.establish_connection(
 	{ adapter: 'postgresql',
 	  database: 'postgres',
-	  host: 'localhost',
+	  host: ENV['SUPABASE_HOST']
 	  username: 'postgres',
-	  password: "",
+	  password: ENV['SUPABASE_PASSWORD'],
 	  port: 6543
 	}
 )

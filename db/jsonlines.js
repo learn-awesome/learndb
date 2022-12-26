@@ -1,10 +1,7 @@
-import { items } from './items.js';
-import { topics } from './topics.js';
-import { reviews } from './reviews.js';
-
-const items_db = items.trimStart().trimEnd().split('\n').map(j => JSON.parse(j));
-const topics_db = topics.trimStart().trimEnd().split('\n').map(j => JSON.parse(j));
-const reviews_db = reviews.trimStart().trimEnd().split('\n').map(j => JSON.parse(j));
+import items_db from './items.json' assert { type: 'json' };
+import topics_db from './topics.json' assert { type: 'json' };
+import reviews_db from './reviews.json' assert { type: 'json' };
+// import creators_db from './creators.json' assert { type: 'json' };
 
 export const io_getTopicList = () => {
     return [...topics_db];
