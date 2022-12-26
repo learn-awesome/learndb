@@ -1,7 +1,6 @@
 import items_db from './items.json' assert { type: 'json' };
 import topics_db from './topics.json' assert { type: 'json' };
-import reviews_db from './reviews.json' assert { type: 'json' };
-// import creators_db from './creators.json' assert { type: 'json' };
+import creators_db from './creators.json' assert { type: 'json' };
 
 export const io_getTopicList = () => {
     return [...topics_db];
@@ -31,13 +30,8 @@ export const io_getItem = (id) => {
 }
 
 export const io_getItemsForTopicAndFormat = (format, topicname) => {
-    let results = items_db.filter(i => i.topics.includes(topicname)).filter(i => i.links?.includes(format + "|"));
+    let results = items_db.filter(i => !topicname || i.topics.includes(topicname)).filter(i => i.links?.join(' ').includes(format + "|"));
     return results.slice(0, 100);
-}
-
-export const io_getReviewsForItem = (item_id) => {
-    if(!item_id) return [];
-    return reviews_db.filter(r => r.id === item_id);
 }
 
 export const io_getItemsWithIDs = (ids) => {

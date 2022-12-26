@@ -6,50 +6,9 @@ class MyDB < ActiveRecord::Base
 	self.abstract_class = true
 end
 
-class Topic < MyDB
-	def as_json(options = {})
-		{
-			name: name,
-			hname: hname,
-			parent_id: parent_name,
-			sort_index: sort_index
-		}
-	end
-end
-
-class Creator < MyDB
-end
-
-class Item < MyDB
-	def as_json(options = {})
-		{
-			id: id,
-			name: hname,
-			description: description,
-			image: image_url,
-			links: links,
-			topics: topics,
-			creators: creators,
-			year: year,
-			difficulty: level,
-			cost: cost,
-			rating: rating,
-			tags: tags
-		}
-	end
-end
-
-class Review < MyDB
-	def as_json(options = {})
-		{
-			item_id: item_id,
-			by: by_creator,
-			rating: rating,
-			blurb: blurb,
-			url: url
-		}
-	end
-end
+class Topic < MyDB; end
+class Creator < MyDB; end
+class Item < MyDB; end
 
 ActiveRecord::Base.logger = Logger.new(STDERR)
 
@@ -73,8 +32,4 @@ end
 
 File.open("items.json","w") do |f|
 	f.write(JSON.pretty_generate(JSON.parse(Item.all.to_json)))
-end
-
-File.open("reviews.json","w") do |f|
-	f.write(JSON.pretty_generate(JSON.parse(Review.all.to_json)))
 end

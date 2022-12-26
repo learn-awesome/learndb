@@ -3,7 +3,7 @@
     "name": "first-round-capital",
     "hname": "First Round Capital",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -15,7 +15,7 @@
     "name": "hacker-news",
     "hname": "Hacker News",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -27,7 +27,7 @@
     "name": "farnam-street",
     "hname": "Farnam Street",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -39,7 +39,7 @@
     "name": "designer-news",
     "hname": "Designer News",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -51,7 +51,7 @@
     "name": "uxtools",
     "hname": "UXTools",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -63,7 +63,7 @@
     "name": "indie-hackers",
     "hname": "Indie Hackers",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -75,7 +75,7 @@
     "name": "reddit",
     "hname": "Reddit",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -87,7 +87,7 @@
     "name": "nobel-prize",
     "hname": "Nobel Prize",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -99,7 +99,7 @@
     "name": "booker-prize",
     "hname": "Booker Prize",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -111,7 +111,7 @@
     "name": "hugo-awards",
     "hname": "Hugo Awards",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -123,7 +123,7 @@
     "name": "elon-musk",
     "hname": "Elon Musk",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -135,7 +135,7 @@
     "name": "dustin-moskovitz",
     "hname": "Dustin Moskovitz",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -147,7 +147,7 @@
     "name": "jeff-bezos",
     "hname": "Jeff Bezos",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -159,7 +159,7 @@
     "name": "bill-gates",
     "hname": "Bill Gates",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -171,7 +171,7 @@
     "name": "mark-zuckerberg",
     "hname": "Mark Zuckerberg",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -183,7 +183,7 @@
     "name": "jack-dorsey",
     "hname": "Jack Dorsey",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -195,7 +195,7 @@
     "name": "tony-hsieh",
     "hname": "Tony Hsieh",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -207,7 +207,7 @@
     "name": "patrick-collison",
     "hname": "Patrick Collison",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -219,7 +219,7 @@
     "name": "larry-page",
     "hname": "Larry Page",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -231,7 +231,7 @@
     "name": "pavel-dunrov",
     "hname": "Pavel Dunrov",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -243,7 +243,7 @@
     "name": "max-levchin",
     "hname": "Max Levchin",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -255,7 +255,7 @@
     "name": "richard-branson",
     "hname": "Richard Branson",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -267,7 +267,7 @@
     "name": "salman-khan",
     "hname": "Salman Khan",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -279,7 +279,7 @@
     "name": "evan-williams",
     "hname": "Evan Williams",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -291,7 +291,7 @@
     "name": "mark-cuban",
     "hname": "Mark Cuban",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -303,7 +303,7 @@
     "name": "steve-jobs",
     "hname": "Steve Jobs",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -315,7 +315,7 @@
     "name": "kevin-rose",
     "hname": "Kevin Rose",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -327,7 +327,7 @@
     "name": "reid-hoffman",
     "hname": "Reid Hoffman",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -339,7 +339,7 @@
     "name": "travis-kalanick",
     "hname": "Travis Kalanick",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -351,7 +351,7 @@
     "name": "kevin-systrom",
     "hname": "Kevin Systrom",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -363,7 +363,7 @@
     "name": "daniel-ek",
     "hname": "Daniel Ek",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -375,7 +375,7 @@
     "name": "ashton-kutcher",
     "hname": "Ashton Kutcher",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -387,7 +387,7 @@
     "name": "austen-allred",
     "hname": "Austen Allred",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -399,7 +399,7 @@
     "name": "sheryl-sandberg",
     "hname": "Sheryl Sandberg",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -411,7 +411,7 @@
     "name": "satya-nadella",
     "hname": "Satya Nadella",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -423,7 +423,7 @@
     "name": "indra-nooyi",
     "hname": "Indra Nooyi",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -435,7 +435,7 @@
     "name": "arianna-huffington",
     "hname": "Arianna Huffington",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -447,7 +447,7 @@
     "name": "marissa-mayer",
     "hname": "Marissa Mayer",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -459,7 +459,7 @@
     "name": "daymond-john",
     "hname": "Daymond John",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -471,7 +471,7 @@
     "name": "eric-schmidt",
     "hname": "Eric Schmidt",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -483,7 +483,7 @@
     "name": "martha-stewart",
     "hname": "Martha Stewart",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -495,7 +495,7 @@
     "name": "tim-cook",
     "hname": "Tim Cook",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -507,7 +507,7 @@
     "name": "peter-thiel",
     "hname": "Peter Thiel",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -519,7 +519,7 @@
     "name": "sam-altman",
     "hname": "Sam Altman",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -531,7 +531,7 @@
     "name": "warren-buffett",
     "hname": "Warren Buffett",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -543,7 +543,7 @@
     "name": "marc-andreessen",
     "hname": "Marc Andreessen",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -555,7 +555,7 @@
     "name": "ben-horowitz",
     "hname": "Ben Horowitz",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -567,7 +567,7 @@
     "name": "bill-ackman",
     "hname": "Bill Ackman",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -579,7 +579,7 @@
     "name": "charlie-munger",
     "hname": "Charlie Munger",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -591,7 +591,7 @@
     "name": "whitney-tilson",
     "hname": "Whitney Tilson",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -603,7 +603,7 @@
     "name": "naval-ravikant",
     "hname": "Naval Ravikant",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -615,7 +615,7 @@
     "name": "ray-dalio",
     "hname": "Ray Dalio",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -627,7 +627,7 @@
     "name": "paul-graham",
     "hname": "Paul Graham",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -639,7 +639,7 @@
     "name": "keith-rabois",
     "hname": "Keith Rabois",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -651,7 +651,7 @@
     "name": "carl-sagan",
     "hname": "Carl Sagan",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -663,7 +663,7 @@
     "name": "albert-einstein",
     "hname": "Albert Einstein",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -675,7 +675,7 @@
     "name": "richard-dawkins",
     "hname": "Richard Dawkins",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -687,7 +687,7 @@
     "name": "neil-degrasse-tyson",
     "hname": "Neil deGrasse Tyson",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -699,7 +699,7 @@
     "name": "don-norman",
     "hname": "Don Norman",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -711,7 +711,7 @@
     "name": "jakob-nielsen",
     "hname": "Jakob Nielsen",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -723,7 +723,7 @@
     "name": "steve-krug",
     "hname": "Steve Krug",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -735,7 +735,7 @@
     "name": "alan-cooper",
     "hname": "Alan Cooper",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -747,7 +747,7 @@
     "name": "donald-trump",
     "hname": "Donald Trump",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -759,7 +759,7 @@
     "name": "barack-obama",
     "hname": "Barack Obama",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -771,7 +771,7 @@
     "name": "hillary-clinton",
     "hname": "Hillary Clinton",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -783,7 +783,7 @@
     "name": "angela-merkel",
     "hname": "Angela Merkel",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -795,7 +795,7 @@
     "name": "vladamir-putin",
     "hname": "Vladamir Putin",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -807,7 +807,7 @@
     "name": "george-bush",
     "hname": "George Bush",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -819,7 +819,7 @@
     "name": "tony-blair",
     "hname": "Tony Blair",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -831,7 +831,7 @@
     "name": "bill-clinton",
     "hname": "Bill Clinton",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -843,7 +843,7 @@
     "name": "tyler-cowen",
     "hname": "Tyler Cowen",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -855,7 +855,7 @@
     "name": "paul-krugman",
     "hname": "Paul Krugman",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -867,7 +867,7 @@
     "name": "ellen-degeneres",
     "hname": "Ellen DeGeneres",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -879,7 +879,7 @@
     "name": "oprah-winfrey",
     "hname": "Oprah Winfrey",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -891,7 +891,7 @@
     "name": "johnny-depp",
     "hname": "Johnny Depp",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -903,7 +903,7 @@
     "name": "woody-allen",
     "hname": "Woody Allen",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -915,7 +915,7 @@
     "name": "anthony-hopkins",
     "hname": "Anthony Hopkins",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -927,7 +927,7 @@
     "name": "morgan-freeman",
     "hname": "Morgan Freeman",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -939,7 +939,7 @@
     "name": "nassim-nicholas-taleb",
     "hname": "Nassim Nicholas Taleb",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -951,7 +951,7 @@
     "name": "seth-godin",
     "hname": "Seth Godin",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -963,7 +963,7 @@
     "name": "ryan-holiday",
     "hname": "Ryan Holiday",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -975,7 +975,7 @@
     "name": "jk-rowling",
     "hname": "JK Rowling",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -987,7 +987,7 @@
     "name": "george-rr-martin",
     "hname": "George RR Martin",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -999,7 +999,7 @@
     "name": "ernest-hemmingway",
     "hname": "Ernest Hemmingway",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1011,7 +1011,7 @@
     "name": "paulo-coelho",
     "hname": "Paulo Coelho",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1023,7 +1023,7 @@
     "name": "haruki-murakami",
     "hname": "Haruki Murakami",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1035,7 +1035,7 @@
     "name": "chuck-palahniuk",
     "hname": "Chuck Palahniuk",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1047,7 +1047,7 @@
     "name": "stephen-king",
     "hname": "Stephen King",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1059,7 +1059,7 @@
     "name": "nelson-mandela",
     "hname": "Nelson Mandela",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1071,7 +1071,7 @@
     "name": "mahatma-gandhi",
     "hname": "Mahatma Gandhi",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1083,7 +1083,7 @@
     "name": "joseph-stalin",
     "hname": "Joseph Stalin",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1095,7 +1095,7 @@
     "name": "martin-luther-king",
     "hname": "Martin Luther King",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1107,7 +1107,7 @@
     "name": "kevin-kelly",
     "hname": "Kevin Kelly",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],
@@ -1119,7 +1119,7 @@
     "name": "matthew-mcconaughey",
     "hname": "Matthew McConaughey",
     "description": null,
-    "image_url": null,
+    "image": null,
     "tags": [
 
     ],

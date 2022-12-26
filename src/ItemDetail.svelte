@@ -3,12 +3,12 @@
     import { bookmarks } from "./stores.js"
     import Review from "./Review.svelte"
     import { randomCover } from './utility.js'
-    import { io_getItem, io_getReviewsForItem } from "../db/jsonlines";
+    import { io_getItem } from "../db/jsonlines";
     
     export let itemid;
 
     $: item = io_getItem(itemid);
-    $: reviews = io_getReviewsForItem(item?.id)
+    $: reviews = item?.reviews;
 
     function get_tld(url){
       return(new URL(url)).hostname.replace('www.','');
@@ -35,7 +35,7 @@
       return `https://www.youtube.com/oembed?url=${youtubeurl}&format=json`
     }
   
-  $: item && item.links.includes('video|') && oEmded_image(item) && fetch(oEmded_image(item))
+  $: item && item.links.join(' ').includes('video|') && oEmded_image(item) && fetch(oEmded_image(item))
     .then( r => r.json())
     .then(data => {
       oEmded_image_ytb_url = data.thumbnail_url   
@@ -86,16 +86,16 @@
 
     <div class="mt-10">
         <div class="mb-10 flex flex-wrap  justify-start">
-          <div class={((item.links.includes('video|') && oembed_iframe) || (item.links.includes('wiki|')) ? 'w-full' : '')}>
-            {#if item.links.includes('wiki|')}
+          <div class={((item.links.join(' ').includes('video|') && oembed_iframe) || (item.links.join(' ').includes('wiki|')) ? 'w-full' : '')}>
+            {#if item.links.join(' ').includes('wiki|')}
               <iframe src={wikiUrlForEmbed(item)} class="w-full h-[48rem]" title="embedded wiki"></iframe>
-            {:else if item.links.includes('video|') && oembed_iframe}
+            {:else if item.links.join(' ').includes('video|') && oembed_iframe}
               {@html oembed_iframe.replace('width="200"','width="100%"').replace(/height=["'][0-9]+["']/i,'height="400"')}
             {:else if item.image}
               <div class="">
                 <img class="mr-5 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
               </div>
-            {:else if item.links.includes('video') }
+            {:else if item.links.join(' ').includes('video') }
               <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
                 <div class="w-80 h-60">
                   <img class="h-auto w-80 flex justify-center items-center border-r border-gray-500 relative" src="{oEmded_image_ytb_url}" alt="{item.name}">
@@ -104,7 +104,7 @@
                   <svg class="h-12 w-12 text-indigo-500" fill="currentColor" viewBox="0 0 84 84"><circle opacity="0.9" cx="42" cy="42" r="42" fill="white"></circle><path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path></svg>
                 </div>
               </div>
-            {:else if !item.links.includes('video') && item.links.includes('book')}
+            {:else if !item.links.join(' ').includes('video') && item.links.join(' ').includes('book')}
             <div class="sm:mr-10 w-44 h-64 relative">
               <img class="w-44 h-64 mr-28 mb-6 h-auto transform rounded-md shadow-md transition duration-300 ease-out hover:scale-105 md:shadow-xl" src={randomCover(item.id)} alt="{item.name}" />
 
@@ -148,7 +148,6 @@
                         <sl-menu-label>Download via IPFS:</sl-menu-label>
                         <sl-menu-item value={'https://cloudflare-ipfs.com/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Cloudflare</sl-menu-item>
                         <sl-menu-item value={'https://ipfs.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>IPFS.io</sl-menu-item>
-                        <sl-menu-item value={'https://ipfs.infura.io/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Infura</sl-menu-item>
                         <sl-menu-item value={'https://gateway.pinata.cloud/ipfs/' + type.split("|")[2].replace('ipfs:','')}>Pinata</sl-menu-item>
                         {/if}
 
@@ -222,7 +221,7 @@
         </div>
         {/if}
   
-        {#if item.creators}
+        {#if item.creators?.length > 0}
         <div class="flex flex-col justify-between items-center gap-1 border border-neutral_dark py-5 px-2">
           <div class="flex flex-col items-center">
             <h3 class="uppercase text-xs ">Creator</h3>

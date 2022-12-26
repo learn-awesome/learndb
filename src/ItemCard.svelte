@@ -7,15 +7,15 @@
     export let showBadge = false;
 </script>
 
-{#if item.links.includes('book|') && item.links.includes('video|')}
+{#if item.links.join(' ').includes('book|') && item.links.join(' ').includes('video|')}
   {#if displayType == 'video'}
     <VideoCard {item}/>
   {:else}
     <BookCard {item}/>
   {/if}
-{:else if item.links.includes('book|')}
+{:else if item.links.join(' ').includes('book|')}
   <BookCard {item}/>
-{:else if item.links.includes('video|')}
+{:else if item.links.join(' ').includes('video|')}
   <VideoCard {item}/>
 {:else}
   <GenericCard {item} {showBadge}/>

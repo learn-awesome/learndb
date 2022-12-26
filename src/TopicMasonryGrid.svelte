@@ -19,13 +19,13 @@
         }
     }
 
-    function hierarchy(topic_array, parent_id){
+    function hierarchy(topic_array, parent_name){
         let tempmap = new Map();
         // first pass to find all top-level objects
         let parentids = [];
-        // console.log({topic_array}, {parent_id});
+        // console.log({topic_array}, {parent_name});
         for(let i = 0; i < topic_array.length; i++){
-            if(topic_array[i].parent_id == parent_id){
+            if(topic_array[i].parent_name == parent_name){
                 tempmap.set(topic_array[i], []);
                 parentids.push(topic_array[i].name);
             } 
@@ -34,8 +34,8 @@
 
         // second pass for their children
         for(let i = 0; i < topic_array.length; i++){
-            if(parentids.includes(topic_array[i].parent_id)){
-                tempmap.get(topic_array.find(t => t.name == topic_array[i].parent_id)).push(topic_array[i])
+            if(parentids.includes(topic_array[i].parent_name)){
+                tempmap.get(topic_array.find(t => t.name == topic_array[i].parent_name)).push(topic_array[i])
             } 
         }
         // console.log(tempmap);
@@ -80,9 +80,9 @@
         <sl-breadcrumb-item href="#/topics" class="title">All Topics</sl-breadcrumb-item>
         
         {#if topic}
-            {#if topic.parent_id}
-                <sl-breadcrumb-item href={"#/topic/"  + topic.parent_id}>
-                    {capitalize(topic.parent_id.replace('-',' '))}
+            {#if topic.parent_name}
+                <sl-breadcrumb-item href={"#/topic/"  + topic.parent_name}>
+                    {capitalize(topic.parent_name.replace('-',' '))}
                 </sl-breadcrumb-item>
             {/if}
              {#if topic.hname}

@@ -11,7 +11,7 @@
   }
 </style>
 <article class="px-3 py-4 bg-neutral_light text-neutral_dark rounded-lg text-xs w-48 max-w-sm shrink-0 md:w-full">
-    <h3 class="font-semibold">{review.blurb.toString().slice(0,10)}...</h3>
+    <h3 class="font-semibold">{review.blurb && review.blurb.toString().slice(0,10)}...</h3>
     <p class="mt-2 line-clamp">{review.blurb}</p>
     <div class="mt-3 flex flex-col">
         {#if review.rating}
