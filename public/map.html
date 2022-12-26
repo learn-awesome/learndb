@@ -84,13 +84,13 @@ rect.parent,
 	<p id="chart"></p>
     <script type="text/javascript">
 
-function hierarchy(topic_array, parent_id){
+function hierarchy(topic_array, parent_name){
     // this is different from TopicMasonryGrid because this needs a specific object structure down to all leafs, not a map with just 2 levels
     // every node needs id, name. Leaf nodes need a value like 100. Non-leafs need a children[].
     // see: https://github.com/mekarpeles/math.mx/blob/master/static/data/simple.json
     const nest = (items, id) =>
       items
-      .filter(item => item.parent_id === id)
+      .filter(item => item.parent_name === id)
       .map(item => ({ ...item, children: nest(items, item.name), value: 100 }))
       .map(item => {
         return item.children.length == 0 ?
