@@ -92,7 +92,11 @@
             {/if}   
         {/if}
     </sl-breadcrumb>
-    <a href="https://github.com/learn-awesome/learndb" target="_blank" rel="noreferrer" class="underline text-primary hover:font-bold px-2">Help us improve this taxonomy</a>
+	{#if topic?.name == "programming-languages/go"}
+		<sl-button href="#/roadmap/programming_in_golang" variant="success">Check out our syllabus for Golang</sl-button>
+	{:else}
+    	<a href="https://github.com/learn-awesome/learndb" target="_blank" rel="noreferrer" class="underline text-primary hover:font-bold px-2">Help us improve this taxonomy</a>
+	{/if}
 </div>
 
 <div class="gap-8 columns-1 sm:columns-2 lg:columns-3 xl:columns-4 3xl:columns-5 mb-8">

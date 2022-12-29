@@ -10,9 +10,11 @@
     import FormatDetail from "./FormatDetail.svelte"
     import ItemDetail from "./ItemDetail.svelte"
     import Settings from "./Settings.svelte"
+	import Roadmap from "./Roadmap.svelte"
+	import RoadmapList from "./RoadmapList.svelte"
     
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
-    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon } from "@rgossiaux/svelte-heroicons/outline";
+    import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon, MapIcon } from "@rgossiaux/svelte-heroicons/outline";
     import Bookmarks from './Bookmarks.svelte';
     import { io_getRandomTopicName, io_getTopicByName, io_getTopicList, io_getRandomItemId } from "../db/jsonlines.js"
 
@@ -76,12 +78,24 @@
             <Bookmarks kind={1}/>
         {:else if currentView === "/settings"}
             <Settings/>
+		{:else if currentView.startsWith("/roadmap/")}
+            <Roadmap topic={currentView.split("/")[2]}/>
+		{:else if currentView.startsWith("/roadmaps")}
+            <RoadmapList/>
         {/if}
 
         
     </svelte:fragment>
 
     <svelte:fragment slot="nav">
+		<NavButtonWithLabel 
+            isActive={currentView === "/roadmaps"} 
+            target="#/roadmaps" 
+            label="Roadmaps"
+             >
+            <MapIcon class=" flex-shrink-0 h-6 w-6"/>
+        </NavButtonWithLabel>
+
         <NavButtonWithLabel 
             isActive={currentView === "/map"} 
             target="#/map" 
