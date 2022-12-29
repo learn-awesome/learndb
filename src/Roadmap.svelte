@@ -663,7 +663,7 @@ Microservices are an architectural approach to software development that allows 
 
 <sl-drawer open={selectedNode} class="drawer-overview" style="--size: 50vw;">
 	{#if selectedNode}
-		{#if $roadmap_progress[topic][selectedNode.label] === 'done'}
+		{#if $roadmap_progress[topic] && $roadmap_progress[topic][selectedNode.label] === 'done'}
 			<sl-button variant="danger" on:click={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
 		{:else}
 			<sl-button variant="success" on:click={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
