@@ -17,6 +17,7 @@
     "d3-hierarchy": "^3.1.2",
     "marked": "^4.2.4",
     "svelte": "^3.55.0",
+    "svelte-bricks": "^0.1.7",
     "vite": "^4.0.3"
   }
 }
