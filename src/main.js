@@ -1,5 +1,6 @@
-import App from './App.svelte';
+import "./app.postcss";
+import App from "./App.svelte";
 
 new App({
-  target: document.querySelector('#app'),
+  target: document.querySelector("#app"),
 });
