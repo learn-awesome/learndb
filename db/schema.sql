@@ -23,7 +23,7 @@ CREATE TABLE creators (
 
 CREATE TABLE items (
 	id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-	hname VARCHAR(1024) NOT NULL,
+	name VARCHAR(1024) NOT NULL,
 	description TEXT, -- in markdown
 	image VARCHAR(1024),
 	tags TEXT[] NOT NULL, -- eg: oer, nsfw, free/paid etc
