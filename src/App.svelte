@@ -116,20 +116,20 @@
             <ViewGridIcon class=" flex-shrink-0 h-6 w-6"/>
         </NavButtonWithLabel>
 
-        <a href="#/randomtopic" on:click={getRandomTopicName} class={(currentView === "/randomtopic" ? 'text-secondary' : '') + " w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+        <a href="#/randomtopic" on:click={getRandomTopicName} class={(currentView === "/randomtopic" ? 'text-cyan-500' : '') + " w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <div class="flex flex-col items-start">
-                <h3 class="text-center">Random Topic</h3>
-                <div class={(currentView === "/randomtopic" ? 'bg-secondary w-full' : '') + " w-5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"}></div>
+                <h3 class={(currentView === "/randomtopic" ? "text-cyan-500" : "text-slate-900 dark:text-slate-100") + " text-center text-xl"}>Random Topic</h3>
+                <div class={(currentView === "/randomtopic" ? "bg-cyan-500 w-full" : "w-5 bg-slate-900 dark:bg-slate-100") + " mt-0.25 h-0.5 group-hover:w-full ease-in-out duration-300"}></div>
             </div>
             
         </a>
 
-        <a href="#/randomitem" on:click={getRandomItemId} class={(currentView === "/randomitem" ? 'text-secondary' : '') + "  w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
+        <a href="#/randomitem" on:click={getRandomItemId} class={(currentView === "/randomitem" ? 'text-cyan-500' : '') + "  w-full group flex justify-start gap-3 items-center py-5 pl-4 text-sm font-medium"}>
             <GiftIcon class=" flex-shrink-0 h-6 w-6"/>
             <div class="flex flex-col items-start">
-                <h3 class="text-center">Random Item</h3>
-                <div class={(currentView === "/randomitem" ? 'bg-secondary w-full' : '') + " w-5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"}></div>
+                <h3 class={(currentView === "/randomitem" ? "text-cyan-500" : "text-slate-900 dark:text-slate-100") + " text-center text-xl"}>Random Item</h3>
+                <div class={(currentView === "/randomitem" ? "bg-cyan-500 w-full" : "w-5 bg-slate-900 dark:bg-slate-100") + " mt-0.25 h-0.5 group-hover:w-full ease-in-out duration-300"}></div>
             </div>
             
         </a>
