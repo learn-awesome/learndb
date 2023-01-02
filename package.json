@@ -14,15 +14,18 @@
     "@rgossiaux/svelte-heroicons": "^0.1.2",
     "@sveltejs/pancake": "^0.0.18",
     "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "autoprefixer": "^10.4.7",
     "d3-hierarchy": "^3.1.2",
     "marked": "^4.2.4",
-    "svelte": "^3.55.0",
-    "svelte-bricks": "^0.1.7",
-    "vite": "^4.0.3",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
+    "svelte": "^3.55.0",
+    "svelte-bricks": "^0.1.7",
     "svelte-preprocess": "^4.10.7",
-    "autoprefixer": "^10.4.7",
-    "tailwindcss": "^3.1.5"
+    "tailwindcss": "^3.1.5",
+    "vite": "^4.0.3"
+  },
+  "dependencies": {
+    "daisyui": "^2.46.0"
   }
 }

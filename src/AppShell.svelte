@@ -32,7 +32,8 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div >
   <!-- sticky top bar  -->
-  <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-neutral-50 bg-blue-900 shadow h-16">
+  <!-- <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-neutral-50 bg-blue-900 shadow h-16"> -->
+    <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-slate-900 bg-slate-50 dark:text-slate-100 dark:bg-slate-900 shadow h-16">  
     <div class="flex items-center">
       {#if isNavDrawerOpen == false}
       <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
@@ -49,8 +50,9 @@
       {/if}
 
       <div class=" py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold group">
-        <a href="/" class="">LearnAwesome</a>
-        <div class="w-1/5 mt-0.25 h-0.5 bg-neutral-50 group-hover:w-full ease-in-out duration-300"></div>
+        <!-- <a href="/" class="text-primary_light">LearnAwesome</a> -->
+        <a href="/" class="text-cyan-600 text-2xl">LearnAwesome</a>
+        <div class="w-1/5 mt-0.25 h-0.5 bg-cyan-600 group-hover:w-full ease-in-out duration-300"></div>
       </div>
     </div>
     
@@ -88,7 +90,7 @@
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
       <div class="relative flex-1 flex flex-col w-64 w-full pb-4">
-        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-primary_light text-primary">
+        <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
           <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
             <slot name="nav"></slot>
             {#if window.location.href.startsWith('http://127.0.0.1')}
@@ -102,14 +104,14 @@
   {/if}
 
   <!-- Static sidebar for desktop -->
-  <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+  <div class="hidden mt-10 md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
     <!-- Sidebar component -->
-    <div class="flex flex-col flex-grow border-r-8 border-lightGradOne overflow-y-auto">
+    <div class="flex flex-col flex-grow border-r-8 border-cyan-600 overflow-y-auto">
       <!-- <div class="flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold text-primary">
         <a href="/" class="">LearnAwesome</a>
         <div class="w-1/5 mt-0.25 h-0.5 bg-primary group-hover:w-full ease-in-out duration-300"></div>
       </div> -->
-      <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary">
+      <div class="mt-12 flex-1 flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
         <nav class="flex-1 pb-4 space-y-1 pt-5">
           <slot name="nav"></slot>
           {#if window.location.href.startsWith('http://127.0.0.1')}
