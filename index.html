@@ -7,32 +7,32 @@
 	
 	<script>
 		
-		// function darkmode() {
-		// 	return;
-		// 	tailwind.config.theme.extend.colors.primary = '#787A91';
-		// 	tailwind.config.theme.extend.colors.primary_light = '#262626';
-		// 	tailwind.config.theme.extend.colors.neutral_light = '#737373';
-		// 	tailwind.config.theme.extend.colors.neutral_dark = '#FAFAFA';
-		// 	tailwind.config.theme.extend.colors.secondary = '#FAFAFA';
-		// 	tailwind.config.theme.extend.colors.gradOne = '#444444';
-		// 	tailwind.config.theme.extend.colors.gradTwo = '#171717';
-		// 	tailwind.config.theme.extend.colors.primary_medium = '#141E61';
-		// }
+		function darkmode() {
+			return;
+			tailwind.config.theme.extend.colors.primary = '#787A91';
+			tailwind.config.theme.extend.colors.primary_light = '#262626';
+			tailwind.config.theme.extend.colors.neutral_light = '#737373';
+			tailwind.config.theme.extend.colors.neutral_dark = '#FAFAFA';
+			tailwind.config.theme.extend.colors.secondary = '#FAFAFA';
+			tailwind.config.theme.extend.colors.gradOne = '#444444';
+			tailwind.config.theme.extend.colors.gradTwo = '#171717';
+			tailwind.config.theme.extend.colors.primary_medium = '#141E61';
+		}
 
-		// function lightmode() {
-		// 	tailwind.config.theme.extend.colors.primary = '#1E3A8A';
-		// 	tailwind.config.theme.extend.colors.primary_light = '#FAFAFA';
-		// 	tailwind.config.theme.extend.colors.neutral_light = '#e5e5e5';
-		// 	tailwind.config.theme.extend.colors.neutral_dark = '#262626';
-		// 	tailwind.config.theme.extend.colors.secondary = '#6B21A8';
-		// 	tailwind.config.theme.extend.colors.gradOne = '#DBEAFE';
-		// 	tailwind.config.theme.extend.colors.gradTwo = '#F3E8FF';
-		// 	tailwind.config.theme.extend.colors.primary_medium = '#60A5FA';
-		// }
+		function lightmode() {
+			tailwind.config.theme.extend.colors.primary = '#1E3A8A';
+			tailwind.config.theme.extend.colors.primary_light = '#FAFAFA';
+			tailwind.config.theme.extend.colors.neutral_light = '#e5e5e5';
+			tailwind.config.theme.extend.colors.neutral_dark = '#262626';
+			tailwind.config.theme.extend.colors.secondary = '#6B21A8';
+			tailwind.config.theme.extend.colors.gradOne = '#DBEAFE';
+			tailwind.config.theme.extend.colors.gradTwo = '#F3E8FF';
+			tailwind.config.theme.extend.colors.primary_medium = '#60A5FA';
+		}
 
-		// window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmode() : lightmode();
+		window.matchMedia("(prefers-color-scheme: dark)").matches ? darkmode() : lightmode();
 
-		// window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches ? darkmode() : lightmode());
+		window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches ? darkmode() : lightmode());
 	</script>
 	
 	<script type="module" src='/src/main.js'></script>
@@ -56,11 +56,7 @@
 		rel="stylesheet">
 </head>
 
-<!-- <body class="max-w-none mx-auto h-full bg-gradient-to-r from-gradOne to-gradTwo text-nutral_dark font-serif">
-	<div class="h-full" id="app"></div>
-</body> -->
-
-<body class="max-w-none mx-auto h-full bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-serif">
+<body class="max-w-none mx-auto h-full bg-gradient-to-r from-gradOne to-gradTwo text-nutral_dark font-serif">
 	<div class="h-full" id="app"></div>
 </body>
 

@@ -23,9 +23,7 @@ const config = {
     }
   },
 
-  plugins: [require("daisyui")],
-
-  darkMode: 'media',
+  plugins: [],
 };
 
 module.exports = config;
