@@ -16,7 +16,7 @@
 		// see: https://github.com/mekarpeles/math.mx/blob/master/static/data/simple.json
 		const nest = (items, id) =>
 		items
-		.filter(item => item.parent_name === id)
+		.filter(item => item.parent == id) // must use == and not === because item.parent can be null, undefined or string
 		.map(item => ({ ...item, children: nest(items, item.name), value: 100 }))
 		.map(item => {
 			return item.children.length == 0 ?

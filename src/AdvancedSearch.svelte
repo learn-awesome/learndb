@@ -36,7 +36,7 @@
         {#if result_topics.length > 0}
         <sl-menu-label class="bg-gray-200">Topics</sl-menu-label>
           {#each result_topics as topic}
-          <sl-menu-item value="#/topic/{topic.name}">{topic.hname}</sl-menu-item>
+          <sl-menu-item value="#/topic/{topic.name}">{topic.hname || topic.name}</sl-menu-item>
           {/each}
         {/if}
         <sl-divider></sl-divider>

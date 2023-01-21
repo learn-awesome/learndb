@@ -41,7 +41,7 @@ This is a Wikipedia-scale project and we could use all kind of help:
 
 There are no user accounts, no social features like learning feeds or ActivityPub. Users' bookmarks are saved in browser's localStorage.
 
-The source data is in `db/*.js` files. The schema is described in [db/README.md](db/README.md).
+The source data is in `db/*.json` files. The schema is described in [db/README.md](db/README.md).
 For the front-end, we write Svelte components in `src` and generate `bundle.js` and `bundle.css` via `npm run dev` / `npm run build`.
 
 For UI, we make use of TailwindCSS (currently loaded via CDN with some plugins) and Shoelace.Style. Whenever possible, we use Shoelace's existing components.

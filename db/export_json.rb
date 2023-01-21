@@ -1,35 +1,34 @@
-require 'pg'
-require 'active_record'
-require 'json'
+# This script connects to postgres, and exports all data as JSON files that the app expects
 
-class MyDB < ActiveRecord::Base
-	self.abstract_class = true
-end
+require './postgres.rb'
+require 'neatjson'
 
-class Topic < MyDB; end
-class Creator < MyDB; end
-class Item < MyDB; end
-
-ActiveRecord::Base.logger = Logger.new(STDERR)
-
-ActiveRecord::Base.establish_connection(
-	{ adapter: 'postgresql',
-	  database: 'postgres',
-	  host: ENV['SUPABASE_HOST'],
-	  username: 'postgres',
-	  password: ENV['SUPABASE_PASSWORD'],
-	  port: 6543
-	}
-)
-
+# TODO: print one object on each line
 File.open("topics.json","w") do |f|
-	f.write(JSON.pretty_generate(JSON.parse(Topic.all.to_json)))
+	f.write(
+		JSON.neat_generate(
+			JSON.parse(Topic.all.to_json),
+			wrap: 120
+		)
+	)
 end
 
 File.open("creators.json","w") do |f|
-	f.write(JSON.pretty_generate(JSON.parse(Creator.all.to_json)))
+	f.write(
+		JSON.neat_generate(
+			JSON.parse(Creator.all.to_json),
+			wrap: 80
+		)
+	)
 end
 
 File.open("items.json","w") do |f|
-	f.write(JSON.pretty_generate(JSON.parse(Item.all.to_json)))
+	f.write(
+		JSON.neat_generate(
+			JSON.parse(Item.all.to_json),
+			wrap: 80
+		)
+	)
 end
+
+puts "Everything saved as JSON!"

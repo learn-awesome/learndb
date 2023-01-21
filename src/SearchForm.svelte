@@ -49,8 +49,8 @@
 
           {#if !hideTopic}
             <fluent-combobox autocomplete="both" placeholder="Any topic" class="ml-2 mt-1 outline-none border-2 border-grey-600" on:change="{e => query.topic = e.target.value}">
-              {#each alltopics.sort((a,b) => a.hname.localeCompare(b.hname)) as topic}
-                <fluent-option value={topic.name}>{topic.hname}</fluent-option>
+              {#each alltopics.sort((a,b) => (a.hname || a.name).localeCompare(b.hname || b.name)) as topic}
+                <fluent-option value={topic.name}>{topic.hname || topic.name}</fluent-option>
               {/each}
             </fluent-combobox>
           {/if}

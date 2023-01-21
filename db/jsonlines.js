@@ -48,6 +48,6 @@ export const io_search_items = (query) => {
 
 export const io_search_topics = (query) => {
     if(!query) return [];
-    let topics = topics_db.filter(t => t.hname.toLowerCase().includes(query.toLowerCase())).slice(0,6);
+    let topics = topics_db.filter(t => (t.hname || t.name).toLowerCase().includes(query.toLowerCase())).slice(0,6);
     return topics;
 }

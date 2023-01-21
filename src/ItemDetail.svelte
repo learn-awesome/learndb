@@ -252,7 +252,7 @@
       </div>
       
       <!-- reviews  -->
-      {#if reviews.length > 0}
+      {#if reviews?.length > 0}
       <section class="my-8">
         <div class="flex justify-between items-center">
           <h2 class="text-base font-bold">Reviews</h2>

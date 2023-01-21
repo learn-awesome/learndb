@@ -7,13 +7,9 @@
 
 	function format_topic_name(topic){
         if(topic.hname == undefined){
-            return capitalize(topic);
+            return topic.name ? capitalize(topic.name.split("/").reverse()[0]) : capitalize(topic);
         }
-        if(topic.hname.includes("/")){
-            return capitalize(topic.hname.split("/")[1]);
-        } else {
-            return capitalize(topic.hname);
-        }
+        return capitalize(topic.hname.split("/").reverse()[0]);
     }
 </script>
 
@@ -49,7 +45,7 @@
 	{/if}
 
 	<div class="mt-2 flex flex-wrap">
-	{#each parent[1].sort((t1,t2) => (t1.sort_index || 100) - (t2.sort_index || 100)) as child}
+	{#each parent[1].sort((t1,t2) => (t1.rank || 100) - (t2.rank || 100)) as child}
 		<a href={"#/topic/" + child.name} class="text-primary no-underline hover:underline hover:underline-offset-2 px-2 ">{format_topic_name(child)}</a>
 	{/each}
 	</div>    

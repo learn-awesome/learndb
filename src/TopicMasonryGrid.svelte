@@ -15,13 +15,13 @@
         return str.charAt(0).toUpperCase() + str.slice(1)
     }
 
-    function hierarchy(topic_array, parent_name){
+    function hierarchy(topic_array, parent){
         let tempmap = new Map();
         // first pass to find all top-level objects
         let parentids = [];
-        // console.log({topic_array}, {parent_name});
+        // console.log({topic_array}, {parent});
         for(let i = 0; i < topic_array.length; i++){
-            if(topic_array[i].parent_name == parent_name){
+            if(topic_array[i].parent == parent){
                 tempmap.set(topic_array[i], []);
                 parentids.push(topic_array[i].name);
             } 
@@ -30,8 +30,8 @@
 
         // second pass for their children
         for(let i = 0; i < topic_array.length; i++){
-            if(parentids.includes(topic_array[i].parent_name)){
-                tempmap.get(topic_array.find(t => t.name == topic_array[i].parent_name)).push(topic_array[i])
+            if(parentids.includes(topic_array[i].parent)){
+                tempmap.get(topic_array.find(t => t.name == topic_array[i].parent)).push(topic_array[i])
             } 
         }
         // console.log(tempmap);
@@ -60,7 +60,7 @@
 
     $: map = hierarchy(alltopics, topic?.name || null)
 
-	$: parents = [...map.entries()].sort((t1,t2) => (t1[0].sort_index || 100) - (t2[0].sort_index || 100))
+	$: parents = [...map.entries()].sort((t1,t2) => (t1[0].rank || 100) - (t2[0].rank || 100))
 
 	const getId = (item) => {
 		if (typeof item[0] === `object`) return item[0].name
@@ -83,14 +83,14 @@
         <sl-breadcrumb-item href="#/topics" class="title">All Topics</sl-breadcrumb-item>
         
         {#if topic}
-            {#if topic.parent_name}
-                <sl-breadcrumb-item href={"#/topic/"  + topic.parent_name}>
-                    {capitalize(topic.parent_name.replace('-',' '))}
+            {#if topic.parent}
+                <sl-breadcrumb-item href={"#/topic/"  + topic.parent}>
+                    {capitalize(topic.parent.replace('-',' '))}
                 </sl-breadcrumb-item>
             {/if}
-             {#if topic.hname}
+             {#if topic.hname || topic.name}
                 <sl-breadcrumb-item href={"#/topic/" + topic.name}>
-                    {capitalize(topic.hname.split('/').reverse()[0])}
+                    {capitalize((topic.hname || topic.name).split('/').reverse()[0])}
                 </sl-breadcrumb-item>
             {/if}   
         {/if}
