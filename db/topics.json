@@ -1011,7 +1011,6 @@
   {"name":"renewable-energy"},
   {"name":"nutrition","parent":"health"},
   {"name":"food-safety","parent":"nutrition"},
-  {"name":"communities"},
   {"name":"software-tools/bigquery"},
   {"name":"robert-wright"},
   {"name":"archery","parent":"sports"},
