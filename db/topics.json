@@ -1006,6 +1006,7 @@
   {"name":"persuasion"},
   {"name":"languages/hindi","parent":"language"},
   {"name":"emotions"},
+  {"name":"chatgpt"},
   {"name":"programming-languages/reasonml","parent":"programming-languages"},
   {"name":"engineers"},
   {"name":"renewable-energy"},
