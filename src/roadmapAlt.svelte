@@ -1,7 +1,6 @@
 <script>
     import Svelvet from "svelvet";
     import { roadmap_data } from "./roadmap_data";
-    import { new_roadmap } from "./stores.js"
     import { marked } from "marked";
 	import { roadmap_progress } from "./stores.js"
 
@@ -206,8 +205,6 @@
     //   { id: "e4-13", source: 4, target: 13},
 
 	];
-
-    new_roadmap.set(initialNodes)
 </script>
 <button class="inline-block py-2 px-6 bg-gray-800 text-white rounded-lg absolute right-2" on:click={()=>roadmap_edit = true}>{'Enable Editing'}</button>
 <div class="w-full margin-auto flex items-center justify-center">
