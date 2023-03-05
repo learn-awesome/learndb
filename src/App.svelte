@@ -12,7 +12,7 @@
     import Settings from "./Settings.svelte"
 	import Roadmap from "./Roadmap.svelte"
 	import RoadmapList from "./RoadmapList.svelte"
-    import RoadmapAlt from './RoadmapAlt.svelte';
+    import RoadmapAlt from './roadmapAlt.svelte';
     
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
     import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon, MapIcon } from "@rgossiaux/svelte-heroicons/outline";
