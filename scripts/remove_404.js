@@ -1,6 +1,7 @@
+import fs from 'fs';
 import https from 'https';
 import http from 'http';
-import items from "../db/items.json" assert {type: "json"};
+import items from "../db/hello.json" assert {type: "json"};
 
 function checkLink(url) {
   return new Promise((resolve, reject) => {
@@ -17,7 +18,7 @@ function checkLink(url) {
   });
 }
 
-async function checkLinks(item) {
+async function checkLinks(item, dryRun) {
   if (!item.links || item.links.length === 0) {
     return;
   }
@@ -27,9 +28,13 @@ async function checkLinks(item) {
     try {
       const linkExists = await checkLink(url);
       if (!linkExists) {
-        item.links.splice(i, 1);
-        i--;
-        console.log(`Removed 404 link from ${item.name}: ${url}`);
+        if (dryRun) {
+          console.log(`[DRY RUN] Would remove 404 link from ${item.name}: ${url}`);
+        } else {
+          item.links.splice(i, 1);
+          i--;
+          console.log(`Removed 404 link from ${item.name}: ${url}`);
+        }
       }
     } catch (error) {
       console.error(`Error checking link ${url}: ${error}`);
@@ -37,12 +42,15 @@ async function checkLinks(item) {
   }
 }
 
-async function checkAllLinks() {
+async function checkAllLinks(dryRun) {
   for (const item of items) {
-    await checkLinks(item);
+    await checkLinks(item, dryRun);
   }
-  fs.writeFileSync('db/items.json', JSON.stringify(items));
-  console.log('Updated items.json');
+  if (!dryRun) {
+    fs.writeFileSync('db/hello.json', JSON.stringify(items));
+    console.log('Updated hello.json');
+  }
 }
 
-checkAllLinks();
+const dryRun = process.argv.includes('--dry-run');
+checkAllLinks(dryRun);
