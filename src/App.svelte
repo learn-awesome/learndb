@@ -12,6 +12,7 @@
     import Settings from "./Settings.svelte"
 	import Roadmap from "./Roadmap.svelte"
 	import RoadmapList from "./RoadmapList.svelte"
+    import RoadmapAlt from './RoadmapAlt.svelte';
     
     import NavButtonWithLabel from './NavButtonWithLabel.svelte';
     import { SearchIcon, LibraryIcon, ViewGridIcon, GiftIcon, CogIcon, BookmarkAltIcon, BookmarkIcon, SupportIcon, MapIcon } from "@rgossiaux/svelte-heroicons/outline";
@@ -82,6 +83,8 @@
             <Roadmap topic={currentView.split("/")[2]}/>
 		{:else if currentView.startsWith("/roadmaps")}
             <RoadmapList/>
+        {:else if currentView.startsWith("/roadmap-alternate/")}
+            <RoadmapAlt topic={currentView.split("/")[2]}/>
         {/if}
 
         
