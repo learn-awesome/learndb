@@ -200,9 +200,6 @@
       { id: "7-14", source: 7, target: 14},
       { id: "7-15", source: 7, target: 15},
       { id: "7-16", source: 7, target: 16},
-    //   { id: "e4-11", source: 4, target: 11},
-    //   { id: "e4-12", source: 4, target: 12},
-    //   { id: "e4-13", source: 4, target: 13},
 
 	];
 </script>
