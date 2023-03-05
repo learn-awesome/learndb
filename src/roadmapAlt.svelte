@@ -183,7 +183,6 @@
 	];
 
     
-
 	const initialEdges = [
 	  { id: "e1-2", source: 1, target: 2, label: roadmap_data.blocks[0].label},
       { id: "e1-3", source: 1, target: 3, label: roadmap_data.blocks[1].label},
