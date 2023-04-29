@@ -13,20 +13,20 @@
     "@rgossiaux/svelte-headlessui": "^1.0.2",
     "@rgossiaux/svelte-heroicons": "^0.1.2",
     "@sveltejs/pancake": "^0.0.18",
-    "@sveltejs/vite-plugin-svelte": "^2.0.2",
-    "autoprefixer": "^10.4.7",
+    "@sveltejs/vite-plugin-svelte": "^2.1.1",
+    "autoprefixer": "^10.4.14",
     "d3-hierarchy": "^3.1.2",
-    "marked": "^4.2.4",
-    "postcss": "^8.4.14",
+    "marked": "^4.3.0",
+    "postcss": "^8.4.23",
     "postcss-load-config": "^4.0.1",
-    "svelte": "^3.55.0",
+    "svelte": "^3.58.0",
     "svelte-bricks": "^0.1.7",
-    "svelte-preprocess": "^4.10.7",
-    "tailwindcss": "^3.1.5",
-    "vite": "^4.0.3"
+    "svelte-preprocess": "^5.0.3",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.3"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "svelvet": "^6.0.12"
+    "svelvet": "^7.0.32"
   }
 }
