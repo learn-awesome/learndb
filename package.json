@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "svelvet": "^7.0.32"
+    "svelvet": "6.0.12"
   }
 }
