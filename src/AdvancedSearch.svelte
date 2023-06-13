@@ -18,7 +18,7 @@
 
 
 <form class="hidden w-full md:pl-24 md:flex justify-center" on:submit|preventDefault>
-  <div class="fixed top-2 w-full">
+  <div class="top-2 w-full">
     <div class="transform overflow-hidden rounded-md bg-primary_light shadow-2xl ring-1 ring-black ring-opacity-5 transition-all w-2/3 mx-auto">
       <sl-input 
         placeholder="Search..." size="medium" clearable
