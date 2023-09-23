@@ -1,5 +1,5 @@
 <script>
-    import Svelvet from "svelvet";
+    import { Svelvet } from "svelvet";
     import { roadmap_data } from "./roadmap_data";
     import { marked } from "marked";
 	import { roadmap_progress } from "./stores.js"
