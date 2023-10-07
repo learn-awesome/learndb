@@ -25,6 +25,14 @@
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.9"
   },
+  "overrides": {
+    "@rgossiaux/svelte-headlessui": {
+      "svelte": "$svelte"
+    },
+    "@rgossiaux/svelte-heroicons": {
+      "svelte": "$svelte"
+    }
+  },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "svelvet": "8.1.0"

@@ -4,6 +4,7 @@ node_modules
 
 db/*matches.json
 
+/static
 
 # Developer tools' files
 .lite_workspace.lua
