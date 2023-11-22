@@ -2,15 +2,76 @@
 <html>
 <head>
     <title>Invoke Netlify Function</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            max-width: 400px;
+            margin: 0 auto;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
     <h1>Invoke Netlify Function</h1>
     <form id="invokeForm" action="https://main--radiant-entremet-3fce83.netlify.app/.netlify/functions/handleMetadata" method="POST" onsubmit="invokeFunction(event)">
         <label for="url">URL:</label>
-        <input type="text" id="url" name="url" value="https://example.com"><br><br>
+        <input type="text" id="url" name="url" value="https://example.com">
         
         <label for="apiKey">API Key:</label>
-        <input type="text" id="apiKey" name="apiKey" value="your-api-key"><br><br>
+        <input type="text" id="apiKey" name="apiKey" value="your-api-key">
 
         <input type="submit" value="Invoke Function">
     </form>
