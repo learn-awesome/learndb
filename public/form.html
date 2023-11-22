@@ -17,7 +17,7 @@
         }
 
         h1 {
-            color: #333;
+            color: #000;
         }
 
         form {
@@ -44,6 +44,11 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
         }
 
         input[type="submit"] {
@@ -83,7 +88,9 @@
         <label for="apiKey">API Key:</label>
         <input type="text" id="apiKey" name="apiKey" value="your-api-key">
 
-        <input type="submit" value="Invoke Function">
+        <div class="button-container">
+            <input type="submit" value="Invoke Function">
+        </div>
     </form>
 
     <div id="result"></div>
