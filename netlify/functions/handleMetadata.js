@@ -42,7 +42,7 @@ function formatResponse(predefinedMediaType, predefinedTopics) {
     // Construct the response object
     // Placeholder code
     const response = {
-        mediaType: predefinedMediaType,
+        format: predefinedMediaType,
         topics: predefinedTopics,
         // Other metadata fields if needed
     };
