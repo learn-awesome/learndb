@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "node-fetch": "^3.3.2",
     "svelvet": "8.1.0"
   }
 }
