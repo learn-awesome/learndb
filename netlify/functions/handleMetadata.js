@@ -82,7 +82,7 @@ function formatResponse(predefinedMediaType, predefinedTopics) {
     // Placeholder code
     const response = {
         format: predefinedMediaType,
-        topics: predefinedTopics
+        topics: predefinedTopics,
         // Other metadata fields if needed
     };
     return response;
