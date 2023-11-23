@@ -1,10 +1,22 @@
-// Placeholder function to fetch content from URL using a web scraping service
+import fetch from 'node-fetch'; // Import for webscraping (fetchContentFromURL(url) function
+import OpenAI from "openai"; // Import for performGPTAnalysis(content) function
+
+// Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
-    // Implement logic to fetch content from the URL using a web scraping service
-    // Return the extracted content
-    // Placeholder code
-    const content = "<p>This is a sample content fetched from the URL</p>";
-    return content;
+    try {
+        // Make an HTTP GET request to the provided URL
+        const response = await fetch(url);
+        // Check if the response status is OK (status code 200)
+        if (!response.ok) {
+            throw new Error(`Failed to fetch URL: ${response.statusText}`);
+        }
+        // Read the response body as text (HTML content)
+        const content = await response.text();
+        // Return the extracted content
+        return content;
+    } catch (error) {
+        throw new Error(`Error fetching URL: ${error.message}`);
+    }
 }
 
 // Placeholder function to simplify the content for GPT analysis
@@ -20,6 +32,33 @@ function simplifyContent(content) {
 async function performGPTAnalysis(content) {
     // Implement logic to send content to Mistral-7b via OpenRouter for GPT analysis
     // Send content and receive GPT analysis response
+    
+    
+    // Default code from OpenRouter documentation for the Mistral-7b model
+    // Retrieved from https://openrouter.ai/models/mistralai/mistral-7b-instruct?tab=api
+    // Using OpenAI's client API makes this easily replaceable with other models (ex. GPT-4)
+    ```
+    const openai = new OpenAI({
+        baseURL: "https://openrouter.ai/api/v1",
+        apiKey: $OPENROUTER_API_KEY,
+        defaultHeaders: {
+            "HTTP-Referer": $YOUR_SITE_URL, // Optional, for including your app on openrouter.ai rankings.
+            "X-Title": $YOUR_SITE_NAME, // Optional. Shows in rankings on openrouter.ai.
+        },
+        // dangerouslyAllowBrowser: true,
+    })
+    async function main() {
+        const completion = await openai.chat.completions.create({
+            model: "mistralai/mistral-7b-instruct",
+            messages: [
+                { role: "user", content: "Say this is a test" }
+            ],
+        })
+    console.log(completion.choices[0].message)
+    }
+    main()
+    ```
+    
     // Placeholder code
     const inferredMediaType = "article";
     const extractedTopics = ["topic1", "topic2"];
@@ -80,7 +119,8 @@ export async function handler(event) {
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(formattedResponse),
+            body: JSON.stringify(fetchedContent),
+            // body: JSON.stringify(formattedResponse),
         };
     } catch (error) {
         return {
