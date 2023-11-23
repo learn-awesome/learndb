@@ -3,20 +3,23 @@ import fetch from 'node-fetch'; // Import for webscraping (fetchContentFromURL(u
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
-    try {
-        // Make an HTTP GET request to the provided URL
-        const response = await fetch(url);
-        // Check if the response status is OK (status code 200)
-        if (!response.ok) {
-            throw new Error(`Failed to fetch URL: ${response.statusText}`);
-        }
-        // Read the response body as text (HTML content)
-        const content = await response.text();
-        // Return the extracted content
-        return content;
-    } catch (error) {
-        throw new Error(`Error fetching URL: ${error.message}`);
-    }
+    // try {
+    //     // Make an HTTP GET request to the provided URL
+    //     const response = await fetch(url);
+    //     // Check if the response status is OK (status code 200)
+    //     if (!response.ok) {
+    //         throw new Error(`Failed to fetch URL: ${response.statusText}`);
+    //     }
+    //     // Read the response body as text (HTML content)
+    //     const content = await response.text();
+    //     // Return the extracted content
+    //     return content;
+    // } catch (error) {
+    //     throw new Error(`Error fetching URL: ${error.message}`);
+    // }
+
+    return "Hello maria";
+
 }
 
 // Placeholder function to simplify the content for GPT analysis
