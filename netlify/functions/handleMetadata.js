@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'; // Import for webscraping (fetchContentFromURL(url) function
+
 // Placeholder function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
     // Implement logic to fetch content from the URL using a web scraping service
