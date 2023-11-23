@@ -1,4 +1,5 @@
-const fetch = require('node-fetch'); // Import for webscraping (fetchContentFromURL(url) function
+// const fetch = require('node-fetch'); // Import for webscraping (fetchContentFromURL(url) function
+const https = require('https');
 
 // Placeholder function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
