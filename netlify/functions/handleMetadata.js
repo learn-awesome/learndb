@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'; // Import for webscraping (fetchContentFromURL(url) function
-const OpenAI = require('openai'); // Import for performGPTAnalysis(content) function
+// const OpenAI = require('openai'); // Import for performGPTAnalysis(content) function
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
