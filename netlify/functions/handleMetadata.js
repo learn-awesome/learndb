@@ -1,20 +1,26 @@
 const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
 import { OpenAIApi, Configuration } from 'openai';
 // const { Configuration, OpenAIApi } = require('openai');
-import { he } from 'he';
+// import { he } from 'he';
+const https = require('https');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.text();
-    } catch (error) {
-        console.error(`Could not fetch content from URL: ${error}`);
-        throw error;
-    }
+    return new Promise((resolve, reject) => {
+        https.get(url, (response) => {
+            let data = '';
+            // A chunk of data has been received.
+            response.on('data', (chunk) => {
+                data += chunk;
+            });
+            // The whole response has been received.
+            response.on('end', () => {
+                resolve(data);
+            });
+        }).on("error", (error) => {
+            reject(`Error fetching URL: ${error.message}`);
+        });
+    });
 }
 
 function simplifyContent(content) {
