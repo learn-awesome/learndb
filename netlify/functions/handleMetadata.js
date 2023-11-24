@@ -37,7 +37,7 @@ function simplifyContent(content) {
     // // Simple summarization: taking the first few sentences
     // const sentences = simplifiedContent.split('. ');
     // const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. ');
-    return summarizedContent;
+    return simplifiedContent;
 }
 
 // Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
