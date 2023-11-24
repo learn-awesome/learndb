@@ -7,7 +7,7 @@
     "start": "node handleMetadata.js"
   },
   "dependencies": {
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.7.0",
     "openai": "4.20.0"
   }
 }
