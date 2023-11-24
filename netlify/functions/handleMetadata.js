@@ -25,13 +25,19 @@ function simplifyContent(content) {
     simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
     // Remove all remaining HTML tags, leaving the inner text
     simplifiedContent = simplifiedContent.replace(/<[^>]+>/g, '');
-    // Decode HTML entities - for a Node.js environment, consider using a library like 'he'
-    simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, match => {
-        // This part is for browser environments, adjust for Node.js if necessary
-        const span = document.createElement('span');
-        span.innerHTML = match;
-        return span.textContent || span.innerText;
-    });
+    // // Decode HTML entities - for a Node.js environment, consider using a library like 'he'
+    // simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, match => {
+    //     // This part is for browser environments, adjust for Node.js if necessary
+    //     const span = document.createElement('span');
+    //     span.innerHTML = match;
+    //     return span.textContent || span.innerText;
+    // });
+    simplifiedContent = simplifiedContent
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
     // Remove inline CSS and JavaScript event handlers
     simplifiedContent = simplifiedContent.replace(/style\s*=\s*'.*?'/gi, '');
     simplifiedContent = simplifiedContent.replace(/on\w+\s*=\s*".*?"/gi, '');
