@@ -20,24 +20,21 @@ async function fetchContentFromURL(url) {
 }
 
 function simplifyContent(content) {
-    // Remove HTML tags using a regular expression
+    // Remove HTML tags and content within angle brackets
     let simplifiedContent = content.replace(/<[^>]*>/g, '');
-    // Remove CSS styles
+    // Remove CSS styles and content within <style> tags
     simplifiedContent = simplifiedContent.replace(/<style[^>]*>.*<\/style>/gms, '');
-    // Remove special characters
-    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '');
-    // Replace HTML entities
-    simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, '');
-    // Remove links (URLs)
-    simplifiedContent = simplifiedContent.replace(/https?:\/\/[^\s]+/gi, ''); // Remove URLs
+    // Remove all other non-alphanumeric characters, including special characters
+    simplifiedContent = simplifiedContent.replace(/[^a-zA-Z0-9\s]/g, '');
+    // Remove URLs (links)
+    simplifiedContent = simplifiedContent.replace(/https?:\/\/[^\s]+/gi, '');
     // Replace multiple whitespace characters with a single space
     simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
-    // Basic language simplification (very rudimentary)
-    simplifiedContent = simplifiedContent.toLowerCase(); // Convert to lower case
-    simplifiedContent = simplifiedContent.replace(/(?:\r\n|\r|\n)/g, ' '); // Replace newlines with spaces
+    // Convert to lowercase
+    simplifiedContent = simplifiedContent.toLowerCase();
     // Simple summarization (rudimentary approach)
-    const sentences = simplifiedContent.split('. '); // Split into sentences
-    const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. '); // Take first 5 sentences
+    const sentences = simplifiedContent.split('. ');
+    const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. ');
     return summarizedContent;
 }
 
