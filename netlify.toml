@@ -1,3 +1,3 @@
 [build]
   functions = "netlify/functions/"
-  command = "cd ./netlify/functions/ && npm install node-fetch && cd ../../ && cd ./public && npm install"
+  command = "cd ./netlify/functions/ && npm install node-fetch@2.x && cd ../../ && cd ./public && npm install"
