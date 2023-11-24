@@ -20,19 +20,21 @@ async function fetchContentFromURL(url) {
 }
 
 function simplifyContent(content) {
-    // Remove HTML tags and content within angle brackets
+    // Remove HTML tags
     let simplifiedContent = content.replace(/<[^>]*>/g, '');
-    // Remove CSS styles and content within <style> tags
+    // Remove CSS within style tags
     simplifiedContent = simplifiedContent.replace(/<style[^>]*>.*<\/style>/gms, '');
-    // Remove all other non-alphanumeric characters, including special characters
-    simplifiedContent = simplifiedContent.replace(/[^a-zA-Z0-9\s]/g, '');
-    // Remove URLs (links)
+    // Remove inline CSS and JavaScript within script tags
+    simplifiedContent = simplifiedContent.replace(/<script[^>]*>.*<\/script>/gms, '');
+    // Remove special characters and HTML entities
+    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '').replace(/&[a-z]+;/gi, '');
+    // Remove URLs
     simplifiedContent = simplifiedContent.replace(/https?:\/\/[^\s]+/gi, '');
-    // Replace multiple whitespace characters with a single space
+    // Normalize whitespace
     simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
-    // Convert to lowercase
+    // Basic language simplification
     simplifiedContent = simplifiedContent.toLowerCase();
-    // Simple summarization (rudimentary approach)
+    // Simple summarization: taking the first few sentences
     const sentences = simplifiedContent.split('. ');
     const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. ');
     return summarizedContent;
