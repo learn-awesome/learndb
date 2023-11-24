@@ -1,7 +1,6 @@
 const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
 import { OpenAIApi, Configuration } from 'openai';
 // const { Configuration, OpenAIApi } = require('openai');
-// import { he } from 'he';
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -25,13 +24,7 @@ function simplifyContent(content) {
     simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
     // Remove all remaining HTML tags, leaving the inner text
     simplifiedContent = simplifiedContent.replace(/<[^>]+>/g, '');
-    // // Decode HTML entities - for a Node.js environment, consider using a library like 'he'
-    // simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, match => {
-    //     // This part is for browser environments, adjust for Node.js if necessary
-    //     const span = document.createElement('span');
-    //     span.innerHTML = match;
-    //     return span.textContent || span.innerText;
-    // });
+    // Manually replace common HTML entities
     simplifiedContent = simplifiedContent
         .replace(/&amp;/g, '&')
         .replace(/&lt;/g, '<')
