@@ -1,3 +1,2 @@
 [build]
   functions = "netlify/functions/"
-  command = "npm install openai"
