@@ -1,7 +1,5 @@
-const https = require('https'); // Import for webscraping (fetchContentFromURL(url) function
+const fetch = require('node-fetch'); // Import for webscraping (fetchContentFromURL(url) function
 import { OpenAIApi, Configuration } from 'openai';
-// import { fetch } from 'node-fetch';
-const fetch = require('node-fetch');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -102,7 +100,7 @@ export async function handler(event) {
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(fetchedContent),
+            body: JSON.stringify(simplifiedContent),
         };
     } catch (error) {
         console.error('Error occurred:', error.message);
