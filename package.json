@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "node-fetch": "^2.6.1",
+    "axios": "^1.6.2",
+    "node-fetch": "^2.7.0",
     "openai": "^4.20.0",
     "svelvet": "8.1.0"
   }
