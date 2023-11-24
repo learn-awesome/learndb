@@ -6,21 +6,11 @@ import { fetch } from 'node-fetch';
 
 // Placeholder function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
-    return new Promise((resolve, reject) => {
-        https.get(url, (response) => {
-            let data = '';
-            // A chunk of data has been received.
-            response.on('data', (chunk) => {
-                data += chunk;
-            });
-            // The whole response has been received.
-            response.on('end', () => {
-                resolve(data);
-            });
-        }).on("error", (error) => {
-            reject(`Error fetching URL: ${error.message}`);
-        });
-    });
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Error fetching URL: ${response.statusText}`);
+    }
+    return await response.text();
 }
 
 function simplifyContent(content) {
