@@ -17,6 +17,8 @@ async function fetchContentFromURL(url) {
 }
 
 function simplifyContent(content) {
+    // Denote headings with a marker (like '###') and add a line break
+    content = content.replace(/<h[1-6].*?>(.*?)<\/h[1-6]>/g, '\n### $1\n');
     // Remove script and style elements and their content
     let simplifiedContent = content.replace(/<script.*?>.*?<\/script>/gms, '');
     simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
