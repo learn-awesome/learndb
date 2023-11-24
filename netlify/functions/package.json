@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "node-fetch": "^2.7.0",
-    "openai": "4.20.0"
+    "openai": "4.20.0",
+    "he": "^1.2.0"
   }
 }
