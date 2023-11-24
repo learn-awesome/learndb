@@ -19,7 +19,6 @@ async function fetchContentFromURL(url) {
     });
 }
 
-// Function to simplify the content for GPT analysis
 function simplifyContent(content) {
     // Remove HTML tags using a regular expression
     let simplifiedContent = content.replace(/<[^>]*>/g, '');
@@ -29,10 +28,12 @@ function simplifyContent(content) {
     simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '');
     // Replace HTML entities
     simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, '');
+    // Remove links (URLs)
+    simplifiedContent = simplifiedContent.replace(/https?:\/\/[^\s]+/gi, ''); // Remove URLs
     // Replace multiple whitespace characters with a single space
     simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
     // Basic language simplification (very rudimentary)
-    simplifiedContent = content.toLowerCase(); // Convert to lower case
+    simplifiedContent = simplifiedContent.toLowerCase(); // Convert to lower case
     simplifiedContent = simplifiedContent.replace(/(?:\r\n|\r|\n)/g, ' '); // Replace newlines with spaces
     // Simple summarization (rudimentary approach)
     const sentences = simplifiedContent.split('. '); // Split into sentences
