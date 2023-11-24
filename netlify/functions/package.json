@@ -2,8 +2,5 @@
   "name": "handle-metadata-function",
   "dependencies": {
     "openai": "4.20.0"
-  },
-  "scripts": {
-    "install": "npm install"
   }
 }
