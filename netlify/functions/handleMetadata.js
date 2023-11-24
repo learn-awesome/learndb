@@ -1,6 +1,6 @@
 const https = require('https'); // Import for webscraping (fetchContentFromURL(url) function
 // const axios = require('axios');
-const fetch = require('node-fetch');//.default;
+const fetch = require('node-fetch').default;
 // const fetch = request('node-fetch').default;
 
 // Placeholder function to fetch content from URL using a web scraping service
