@@ -5,12 +5,10 @@ async function fetchContentFromURL(url) {
     return new Promise((resolve, reject) => {
         https.get(url, (response) => {
             let data = '';
-
             // A chunk of data has been received.
             response.on('data', (chunk) => {
                 data += chunk;
             });
-
             // The whole response has been received.
             response.on('end', () => {
                 resolve(data);
@@ -21,13 +19,25 @@ async function fetchContentFromURL(url) {
     });
 }
 
-// Placeholder function to simplify the content for GPT analysis
+// Function to simplify the content for GPT analysis
 function simplifyContent(content) {
-    // Implement logic to simplify the content for GPT analysis
-    // Remove unnecessary elements, clean HTML tags, format content, etc.
-    // Placeholder code
-    const simplifiedContent = "Simplified content suitable for GPT analysis";
-    return simplifiedContent;
+    // Remove HTML tags using a regular expression
+    let simplifiedContent = content.replace(/<[^>]*>/g, '');
+    // Remove CSS styles
+    simplifiedContent = simplifiedContent.replace(/<style[^>]*>.*<\/style>/gms, '');
+    // Remove special characters
+    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '');
+    // Replace HTML entities
+    simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, '');
+    // Replace multiple whitespace characters with a single space
+    simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
+    // Basic language simplification (very rudimentary)
+    simplifiedContent = content.toLowerCase(); // Convert to lower case
+    simplifiedContent = simplifiedContent.replace(/(?:\r\n|\r|\n)/g, ' '); // Replace newlines with spaces
+    // Simple summarization (rudimentary approach)
+    const sentences = simplifiedContent.split('. '); // Split into sentences
+    const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. '); // Take first 5 sentences
+    return summarizedContent;
 }
 
 // Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
@@ -94,7 +104,8 @@ export async function handler(event) {
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(fetchedContent),
+            body: fetchedContent,
+            // body: JSON.stringify(fetchedContent),
         };
     } catch (error) {
         return {
