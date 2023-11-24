@@ -34,9 +34,9 @@ function simplifyContent(content) {
     simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
     // Basic language simplification
     simplifiedContent = simplifiedContent.toLowerCase();
-    // Simple summarization: taking the first few sentences
-    const sentences = simplifiedContent.split('. ');
-    const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. ');
+    // // Simple summarization: taking the first few sentences
+    // const sentences = simplifiedContent.split('. ');
+    // const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. ');
     return summarizedContent;
 }
 
