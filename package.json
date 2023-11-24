@@ -37,7 +37,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "axios": "^1.6.2",
     "encoding": "^0.1.13",
-    "node-fetch": "^2.7.0",
+    "node-fetch": "^2.6.1",
     "openai": "^4.20.0",
     "svelvet": "8.1.0"
   }
