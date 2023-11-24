@@ -104,8 +104,7 @@ export async function handler(event) {
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(fetchedContent),
-            // body: JSON.stringify(fetchedContent),
+            body: JSON.stringify(simplifiedContent),
         };
     } catch (error) {
         return {
