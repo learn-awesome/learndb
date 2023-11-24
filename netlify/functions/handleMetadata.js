@@ -1,6 +1,7 @@
 const https = require('https'); // Import for webscraping (fetchContentFromURL(url) function
 import { OpenAIApi, Configuration } from 'openai';
-import { fetch } from 'node-fetch';
+// import { fetch } from 'node-fetch';
+const fetch = require('node-fetch');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -18,22 +19,23 @@ async function fetchContentFromURL(url) {
 
 function simplifyContent(content) {
     // Remove HTML tags
-    let simplifiedContent = content.replace(/<[^>]*>/g, '');
-    // Remove CSS within style tags
-    simplifiedContent = simplifiedContent.replace(/<style[^>]*>.*<\/style>/gms, '');
-    // Remove inline CSS and JavaScript within script tags
-    simplifiedContent = simplifiedContent.replace(/<script[^>]*>.*<\/script>/gms, '');
-    // Remove special characters and HTML entities
-    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '').replace(/&[a-z]+;/gi, '');
-    // Remove URLs
-    simplifiedContent = simplifiedContent.replace(/https?:\/\/[^\s]+/gi, '');
-    // Normalize whitespace
-    simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
-    // Basic language simplification
-    simplifiedContent = simplifiedContent.toLowerCase();
+    // let simplifiedContent = content.replace(/<[^>]*>/g, '');
+    // // Remove CSS within style tags
+    // simplifiedContent = simplifiedContent.replace(/<style[^>]*>.*<\/style>/gms, '');
+    // // Remove inline CSS and JavaScript within script tags
+    // simplifiedContent = simplifiedContent.replace(/<script[^>]*>.*<\/script>/gms, '');
+    // // Remove special characters and HTML entities
+    // simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '').replace(/&[a-z]+;/gi, '');
+    // // Remove URLs
+    // simplifiedContent = simplifiedContent.replace(/https?:\/\/[^\s]+/gi, '');
+    // // Normalize whitespace
+    // simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
+    // // Basic language simplification
+    // simplifiedContent = simplifiedContent.toLowerCase();
     // // Simple summarization: taking the first few sentences
     // const sentences = simplifiedContent.split('. ');
     // const summarizedContent = sentences.slice(0, Math.min(5, sentences.length)).join('. ');
+    simplifiedContent = "hello maria";
     return simplifiedContent;
 }
 

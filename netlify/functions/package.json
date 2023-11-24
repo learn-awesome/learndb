@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Netlify function to handle metadata extraction and analysis",
   "main": "handleMetadata.js",
+  "type": "module",
   "scripts": {
     "start": "node handleMetadata.js"
   },
