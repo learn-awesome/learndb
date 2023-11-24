@@ -17,12 +17,23 @@ async function fetchContentFromURL(url) {
 }
 
 function simplifyContent(content) {
-    let simplifiedContent = content.replace(/<[^>]*>/g, ''); // Remove HTML tags
-    simplifiedContent = simplifiedContent.replace(/<style[^>]*>.*<\/style>/gms, ''); // Remove CSS
-    simplifiedContent = simplifiedContent.replace(/<script[^>]*>.*<\/script>/gms, ''); // Remove JS
-    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, ''); // Remove special characters
-    simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim(); // Normalize whitespace
-    return simplifiedContent;
+    // Remove script and style elements and their content
+    let simplifiedContent = content.replace(/<script.*?>.*?<\/script>/gms, '');
+    simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
+    // Remove all remaining HTML tags, leaving the inner text
+    simplifiedContent = simplifiedContent.replace(/<[^>]+>/g, '');
+    // Decode HTML entities
+    simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, match => {
+        const span = document.createElement('span');
+        span.innerHTML = match;
+        return span.textContent || span.innerText;
+    });
+    // Remove any residual CSS and JS (inline events, style attributes)
+    simplifiedContent = simplifiedContent.replace(/style\s*=\s*'.*?'/gi, '');
+    simplifiedContent = simplifiedContent.replace(/on\w+\s*=\s*".*?"/gi, '');
+    // Remove special characters and extra whitespace
+    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '').replace(/\s+/g, ' ').trim();
+    return simplifiedContent.toLowerCase();
 }
 
 // Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
