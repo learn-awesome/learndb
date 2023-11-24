@@ -22,19 +22,23 @@ function simplifyContent(content) {
     simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
     // Remove all remaining HTML tags, leaving the inner text
     simplifiedContent = simplifiedContent.replace(/<[^>]+>/g, '');
-    // Decode HTML entities
+    // Decode HTML entities - for a Node.js environment, consider using a library like 'he'
     simplifiedContent = simplifiedContent.replace(/&[a-z]+;/gi, match => {
+        // This part is for browser environments, adjust for Node.js if necessary
         const span = document.createElement('span');
         span.innerHTML = match;
         return span.textContent || span.innerText;
     });
-    // Remove any residual CSS and JS (inline events, style attributes)
+    // Remove inline CSS and JavaScript event handlers
     simplifiedContent = simplifiedContent.replace(/style\s*=\s*'.*?'/gi, '');
     simplifiedContent = simplifiedContent.replace(/on\w+\s*=\s*".*?"/gi, '');
-    // Remove special characters and extra whitespace
-    simplifiedContent = simplifiedContent.replace(/[^\w\s]/gi, '').replace(/\s+/g, ' ').trim();
-    return simplifiedContent.toLowerCase();
+    // Normalize whitespace without removing sentence punctuation
+    simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
+    // Condense multiple line breaks into a single one
+    simplifiedContent = simplifiedContent.replace(/(\r\n|\r|\n){2,}/g, '\n');
+    return simplifiedContent;
 }
+
 
 // Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
 async function performGPTAnalysis(content) {
