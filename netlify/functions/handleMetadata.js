@@ -103,9 +103,10 @@ export async function handler(event) {
             body: JSON.stringify(fetchedContent),
         };
     } catch (error) {
+        console.error('Error occurred:', error.message);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Something went wrong' }),
+            body: JSON.stringify({ error: 'Something went wrong', details: error.message }),
         };
     }
 }
