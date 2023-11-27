@@ -43,11 +43,11 @@ function simplifyContent(content) {
 
 
 // Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
-async function performGPTAnalysis(content) {
+async function performGPTAnalysis(simplifiedContent, apiKey) {
     // Implement logic to send content to Mistral-7b via OpenRouter for GPT analysis
     // Send content and receive GPT analysis response
     // Placeholder code
-    const inferredMediaType = "article";
+    const inferredMediaType = ["article"];
     const extractedTopics = ["topic1", "topic2"];
     return { inferredMediaType, extractedTopics };
 }
@@ -94,7 +94,7 @@ export async function handler(event) {
         const simplifiedContent = simplifyContent(fetchedContent);
 
         // Step 3: Perform GPT analysis for media type and topics
-        const { inferredMediaType, extractedTopics } = await performGPTAnalysis(simplifiedContent);
+        const { inferredMediaType, extractedTopics } = await performGPTAnalysis(simplifiedContent, apiKey);
 
         // Step 4: Map inferred values to predefined formats and topics
         const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
