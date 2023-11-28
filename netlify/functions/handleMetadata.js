@@ -47,9 +47,16 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     // Implement logic to send content to Mistral-7b via OpenRouter for GPT analysis
     // Send content and receive GPT analysis response
     // Placeholder code
-    const inferredMediaType = ["article"];
-    const extractedTopics = ["topic1", "topic2"];
-    return { inferredMediaType, extractedTopics };
+    const inferredMediaType = "article";
+    // const extractedTopics = ["topic1", "topic2"];
+
+    const configuration = new Configuration({
+        apiKey: apiKey,  // Use the provided API key
+        baseURL: "https://openrouter.ai/api/v1" // Your custom API endpoint
+    });
+
+    const openai = new OpenAIApi(configuration);
+    return inferredMediaType;
 }
 
 // Placeholder function to map inferred values to predefined formats and topics
@@ -94,18 +101,18 @@ export async function handler(event) {
         const simplifiedContent = simplifyContent(fetchedContent);
 
         // Step 3: Perform GPT analysis for media type and topics
-        const { inferredMediaType, extractedTopics } = await performGPTAnalysis(simplifiedContent, apiKey);
+        const responseText = await performGPTAnalysis(simplifiedContent, apiKey);
 
         // Step 4: Map inferred values to predefined formats and topics
-        const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
+        // const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
 
         // Step 5: Format the response
-        const formattedResponse = formatResponse(predefinedMediaType, predefinedTopics);
+        // const formattedResponse = formatResponse(predefinedMediaType, predefinedTopics);
 
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(simplifiedContent),
+            body: JSON.stringify(responseText),
         };
     } catch (error) {
         console.error('Error occurred:', error.message);
