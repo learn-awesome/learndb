@@ -1,5 +1,5 @@
-// import { OpenAIApi, Configuration } from 'openai';
-const { Configuration, OpenAIApi } = require('openai');
+import { OpenAIApi, Configuration } from 'openai';
+// const { Configuration, OpenAIApi } = require('openai');
 const fetch = require('node-fetch'); 
 
 // Function to fetch content from URL using a web scraping service
