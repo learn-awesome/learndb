@@ -50,13 +50,14 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     const inferredMediaType = "article";
     // const extractedTopics = ["topic1", "topic2"];
 
-    const configuration = new Configuration({
-        apiKey: apiKey,  // Use the provided API key
-        baseURL: "https://openrouter.ai/api/v1" // Your custom API endpoint
-    });
-
-    const openai = new OpenAIApi(configuration);
     try {
+        const configuration = new Configuration({
+            apiKey: apiKey,  // Use the provided API key
+            baseURL: "https://openrouter.ai/api/v1" // Your custom API endpoint
+        });
+    
+        const openai = new OpenAIApi(configuration);
+        
         // Using the specified prompt
         const prompt = `Analyze the following text and provide the media type and key topics: ${simplifiedContent}`;
 
@@ -117,7 +118,7 @@ export async function handler(event) {
         const simplifiedContent = simplifyContent(fetchedContent);
 
         // Step 3: Perform GPT analysis for media type and topics
-        // const responseText = await performGPTAnalysis(simplifiedContent, apiKey);
+        const responseText = await performGPTAnalysis(simplifiedContent, apiKey);
 
         // Step 4: Map inferred values to predefined formats and topics
         // const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
@@ -128,7 +129,7 @@ export async function handler(event) {
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(simplifiedContent),
+            body: JSON.stringify(responseText),
         };
     } catch (error) {
         console.error('Error occurred:', error.message);
