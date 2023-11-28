@@ -56,7 +56,23 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     });
 
     const openai = new OpenAIApi(configuration);
-    return inferredMediaType;
+    try {
+        // Using the specified prompt
+        const prompt = `Analyze the following text and provide the media type and key topics: ${simplifiedContent}`;
+
+        const completion = await openai.createCompletion({
+            model: "mistralai/mistral-7b-instruct",
+            prompt: prompt,
+            max_tokens: 150 // Adjust as needed
+        });
+
+        //return completion.data.choices[0].text.trim();
+        return inferredMediaType;
+    } catch (error) {
+        console.error('Error with OpenAI completion:', error);
+        throw error;
+    }
+    // return inferredMediaType;
 }
 
 // Placeholder function to map inferred values to predefined formats and topics
