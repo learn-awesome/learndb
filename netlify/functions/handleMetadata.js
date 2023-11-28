@@ -1,6 +1,6 @@
 const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
 // import { OpenAIApi, Configuration } from 'openai';
-const { OpenAIApi, Configuration } = require('openai');
+const { Configuration, OpenAIApi } = require('openai');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -117,7 +117,7 @@ export async function handler(event) {
         const simplifiedContent = simplifyContent(fetchedContent);
 
         // Step 3: Perform GPT analysis for media type and topics
-        const responseText = await performGPTAnalysis(simplifiedContent, apiKey);
+        // const responseText = await performGPTAnalysis(simplifiedContent, apiKey);
 
         // Step 4: Map inferred values to predefined formats and topics
         // const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
@@ -128,7 +128,7 @@ export async function handler(event) {
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(responseText),
+            body: JSON.stringify(simplifiedContent),
         };
     } catch (error) {
         console.error('Error occurred:', error.message);
