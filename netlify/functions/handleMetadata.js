@@ -1,4 +1,5 @@
-import { OpenAIApi, Configuration } from 'openai';
+import OpenAIApi from 'openai';
+import Configuration from 'openai/lib/configuration';
 // const { Configuration, OpenAIApi } = require('openai');
 const fetch = require('node-fetch'); 
 
