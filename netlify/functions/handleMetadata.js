@@ -1,6 +1,6 @@
-const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
-import { OpenAIApi, Configuration } from 'openai';
-// const { Configuration, OpenAIApi } = require('openai');
+// import { OpenAIApi, Configuration } from 'openai';
+const { Configuration, OpenAIApi } = require('openai');
+const fetch = require('node-fetch'); 
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -57,7 +57,7 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
         });
     
         const openai = new OpenAIApi(configuration);
-        
+
         // Using the specified prompt
         const prompt = `Analyze the following text and provide the media type and key topics: ${simplifiedContent}`;
 
