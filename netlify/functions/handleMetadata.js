@@ -3,13 +3,14 @@
 const { Configuration, OpenAIApi } = require('openai');
 // const fetch = require('node-fetch'); 
 
-let fetch;
+// let fetch;
 
-async function loadFetch() {
-    if (!fetch) {
-        fetch = (await import('node-fetch')).default;
-    }
-}
+// async function loadFetch() {
+//     if (!fetch) {
+//         fetch = (await import('node-fetch')).default;
+//     }
+// }
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
