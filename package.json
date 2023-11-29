@@ -35,8 +35,10 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "svelvet": "8.1.0",
+    "firebase-admin": "^11.11.1",
+    "firebase-functions-test": "^3.1.0",
     "node-fetch": "^2.7.0",
-    "openai": "^4.20.0"
+    "openai": "^4.20.0",
+    "svelvet": "8.1.0"
   }
 }
