@@ -1,7 +1,15 @@
-import OpenAIApi from 'openai';
-import Configuration from 'openai/lib/configuration';
-// const { Configuration, OpenAIApi } = require('openai');
-const fetch = require('node-fetch'); 
+// import OpenAIApi from 'openai';
+// import Configuration from 'openai/lib/configuration';
+const { Configuration, OpenAIApi } = require('openai');
+// const fetch = require('node-fetch'); 
+
+let fetch;
+
+async function loadFetch() {
+    if (!fetch) {
+        fetch = (await import('node-fetch')).default;
+    }
+}
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -99,7 +107,7 @@ function formatResponse(predefinedMediaType, predefinedTopics) {
     return response;
 }
 
-export async function handler(event) {
+async function handler(event) {
     try {
         // Extract URL and API Key from the request body
         const { url, apiKey } = JSON.parse(event.body);
@@ -140,3 +148,4 @@ export async function handler(event) {
         };
     }
 }
+module.exports = { handler };
