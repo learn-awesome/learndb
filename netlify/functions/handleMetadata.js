@@ -1,16 +1,6 @@
-// import OpenAIApi from 'openai';
-// import Configuration from 'openai/lib/configuration';
-const { Configuration, OpenAIApi } = require('openai');
-// const fetch = require('node-fetch'); 
-
-// let fetch;
-
-// async function loadFetch() {
-//     if (!fetch) {
-//         fetch = (await import('node-fetch')).default;
-//     }
-// }
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
+import { OpenAIApi, Configuration } from 'openai';
+// const { Configuration, OpenAIApi } = require('openai');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -56,34 +46,38 @@ function simplifyContent(content) {
 async function performGPTAnalysis(simplifiedContent, apiKey) {
     // Implement logic to send content to Mistral-7b via OpenRouter for GPT analysis
     // Send content and receive GPT analysis response
-    // Placeholder code
-    const inferredMediaType = "article";
-    // const extractedTopics = ["topic1", "topic2"];
 
-    try {
-        const configuration = new Configuration({
-            apiKey: apiKey,  // Use the provided API key
-            baseURL: "https://openrouter.ai/api/v1" // Your custom API endpoint
-        });
+    // this is the code that we tried to use for the GPT Analysis 
+    // try {
+    //     const configuration = new Configuration({
+    //         apiKey: apiKey,  // Use the provided API key
+    //         baseURL: "https://openrouter.ai/api/v1" // Your custom API endpoint
+    //     });
     
-        const openai = new OpenAIApi(configuration);
+    //     const openai = new OpenAIApi(configuration);
 
-        // Using the specified prompt
-        const prompt = `Analyze the following text and provide the media type and key topics: ${simplifiedContent}`;
+    //     // Using the specified prompt
+    //     const prompt = `Analyze the following text and provide the media type and key topics: ${simplifiedContent}`;
 
-        const completion = await openai.createCompletion({
-            model: "mistralai/mistral-7b-instruct",
-            prompt: prompt,
-            max_tokens: 150 // Adjust as needed
-        });
+    //     const completion = await openai.createCompletion({
+    //         model: "mistralai/mistral-7b-instruct",
+    //         prompt: prompt,
+    //         max_tokens: 150 // Adjust as needed
+    //     });
 
-        //return completion.data.choices[0].text.trim();
-        return inferredMediaType;
-    } catch (error) {
-        console.error('Error with OpenAI completion:', error);
-        throw error;
-    }
-    // return inferredMediaType;
+    //     //return completion.data.choices[0].text.trim();
+    //     return inferredMediaType;
+    // } catch (error) {
+    //     console.error('Error with OpenAI completion:', error);
+    //     throw error;
+    // }
+    // however, it gives the error below: 
+    // { "error": "Something went wrong", "details": "Configuration is not a constructor" }
+
+    // Placeholder code
+    const inferredMediaType = ["article"];
+    const extractedTopics = ["topic1", "topic2"];
+    return { inferredMediaType, extractedTopics };
 }
 
 // Placeholder function to map inferred values to predefined formats and topics
@@ -108,7 +102,7 @@ function formatResponse(predefinedMediaType, predefinedTopics) {
     return response;
 }
 
-async function handler(event) {
+export async function handler(event) {
     try {
         // Extract URL and API Key from the request body
         const { url, apiKey } = JSON.parse(event.body);
@@ -128,18 +122,19 @@ async function handler(event) {
         const simplifiedContent = simplifyContent(fetchedContent);
 
         // Step 3: Perform GPT analysis for media type and topics
-        const responseText = await performGPTAnalysis(simplifiedContent, apiKey);
+        const { inferredMediaType, extractedTopics } = await performGPTAnalysis(simplifiedContent, apiKey);
 
         // Step 4: Map inferred values to predefined formats and topics
-        // const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
+        const { predefinedMediaType, predefinedTopics } = mapInferredValues(inferredMediaType, extractedTopics);
 
         // Step 5: Format the response
-        // const formattedResponse = formatResponse(predefinedMediaType, predefinedTopics);
+        const formattedResponse = formatResponse(predefinedMediaType, predefinedTopics);
 
         // Return the formatted response
         return {
             statusCode: 200,
-            body: JSON.stringify(responseText),
+            // returning the output of the simplifyContent function, to test the function
+            body: JSON.stringify(simplifiedContent),
         };
     } catch (error) {
         console.error('Error occurred:', error.message);
@@ -149,4 +144,3 @@ async function handler(event) {
         };
     }
 }
-module.exports = { handler };
