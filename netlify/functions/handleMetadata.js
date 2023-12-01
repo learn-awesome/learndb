@@ -57,8 +57,13 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     //     const openai = new OpenAIApi(configuration);
 
     //     // Using the specified prompt
-    //     const prompt = `Analyze the following text and provide the media type and key topics: ${simplifiedContent}`;
-
+    //      const prompt = `
+    //      Analyze the following text for content categorization:
+    //      Text: "${simplifiedContent}"
+    //      Please provide:
+    //      1. The most likely media type (e.g., article, book, audio, video, chat, research_paper, wiki, etc.)
+    //      2. Key topics covered in the text (list up to 5 main topics).
+    //      `;
     //     const completion = await openai.createCompletion({
     //         model: "mistralai/mistral-7b-instruct",
     //         prompt: prompt,
