@@ -17,19 +17,29 @@ async function fetchContentFromURL(url) {
 }
 
 function simplifyContent(content) {
-    // Keep title and body tags but remove their attributes
-    content = content.replace(/<title.*?>(.*?)<\/title>/gms, '<title>$1</title>');
-    content = content.replace(/<body.*?>(.*?)<\/body>/gms, '<body>$1</body>');
+    // Preserve the title tag and its content
+    let title = content.match(/<title.*?>(.*?)<\/title>/i);
+    title = title ? title[1] : '';
+
+    // Extract the body content, if present
+    let bodyContent = '';
+    const bodyMatch = content.match(/<body.*?>([\s\S]*)<\/body>/i);
+    if (bodyMatch) {
+        bodyContent = bodyMatch[1];
+    } else {
+        // If no body tag, assume entire content is body
+        bodyContent = content;
+    }
 
     // Remove script and style elements and their content
-    let simplifiedContent = content.replace(/<script.*?>.*?<\/script>/gms, '');
-    simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
+    bodyContent = bodyContent.replace(/<script.*?>.*?<\/script>/gms, '');
+    bodyContent = bodyContent.replace(/<style.*?>.*?<\/style>/gms, '');
 
-    // Remove all remaining HTML tags except for title and body, leaving the inner text
-    simplifiedContent = simplifiedContent.replace(/<(?!title|body)[^>]+>/g, '');
+    // Remove all remaining HTML tags, except for title and body
+    bodyContent = bodyContent.replace(/<(?!\/?title|\/?body)([^>]+)>/g, '');
 
     // Manually replace common HTML entities
-    simplifiedContent = simplifiedContent
+    bodyContent = bodyContent
         .replace(/&amp;/g, '&')
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
@@ -37,15 +47,17 @@ function simplifyContent(content) {
         .replace(/&#39;/g, "'");
 
     // Remove inline CSS and JavaScript event handlers
-    simplifiedContent = simplifiedContent.replace(/style\s*=\s*'.*?'/gi, '');
-    simplifiedContent = simplifiedContent.replace(/on\w+\s*=\s*".*?"/gi, '');
+    bodyContent = bodyContent.replace(/style\s*=\s*'.*?'/gi, '');
+    bodyContent = bodyContent.replace(/on\w+\s*=\s*".*?"/gi, '');
 
     // Normalize whitespace without removing sentence punctuation
-    simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
+    bodyContent = bodyContent.replace(/\s+/g, ' ').trim();
 
     // Condense multiple line breaks into a single one
-    simplifiedContent = simplifiedContent.replace(/(\r\n|\r|\n){2,}/g, '\n');
+    bodyContent = bodyContent.replace(/(\r\n|\r|\n){2,}/g, '\n');
 
+    // Reconstruct content with title and body
+    const simplifiedContent = `<title>${title}</title><body>${bodyContent}</body>`;
     return simplifiedContent;
 }
 
