@@ -20,6 +20,9 @@ function simplifyContent(content) {
     // Preserve the title tag and its content
     let title = content.match(/<title.*?>(.*?)<\/title>/i);
     title = title ? title[1] : '';
+    // Preserve the title tag and its content
+    let body = content.match(/<body.*?>(.*?)<\/body>/i);
+    body = body ? body[1] : '';
 
     // Extract the body content, if present
     let bodyContent = '';
