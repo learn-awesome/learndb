@@ -17,13 +17,17 @@ async function fetchContentFromURL(url) {
 }
 
 function simplifyContent(content) {
-    // Denote headings with a marker (like '###') and add a line break
-    content = content.replace(/<h[1-6].*?>(.*?)<\/h[1-6]>/g, '\n### $1\n');
+    // Keep title and body tags but remove their attributes
+    content = content.replace(/<title.*?>(.*?)<\/title>/gms, '<title>$1</title>');
+    content = content.replace(/<body.*?>(.*?)<\/body>/gms, '<body>$1</body>');
+
     // Remove script and style elements and their content
     let simplifiedContent = content.replace(/<script.*?>.*?<\/script>/gms, '');
     simplifiedContent = simplifiedContent.replace(/<style.*?>.*?<\/style>/gms, '');
-    // Remove all remaining HTML tags, leaving the inner text
-    simplifiedContent = simplifiedContent.replace(/<[^>]+>/g, '');
+
+    // Remove all remaining HTML tags except for title and body, leaving the inner text
+    simplifiedContent = simplifiedContent.replace(/<(?!title|body)[^>]+>/g, '');
+
     // Manually replace common HTML entities
     simplifiedContent = simplifiedContent
         .replace(/&amp;/g, '&')
@@ -31,13 +35,17 @@ function simplifyContent(content) {
         .replace(/&gt;/g, '>')
         .replace(/&quot;/g, '"')
         .replace(/&#39;/g, "'");
+
     // Remove inline CSS and JavaScript event handlers
     simplifiedContent = simplifiedContent.replace(/style\s*=\s*'.*?'/gi, '');
     simplifiedContent = simplifiedContent.replace(/on\w+\s*=\s*".*?"/gi, '');
+
     // Normalize whitespace without removing sentence punctuation
     simplifiedContent = simplifiedContent.replace(/\s+/g, ' ').trim();
+
     // Condense multiple line breaks into a single one
     simplifiedContent = simplifiedContent.replace(/(\r\n|\r|\n){2,}/g, '\n');
+
     return simplifiedContent;
 }
 
