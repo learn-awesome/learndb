@@ -20,9 +20,6 @@ function simplifyContent(content) {
     // Preserve the title tag and its content
     let title = content.match(/<title.*?>(.*?)<\/title>/i);
     title = title ? title[1] : '';
-    // Preserve the body tag and its content
-    let body = content.match(/<body.*?>(.*?)<\/body>/i);
-    body = body ? body[1] : '';
 
     // Extract the body content, if present
     let bodyContent = '';
@@ -38,8 +35,8 @@ function simplifyContent(content) {
     bodyContent = bodyContent.replace(/<script.*?>.*?<\/script>/gms, '');
     bodyContent = bodyContent.replace(/<style.*?>.*?<\/style>/gms, '');
 
-    // Remove all remaining HTML tags, except for title and body
-    bodyContent = bodyContent.replace(/<(?!\/?title|\/?body)([^>]+)>/g, '');
+    // Remove all remaining HTML tags, except for title, body, h1-h6, p, and a
+    bodyContent = bodyContent.replace(/<(?!\/?(title|body|h[1-6]|p|a)( [^>]*)?>)([^>]+)>/g, '');
 
     // Manually replace common HTML entities
     bodyContent = bodyContent
@@ -63,7 +60,6 @@ function simplifyContent(content) {
     const simplifiedContent = `<title>${title}</title><body>${bodyContent}</body>`;
     return simplifiedContent;
 }
-
 
 // Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
 async function performGPTAnalysis(simplifiedContent, apiKey) {
