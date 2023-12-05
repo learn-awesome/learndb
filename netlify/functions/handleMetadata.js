@@ -108,7 +108,7 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
 
 // Function to load topics from the topics.json file
 function loadTopics() {
-    const topicsData = fs.readFileSync('path/to/topics.json', 'utf8');
+    const topicsData = fs.readFileSync('db/topics.json', 'utf8');
     return JSON.parse(topicsData);
 }
 // Function to map inferred values to predefined formats and topics
