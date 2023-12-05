@@ -1,6 +1,6 @@
-const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
+// Import for webscraping in fetchContentFromURL()
+const fetch = require('node-fetch'); 
 import { OpenAIApi, Configuration } from 'openai';
-// const { Configuration, OpenAIApi } = require('openai');
 // Import the filesystem module to read the topics.json file
 const fs = require('fs');
 
@@ -63,7 +63,7 @@ function simplifyContent(content) {
     return simplifiedContent;
 }
 
-// Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
+// Function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
 async function performGPTAnalysis(simplifiedContent, apiKey) {
     // Implement logic to send content to Mistral-7b via OpenRouter for GPT analysis
     // Send content and receive GPT analysis response
@@ -111,7 +111,7 @@ function loadTopics() {
     const topicsData = fs.readFileSync('path/to/topics.json', 'utf8');
     return JSON.parse(topicsData);
 }
-// Placeholder function to map inferred values to predefined formats and topics
+// Function to map inferred values to predefined formats and topics
 function mapInferredValues(mediaType, topics) {
     // Implement logic to map inferred media type and topics to predefined formats and topics
     // Match inferred values with predefined taxonomy
