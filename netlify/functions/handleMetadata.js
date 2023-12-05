@@ -1,6 +1,8 @@
 const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
 import { OpenAIApi, Configuration } from 'openai';
 // const { Configuration, OpenAIApi } = require('openai');
+// Import the filesystem module to read the topics.json file
+const fs = require('fs');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -103,6 +105,7 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     const extractedTopics = ["topic1", "topic2"];
     return { inferredMediaType, extractedTopics };
 }
+
 
 // Placeholder function to map inferred values to predefined formats and topics
 function mapInferredValues(mediaType, topics) {
