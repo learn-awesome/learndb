@@ -1,6 +1,8 @@
-const fetch = require('node-fetch'); // Import for webscraping in fetchContentFromURL()
+// Import for webscraping in fetchContentFromURL()
+const fetch = require('node-fetch'); 
 import { OpenAIApi, Configuration } from 'openai';
-// const { Configuration, OpenAIApi } = require('openai');
+// Import the filesystem module to read the topics.json file
+const fs = require('fs');
 
 // Function to fetch content from URL using a web scraping service
 async function fetchContentFromURL(url) {
@@ -61,7 +63,7 @@ function simplifyContent(content) {
     return simplifiedContent;
 }
 
-// Placeholder function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
+// Function to perform GPT analysis for media type and topics using Mistral-7b via OpenRouter
 async function performGPTAnalysis(simplifiedContent, apiKey) {
     // Implement logic to send content to Mistral-7b via OpenRouter for GPT analysis
     // Send content and receive GPT analysis response
@@ -104,16 +106,33 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     return { inferredMediaType, extractedTopics };
 }
 
-// Placeholder function to map inferred values to predefined formats and topics
+// Function to load topics from the topics.json file
+function loadTopics() {
+    const topicsData = fs.readFileSync('db/topics.json', 'utf8');
+    return JSON.parse(topicsData);
+}
+// Function to map inferred values to predefined formats and topics
 function mapInferredValues(mediaType, topics) {
     // Implement logic to map inferred media type and topics to predefined formats and topics
     // Match inferred values with predefined taxonomy
-    // Placeholder code
+
+    // Load predefined topics from topics.json
+    // const predefinedTopicsList = loadTopics();
+
+    // Map inferred topics to predefined topics
+    // const predefinedTopics = topics.map(topic => {
+    //     const matchedTopic = predefinedTopicsList.find(predefinedTopic => predefinedTopic.name === topic);
+    //     return matchedTopic ? matchedTopic.hname || matchedTopic.name : topic;
+    // });
+
+    // Assuming the media type is always 'Article'
+    // const predefinedMediaType = "Article";
+
+    // Placeholder return value until we can fix the openai import issue 
     const predefinedMediaType = "Article";
     const predefinedTopics = ["Topic 1", "Topic 2"];
     return { predefinedMediaType, predefinedTopics };
 }
-
 // Placeholder function to format the response
 function formatResponse(predefinedMediaType, predefinedTopics) {
     // Implement logic to format the extracted metadata into the desired response structure
