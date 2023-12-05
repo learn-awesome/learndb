@@ -106,17 +106,28 @@ async function performGPTAnalysis(simplifiedContent, apiKey) {
     return { inferredMediaType, extractedTopics };
 }
 
-
 // Placeholder function to map inferred values to predefined formats and topics
 function mapInferredValues(mediaType, topics) {
     // Implement logic to map inferred media type and topics to predefined formats and topics
     // Match inferred values with predefined taxonomy
-    // Placeholder code
+
+    // Load predefined topics from topics.json
+    // const predefinedTopicsList = loadTopics();
+
+    // Map inferred topics to predefined topics
+    // const predefinedTopics = topics.map(topic => {
+    //     const matchedTopic = predefinedTopicsList.find(predefinedTopic => predefinedTopic.name === topic);
+    //     return matchedTopic ? matchedTopic.hname || matchedTopic.name : topic;
+    // });
+
+    // Assuming the media type is always 'Article'
+    // const predefinedMediaType = "Article";
+
+    // Placeholder return value until we can fix the openai import issue 
     const predefinedMediaType = "Article";
     const predefinedTopics = ["Topic 1", "Topic 2"];
     return { predefinedMediaType, predefinedTopics };
 }
-
 // Placeholder function to format the response
 function formatResponse(predefinedMediaType, predefinedTopics) {
     // Implement logic to format the extracted metadata into the desired response structure
