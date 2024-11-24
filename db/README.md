@@ -8,13 +8,15 @@ These JSON files are now not the master data but will be generated from a Postgr
 
 `hname` is used as human-readable name and can preserve uppercase. For eg: `ADHD`.
 
-`parent_name` should be the name of the parent topic. This makes it possible to show a hierarchical view. If a topic does not have `parent_name`, it would be at the top-level but if it doesn't have children topics of its own, it will be clubbed under a dummy top-level topic called `Misc`.
+`parent` should be the name of the parent topic. This makes it possible to show a hierarchical view. If a topic does not have `parent_name`, it would be at the top-level but if it doesn't have children topics of its own, it will be clubbed under a dummy top-level topic called `Misc`.
 
-`sort_index` is an integer that's used for controlling the ordering in which topics are displayed.
+`rank` is an integer that's used for controlling the ordering in which topics are displayed.
 
 ## creators.json
 
 A top-level table that lists well-known experts and their metadata like occupation, links etc. These are references from items and their reviews.
+`name` is unique, URL-safe.
+`hname` is case-sensitive, allows special characters and may not be unique.
 
 ## items.json
 

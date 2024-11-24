@@ -158,7 +158,7 @@
                         {#if type.split("|")[0] === 'book'}
                         <sl-divider></sl-divider>
                         <sl-menu-label>Look up on:</sl-menu-label>
-                        <sl-menu-item value={'http://libgen.rs/search.php?req=' + encodeURIComponent(item.name)}>LibGen</sl-menu-item>
+                        <sl-menu-item value={'http://libgen.is/search.php?req=' + encodeURIComponent(item.name)}>LibGen</sl-menu-item>
                         <sl-menu-item value={'https://openlibrary.org/search?q=' + encodeURIComponent(item.name)}>OpenLibrary</sl-menu-item>
                         <sl-menu-item value={'https://www.goodreads.com/search?q=' + encodeURIComponent(item.name)}>GoodReads</sl-menu-item>
                         {/if}
