@@ -2,8 +2,8 @@
     import BookCard from "./BookCard.svelte"
     import VideoCard from "./VideoCard.svelte"
     import GenericCard from "./GenericCard.svelte"
-    export let items = []
     import { formats } from "./formats.js"
+    let { items = [] } = $props();
 
     function isMobile(){
         return window.innerWidth < 680 ;

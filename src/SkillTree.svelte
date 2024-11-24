@@ -18,8 +18,8 @@
 
   }
   
-  let currentParent = null;
-  let currentChild = graph;
+  let currentParent = $state(null);
+  let currentChild = $state(graph);
 
   function findParent(child, tree){
 	  if(graph == child) return null;
@@ -49,7 +49,7 @@
 
 	{#if currentParent}<div class="flex flex-row justify-center mb-4">
 		<span>
-			<button type="button" on:click="{ e => switchTo(findParent(currentParent, graph), currentParent) }" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+			<button type="button" onclick={e => switchTo(findParent(currentParent, graph), currentParent)} class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 				{currentParent.name}
 			</button>
 		</span>
@@ -60,7 +60,7 @@
 	<div class="flex flex-row justify-center my-4">
 		<span class="relative z-0 inline-flex shadow-sm rounded-md">
 			{#each siblings(currentParent, currentChild) as sibling}
-			<button type="button" on:click="{ e => switchTo(currentParent, sibling) }" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+			<button type="button" onclick={e => switchTo(currentParent, sibling)} class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
 				{sibling.name}
 			</button>
 			{/each}
@@ -71,7 +71,7 @@
 
 <div class="grid grid-cols-1 gap-y-0 sm:grid-cols-2 mt-4">
 	{#each currentChild.children as grandchild, i (grandchild)}
-	<button on:click="{ e => switchTo(currentChild, grandchild) }" class="h-96 bg-{grandchild.color} hover:opacity-80 hover:scale-105">
+	<button onclick={e => switchTo(currentChild, grandchild)} class="h-96 bg-{grandchild.color} hover:opacity-80 hover:scale-105">
 		<h3>{grandchild.name}</h3>
 	</button>
 	{/each}

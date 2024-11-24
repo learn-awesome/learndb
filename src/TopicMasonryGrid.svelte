@@ -1,15 +1,23 @@
 <script>
+  import { run } from 'svelte/legacy';
+
 	import Masonry from 'svelte-bricks'
 	import MasonryItem from './MasonryItem.svelte';
 
 	let [minColWidth, maxColWidth, gap] = [300, 400, 15]
-	let width, height
-	// $: items = [...Array(20).keys()]
+	let width = $state(), height = $state()
+	
 
-    export let topicname = null; // undefined for top level
-    let topic;
-    export let alltopics;
-    let map = new Map();
+    let topic = $derived(alltopics.find(t => t.name == topicname));
+  /**
+   * @typedef {Object} Props
+   * @property {any} [topicname] - $: items = [...Array(20).keys()] - undefined for top level
+   * @property {any} alltopics
+   */
+
+  /** @type {Props} */
+  let { topicname = null, alltopics } = $props();
+    let map = $state(new Map());
 
     function capitalize(str){
         return str.charAt(0).toUpperCase() + str.slice(1)
@@ -56,11 +64,13 @@
         return tempmap;
     }
 
-    $: topic = alltopics.find(t => t.name == topicname)
+    
 
-    $: map = hierarchy(alltopics, topic?.name || null)
+    run(() => {
+    map = hierarchy(alltopics, topic?.name || null)
+  });
 
-	$: parents = [...map.entries()].sort((t1,t2) => (t1[0].rank || 100) - (t2[0].rank || 100))
+	let parents = $derived([...map.entries()].sort((t1,t2) => (t1[0].rank || 100) - (t2[0].rank || 100)))
 
 	const getId = (item) => {
 		if (typeof item[0] === `object`) return item[0].name
@@ -108,12 +118,14 @@
   {minColWidth}
   {maxColWidth}
   {gap}
-  let:item
+  
   {getId}
   bind:width
   bind:height
 >
- <MasonryItem parent={item}/>
-</Masonry>
+ {#snippet children({ item })}
+        <MasonryItem parent={item}/>
+      {/snippet}
+    </Masonry>
 {/if}
 

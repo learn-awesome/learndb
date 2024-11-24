@@ -3,7 +3,7 @@
 	import { roadmap_progress } from "./stores.js"
 	import { roadmap_data } from "./roadmap_data.js"
 
-	const renderer = new marked.Renderer();
+	const renderer = $state(new marked.Renderer());
 	const linkRenderer = renderer.link;
 	renderer.link = (href, title, text) => {
 		const localLink = href.startsWith(`${location.protocol}//${location.hostname}`);
@@ -11,7 +11,7 @@
 		return localLink ? html : html.replace(/^<a /, `<a target="_blank" rel="noreferrer noopener nofollow" `);
 	};
 
-	export let topic;
+	let { topic } = $props();
 	
 	const capitalize = s => s && s[0].toUpperCase() + s.slice(1);
 	const blockHeight = 400;
@@ -26,7 +26,7 @@
       	roadmap_progress.set(newobj)
 	}
 
-	let selectedNode;
+	let selectedNode = $state();
 
 	const roadmaps = {
 		programming_in_golang: {
@@ -169,7 +169,7 @@
 		},
 	};
 
-	$: roadmap = roadmaps[topic];
+	let roadmap = $derived(roadmaps[topic]);
 
 </script>
 
@@ -228,14 +228,14 @@
 					class="secondary"
 					fill={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? '#ccc' : 'rgb(255,229,153)'}
 					x={20} y={30+blockHeight*i+50*j} rx={5}
-					on:click={e => selectedNode = sec}
+					onclick={e => selectedNode = sec}
 					width={250}
 					height={45}>
 				</rect>
 				<text
 					class="secondary"
 					text-decoration={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? 'line-through' : 'none'}
-					on:click={e => selectedNode = sec}
+					onclick={e => selectedNode = sec}
 					x={20+10}
 					y={30+blockHeight*i+50*j+30}
 				><tspan>{sec.label}</tspan></text>
@@ -247,7 +247,7 @@
 				<rect 
 					class="secondary"
 					fill={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? '#ccc' : 'rgb(255,229,153)'}
-					on:click={e => selectedNode = sec}
+					onclick={e => selectedNode = sec}
 					x={350} y={140+blockHeight*i+50*j} rx={5}
 					width={250}
 					height={45}>
@@ -255,7 +255,7 @@
 				<text
 					class="secondary"
 					text-decoration={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? 'line-through' : 'none'}
-					on:click={e => selectedNode = sec}
+					onclick={e => selectedNode = sec}
 					x={350+10}
 					y={140+blockHeight*i+50*j+30}
 				><tspan>{sec.label}</tspan></text>
@@ -267,7 +267,7 @@
 				<rect 
 					class="secondary"
 					fill={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? '#ccc' : 'rgb(255,229,153)'}
-					on:click={e => selectedNode = sec}
+					onclick={e => selectedNode = sec}
 					x={720} y={30+blockHeight*i+50*j} rx={5}
 					width={250}
 					height={45}>
@@ -275,7 +275,7 @@
 				<text
 					class="secondary"
 					text-decoration={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? 'line-through' : 'none'}
-					on:click={e => selectedNode = sec}
+					onclick={e => selectedNode = sec}
 					x={720+10}
 					y={30+blockHeight*i+50*j+30}
 				><tspan>{sec.label}</tspan></text>
@@ -313,15 +313,15 @@
 <sl-drawer open={selectedNode} class="drawer-overview" style="--size: 50vw;">
 	{#if selectedNode}
 		{#if $roadmap_progress[topic] && $roadmap_progress[topic][selectedNode.label] === 'done'}
-			<sl-button variant="danger" on:click={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
+			<sl-button variant="danger" onclick={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
 		{:else}
-			<sl-button variant="success" on:click={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
+			<sl-button variant="success" onclick={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
 		{/if}
 	<div class="mt-8 prose">
 		{@html marked(selectedNode?.desc || "", { renderer })}
 	</div>
 	{/if}
-	<sl-button slot="footer" variant="primary" on:click={e => selectedNode = null}>Close</sl-button>
+	<sl-button slot="footer" variant="primary" onclick={e => selectedNode = null}>Close</sl-button>
 </sl-drawer>
 
 <style>

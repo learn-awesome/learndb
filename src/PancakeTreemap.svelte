@@ -1,13 +1,17 @@
 <script>
 	import TreemapNode from './TreemapNode.svelte';
 
-	export let root;
+	let { root, children } = $props();
+
+	const children_render = $derived(children);
 </script>
 
 <pancake-treemap>
-	<TreemapNode node={root} let:node>
-		<slot {node}></slot>
-	</TreemapNode>
+	<TreemapNode node={root} >
+		{#snippet children({ node })}
+				{@render children_render?.({ node, })}
+					{/snippet}
+		</TreemapNode>
 </pancake-treemap>
 
 <style>

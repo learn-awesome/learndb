@@ -1,4 +1,6 @@
 <script>
+	import { run, stopPropagation } from 'svelte/legacy';
+
 	import * as Pancake from '@sveltejs/pancake';
 	import * as d3 from 'd3-hierarchy';
 	import { tweened } from 'svelte/motion';
@@ -39,7 +41,7 @@
 
 	const root = treemap(hierarchy);
 
-	let selected = root;
+	let selected = $state(root);
 
 	const select = node => {
 		while (node.parent && node.parent !== selected) {
@@ -77,36 +79,40 @@
 		return false;
 	};
 
-	$: $extents = {
-		x1: selected.x0,
-		x2: selected.x1,
-		y1: selected.y1,
-		y2: selected.y0
-	};
+	run(() => {
+		$extents = {
+			x1: selected.x0,
+			x2: selected.x1,
+			y1: selected.y1,
+			y2: selected.y0
+		};
+	});
 </script>
 
-<button class="breadcrumbs" disabled="{!selected.parent}" on:click="{() => selected = selected.parent}">
+<button class="breadcrumbs" disabled="{!selected.parent}" onclick={() => selected = selected.parent}>
 	{breadcrumbs(selected)}
 </button>
 
 <div class="chart">
 	<Pancake.Chart x1={$extents.x1} x2={$extents.x2} y1={$extents.y1} y2={$extents.y2}>
-		<PancakeTreemap {root} let:node>
-			{#if is_visible(node, selected)}
-				<div
-					transition:fade={{duration:400}}
-					class="node"
-					class:leaf={!node.children}
-					on:click="{() => select(node)}"
-				>
-					<div class="pancontents">
-						<strong on:click|stopPropagation={() => window.location.href = "/#/topic/" + node.data.name}>
-							{node.data.name.split('/').reverse()[0]}
-						</strong>
+		<PancakeTreemap {root} >
+			{#snippet children({ node })}
+						{#if is_visible(node, selected)}
+					<div
+						transition:fade={{duration:400}}
+						class="node"
+						class:leaf={!node.children}
+						onclick={() => select(node)}
+					>
+						<div class="pancontents">
+							<strong onclick={stopPropagation(() => window.location.href = "/#/topic/" + node.data.name)}>
+								{node.data.name.split('/').reverse()[0]}
+							</strong>
+						</div>
 					</div>
-				</div>
-			{/if}
-		</PancakeTreemap>
+				{/if}
+								{/snippet}
+				</PancakeTreemap>
 	</Pancake.Chart>
 </div>
 

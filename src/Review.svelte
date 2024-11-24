@@ -1,5 +1,5 @@
 <script>
-    export let review;
+  let { review } = $props();
 </script>
 
 <style>

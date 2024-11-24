@@ -2,9 +2,15 @@
     import BookCard from "./BookCard.svelte"
     import VideoCard from "./VideoCard.svelte"
     import GenericCard from "./GenericCard.svelte"
-    export let item;
-    export let displayType = null;
-    export let showBadge = false;
+  /**
+   * @typedef {Object} Props
+   * @property {any} item
+   * @property {any} [displayType]
+   * @property {boolean} [showBadge]
+   */
+
+  /** @type {Props} */
+  let { item, displayType = null, showBadge = false } = $props();
 </script>
 
 {#if item.links.join(' ').includes('book|') && item.links.join(' ').includes('video|')}

@@ -3,9 +3,22 @@
     import Icon from "./Icon.svelte"
     import AdvancedSearch from "./AdvancedSearch.svelte"
 
-    let isNavDrawerOpen = false
-    export let showNotificationBell = false;
-    export let showProfileMenu = false;
+    let isNavDrawerOpen = $state(false)
+  /**
+   * @typedef {Object} Props
+   * @property {boolean} [showNotificationBell]
+   * @property {boolean} [showProfileMenu]
+   * @property {import('svelte').Snippet} [content]
+   * @property {import('svelte').Snippet} [nav]
+   */
+
+  /** @type {Props} */
+  let {
+    showNotificationBell = false,
+    showProfileMenu = false,
+    content,
+    nav
+  } = $props();
 
     const randint = (min, max) => min + Math.round(Math.random() * (max - min))
     const randomHue = () => randint(0,360)
@@ -29,20 +42,20 @@
     
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div >
   <!-- sticky top bar  -->
   <div class="sticky top-0 z-50 flex-shrink-0 flex items-center text-neutral-50 bg-blue-900 shadow h-16">
     <div class="flex items-center">
       {#if isNavDrawerOpen == false}
-      <button on:click={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <button onclick={e => isNavDrawerOpen = true} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
         <span class="sr-only">Open sidebar</span>
         <Icon kind="menu"/>
       </button>
       {/if}
 
       {#if isNavDrawerOpen}
-      <button on:click={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
+      <button onclick={e => isNavDrawerOpen = false} type="button" class="px-4 border-r border-primary_light text-primary_light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden">
         <span class="sr-only">Close sidebar</span>
         <Icon kind="close"/>
       </button>
@@ -76,7 +89,7 @@
     <main class="">
       <div class="py-6">
         <div class="max-w-none mx-auto px-4 sm:px-6 md:px-8">
-          <slot name="content"></slot>
+          {@render content?.()}
         </div>
       </div>
     </main>
@@ -84,15 +97,15 @@
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   {#if isNavDrawerOpen}
   <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-neutral_light bg-opacity-75 mt-12" on:click={e => isNavDrawerOpen = false}></div>
+    <div class="fixed inset-0 bg-neutral_light bg-opacity-75 mt-12" onclick={e => isNavDrawerOpen = false}></div>
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
       <div class="relative flex-1 flex flex-col w-64 w-full pb-4">
         <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-primary_light text-primary">
-          <nav class="px-4 space-y-1" on:click={e => isNavDrawerOpen = false}>
-            <slot name="nav"></slot>
+          <nav class="px-4 space-y-1" onclick={e => isNavDrawerOpen = false}>
+            {@render nav?.()}
             {#if window.location.href.startsWith('http://127.0.0.1')}
-            <button class="" on:click={themeRandomize}>Randomize</button>
+            <button class="" onclick={themeRandomize}>Randomize</button>
             {/if}
           </nav>
         </div>
@@ -111,9 +124,9 @@
       </div> -->
       <div class="mt-12 flex-1 flex flex-col bg-primary_light text-primary">
         <nav class="flex-1 pb-4 space-y-1 pt-5">
-          <slot name="nav"></slot>
+          {@render nav?.()}
           {#if window.location.href.startsWith('http://127.0.0.1')}
-            <button class="" on:click={themeRandomize}>Randomize</button>
+            <button class="" onclick={themeRandomize}>Randomize</button>
           {/if}
         </nav>
       </div>

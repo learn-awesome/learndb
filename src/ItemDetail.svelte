@@ -1,14 +1,16 @@
 <script>
+  import { run } from 'svelte/legacy';
+
     import ButtonGroup from "./ButtonGroup.svelte";
     import { bookmarks } from "./stores.js"
     import Review from "./Review.svelte"
     import { randomCover } from './utility.js'
     import { io_getItem } from "../db/jsonlines";
     
-    export let itemid;
+  let { itemid } = $props();
 
-    $: item = io_getItem(itemid);
-    $: reviews = item?.reviews;
+    let item = $derived(io_getItem(itemid));
+    let reviews = $derived(item?.reviews);
 
     function get_tld(url){
       return(new URL(url)).hostname.replace('www.','');
@@ -23,8 +25,8 @@
       bookmarks.set(newobj)
     }
 
-    let oEmded_image_ytb_url = null;
-    let oembed_iframe = null;
+    let oEmded_image_ytb_url = $state(null);
+    let oembed_iframe = $state(null);
 
   function oEmded_image(item){
       let youtubeformat = item.links.find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
@@ -35,12 +37,14 @@
       return `https://www.youtube.com/oembed?url=${youtubeurl}&format=json`
     }
   
-  $: item && item.links.join(' ').includes('video|') && oEmded_image(item) && fetch(oEmded_image(item))
-    .then( r => r.json())
-    .then(data => {
-      oEmded_image_ytb_url = data.thumbnail_url   
-      oembed_iframe = data.html 
-    });
+  run(() => {
+    item && item.links.join(' ').includes('video|') && oEmded_image(item) && fetch(oEmded_image(item))
+      .then( r => r.json())
+      .then(data => {
+        oEmded_image_ytb_url = data.thumbnail_url   
+        oembed_iframe = data.html 
+      });
+  });
 
     
     function wikiUrlForEmbed(item){
@@ -95,7 +99,7 @@
               <div class="">
                 <img class="mr-5 mb-6 sm:w-44 sm:h-64 transform rounded-md shadow-lg transition duration-300 ease-out hover:scale-105 md:shadow-xl " src="{item.image}" alt="{item.name}" />
               </div>
-            {:else if item.links.join(' ').includes('video') }
+            {:else if item.links.join(' ').includes('video')}
               <div class="relative mr-5 rounded-lg overflow-hidden shadow-lg">
                 <div class="w-80 h-60">
                   <img class="h-auto w-80 flex justify-center items-center border-r border-gray-500 relative" src="{oEmded_image_ytb_url}" alt="{item.name}">
@@ -139,7 +143,7 @@
                 <sl-button-group>
                   <sl-button size="small" href={type.split("|")[1]} target="_blank" class="linkButton">{type.split("|")[0]} at {get_tld(type.split("|")[1])} <sl-icon name="link-45deg"></sl-icon></sl-button>
                   {#if type.split("|")[2] || type.split("|")[0] === 'book'}
-                    <sl-dropdown placement="bottom-end" on:sl-select="{e => window.open(e.detail.item.value, '_blank')}">
+                    <sl-dropdown placement="bottom-end" onsl-select={e => window.open(e.detail.item.value, '_blank')}>
                       <sl-button slot="trigger" size="small" caret>
                         <sl-icon name="cloud-download"></sl-icon>
                       </sl-button>

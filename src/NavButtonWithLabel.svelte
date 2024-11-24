@@ -1,7 +1,10 @@
 <script>
-  export let isActive;
-  export let label;
-  export let target;
+  let {
+    isActive,
+    label,
+    target,
+    children
+  } = $props();
   
   
 </script>
@@ -9,7 +12,7 @@
 
 <a href={target} target={target.startsWith('http') ? '_blank' : ''} class={(isActive ? 'text-secondary ' : '') + " sw-full group flex flex-col py-5 pl-4 text-sm font-medium"}>
   <div class="flex justify-start gap-3 items-center">
-    <slot></slot>
+    {@render children?.()}
   
     <div class="flex flex-col items-start">
       <h3 class="text-center"> {label}</h3>

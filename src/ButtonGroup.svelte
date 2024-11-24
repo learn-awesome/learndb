@@ -3,8 +3,7 @@
 
   
   const dispatch = createEventDispatcher();
-  export let tabs = ['first', 'second'];
-  export let currentlySelected = undefined;
+  let { tabs = ['first', 'second'], currentlySelected = $bindable(undefined) } = $props();
 
   function changeStatus(val){
     currentlySelected = val;
@@ -17,7 +16,7 @@
   {#each tabs as tab, i}
   <button 
      type="button" 
-     on:click="{e => changeStatus(currentlySelected === i? undefined : i)}"
+     onclick={e => changeStatus(currentlySelected === i? undefined : i)}
      class="
        relative inline-flex flex-nowrap items-center px-4 py-2 
       {i == 0 && 'rounded-l-md'}

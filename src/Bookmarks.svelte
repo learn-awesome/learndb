@@ -4,9 +4,9 @@
     import { bookmarks } from "./stores.js"
     import { io_getItemsWithIDs } from "../db/jsonlines.js"
 
-    export let kind;
+    let { kind } = $props();
 
-    $: items = io_getItemsWithIDs(Object.entries($bookmarks).filter(pair => pair[1] == kind).map(pair => pair[0]));
+    let items = $derived(io_getItemsWithIDs(Object.entries($bookmarks).filter(pair => pair[1] == kind).map(pair => pair[0])));
 
 </script>
 

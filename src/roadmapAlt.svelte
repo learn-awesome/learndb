@@ -4,7 +4,7 @@
     import { marked } from "marked";
 	import { roadmap_progress } from "./stores.js"
 
-    const renderer = new marked.Renderer();
+    const renderer = $state(new marked.Renderer());
 	const linkRenderer = renderer.link;
 	renderer.link = (href, title, text) => {
 		const localLink = href.startsWith(`${location.protocol}//${location.hostname}`);
@@ -12,7 +12,7 @@
 		return localLink ? html : html.replace(/^<a /, `<a target="_blank" rel="noreferrer noopener nofollow" `);
 	};
 
-	export let topic;
+	let { topic } = $props();
 
 
 	
@@ -21,7 +21,7 @@
 	const nodeHeight = 50;
 	const nodeWidth = 250;
 
-    let roadmap_edit = false;
+    let roadmap_edit = $state(false);
 
     function saveProgress(topic, item, status){
 		let newobj = {};
@@ -31,9 +31,9 @@
       	roadmap_progress.set(newobj)
 	}
 
-	let selectedNode;
+	let selectedNode = $state();
 
-    $: roadmap = roadmap_data[topic];
+    let roadmap = $derived(roadmap_data[topic]);
 
 	const initialNodes = [
 	  {
@@ -202,7 +202,7 @@
 
 	];
 </script>
-<button class="inline-block py-2 px-6 bg-gray-800 text-white rounded-lg absolute right-2" on:click={()=>roadmap_edit = true}>{'Enable Editing'}</button>
+<button class="inline-block py-2 px-6 bg-gray-800 text-white rounded-lg absolute right-2" onclick={()=>roadmap_edit = true}>{'Enable Editing'}</button>
 <div class="w-full margin-auto flex items-center justify-center">
     <Svelvet 
     width={1000} 
@@ -224,13 +224,13 @@
     <sl-drawer open={selectedNode} class="drawer-overview" style="--size: 50vw;">
         {#if selectedNode}
             {#if $roadmap_progress[topic] && $roadmap_progress[topic][selectedNode.label] === 'done'}
-                <sl-button variant="danger" on:click={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
+                <sl-button variant="danger" onclick={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
             {:else}
-                <sl-button variant="success" on:click={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
+                <sl-button variant="success" onclick={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
             {/if}
         <div class="mt-8 prose">
             {@html marked(selectedNode? initialNodes[selectedNode-1].data.desc : "", { renderer })}
         </div>
         {/if}
-        <sl-button slot="footer" variant="primary" on:click={e => selectedNode = null}>Close</sl-button>
+        <sl-button slot="footer" variant="primary" onclick={e => selectedNode = null}>Close</sl-button>
     </sl-drawer>

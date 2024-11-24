@@ -1,8 +1,16 @@
 <script>
+  import { run } from 'svelte/legacy';
+
   // import ButtonGroup from "./ButtonGroup.svelte";
-  // import { oEmdedProviders } from "./oEmbedProviders.js"
-  export let item;
-  let oEmded_image_ytb_url = null;
+  
+  /**
+   * @typedef {Object} Props
+   * @property {any} item - import { oEmdedProviders } from "./oEmbedProviders.js"
+   */
+
+  /** @type {Props} */
+  let { item } = $props();
+  let oEmded_image_ytb_url = $state(null);
 
   function oEmded_image(item){
     let youtubeformat = item.links.find(s => s.startsWith('video|') && (s.includes('youtube.com') || s.includes('youtu.be')));
@@ -13,11 +21,13 @@
     return `https://www.youtube.com/oembed?url=${youtubeurl}&format=json`
   }
   
-  $: oEmded_image(item) && fetch(oEmded_image(item))
-    .then( r => r.json())
-    .then(data => {
-      oEmded_image_ytb_url = data.thumbnail_url    
-    });
+  run(() => {
+    oEmded_image(item) && fetch(oEmded_image(item))
+      .then( r => r.json())
+      .then(data => {
+        oEmded_image_ytb_url = data.thumbnail_url    
+      });
+  });
 
 </script>
 

@@ -1,6 +1,6 @@
 <script>
     import TopicMasonryGrid from "./TopicMasonryGrid.svelte"
-    export let alltopics;
+    let { alltopics } = $props();
 </script>
 
 <TopicMasonryGrid {alltopics}/>

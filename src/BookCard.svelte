@@ -1,6 +1,6 @@
 <script>
-  export let item;
   import { randomCover } from './utility.js';
+  let { item } = $props();
   
 </script>
 

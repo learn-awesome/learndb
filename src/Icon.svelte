@@ -1,5 +1,5 @@
 <script>
-    export let kind;
+  let { kind } = $props();
     export const size = 0;
 </script>
 

@@ -1,9 +1,12 @@
 <script>
+  import { run, createBubbler, preventDefault } from 'svelte/legacy';
+
+  const bubble = createBubbler();
   import { io_search_items, io_search_topics } from "../db/jsonlines.js"
 
-  let query = '';
-  let result_items = [];
-  let result_topics = [];
+  let query = $state('');
+  let result_items = $state([]);
+  let result_topics = $state([]);
 
   function resetQuery(){
     query = '';
@@ -11,28 +14,32 @@
     result_topics=[];
   }
 
-  $: result_items = io_search_items(query);
-  $: result_topics = io_search_topics(query);
+  run(() => {
+    result_items = io_search_items(query);
+  });
+  run(() => {
+    result_topics = io_search_topics(query);
+  });
 
 </script>
 
 
-<form class="hidden w-full md:pl-24 md:flex justify-center" on:submit|preventDefault>
+<form class="hidden w-full md:pl-24 md:flex justify-center" onsubmit={preventDefault(bubble('submit'))}>
   <div class="absolute w-2/3 top-2">
     <div class="transform overflow-hidden rounded-md bg-primary_light shadow-2xl ring-1 ring-black ring-opacity-5 transition-all w-2/3 mx-auto">
       <sl-input 
         placeholder="Search..." size="medium" clearable
         class="p-0"
-        on:sl-input={e => query=e.target.value} 
-        on:keydown={e => e.key === 'Escape' && resetQuery()} 
-        on:sl-clear={resetQuery}
+        onsl-input={e => query=e.target.value} 
+        onkeydown={e => e.key === 'Escape' && resetQuery()} 
+        onsl-clear={resetQuery}
         value={query}
          >
         <sl-icon name="search" slot="prefix"></sl-icon>
       </sl-input>
           
       {#if result_items.length + result_topics.length > 0}    
-      <sl-menu on:sl-select={e => {resetQuery(); document.location.href=e.detail.item.value; }}>
+      <sl-menu onsl-select={e => {resetQuery(); document.location.href=e.detail.item.value; }}>
         {#if result_topics.length > 0}
         <sl-menu-label class="bg-gray-200">Topics</sl-menu-label>
           {#each result_topics as topic}

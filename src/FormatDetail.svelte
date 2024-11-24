@@ -1,40 +1,45 @@
 <script>
+    import { run } from 'svelte/legacy';
+
     import ItemCard from "./ItemCard.svelte"
     import SearchForm from "./SearchForm.svelte"
     import { formats } from "./formats.js"
     import { io_getItemsForTopicAndFormat } from "../db/jsonlines";
     
-    export let format;
-    export let alltopics;
-    let items = [];
-    let filteredItems = [];
+    let { format, alltopics } = $props();
+    let items = $state([]);
+    let filteredItems = $state([]);
 
-    let query = {
+    let query = $state({
         text: "",
         topic: "",
         level: "",
         tag: "",
         sortby: "rating"
-    };
+    });
 
-    $: items = io_getItemsForTopicAndFormat(format, query?.topic)
+    run(() => {
+        items = io_getItemsForTopicAndFormat(format, query?.topic)
+    });
 
     function handleQueryChanged(event){
         // console.log("queryChanged: ", event.detail);
         query = event.detail;
     }
 
-    $:  filteredItems = items.filter(item => {
-            if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
-            if(query.topic && !item.topics.includes(query.topic)){ return false; }
-            if(query.level && item.difficulty != query.level){ return false; }
-            if(query.tag && !(item.tags || []).includes(query.tag)){ return false; }
-            return true;
-        }).sort((a,b) => {
-            if(query.sortby == 'rating') { return (a.rating - b.rating) };
-            if(query.sortby == 'year') { return (a.year - b.year)};
-            if(query.sortby == 'name') { return a.name.localeCompare(b.name)};
-        });
+    run(() => {
+        filteredItems = items.filter(item => {
+                if(query.text && !item.name.toLowerCase().includes(query.text.toLowerCase())){ return false; }
+                if(query.topic && !item.topics.includes(query.topic)){ return false; }
+                if(query.level && item.difficulty != query.level){ return false; }
+                if(query.tag && !(item.tags || []).includes(query.tag)){ return false; }
+                return true;
+            }).sort((a,b) => {
+                if(query.sortby == 'rating') { return (a.rating - b.rating) };
+                if(query.sortby == 'year') { return (a.year - b.year)};
+                if(query.sortby == 'name') { return a.name.localeCompare(b.name)};
+            });
+    });
 
     function capitalize(str){
         return str.charAt(0).toUpperCase() + str.slice(1)
