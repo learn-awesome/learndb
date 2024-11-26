@@ -11,7 +11,9 @@
 </Pancake.Box>
 
 {#each (node.children || []) as child}
-	<TreemapNode node={child} let:node>
-		{@render children?.({ node, })}
+	<TreemapNode node={child}>
+		{#snippet children({ node })}
+			{@render children?.({ node, })}
+		{/snippet}
 	</TreemapNode>
 {/each}
