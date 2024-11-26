@@ -13,17 +13,17 @@
     "@rgossiaux/svelte-headlessui": "^2.0.0",
     "@rgossiaux/svelte-heroicons": "^0.1.2",
     "@sveltejs/pancake": "^0.0.18",
-    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.2",
     "autoprefixer": "^10.4.16",
     "d3-hierarchy": "^3.1.2",
-    "marked": "^9.0.3",
+    "marked": "^15.0.2",
     "postcss": "^8.4.30",
-    "postcss-load-config": "^4.0.1",
-    "svelte": "^5.0.0",
+    "postcss-load-config": "^6.0.1",
+    "svelte": "^5.2.8",
     "svelte-bricks": "^0.2.1",
     "svelte-preprocess": "^6.0.0",
     "tailwindcss": "^3.3.3",
-    "vite": "^5.4.4"
+    "vite": "^5.4.11"
   },
   "overrides": {
     "@rgossiaux/svelte-headlessui": {
@@ -35,10 +35,8 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "firebase-admin": "^11.11.1",
-    "firebase-functions-test": "^3.1.0",
-    "node-fetch": "^2.7.0",
-    "openai": "^4.20.0",
-    "svelvet": "8.1.0"
+    "node-fetch": "^3.3.2",
+    "openai": "^4.73.1",
+    "svelvet": "10.0.2"
   }
 }

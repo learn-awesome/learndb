@@ -1,6 +1,6 @@
 # LearnAwesome
 
-[Visit the online version at https://learndb.netlify.app/](https://learndb.netlify.app/) but you can also run it on your own machine.
+[Visit the online version at https://skilltree.worldclass.quest/](https://skilltree.worldclass.quest/) but you can also run it on your own machine.
 
 This is a collection of learning resources organized by topics, formats, difficulty levels, and quality tags like visual / interactive / challenging etc. It also includes reviews from experts and metadata like paywall/loginwall to help you find the best resource for your learning goals.
 
@@ -12,7 +12,7 @@ In conjunction with this, we're also building an online game where this is prese
 
 ## To use:
 
-[Visit https://learndb.netlify.app/](https://learndb.netlify.app/)
+[Visit https://skilltree.worldclass.quest/](https://skilltree.worldclass.quest/)
 
 <img width="1699" alt="image" src="https://user-images.githubusercontent.com/19304/173263135-a3a02843-93d0-4c9c-b84f-a42b4883ff66.png">
 

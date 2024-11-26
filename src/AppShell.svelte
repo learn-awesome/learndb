@@ -62,7 +62,7 @@
       {/if}
 
       <a href="/" class="group/logo py-3 flex flex-col items-center flex-shrink-0 px-4 tracking-wider font-bold">
-        LearnAwesome
+        SkillTree
         <div class="w-1/5 mt-0.25 h-0.5 bg-neutral-50 group-hover/logo:w-full ease-in-out duration-300"></div>
       </a>
     </div>
