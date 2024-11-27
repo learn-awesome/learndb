@@ -2,6 +2,8 @@
 
 These JSON files are now not the master data but will be generated from a PostgreSQL database whose schema is defined in `schema.sql`.
 
+We have 4 top-level entities: Topics, Creators and Items. Reviews are are nested within Items and have links to either another Item or a Creator.
+
 ## topics.json
 
 `name` is used as primary key and therefore, must be unique and avoid uppercase and special characters other than hyphen and slash. Here are some examples: `physics`, `linear-algebra`, `nations/india`, `programming-languages/objective-c`.
@@ -28,7 +30,7 @@ A top-level table that lists well-known experts and their metadata like occupati
 
 The use-case for optional identifiers are things like `ipfs:`, `doi:`, `isbn:` or `isbn13:`.
 
-`topics` is a array of topic names. These should exactly match `topics` table's `name` column.
+`topics` is an array of topic names. These should exactly match `topics` table's `name` column.
 
 `creators` is an array of strings which are references to the `creators` table's `name` column. For eg: `charles_darwin`.
 
