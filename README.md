@@ -1,4 +1,4 @@
-# LearnAwesome
+# SkillTree
 
 [Visit the online version at https://skilltree.worldclass.quest/](https://skilltree.worldclass.quest/) but you can also run it on your own machine.
 
