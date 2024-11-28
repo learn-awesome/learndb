@@ -224,6 +224,8 @@
 
 			{#each node.left as sec, j}
 			<g>
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<rect 
 					class="secondary"
 					fill={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? '#ccc' : 'rgb(255,229,153)'}
@@ -232,6 +234,8 @@
 					width={250}
 					height={45}>
 				</rect>
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<text
 					class="secondary"
 					text-decoration={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? 'line-through' : 'none'}
@@ -244,6 +248,8 @@
 
 			{#each node.middle as sec,j}
 			<g>
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<rect 
 					class="secondary"
 					fill={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? '#ccc' : 'rgb(255,229,153)'}
@@ -252,6 +258,8 @@
 					width={250}
 					height={45}>
 				</rect>
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<text
 					class="secondary"
 					text-decoration={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? 'line-through' : 'none'}
@@ -264,6 +272,8 @@
 
 			{#each node.right as sec, j}
 			<g>
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<rect 
 					class="secondary"
 					fill={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? '#ccc' : 'rgb(255,229,153)'}
@@ -272,6 +282,8 @@
 					width={250}
 					height={45}>
 				</rect>
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<text
 					class="secondary"
 					text-decoration={$roadmap_progress[topic] && $roadmap_progress[topic][sec.label] == 'done' ? 'line-through' : 'none'}
@@ -313,14 +325,20 @@
 <sl-drawer open={selectedNode} class="drawer-overview" style="--size: 50vw;">
 	{#if selectedNode}
 		{#if $roadmap_progress[topic] && $roadmap_progress[topic][selectedNode.label] === 'done'}
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<sl-button variant="danger" onclick={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
 		{:else}
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<sl-button variant="success" onclick={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
 		{/if}
 	<div class="mt-8 prose">
 		{@html marked(selectedNode?.desc || "", { renderer })}
 	</div>
 	{/if}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<sl-button slot="footer" variant="primary" onclick={e => selectedNode = null}>Close</sl-button>
 </sl-drawer>
 

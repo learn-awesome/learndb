@@ -98,6 +98,8 @@
 		<PancakeTreemap {root} >
 			{#snippet children({ node })}
 						{#if is_visible(node, selected)}
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div
 						transition:fade={{duration:400}}
 						class="node"
@@ -105,6 +107,7 @@
 						onclick={() => select(node)}
 					>
 						<div class="pancontents">
+							<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 							<strong onclick={stopPropagation(() => window.location.href = "/#/topic/" + node.data.name)}>
 								{node.data.name.split('/').reverse()[0]}
 							</strong>

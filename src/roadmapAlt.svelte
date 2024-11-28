@@ -224,13 +224,19 @@
     <sl-drawer open={selectedNode} class="drawer-overview" style="--size: 50vw;">
         {#if selectedNode}
             {#if $roadmap_progress[topic] && $roadmap_progress[topic][selectedNode.label] === 'done'}
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                <!-- svelte-ignore a11y_click_events_have_key_events -->
                 <sl-button variant="danger" onclick={e => saveProgress(topic, selectedNode.label, 'pending')}>Mark as Pending</sl-button>
             {:else}
+                <!-- svelte-ignore a11y_click_events_have_key_events -->
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
                 <sl-button variant="success" onclick={e => saveProgress(topic, selectedNode.label, 'done')}>Mark as Done</sl-button>
             {/if}
         <div class="mt-8 prose">
             {@html marked(selectedNode? initialNodes[selectedNode-1].data.desc : "", { renderer })}
         </div>
         {/if}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
         <sl-button slot="footer" variant="primary" onclick={e => selectedNode = null}>Close</sl-button>
     </sl-drawer>

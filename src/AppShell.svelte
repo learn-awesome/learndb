@@ -97,11 +97,13 @@
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   {#if isNavDrawerOpen}
   <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="fixed inset-0 bg-neutral_light bg-opacity-75 mt-12" onclick={e => isNavDrawerOpen = false}></div>
 
     <div class="fixed inset-y-0 left-0 flex z-50 mt-12">
       <div class="relative flex-1 flex flex-col w-64 w-full pb-4">
         <div class="md:ml-6 flex-1 h-0 overflow-y-auto bg-primary_light text-primary">
+          <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
           <nav class="px-4 space-y-1" onclick={e => isNavDrawerOpen = false}>
             {@render nav?.()}
             {#if window.location.href.startsWith('http://127.0.0.1')}
